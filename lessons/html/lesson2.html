@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درس ۲: متن و قالب‌بندی - آموزش توسعه وب</title>
+    <meta name="description" content="یادگیری تگ‌های متنی و قالب‌بندی در HTML">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/rtl.css">
+    <link rel="stylesheet" href="../../css/themes.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/editor.css">
+    
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="../../js/libs/codemirror/css/codemirror.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/monokai.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/material.min.css">
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم">
+        <span class="theme-toggle-icon">🌙</span>
+    </button>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-brand">
+                <div class="header-brand-icon">وب</div>
+                <span>آموزش توسعه وب</span>
+            </div>
+            
+            <nav class="header-nav">
+                <div class="header-search">
+                    <input type="text" placeholder="جستجو در دروس..." id="searchInput">
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="منوی موبایل">
+                    ☰
+                </button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h2 class="sidebar-title">فهرست دروس</h2>
+                    <p class="sidebar-subtitle">۲۰ درس کامل برای یادگیری توسعه وب</p>
+                </div>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">HTML</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="lesson1.html" class="nav-link">
+                                <span class="nav-link-icon">📄</span>
+                                <span class="nav-link-text">مقدمات HTML</span>
+                                <span class="nav-link-badge">۱</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson2.html" class="nav-link active">
+                                <span class="nav-link-icon">📝</span>
+                                <span class="nav-link-text">متن و قالب‌بندی</span>
+                                <span class="nav-link-badge">۲</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson3.html" class="nav-link">
+                                <span class="nav-link-icon">🔗</span>
+                                <span class="nav-link-text">لینک‌ها و تصاویر</span>
+                                <span class="nav-link-badge">۳</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson4.html" class="nav-link">
+                                <span class="nav-link-icon">📊</span>
+                                <span class="nav-link-text">جداول و فرم‌ها</span>
+                                <span class="nav-link-badge">۴</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson5.html" class="nav-link">
+                                <span class="nav-link-icon">🏗️</span>
+                                <span class="nav-link-text">HTML معنایی</span>
+                                <span class="nav-link-badge">۵</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">منابع</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="../../reference/html-tags.html" class="nav-link">
+                                <span class="nav-link-icon">📚</span>
+                                <span class="nav-link-text">مرجع تگ‌های HTML</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../../index.html" class="nav-link">
+                                <span class="nav-link-icon">🏠</span>
+                                <span class="nav-link-text">صفحه اصلی</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb">
+                    <span class="breadcrumb-item"><a href="../../index.html">صفحه اصلی</a></span>
+                    <span class="breadcrumb-item"><a href="#html">HTML</a></span>
+                    <span class="breadcrumb-item active">درس ۲: متن و قالب‌بندی</span>
+                </nav>
+
+                <div class="content-header">
+                    <h1 class="content-title">درس ۲: متن و قالب‌بندی</h1>
+                    <p class="content-subtitle">یادگیری تگ‌های متنی و قالب‌بندی در HTML</p>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>پیشرفت درس</span>
+                        <span>۲ از ۲۰ درس</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 10%"></div>
+                    </div>
+                </div>
+
+                <!-- Lesson Content -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تگ‌های عنوان (Headings)</h2>
+                    </div>
+                    <p>HTML شش سطح عنوان مختلف ارائه می‌دهد که از h1 تا h6 شماره‌گذاری شده‌اند. h1 مهم‌ترین و بزرگ‌ترین عنوان است و h6 کوچک‌ترین عنوان محسوب می‌شود.</p>
+                    
+                    <h3>کاربرد تگ‌های عنوان:</h3>
+                    <ul>
+                        <li><strong>h1:</strong> عنوان اصلی صفحه (فقط یکی در هر صفحه)</li>
+                        <li><strong>h2:</strong> عناوین اصلی بخش‌ها</li>
+                        <li><strong>h3:</strong> عناوین فرعی</li>
+                        <li><strong>h4-h6:</strong> عناوین جزئی‌تر</li>
+                    </ul>
+                    
+                    <p>استفاده صحیح از تگ‌های عنوان برای SEO و دسترسی‌پذیری بسیار مهم است.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تگ‌های قالب‌بندی متن</h2>
+                    </div>
+                    <p>HTML تگ‌های مختلفی برای قالب‌بندی و تأکید بر متن ارائه می‌دهد:</p>
+                    
+                    <h3>تگ‌های تأکید:</h3>
+                    <ul>
+                        <li><code>&lt;strong&gt;</code> - متن مهم و پررنگ</li>
+                        <li><code>&lt;em&gt;</code> - متن تأکیدی و کج</li>
+                        <li><code>&lt;mark&gt;</code> - متن برجسته شده</li>
+                        <li><code>&lt;small&gt;</code> - متن کوچک</li>
+                        <li><code>&lt;del&gt;</code> - متن حذف شده</li>
+                        <li><code>&lt;ins&gt;</code> - متن اضافه شده</li>
+                        <li><code>&lt;sub&gt;</code> - زیرنویس</li>
+                        <li><code>&lt;sup&gt;</code> - بالانویس</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تگ‌های ساختاری متن</h2>
+                    </div>
+                    <p>این تگ‌ها برای سازماندهی و ساختاردهی به محتوای متنی استفاده می‌شوند:</p>
+                    
+                    <h3>تگ‌های مهم:</h3>
+                    <ul>
+                        <li><code>&lt;p&gt;</code> - پاراگراف</li>
+                        <li><code>&lt;br&gt;</code> - شکست خط</li>
+                        <li><code>&lt;hr&gt;</code> - خط جداکننده</li>
+                        <li><code>&lt;blockquote&gt;</code> - نقل قول بلند</li>
+                        <li><code>&lt;q&gt;</code> - نقل قول کوتاه</li>
+                        <li><code>&lt;cite&gt;</code> - ارجاع به منبع</li>
+                        <li><code>&lt;abbr&gt;</code> - مخفف</li>
+                        <li><code>&lt;address&gt;</code> - آدرس</li>
+                    </ul>
+                </div>
+
+                <!-- Interactive Code Editor -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تمرین عملی: قالب‌بندی متن</h2>
+                    </div>
+                    <p>در ادامه، مثالی از استفاده از تگ‌های مختلف قالب‌بندی متن را مشاهده می‌کنید. کد را ویرایش کرده و تأثیر تگ‌های مختلف را ببینید:</p>
+                    
+                    <div id="codeEditor"></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">لیست‌ها در HTML</h2>
+                    </div>
+                    <p>HTML سه نوع لیست مختلف ارائه می‌دهد:</p>
+                    
+                    <h3>انواع لیست‌ها:</h3>
+                    <ul>
+                        <li><strong>لیست مرتب (Ordered List):</strong> با تگ <code>&lt;ol&gt;</code> و آیتم‌های <code>&lt;li&gt;</code></li>
+                        <li><strong>لیست نامرتب (Unordered List):</strong> با تگ <code>&lt;ul&gt;</code> و آیتم‌های <code>&lt;li&gt;</code></li>
+                        <li><strong>لیست تعریف (Description List):</strong> با تگ‌های <code>&lt;dl&gt;</code>، <code>&lt;dt&gt;</code> و <code>&lt;dd&gt;</code></li>
+                    </ul>
+                    
+                    <h3>ویژگی‌های لیست مرتب:</h3>
+                    <ul>
+                        <li><code>type</code> - نوع شماره‌گذاری (1, A, a, I, i)</li>
+                        <li><code>start</code> - شروع شماره‌گذاری از عدد مشخص</li>
+                        <li><code>reversed</code> - شماره‌گذاری معکوس</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تمرین‌های عملی</h2>
+                    </div>
+                    <p>برای تسلط بیشتر بر مطالب این درس، تمرین‌های زیر را انجام دهید:</p>
+                    
+                    <h3>تمرین ۱: ساختار عناوین</h3>
+                    <p>یک صفحه خبری ایجاد کنید که شامل عنوان اصلی، زیرعناوین و پاراگراف‌های مختلف باشد.</p>
+                    
+                    <h3>تمرین ۲: قالب‌بندی متن</h3>
+                    <p>متنی بنویسید که شامل کلمات پررنگ، کج، برجسته و حذف شده باشد.</p>
+                    
+                    <h3>تمرین ۳: لیست‌های ترکیبی</h3>
+                    <p>لیستی از مواد غذایی ایجاد کنید که شامل زیرلیست‌هایی برای انواع مختلف باشد.</p>
+                    
+                    <h3>تمرین ۴: نقل قول و ارجاع</h3>
+                    <p>از تگ‌های blockquote، q و cite برای ایجاد نقل قول‌ها و ارجاعات استفاده کنید.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">نکات مهم</h2>
+                    </div>
+                    <h3>بهترین شیوه‌ها:</h3>
+                    <ul>
+                        <li>از تگ‌های معنایی به جای تگ‌های ظاهری استفاده کنید</li>
+                        <li>ساختار عناوین را به ترتیب رعایت کنید (h1، h2، h3، ...)</li>
+                        <li>از strong و em به جای b و i استفاده کنید</li>
+                        <li>برای شکست خط از br استفاده نکنید، بلکه از CSS استفاده کنید</li>
+                        <li>محتوای مرتبط را در پاراگراف‌های جداگانه قرار دهید</li>
+                    </ul>
+                    
+                    <h3>اشتباهات رایج:</h3>
+                    <ul>
+                        <li>استفاده از چندین تگ br برای ایجاد فاصله</li>
+                        <li>استفاده نادرست از تگ‌های عنوان برای تغییر اندازه فونت</li>
+                        <li>قرار دادن تگ‌های block داخل تگ‌های inline</li>
+                        <li>استفاده از تگ‌های قدیمی مثل font، center و b</li>
+                    </ul>
+                </div>
+
+                <!-- Navigation -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">ادامه یادگیری</h2>
+                    </div>
+                    <p>در درس بعدی با لینک‌ها، تصاویر و عناصر چندرسانه‌ای در HTML آشنا خواهید شد.</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="lesson1.html" class="btn btn-secondary">درس قبلی: مقدمات HTML</a>
+                        <a href="lesson3.html" class="btn btn-primary" style="margin-right: 1rem;">درس بعدی: لینک‌ها و تصاویر</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../../js/main.js"></script>
+    <script src="../../js/storage.js"></script>
+    
+    <!-- CodeMirror JavaScript -->
+    <script src="../../js/libs/codemirror/js/codemirror.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/xml.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/css.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/javascript.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/htmlmixed.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/matchbrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/closebrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/active-line.min.js"></script>
+    
+    <!-- Editor JavaScript -->
+    <script src="../../js/editor.js"></script>
+    
+    <script>
+        // Initialize the code editor when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const editor = new CodeEditor('codeEditor', {
+                initialContent: {
+                    html: `<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>قالب‌بندی متن در HTML</title>
+</head>
+<body>
+    <h1>عنوان اصلی مقاله</h1>
+    <h2>زیرعنوان اول</h2>
+    
+    <p>این یک <strong>پاراگراف معمولی</strong> است که شامل 
+    <em>کلمات تأکیدی</em> و <mark>متن برجسته</mark> می‌باشد.</p>
+    
+    <p>در ادامه <del>متن حذف شده</del> و <ins>متن اضافه شده</ins> 
+    را مشاهده می‌کنید.</p>
+    
+    <h3>لیست خرید:</h3>
+    <ul>
+        <li>نان</li>
+        <li>شیر</li>
+        <li>تخم مرغ</li>
+        <li>سبزیجات:
+            <ul>
+                <li>گوجه فرنگی</li>
+                <li>خیار</li>
+                <li>کاهو</li>
+            </ul>
+        </li>
+    </ul>
+    
+    <h3>مراحل پخت:</h3>
+    <ol>
+        <li>مواد را آماده کنید</li>
+        <li>تابه را روشن کنید</li>
+        <li>مواد را اضافه کنید</li>
+    </ol>
+    
+    <blockquote>
+        <p>"یادگیری HTML اولین قدم در مسیر توسعه وب است."</p>
+        <cite>- متخصص توسعه وب</cite>
+    </blockquote>
+    
+    <p>فرمول شیمیایی آب: H<sub>2</sub>O</p>
+    <p>معادله ریاضی: E = mc<sup>2</sup></p>
+    
+    <hr>
+    
+    <address>
+        آدرس: تهران، خیابان آزادی<br>
+        تلفن: ۰۲۱-۱۲۳۴۵۶۷۸
+    </address>
+</body>
+</html>`,
+                    css: `body {
+    font-family: 'Tahoma', Arial, sans-serif;
+    direction: rtl;
+    text-align: right;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+h1, h2, h3 {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+}
+
+h1 {
+    font-size: 2.5em;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2em;
+    margin-top: 30px;
+}
+
+h3 {
+    font-size: 1.5em;
+    margin-top: 25px;
+}
+
+p {
+    margin: 15px 0;
+    text-align: justify;
+}
+
+strong {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+em {
+    color: #9b59b6;
+    font-style: italic;
+}
+
+mark {
+    background-color: #f1c40f;
+    padding: 2px 4px;
+}
+
+del {
+    color: #95a5a6;
+    text-decoration: line-through;
+}
+
+ins {
+    color: #27ae60;
+    text-decoration: underline;
+}
+
+ul, ol {
+    margin: 15px 0;
+    padding-right: 30px;
+}
+
+li {
+    margin: 8px 0;
+}
+
+blockquote {
+    background-color: #ecf0f1;
+    border-right: 4px solid #3498db;
+    margin: 20px 0;
+    padding: 15px 20px;
+    font-style: italic;
+}
+
+cite {
+    display: block;
+    text-align: left;
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #7f8c8d;
+}
+
+hr {
+    border: none;
+    border-top: 2px solid #bdc3c7;
+    margin: 30px 0;
+}
+
+address {
+    background-color: #34495e;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    font-style: normal;
+    margin-top: 30px;
+}
+
+sub, sup {
+    font-size: 0.8em;
+}`,
+                    js: `// اضافه کردن تعامل به صفحه
+document.addEventListener('DOMContentLoaded', function() {
+    // تغییر رنگ عناوین هنگام کلیک
+    const headings = document.querySelectorAll('h1, h2, h3');
+    headings.forEach(heading => {
+        heading.addEventListener('click', function() {
+            this.style.color = this.style.color === 'red' ? '#2c3e50' : 'red';
+        });
+    });
+    
+    // شمارش کلمات در صفحه
+    const wordCount = document.body.innerText.split(/\\s+/).length;
+    console.log('تعداد کلمات در صفحه: ' + wordCount);
+    
+    // اضافه کردن تاریخ به صفحه
+    const now = new Date();
+    const dateString = now.toLocaleDateString('fa-IR');
+    const timeElement = document.createElement('p');
+    timeElement.innerHTML = '<small>تاریخ بازدید: ' + dateString + '</small>';
+    timeElement.style.textAlign = 'center';
+    timeElement.style.color = '#7f8c8d';
+    document.body.appendChild(timeElement);
+});`
+                }
+            });
+            
+            // Mark lesson as completed when user interacts with editor
+            let hasInteracted = false;
+            setTimeout(() => {
+                if (editor.isInitialized) {
+                    Object.keys(editor.editors).forEach(key => {
+                        editor.editors[key].on('change', () => {
+                            if (!hasInteracted) {
+                                hasInteracted = true;
+                                if (window.PersianWebTutorial) {
+                                    window.PersianWebTutorial.markLessonCompleted('lesson2');
+                                }
+                            }
+                        });
+                    });
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
+

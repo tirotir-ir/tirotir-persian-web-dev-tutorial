@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درس ۹: رنگ‌ها و پس‌زمینه - آموزش توسعه وب</title>
+    <meta name="description" content="یادگیری کار با رنگ‌ها و پس‌زمینه در CSS">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/rtl.css">
+    <link rel="stylesheet" href="../../css/themes.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/editor.css">
+    
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="../../js/libs/codemirror/css/codemirror.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/monokai.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/material.min.css">
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم">
+        <span class="theme-toggle-icon">🌙</span>
+    </button>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-brand">
+                <div class="header-brand-icon">وب</div>
+                <span>آموزش توسعه وب</span>
+            </div>
+            
+            <nav class="header-nav">
+                <div class="header-search">
+                    <input type="text" placeholder="جستجو در دروس..." id="searchInput">
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="منوی موبایل">
+                    ☰
+                </button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h2 class="sidebar-title">فهرست دروس</h2>
+                    <p class="sidebar-subtitle">۲۰ درس کامل برای یادگیری توسعه وب</p>
+                </div>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">CSS</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="lesson6.html" class="nav-link">
+                                <span class="nav-link-icon">🎨</span>
+                                <span class="nav-link-text">مقدمات CSS</span>
+                                <span class="nav-link-badge">۶</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson7.html" class="nav-link">
+                                <span class="nav-link-icon">📦</span>
+                                <span class="nav-link-text">مدل جعبه</span>
+                                <span class="nav-link-badge">۷</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson8.html" class="nav-link">
+                                <span class="nav-link-icon">🔤</span>
+                                <span class="nav-link-text">تایپوگرافی</span>
+                                <span class="nav-link-badge">۸</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson9.html" class="nav-link active">
+                                <span class="nav-link-icon">🌈</span>
+                                <span class="nav-link-text">رنگ‌ها و پس‌زمینه</span>
+                                <span class="nav-link-badge">۹</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson10.html" class="nav-link">
+                                <span class="nav-link-icon">📐</span>
+                                <span class="nav-link-text">Flexbox و Grid</span>
+                                <span class="nav-link-badge">۱۰</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">منابع</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="../../reference/html-tags.html" class="nav-link">
+                                <span class="nav-link-icon">📚</span>
+                                <span class="nav-link-text">مرجع تگ‌های HTML</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../../index.html" class="nav-link">
+                                <span class="nav-link-icon">🏠</span>
+                                <span class="nav-link-text">صفحه اصلی</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb">
+                    <span class="breadcrumb-item"><a href="../../index.html">صفحه اصلی</a></span>
+                    <span class="breadcrumb-item"><a href="#css">CSS</a></span>
+                    <span class="breadcrumb-item active">درس ۹: رنگ‌ها و پس‌زمینه</span>
+                </nav>
+
+                <div class="content-header">
+                    <h1 class="content-title">درس ۹: رنگ‌ها و پس‌زمینه</h1>
+                    <p class="content-subtitle">یادگیری کار با رنگ‌ها و پس‌زمینه در CSS</p>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>پیشرفت درس</span>
+                        <span>۹ از ۲۰ درس</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 45%"></div>
+                    </div>
+                </div>
+
+                <!-- Lesson Content -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">اهمیت رنگ در طراحی وب</h2>
+                    </div>
+                    <p>رنگ یکی از مهم‌ترین عناصر طراحی وب است که تأثیر عمیقی بر تجربه کاربری، احساسات و برداشت کاربران از سایت دارد. انتخاب رنگ‌های مناسب می‌تواند باعث افزایش تعامل، بهبود خوانایی و تقویت هویت برند شود.</p>
+                    
+                    <h3>نقش رنگ در طراحی:</h3>
+                    <ul>
+                        <li><strong>انتقال احساسات:</strong> هر رنگ احساس خاصی را منتقل می‌کند</li>
+                        <li><strong>ایجاد سلسله‌مراتب:</strong> رنگ‌ها اهمیت عناصر را مشخص می‌کنند</li>
+                        <li><strong>هدایت توجه:</strong> رنگ‌های برجسته توجه کاربر را جلب می‌کنند</li>
+                        <li><strong>بهبود خوانایی:</strong> کنتراست مناسب خوانایی را افزایش می‌دهد</li>
+                        <li><strong>هویت برند:</strong> رنگ‌ها شخصیت برند را منعکس می‌کنند</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">روش‌های تعریف رنگ در CSS</h2>
+                    </div>
+                    <p>CSS روش‌های مختلفی برای تعریف رنگ ارائه می‌دهد که هر کدام مزایا و کاربردهای خاص خود را دارند.</p>
+                    
+                    <h3>۱. نام‌های رنگ (Color Names):</h3>
+                    <p>CSS بیش از ۱۴۰ نام رنگ از پیش تعریف شده دارد:</p>
+                    <pre><code>color: red;
+color: blue;
+color: green;
+color: orange;
+color: purple;</code></pre>
+                    
+                    <h3>۲. مقادیر هگزادسیمال (Hex):</h3>
+                    <p>رایج‌ترین روش تعریف رنگ با استفاده از کد هگزادسیمال:</p>
+                    <pre><code>color: #FF0000; /* قرمز */
+color: #00FF00; /* سبز */
+color: #0000FF; /* آبی */
+color: #FFF;    /* سفید (کوتاه) */
+color: #000;    /* سیاه (کوتاه) */</code></pre>
+                    
+                    <h3>۳. RGB و RGBA:</h3>
+                    <p>تعریف رنگ با مقادیر قرمز، سبز و آبی:</p>
+                    <pre><code>color: rgb(255, 0, 0);        /* قرمز */
+color: rgb(0, 255, 0);        /* سبز */
+color: rgba(255, 0, 0, 0.5);  /* قرمز با شفافیت ۵۰٪ */</code></pre>
+                    
+                    <h3>۴. HSL و HSLA:</h3>
+                    <p>تعریف رنگ با رنگ، اشباع و روشنایی:</p>
+                    <pre><code>color: hsl(0, 100%, 50%);     /* قرمز */
+color: hsl(120, 100%, 50%);   /* سبز */
+color: hsla(240, 100%, 50%, 0.7); /* آبی با شفافیت */</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">ویژگی‌های رنگ متن</h2>
+                    </div>
+                    <p>CSS ویژگی‌های مختلفی برای کنترل رنگ متن و عناصر ارائه می‌دهد.</p>
+                    
+                    <h3>ویژگی‌های اصلی:</h3>
+                    <ul>
+                        <li><strong>color:</strong> رنگ متن</li>
+                        <li><strong>background-color:</strong> رنگ پس‌زمینه</li>
+                        <li><strong>border-color:</strong> رنگ حاشیه</li>
+                        <li><strong>outline-color:</strong> رنگ خط دور</li>
+                    </ul>
+                    
+                    <h3>مثال‌ها:</h3>
+                    <pre><code>.text-primary {
+  color: #007bff;
+}
+
+.text-success {
+  color: #28a745;
+}
+
+.text-danger {
+  color: #dc3545;
+}
+
+.text-warning {
+  color: #ffc107;
+}</code></pre>
+                </div>
+
+                <!-- Interactive Code Editor -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تمرین عملی: رنگ‌ها و پس‌زمینه</h2>
+                    </div>
+                    <p>در ادامه، مثالی از استفاده مختلف رنگ‌ها و پس‌زمینه را مشاهده می‌کنید. کد را ویرایش کرده و تأثیرات مختلف را ببینید:</p>
+                    
+                    <div id="codeEditor"></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">پس‌زمینه (Background)</h2>
+                    </div>
+                    <p>CSS امکانات گسترده‌ای برای کنترل پس‌زمینه عناصر ارائه می‌دهد.</p>
+                    
+                    <h3>ویژگی‌های پس‌زمینه:</h3>
+                    <ul>
+                        <li><strong>background-color:</strong> رنگ پس‌زمینه</li>
+                        <li><strong>background-image:</strong> تصویر پس‌زمینه</li>
+                        <li><strong>background-repeat:</strong> تکرار تصویر</li>
+                        <li><strong>background-position:</strong> موقعیت تصویر</li>
+                        <li><strong>background-size:</strong> اندازه تصویر</li>
+                        <li><strong>background-attachment:</strong> نحوه چسبیدن تصویر</li>
+                    </ul>
+                    
+                    <h3>مثال‌های background-repeat:</h3>
+                    <pre><code>background-repeat: repeat;    /* تکرار در همه جهات */
+background-repeat: repeat-x;  /* تکرار افقی */
+background-repeat: repeat-y;  /* تکرار عمودی */
+background-repeat: no-repeat; /* بدون تکرار */</code></pre>
+                    
+                    <h3>مثال‌های background-position:</h3>
+                    <pre><code>background-position: center;
+background-position: top right;
+background-position: 50% 25%;
+background-position: 10px 20px;</code></pre>
+                    
+                    <h3>مثال‌های background-size:</h3>
+                    <pre><code>background-size: cover;    /* پوشش کامل */
+background-size: contain;  /* نمایش کامل تصویر */
+background-size: 100% 50%; /* اندازه دلخواه */</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">گرادیان‌ها (Gradients)</h2>
+                    </div>
+                    <p>گرادیان‌ها انتقال نرم بین دو یا چند رنگ هستند که جلوه بصری زیبایی ایجاد می‌کنند.</p>
+                    
+                    <h3>گرادیان خطی (Linear Gradient):</h3>
+                    <pre><code>/* گرادیان ساده */
+background: linear-gradient(to right, red, blue);
+
+/* گرادیان با زاویه */
+background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+
+/* گرادیان چند رنگ */
+background: linear-gradient(to bottom, 
+  #ff6b6b 0%, 
+  #4ecdc4 50%, 
+  #45b7d1 100%);
+
+/* گرادیان با نقاط توقف */
+background: linear-gradient(90deg, 
+  red 0%, 
+  yellow 25%, 
+  green 75%, 
+  blue 100%);</code></pre>
+                    
+                    <h3>گرادیان شعاعی (Radial Gradient):</h3>
+                    <pre><code>/* گرادیان دایره‌ای */
+background: radial-gradient(circle, red, blue);
+
+/* گرادیان بیضوی */
+background: radial-gradient(ellipse, #ff6b6b, #4ecdc4);
+
+/* گرادیان با موقعیت مشخص */
+background: radial-gradient(circle at top left, red, blue);
+
+/* گرادیان با اندازه مشخص */
+background: radial-gradient(circle 100px at center, red, blue);</code></pre>
+                    
+                    <h3>گرادیان مخروطی (Conic Gradient):</h3>
+                    <pre><code>/* گرادیان مخروطی ساده */
+background: conic-gradient(red, yellow, green, blue, red);
+
+/* گرادیان مخروطی با زاویه شروع */
+background: conic-gradient(from 45deg, red, blue);
+
+/* ایجاد رنگین‌کمان */
+background: conic-gradient(
+  red 0deg, 
+  orange 60deg, 
+  yellow 120deg, 
+  green 180deg, 
+  blue 240deg, 
+  purple 300deg, 
+  red 360deg
+);</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">شفافیت و Opacity</h2>
+                    </div>
+                    <p>شفافیت ابزار قدرتمندی برای ایجاد جلوه‌های بصری و لایه‌بندی عناصر است.</p>
+                    
+                    <h3>روش‌های ایجاد شفافیت:</h3>
+                    <ul>
+                        <li><strong>opacity:</strong> شفافیت کل عنصر (۰ تا ۱)</li>
+                        <li><strong>rgba():</strong> شفافیت فقط برای رنگ</li>
+                        <li><strong>hsla():</strong> شفافیت در مدل HSL</li>
+                    </ul>
+                    
+                    <h3>مثال‌ها:</h3>
+                    <pre><code>/* شفافیت کل عنصر */
+.transparent-element {
+  opacity: 0.5; /* ۵۰٪ شفافیت */
+}
+
+/* شفافیت فقط پس‌زمینه */
+.transparent-bg {
+  background-color: rgba(255, 0, 0, 0.3); /* قرمز با ۳۰٪ شفافیت */
+  color: black; /* متن کاملاً مات */
+}
+
+/* شفافیت متدرج */
+.fade-out {
+  background: linear-gradient(
+    to bottom, 
+    rgba(0,0,0,1) 0%, 
+    rgba(0,0,0,0) 100%
+  );
+}</code></pre>
+                    
+                    <h3>تفاوت opacity و rgba:</h3>
+                    <ul>
+                        <li><strong>opacity:</strong> کل عنصر و فرزندانش شفاف می‌شوند</li>
+                        <li><strong>rgba:</strong> فقط ویژگی مشخص (رنگ، پس‌زمینه) شفاف می‌شود</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">سایه‌ها (Shadows)</h2>
+                    </div>
+                    <p>سایه‌ها عمق و بُعد سه‌بعدی به طراحی اضافه می‌کنند.</p>
+                    
+                    <h3>سایه متن (text-shadow):</h3>
+                    <pre><code>/* سایه ساده */
+text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+
+/* سایه چندگانه */
+text-shadow: 
+  1px 1px 2px red,
+  2px 2px 4px blue,
+  3px 3px 6px green;
+
+/* سایه درخشان */
+text-shadow: 0 0 10px #00ff00;</code></pre>
+                    
+                    <h3>سایه جعبه (box-shadow):</h3>
+                    <pre><code>/* سایه بیرونی */
+box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+
+/* سایه درونی */
+box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+
+/* سایه چندگانه */
+box-shadow: 
+  0 2px 4px rgba(0,0,0,0.1),
+  0 8px 16px rgba(0,0,0,0.1);
+
+/* سایه رنگی */
+box-shadow: 0 0 20px #ff6b6b;</code></pre>
+                    
+                    <h3>پارامترهای box-shadow:</h3>
+                    <ul>
+                        <li><strong>offset-x:</strong> جابجایی افقی</li>
+                        <li><strong>offset-y:</strong> جابجایی عمودی</li>
+                        <li><strong>blur-radius:</strong> میزان تاری</li>
+                        <li><strong>spread-radius:</strong> گسترش سایه</li>
+                        <li><strong>color:</strong> رنگ سایه</li>
+                        <li><strong>inset:</strong> سایه درونی</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">متغیرهای CSS (CSS Variables)</h2>
+                    </div>
+                    <p>متغیرهای CSS امکان تعریف و استفاده مجدد از مقادیر رنگ را فراهم می‌کنند.</p>
+                    
+                    <h3>تعریف متغیرها:</h3>
+                    <pre><code>:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --info-color: #17a2b8;
+  
+  --light-bg: #f8f9fa;
+  --dark-bg: #343a40;
+}</code></pre>
+                    
+                    <h3>استفاده از متغیرها:</h3>
+                    <pre><code>.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.alert-success {
+  background-color: var(--success-color);
+  color: white;
+}
+
+/* متغیر با مقدار پیش‌فرض */
+.custom-element {
+  color: var(--custom-color, #333);
+}</code></pre>
+                    
+                    <h3>مزایای متغیرهای CSS:</h3>
+                    <ul>
+                        <li>مدیریت آسان‌تر رنگ‌ها</li>
+                        <li>تغییر سریع تم</li>
+                        <li>کاهش تکرار کد</li>
+                        <li>پشتیبانی از تم تیره/روشن</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تمرین‌های عملی</h2>
+                    </div>
+                    <p>برای تسلط بیشتر بر مطالب این درس، تمرین‌های زیر را انجام دهید:</p>
+                    
+                    <h3>تمرین ۱: پالت رنگی</h3>
+                    <p>پالت رنگی کاملی برای یک وب‌سایت ایجاد کنید که شامل رنگ‌های اصلی، فرعی و حالت‌های مختلف باشد.</p>
+                    
+                    <h3>تمرین ۲: کارت‌های گرادیان</h3>
+                    <p>مجموعه‌ای از کارت‌ها با گرادیان‌های مختلف و جذاب طراحی کنید.</p>
+                    
+                    <h3>تمرین ۳: گالری تصاویر</h3>
+                    <p>گالری تصاویری با افکت‌های hover و سایه‌های زیبا ایجاد کنید.</p>
+                    
+                    <h3>تمرین ۴: تم تیره/روشن</h3>
+                    <p>سیستم تم تیره و روشن با استفاده از متغیرهای CSS پیاده‌سازی کنید.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">نکات مهم و بهترین شیوه‌ها</h2>
+                    </div>
+                    <h3>بهترین شیوه‌ها:</h3>
+                    <ul>
+                        <li>از متغیرهای CSS برای مدیریت رنگ‌ها استفاده کنید</li>
+                        <li>کنتراست مناسب بین متن و پس‌زمینه ایجاد کنید</li>
+                        <li>از پالت رنگی محدود و هماهنگ استفاده کنید</li>
+                        <li>معنای فرهنگی رنگ‌ها را در نظر بگیرید</li>
+                        <li>برای دسترسی‌پذیری، فقط به رنگ تکیه نکنید</li>
+                    </ul>
+                    
+                    <h3>نکات دسترسی‌پذیری:</h3>
+                    <ul>
+                        <li>نسبت کنتراست حداقل ۴.۵:۱ برای متن معمولی</li>
+                        <li>نسبت کنتراست حداقل ۳:۱ برای متن بزرگ</li>
+                        <li>عدم استفاده از رنگ به تنهایی برای انتقال اطلاعات</li>
+                        <li>در نظر گیری کوررنگی</li>
+                        <li>تست در حالت‌های مختلف نمایش</li>
+                    </ul>
+                    
+                    <h3>اشتباهات رایج:</h3>
+                    <ul>
+                        <li>استفاده از رنگ‌های خیلی روشن یا تیره</li>
+                        <li>کنتراست کم بین متن و پس‌زمینه</li>
+                        <li>استفاده بیش از حد از رنگ‌های مختلف</li>
+                        <li>عدم تست در دستگاه‌های مختلف</li>
+                        <li>نادیده گرفتن معنای فرهنگی رنگ‌ها</li>
+                    </ul>
+                </div>
+
+                <!-- Navigation -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">ادامه یادگیری</h2>
+                    </div>
+                    <p>در درس بعدی با Flexbox و Grid Layout در CSS آشنا خواهید شد.</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="lesson8.html" class="btn btn-secondary">درس قبلی: تایپوگرافی</a>
+                        <a href="lesson10.html" class="btn btn-primary" style="margin-right: 1rem;">درس بعدی: Flexbox و Grid</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../../js/main.js"></script>
+    <script src="../../js/storage.js"></script>
+    
+    <!-- CodeMirror JavaScript -->
+    <script src="../../js/libs/codemirror/js/codemirror.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/xml.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/css.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/javascript.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/htmlmixed.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/matchbrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/closebrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/active-line.min.js"></script>
+    
+    <!-- Editor JavaScript -->
+    <script src="../../js/editor.js"></script>
+    
+    <script>
+        // Initialize the code editor when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const editor = new CodeEditor('codeEditor', {
+                initialContent: {
+                    html: `<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>رنگ‌ها و پس‌زمینه CSS</title>
+</head>
+<body>
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">دنیای رنگ‌ها</h1>
+            <p class="hero-subtitle">کاوش در زیبایی رنگ‌ها و گرادیان‌ها</p>
+            <button class="cta-button">شروع کنید</button>
+        </div>
+        <div class="hero-decoration"></div>
+    </header>
+    
+    <section class="color-palette">
+        <h2 class="section-title">پالت رنگی</h2>
+        <div class="palette-grid">
+            <div class="color-card primary">
+                <div class="color-preview"></div>
+                <h3>آبی اصلی</h3>
+                <p>#007bff</p>
+            </div>
+            <div class="color-card secondary">
+                <div class="color-preview"></div>
+                <h3>خاکستری</h3>
+                <p>#6c757d</p>
+            </div>
+            <div class="color-card success">
+                <div class="color-preview"></div>
+                <h3>سبز موفقیت</h3>
+                <p>#28a745</p>
+            </div>
+            <div class="color-card danger">
+                <div class="color-preview"></div>
+                <h3>قرمز خطر</h3>
+                <p>#dc3545</p>
+            </div>
+            <div class="color-card warning">
+                <div class="color-preview"></div>
+                <h3>زرد هشدار</h3>
+                <p>#ffc107</p>
+            </div>
+            <div class="color-card info">
+                <div class="color-preview"></div>
+                <h3>آبی اطلاعات</h3>
+                <p>#17a2b8</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="gradient-showcase">
+        <h2 class="section-title">نمایش گرادیان‌ها</h2>
+        <div class="gradient-grid">
+            <div class="gradient-card linear-1">
+                <h3>گرادیان خطی</h3>
+                <p>از قرمز به آبی</p>
+            </div>
+            <div class="gradient-card linear-2">
+                <h3>گرادیان مورب</h3>
+                <p>۴۵ درجه</p>
+            </div>
+            <div class="gradient-card radial-1">
+                <h3>گرادیان شعاعی</h3>
+                <p>از مرکز</p>
+            </div>
+            <div class="gradient-card conic-1">
+                <h3>گرادیان مخروطی</h3>
+                <p>رنگین‌کمان</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="shadow-examples">
+        <h2 class="section-title">نمونه‌های سایه</h2>
+        <div class="shadow-grid">
+            <div class="shadow-card soft-shadow">
+                <h3>سایه نرم</h3>
+                <p>مناسب برای کارت‌ها</p>
+            </div>
+            <div class="shadow-card hard-shadow">
+                <h3>سایه سخت</h3>
+                <p>برای تأکید بیشتر</p>
+            </div>
+            <div class="shadow-card colored-shadow">
+                <h3>سایه رنگی</h3>
+                <p>جلوه خاص</p>
+            </div>
+            <div class="shadow-card inset-shadow">
+                <h3>سایه درونی</h3>
+                <p>حالت فرورفته</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="transparency-demo">
+        <h2 class="section-title">نمایش شفافیت</h2>
+        <div class="transparency-container">
+            <div class="bg-pattern"></div>
+            <div class="transparent-layers">
+                <div class="layer layer-1">لایه ۱ - ۸۰٪ شفافیت</div>
+                <div class="layer layer-2">لایه ۲ - ۶۰٪ شفافیت</div>
+                <div class="layer layer-3">لایه ۳ - ۴۰٪ شفافیت</div>
+                <div class="layer layer-4">لایه ۴ - ۲۰٪ شفافیت</div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="interactive-colors">
+        <h2 class="section-title">رنگ‌های تعاملی</h2>
+        <div class="interactive-grid">
+            <button class="color-btn btn-hover-1">Hover Effect 1</button>
+            <button class="color-btn btn-hover-2">Hover Effect 2</button>
+            <button class="color-btn btn-hover-3">Hover Effect 3</button>
+            <button class="color-btn btn-hover-4">Hover Effect 4</button>
+        </div>
+    </section>
+    
+    <section class="background-patterns">
+        <h2 class="section-title">الگوهای پس‌زمینه</h2>
+        <div class="pattern-grid">
+            <div class="pattern-card dots">
+                <h3>نقطه‌ای</h3>
+            </div>
+            <div class="pattern-card stripes">
+                <h3>راه‌راه</h3>
+            </div>
+            <div class="pattern-card checkerboard">
+                <h3>شطرنجی</h3>
+            </div>
+            <div class="pattern-card waves">
+                <h3>موجی</h3>
+            </div>
+        </div>
+    </section>
+</body>
+</html>`,
+                    css: `/* متغیرهای CSS */
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --info-color: #17a2b8;
+  
+  --light-bg: #f8f9fa;
+  --dark-bg: #343a40;
+  --white: #ffffff;
+  --black: #000000;
+  
+  --shadow-soft: 0 2px 15px rgba(0,0,0,0.1);
+  --shadow-medium: 0 4px 20px rgba(0,0,0,0.15);
+  --shadow-hard: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+/* تنظیمات پایه */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Tahoma', Arial, sans-serif;
+  direction: rtl;
+  text-align: right;
+  line-height: 1.6;
+  color: var(--dark-bg);
+  background-color: var(--light-bg);
+}
+
+/* بخش قهرمان */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  background: linear-gradient(135deg, 
+    #667eea 0%, 
+    #764ba2 25%, 
+    #f093fb 50%, 
+    #f5576c 75%, 
+    #4facfe 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-content {
+  text-align: center;
+  color: white;
+  z-index: 2;
+  position: relative;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  animation: fadeInUp 1s ease-out;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.cta-button {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: 2px solid white;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.cta-button:hover {
+  background: white;
+  color: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.hero-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+  animation: float 6s ease-in-out infinite;
+}
+
+/* بخش‌های محتوا */
+section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--dark-bg);
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--info-color));
+  border-radius: 2px;
+}
+
+/* پالت رنگی */
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.color-card {
+  background: white;
+  border-radius: 15px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.color-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-medium);
+}
+
+.color-preview {
+  width: 100%;
+  height: 100px;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  border: 3px solid #f0f0f0;
+}
+
+.primary .color-preview { background-color: var(--primary-color); }
+.secondary .color-preview { background-color: var(--secondary-color); }
+.success .color-preview { background-color: var(--success-color); }
+.danger .color-preview { background-color: var(--danger-color); }
+.warning .color-preview { background-color: var(--warning-color); }
+.info .color-preview { background-color: var(--info-color); }
+
+.color-card h3 {
+  margin-bottom: 0.5rem;
+  color: var(--dark-bg);
+}
+
+.color-card p {
+  color: var(--secondary-color);
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+/* نمایش گرادیان‌ها */
+.gradient-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.gradient-card {
+  height: 200px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+  transition: transform 0.3s ease;
+}
+
+.gradient-card:hover {
+  transform: scale(1.05);
+}
+
+.linear-1 {
+  background: linear-gradient(to right, #ff6b6b, #4ecdc4);
+}
+
+.linear-2 {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+}
+
+.radial-1 {
+  background: radial-gradient(circle, #f093fb, #f5576c);
+}
+
+.conic-1 {
+  background: conic-gradient(
+    #ff0000 0deg,
+    #ff8000 60deg,
+    #ffff00 120deg,
+    #80ff00 180deg,
+    #00ff80 240deg,
+    #0080ff 300deg,
+    #ff0000 360deg
+  );
+}
+
+.gradient-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.gradient-card p {
+  opacity: 0.9;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* نمونه‌های سایه */
+.shadow-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+}
+
+.shadow-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.soft-shadow {
+  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+.soft-shadow:hover {
+  box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+}
+
+.hard-shadow {
+  box-shadow: 5px 5px 0px var(--primary-color);
+}
+
+.hard-shadow:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0px var(--primary-color);
+}
+
+.colored-shadow {
+  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+}
+
+.colored-shadow:hover {
+  box-shadow: 0 12px 35px rgba(255, 107, 107, 0.6);
+}
+
+.inset-shadow {
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+  background: #f8f9fa;
+}
+
+.inset-shadow:hover {
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.2);
+}
+
+/* نمایش شفافیت */
+.transparency-container {
+  position: relative;
+  height: 400px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.bg-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(45deg, #f0f0f0 25%, transparent 25%),
+    linear-gradient(-45deg, #f0f0f0 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #f0f0f0 75%),
+    linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+.transparent-layers {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.layer {
+  position: absolute;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  border: 2px solid white;
+}
+
+.layer-1 {
+  background: rgba(255, 107, 107, 0.8);
+  top: 20px;
+  right: 20px;
+}
+
+.layer-2 {
+  background: rgba(78, 205, 196, 0.6);
+  top: 60px;
+  right: 60px;
+}
+
+.layer-3 {
+  background: rgba(69, 183, 209, 0.4);
+  top: 100px;
+  right: 100px;
+}
+
+.layer-4 {
+  background: rgba(150, 206, 180, 0.2);
+  top: 140px;
+  right: 140px;
+  color: var(--dark-bg);
+}
+
+/* رنگ‌های تعاملی */
+.interactive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.color-btn {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-hover-1 {
+  background: var(--primary-color);
+  color: white;
+}
+
+.btn-hover-1:hover {
+  background: var(--info-color);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,123,255,0.3);
+}
+
+.btn-hover-2 {
+  background: linear-gradient(45deg, var(--success-color), var(--info-color));
+  color: white;
+}
+
+.btn-hover-2:hover {
+  background: linear-gradient(45deg, var(--info-color), var(--success-color));
+  transform: scale(1.05);
+}
+
+.btn-hover-3 {
+  background: white;
+  color: var(--danger-color);
+  border: 2px solid var(--danger-color);
+}
+
+.btn-hover-3:hover {
+  background: var(--danger-color);
+  color: white;
+  box-shadow: 0 0 20px rgba(220,53,69,0.5);
+}
+
+.btn-hover-4 {
+  background: var(--warning-color);
+  color: var(--dark-bg);
+  position: relative;
+}
+
+.btn-hover-4::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-hover-4:hover::before {
+  left: 100%;
+}
+
+/* الگوهای پس‌زمینه */
+.pattern-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.pattern-card {
+  height: 150px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.dots {
+  background: 
+    radial-gradient(circle, var(--primary-color) 2px, transparent 2px);
+  background-size: 20px 20px;
+  background-color: var(--light-bg);
+  color: var(--primary-color);
+}
+
+.stripes {
+  background: 
+    linear-gradient(45deg, 
+      var(--success-color) 25%, 
+      transparent 25%, 
+      transparent 75%, 
+      var(--success-color) 75%);
+  background-size: 20px 20px;
+  background-color: var(--light-bg);
+  color: var(--success-color);
+}
+
+.checkerboard {
+  background: 
+    linear-gradient(45deg, var(--secondary-color) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--secondary-color) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--secondary-color) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--secondary-color) 75%);
+  background-size: 30px 30px;
+  background-position: 0 0, 0 15px, 15px -15px, -15px 0px;
+  background-color: var(--light-bg);
+  color: var(--secondary-color);
+}
+
+.waves {
+  background: 
+    radial-gradient(ellipse at center, var(--info-color) 0%, transparent 50%);
+  background-size: 40px 20px;
+  background-color: var(--light-bg);
+  color: var(--info-color);
+  animation: wave 2s ease-in-out infinite;
+}
+
+/* انیمیشن‌ها */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes wave {
+  0%, 100% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 20px 0;
+  }
+}
+
+/* طراحی واکنش‌گرا */
+@media (max-width: 768px) {
+  section {
+    padding: 2rem 1rem;
+  }
+  
+  .palette-grid,
+  .gradient-grid,
+  .shadow-grid,
+  .interactive-grid,
+  .pattern-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .hero-section {
+    height: 70vh;
+  }
+  
+  .transparency-container {
+    height: 300px;
+  }
+  
+  .layer {
+    position: relative;
+    margin: 0.5rem;
+    top: auto !important;
+    right: auto !important;
+  }
+  
+  .transparent-layers {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+}`,
+                    js: `// تعامل با رنگ‌ها و پس‌زمینه
+document.addEventListener('DOMContentLoaded', function() {
+    // انتخابگر رنگ زنده
+    function createColorPicker() {
+        const picker = document.createElement('div');
+        picker.style.cssText = 
+            'position: fixed; ' +
+            'top: 20px; ' +
+            'left: 20px; ' +
+            'background: white; ' +
+            'padding: 15px; ' +
+            'border-radius: 10px; ' +
+            'box-shadow: 0 4px 20px rgba(0,0,0,0.1); ' +
+            'z-index: 1000; ' +
+            'display: flex; ' +
+            'flex-direction: column; ' +
+            'gap: 10px;';
+        
+        picker.innerHTML = 
+            '<label style="font-size: 12px; font-weight: bold;">تغییر رنگ اصلی:</label>' +
+            '<input type="color" id="primaryColorPicker" value="#007bff">' +
+            '<label style="font-size: 12px; font-weight: bold;">تغییر رنگ پس‌زمینه:</label>' +
+            '<input type="color" id="bgColorPicker" value="#f8f9fa">';
+        
+        document.body.appendChild(picker);
+        
+        const primaryPicker = document.getElementById('primaryColorPicker');
+        const bgPicker = document.getElementById('bgColorPicker');
+        
+        primaryPicker.addEventListener('change', function() {
+            document.documentElement.style.setProperty('--primary-color', this.value);
+            console.log('رنگ اصلی تغییر کرد به: ' + this.value);
+        });
+        
+        bgPicker.addEventListener('change', function() {
+            document.documentElement.style.setProperty('--light-bg', this.value);
+            console.log('رنگ پس‌زمینه تغییر کرد به: ' + this.value);
+        });
+    }
+    
+    // تولید رنگ تصادفی
+    function generateRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+    
+    // تغییر رنگ‌های تصادفی
+    function createRandomColorButton() {
+        const button = document.createElement('button');
+        button.textContent = 'رنگ‌های تصادفی';
+        button.style.cssText = 
+            'position: fixed; ' +
+            'top: 120px; ' +
+            'left: 20px; ' +
+            'padding: 10px 15px; ' +
+            'background: var(--success-color); ' +
+            'color: white; ' +
+            'border: none; ' +
+            'border-radius: 6px; ' +
+            'cursor: pointer; ' +
+            'z-index: 1000; ' +
+            'font-size: 12px;';
+        
+        button.addEventListener('click', function() {
+            const colorCards = document.querySelectorAll('.color-preview');
+            colorCards.forEach(card => {
+                const randomColor = generateRandomColor();
+                card.style.backgroundColor = randomColor;
+                
+                // به‌روزرسانی متن کد رنگ
+                const colorCode = card.parentElement.querySelector('p');
+                if (colorCode) {
+                    colorCode.textContent = randomColor;
+                }
+            });
+            
+            console.log('رنگ‌های تصادفی اعمال شد');
+        });
+        
+        document.body.appendChild(button);
+    }
+    
+    // تحلیل کنتراست رنگ
+    function analyzeContrast(color1, color2) {
+        // تبدیل hex به RGB
+        function hexToRgb(hex) {
+            const result = /^#?([a-f\\d]{2})([a-f\\d]{2})([a-f\\d]{2})$/i.exec(hex);
+            return result ? {
+                r: parseInt(result[1], 16),
+                g: parseInt(result[2], 16),
+                b: parseInt(result[3], 16)
+            } : null;
+        }
+        
+        // محاسبه luminance
+        function getLuminance(r, g, b) {
+            const [rs, gs, bs] = [r, g, b].map(c => {
+                c = c / 255;
+                return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+            });
+            return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
+        }
+        
+        const rgb1 = hexToRgb(color1);
+        const rgb2 = hexToRgb(color2);
+        
+        if (!rgb1 || !rgb2) return null;
+        
+        const lum1 = getLuminance(rgb1.r, rgb1.g, rgb1.b);
+        const lum2 = getLuminance(rgb2.r, rgb2.g, rgb2.b);
+        
+        const brightest = Math.max(lum1, lum2);
+        const darkest = Math.min(lum1, lum2);
+        
+        return (brightest + 0.05) / (darkest + 0.05);
+    }
+    
+    // بررسی کنتراست همه عناصر
+    function checkAllContrasts() {
+        const elements = document.querySelectorAll('.color-card, .gradient-card, .shadow-card');
+        
+        elements.forEach((element, index) => {
+            const styles = getComputedStyle(element);
+            const bgColor = styles.backgroundColor;
+            const textColor = styles.color;
+            
+            console.log('عنصر ' + (index + 1) + ':');
+            console.log('رنگ پس‌زمینه: ' + bgColor);
+            console.log('رنگ متن: ' + textColor);
+            
+            // اگر رنگ‌ها hex باشند، کنتراست را محاسبه کن
+            if (bgColor.startsWith('#') && textColor.startsWith('#')) {
+                const contrast = analyzeContrast(bgColor, textColor);
+                if (contrast) {
+                    console.log('نسبت کنتراست: ' + contrast.toFixed(2));
+                    if (contrast >= 4.5) {
+                        console.log('✅ کنتراست مناسب');
+                    } else {
+                        console.log('❌ کنتراست ضعیف');
+                    }
+                }
+            }
+            console.log('---');
+        });
+    }
+    
+    // ایجاد پالت رنگی هماهنگ
+    function createHarmoniousPalette(baseColor) {
+        // تبدیل hex به HSL
+        function hexToHsl(hex) {
+            const r = parseInt(hex.slice(1, 3), 16) / 255;
+            const g = parseInt(hex.slice(3, 5), 16) / 255;
+            const b = parseInt(hex.slice(5, 7), 16) / 255;
+            
+            const max = Math.max(r, g, b);
+            const min = Math.min(r, g, b);
+            let h, s, l = (max + min) / 2;
+            
+            if (max === min) {
+                h = s = 0;
+            } else {
+                const d = max - min;
+                s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+                switch (max) {
+                    case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+                    case g: h = (b - r) / d + 2; break;
+                    case b: h = (r - g) / d + 4; break;
+                }
+                h /= 6;
+            }
+            
+            return [h * 360, s * 100, l * 100];
+        }
+        
+        // تبدیل HSL به hex
+        function hslToHex(h, s, l) {
+            h /= 360;
+            s /= 100;
+            l /= 100;
+            
+            const hue2rgb = (p, q, t) => {
+                if (t < 0) t += 1;
+                if (t > 1) t -= 1;
+                if (t < 1/6) return p + (q - p) * 6 * t;
+                if (t < 1/2) return q;
+                if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+                return p;
+            };
+            
+            const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+            const p = 2 * l - q;
+            const r = hue2rgb(p, q, h + 1/3);
+            const g = hue2rgb(p, q, h);
+            const b = hue2rgb(p, q, h - 1/3);
+            
+            const toHex = (c) => {
+                const hex = Math.round(c * 255).toString(16);
+                return hex.length === 1 ? '0' + hex : hex;
+            };
+            
+            return '#' + toHex(r) + toHex(g) + toHex(b);
+        }
+        
+        const [h, s, l] = hexToHsl(baseColor);
+        
+        return {
+            primary: baseColor,
+            complementary: hslToHex((h + 180) % 360, s, l),
+            triadic1: hslToHex((h + 120) % 360, s, l),
+            triadic2: hslToHex((h + 240) % 360, s, l),
+            analogous1: hslToHex((h + 30) % 360, s, l),
+            analogous2: hslToHex((h - 30 + 360) % 360, s, l)
+        };
+    }
+    
+    // نمایش پالت هماهنگ
+    function showHarmoniousPalette() {
+        const baseColor = '#007bff';
+        const palette = createHarmoniousPalette(baseColor);
+        
+        console.log('=== پالت رنگی هماهنگ ===');
+        console.log('رنگ پایه: ' + palette.primary);
+        console.log('رنگ مکمل: ' + palette.complementary);
+        console.log('رنگ‌های سه‌گانه: ' + palette.triadic1 + ', ' + palette.triadic2);
+        console.log('رنگ‌های مجاور: ' + palette.analogous1 + ', ' + palette.analogous2);
+    }
+    
+    // انیمیشن رنگ‌ها
+    function animateColors() {
+        const gradientCards = document.querySelectorAll('.gradient-card');
+        
+        gradientCards.forEach((card, index) => {
+            card.addEventListener('mouseenter', function() {
+                this.style.filter = 'hue-rotate(45deg) brightness(1.1)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.filter = 'none';
+            });
+        });
+    }
+    
+    // تغییر تم
+    function createThemeToggle() {
+        const toggle = document.createElement('button');
+        toggle.textContent = 'تم تیره/روشن';
+        toggle.style.cssText = 
+            'position: fixed; ' +
+            'top: 170px; ' +
+            'left: 20px; ' +
+            'padding: 10px 15px; ' +
+            'background: var(--dark-bg); ' +
+            'color: white; ' +
+            'border: none; ' +
+            'border-radius: 6px; ' +
+            'cursor: pointer; ' +
+            'z-index: 1000; ' +
+            'font-size: 12px;';
+        
+        let isDark = false;
+        
+        toggle.addEventListener('click', function() {
+            if (isDark) {
+                document.documentElement.style.setProperty('--light-bg', '#f8f9fa');
+                document.documentElement.style.setProperty('--dark-bg', '#343a40');
+                document.body.style.backgroundColor = '#f8f9fa';
+                document.body.style.color = '#343a40';
+                this.textContent = 'تم تیره';
+            } else {
+                document.documentElement.style.setProperty('--light-bg', '#2d3748');
+                document.documentElement.style.setProperty('--dark-bg', '#f8f9fa');
+                document.body.style.backgroundColor = '#2d3748';
+                document.body.style.color = '#f8f9fa';
+                this.textContent = 'تم روشن';
+            }
+            isDark = !isDark;
+        });
+        
+        document.body.appendChild(toggle);
+    }
+    
+    // اجرای توابع
+    createColorPicker();
+    createRandomColorButton();
+    createThemeToggle();
+    animateColors();
+    showHarmoniousPalette();
+    
+    // بررسی کنتراست بعد از بارگذاری کامل
+    setTimeout(() => {
+        checkAllContrasts();
+    }, 1000);
+    
+    // تعامل با دکمه‌های رنگی
+    const colorButtons = document.querySelectorAll('.color-btn');
+    colorButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            console.log('دکمه ' + this.textContent + ' کلیک شد');
+            
+            // ایجاد ripple effect
+            const ripple = document.createElement('span');
+            ripple.style.cssText = 
+                'position: absolute; ' +
+                'border-radius: 50%; ' +
+                'background: rgba(255,255,255,0.6); ' +
+                'transform: scale(0); ' +
+                'animation: ripple 0.6s linear; ' +
+                'pointer-events: none;';
+            
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = (event.clientX - rect.left - size / 2) + 'px';
+            ripple.style.top = (event.clientY - rect.top - size / 2) + 'px';
+            
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+    
+    // اضافه کردن CSS برای ripple effect
+    const style = document.createElement('style');
+    style.textContent = 
+        '@keyframes ripple { ' +
+            'to { transform: scale(4); opacity: 0; } ' +
+        '}';
+    document.head.appendChild(style);
+    
+    console.log('=== کنترل‌های رنگ ===');
+    console.log('انتخابگر رنگ در گوشه بالا سمت چپ');
+    console.log('دکمه رنگ‌های تصادفی برای تغییر پالت');
+    console.log('دکمه تغییر تم برای حالت تیره/روشن');
+    console.log('تحلیل کنتراست در console نمایش داده می‌شود');
+});`
+                }
+            });
+            
+            // Mark lesson as completed when user interacts with editor
+            let hasInteracted = false;
+            setTimeout(() => {
+                if (editor.isInitialized) {
+                    Object.keys(editor.editors).forEach(key => {
+                        editor.editors[key].on('change', () => {
+                            if (!hasInteracted) {
+                                hasInteracted = true;
+                                if (window.PersianWebTutorial) {
+                                    window.PersianWebTutorial.markLessonCompleted('lesson9');
+                                }
+                            }
+                        });
+                    });
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درس ۱۰: Flexbox و Grid - آموزش توسعه وب</title>
+    <meta name="description" content="یادگیری Flexbox و CSS Grid برای طراحی layout های مدرن">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/rtl.css">
+    <link rel="stylesheet" href="../../css/themes.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/editor.css">
+    
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="../../js/libs/codemirror/css/codemirror.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/monokai.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/material.min.css">
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم">
+        <span class="theme-toggle-icon">🌙</span>
+    </button>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-brand">
+                <div class="header-brand-icon">وب</div>
+                <span>آموزش توسعه وب</span>
+            </div>
+            
+            <nav class="header-nav">
+                <div class="header-search">
+                    <input type="text" placeholder="جستجو در دروس..." id="searchInput">
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="منوی موبایل">
+                    ☰
+                </button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h2 class="sidebar-title">فهرست دروس</h2>
+                    <p class="sidebar-subtitle">۲۰ درس کامل برای یادگیری توسعه وب</p>
+                </div>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">CSS</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="lesson6.html" class="nav-link">
+                                <span class="nav-link-icon">🎨</span>
+                                <span class="nav-link-text">مقدمات CSS</span>
+                                <span class="nav-link-badge">۶</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson7.html" class="nav-link">
+                                <span class="nav-link-icon">📦</span>
+                                <span class="nav-link-text">مدل جعبه</span>
+                                <span class="nav-link-badge">۷</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson8.html" class="nav-link">
+                                <span class="nav-link-icon">🔤</span>
+                                <span class="nav-link-text">تایپوگرافی</span>
+                                <span class="nav-link-badge">۸</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson9.html" class="nav-link">
+                                <span class="nav-link-icon">🌈</span>
+                                <span class="nav-link-text">رنگ‌ها و پس‌زمینه</span>
+                                <span class="nav-link-badge">۹</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson10.html" class="nav-link active">
+                                <span class="nav-link-icon">📐</span>
+                                <span class="nav-link-text">Flexbox و Grid</span>
+                                <span class="nav-link-badge">۱۰</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">منابع</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="../../reference/html-tags.html" class="nav-link">
+                                <span class="nav-link-icon">📚</span>
+                                <span class="nav-link-text">مرجع تگ‌های HTML</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../../index.html" class="nav-link">
+                                <span class="nav-link-icon">🏠</span>
+                                <span class="nav-link-text">صفحه اصلی</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb">
+                    <span class="breadcrumb-item"><a href="../../index.html">صفحه اصلی</a></span>
+                    <span class="breadcrumb-item"><a href="#css">CSS</a></span>
+                    <span class="breadcrumb-item active">درس ۱۰: Flexbox و Grid</span>
+                </nav>
+
+                <div class="content-header">
+                    <h1 class="content-title">درس ۱۰: Flexbox و Grid</h1>
+                    <p class="content-subtitle">یادگیری Flexbox و CSS Grid برای طراحی layout های مدرن</p>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>پیشرفت درس</span>
+                        <span>۱۰ از ۲۰ درس</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 50%"></div>
+                    </div>
+                </div>
+
+                <!-- Lesson Content -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">مقدمه‌ای بر Layout های مدرن</h2>
+                    </div>
+                    <p>قبل از Flexbox و Grid، طراحی layout در CSS کار پیچیده‌ای بود که نیاز به استفاده از float، position و table داشت. امروزه Flexbox و CSS Grid دو ابزار قدرتمند برای ایجاد layout های انعطاف‌پذیر و واکنش‌گرا هستند.</p>
+                    
+                    <h3>تفاوت Flexbox و Grid:</h3>
+                    <ul>
+                        <li><strong>Flexbox:</strong> برای layout های یک‌بعدی (ردیف یا ستون)</li>
+                        <li><strong>Grid:</strong> برای layout های دوبعدی (ردیف و ستون همزمان)</li>
+                        <li><strong>Flexbox:</strong> مناسب برای کامپوننت‌ها و عناصر کوچک</li>
+                        <li><strong>Grid:</strong> مناسب برای layout کلی صفحه</li>
+                        <li><strong>هر دو:</strong> کاملاً واکنش‌گرا و انعطاف‌پذیر</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Flexbox - مفاهیم پایه</h2>
+                    </div>
+                    <p>Flexbox یا Flexible Box Layout مدلی برای چیدمان عناصر در یک بعد است که کنترل بهتری بر توزیع فضا و تراز عناصر ارائه می‌دهد.</p>
+                    
+                    <h3>مفاهیم کلیدی:</h3>
+                    <ul>
+                        <li><strong>Flex Container:</strong> عنصر والد که display: flex دارد</li>
+                        <li><strong>Flex Items:</strong> فرزندان مستقیم flex container</li>
+                        <li><strong>Main Axis:</strong> محور اصلی (پیش‌فرض افقی)</li>
+                        <li><strong>Cross Axis:</strong> محور عمودی بر main axis</li>
+                    </ul>
+                    
+                    <h3>ایجاد Flex Container:</h3>
+                    <pre><code>.container {
+  display: flex; /* یا inline-flex */
+}</code></pre>
+                    
+                    <h3>ویژگی‌های اصلی Container:</h3>
+                    <ul>
+                        <li><code>flex-direction</code> - جهت چیدمان</li>
+                        <li><code>flex-wrap</code> - شکستن خط</li>
+                        <li><code>justify-content</code> - تراز در main axis</li>
+                        <li><code>align-items</code> - تراز در cross axis</li>
+                        <li><code>align-content</code> - تراز خطوط چندگانه</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">ویژگی‌های Flex Container</h2>
+                    </div>
+                    
+                    <h3>flex-direction:</h3>
+                    <pre><code>flex-direction: row;         /* پیش‌فرض - چپ به راست */
+flex-direction: row-reverse; /* راست به چپ */
+flex-direction: column;      /* بالا به پایین */
+flex-direction: column-reverse; /* پایین به بالا */</code></pre>
+                    
+                    <h3>flex-wrap:</h3>
+                    <pre><code>flex-wrap: nowrap;   /* پیش‌فرض - بدون شکستن */
+flex-wrap: wrap;     /* شکستن خط */
+flex-wrap: wrap-reverse; /* شکستن معکوس */</code></pre>
+                    
+                    <h3>justify-content (تراز افقی):</h3>
+                    <pre><code>justify-content: flex-start;    /* شروع */
+justify-content: flex-end;      /* انتها */
+justify-content: center;        /* وسط */
+justify-content: space-between; /* فاصله بین */
+justify-content: space-around;  /* فاصله دور */
+justify-content: space-evenly;  /* فاصله یکسان */</code></pre>
+                    
+                    <h3>align-items (تراز عمودی):</h3>
+                    <pre><code>align-items: stretch;    /* پیش‌فرض - کشیدن */
+align-items: flex-start; /* بالا */
+align-items: flex-end;   /* پایین */
+align-items: center;     /* وسط */
+align-items: baseline;   /* خط پایه */</code></pre>
+                </div>
+
+                <!-- Interactive Code Editor -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تمرین عملی: Flexbox و Grid</h2>
+                    </div>
+                    <p>در ادامه، مثالی از استفاده Flexbox و Grid را مشاهده می‌کنید. کد را ویرایش کرده و تأثیرات مختلف را ببینید:</p>
+                    
+                    <div id="codeEditor"></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">ویژگی‌های Flex Items</h2>
+                    </div>
+                    <p>عناصر درون flex container نیز ویژگی‌های خاص خود را دارند:</p>
+                    
+                    <h3>flex-grow:</h3>
+                    <p>تعیین می‌کند عنصر چقدر رشد کند:</p>
+                    <pre><code>.item1 { flex-grow: 1; } /* رشد معمولی */
+.item2 { flex-grow: 2; } /* دو برابر رشد */
+.item3 { flex-grow: 0; } /* بدون رشد */</code></pre>
+                    
+                    <h3>flex-shrink:</h3>
+                    <p>تعیین می‌کند عنصر چقدر کوچک شود:</p>
+                    <pre><code>.item { flex-shrink: 1; } /* پیش‌فرض */
+.item { flex-shrink: 0; } /* بدون کوچک شدن */</code></pre>
+                    
+                    <h3>flex-basis:</h3>
+                    <p>اندازه اولیه عنصر قبل از توزیع فضا:</p>
+                    <pre><code>.item { flex-basis: 200px; }
+.item { flex-basis: 30%; }
+.item { flex-basis: auto; }</code></pre>
+                    
+                    <h3>flex (میانبر):</h3>
+                    <pre><code>.item { flex: 1; }        /* flex: 1 1 0% */
+.item { flex: 0 0 200px; } /* grow shrink basis */
+.item { flex: none; }      /* 0 0 auto */</code></pre>
+                    
+                    <h3>align-self:</h3>
+                    <p>تراز فردی برای یک عنصر:</p>
+                    <pre><code>.item { align-self: flex-start; }
+.item { align-self: center; }
+.item { align-self: flex-end; }</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">CSS Grid - مفاهیم پایه</h2>
+                    </div>
+                    <p>CSS Grid Layout سیستمی دوبعدی برای طراحی layout است که امکان کنترل همزمان ردیف‌ها و ستون‌ها را فراهم می‌کند.</p>
+                    
+                    <h3>مفاهیم کلیدی:</h3>
+                    <ul>
+                        <li><strong>Grid Container:</strong> عنصر والد که display: grid دارد</li>
+                        <li><strong>Grid Items:</strong> فرزندان مستقیم grid container</li>
+                        <li><strong>Grid Lines:</strong> خطوط تقسیم‌کننده</li>
+                        <li><strong>Grid Tracks:</strong> ردیف‌ها و ستون‌ها</li>
+                        <li><strong>Grid Cells:</strong> خانه‌های تشکیل شده</li>
+                        <li><strong>Grid Areas:</strong> مناطق تشکیل شده از چند خانه</li>
+                    </ul>
+                    
+                    <h3>ایجاد Grid Container:</h3>
+                    <pre><code>.container {
+  display: grid; /* یا inline-grid */
+}</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تعریف Grid Template</h2>
+                    </div>
+                    
+                    <h3>grid-template-columns:</h3>
+                    <pre><code>/* اندازه‌های ثابت */
+grid-template-columns: 200px 200px 200px;
+
+/* واحد fr (fraction) */
+grid-template-columns: 1fr 2fr 1fr;
+
+/* تکرار */
+grid-template-columns: repeat(3, 1fr);
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+/* ترکیبی */
+grid-template-columns: 200px 1fr 100px;</code></pre>
+                    
+                    <h3>grid-template-rows:</h3>
+                    <pre><code>grid-template-rows: 100px 200px 100px;
+grid-template-rows: repeat(3, 1fr);
+grid-template-rows: auto 1fr auto;</code></pre>
+                    
+                    <h3>grid-gap (gap):</h3>
+                    <pre><code>gap: 20px;           /* همه جهات */
+gap: 20px 30px;      /* ردیف ستون */
+row-gap: 20px;       /* فاصله ردیف */
+column-gap: 30px;    /* فاصله ستون */</code></pre>
+                    
+                    <h3>grid-template-areas:</h3>
+                    <pre><code>grid-template-areas:
+  "header header header"
+  "sidebar main main"
+  "footer footer footer";</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">قرارگیری عناصر در Grid</h2>
+                    </div>
+                    
+                    <h3>با استفاده از خطوط:</h3>
+                    <pre><code>.item {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+/* میانبر */
+.item {
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+}
+
+/* span استفاده از */
+.item {
+  grid-column: span 2;
+  grid-row: span 1;
+}</code></pre>
+                    
+                    <h3>با استفاده از نام‌ها:</h3>
+                    <pre><code>.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.main { grid-area: main; }
+.footer { grid-area: footer; }</code></pre>
+                    
+                    <h3>تراز در Grid:</h3>
+                    <pre><code>/* تراز کل grid */
+justify-content: center;  /* افقی */
+align-content: center;    /* عمودی */
+
+/* تراز عناصر */
+justify-items: center;    /* افقی */
+align-items: center;      /* عمودی */
+
+/* تراز فردی */
+justify-self: center;     /* افقی */
+align-self: center;       /* عمودی */</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Grid های واکنش‌گرا</h2>
+                    </div>
+                    
+                    <h3>auto-fit و auto-fill:</h3>
+                    <pre><code>/* تطبیق خودکار */
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+/* پر کردن خودکار */
+grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));</code></pre>
+                    
+                    <h3>minmax():</h3>
+                    <pre><code>/* حداقل 200px، حداکثر 1fr */
+grid-template-columns: repeat(3, minmax(200px, 1fr));
+
+/* ستون انعطاف‌پذیر */
+grid-template-columns: 200px minmax(300px, 1fr) 100px;</code></pre>
+                    
+                    <h3>Grid با Media Queries:</h3>
+                    <pre><code>.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">ترکیب Flexbox و Grid</h2>
+                    </div>
+                    <p>بهترین نتایج زمانی حاصل می‌شود که Flexbox و Grid را در کنار هم استفاده کنید:</p>
+                    
+                    <h3>استراتژی ترکیبی:</h3>
+                    <ul>
+                        <li><strong>Grid:</strong> برای layout کلی صفحه</li>
+                        <li><strong>Flexbox:</strong> برای کامپوننت‌های داخلی</li>
+                        <li><strong>Grid:</strong> برای گالری‌ها و کارت‌ها</li>
+                        <li><strong>Flexbox:</strong> برای نوار ناوبری و فرم‌ها</li>
+                    </ul>
+                    
+                    <h3>مثال ترکیبی:</h3>
+                    <pre><code>/* Layout کلی با Grid */
+.page {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  min-height: 100vh;
+}
+
+/* نوار ناوبری با Flexbox */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* کارت‌ها با Grid */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* محتوای کارت با Flexbox */
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تمرین‌های عملی</h2>
+                    </div>
+                    <p>برای تسلط بیشتر بر مطالب این درس، تمرین‌های زیر را انجام دهید:</p>
+                    
+                    <h3>تمرین ۱: نوار ناوبری</h3>
+                    <p>نوار ناوبری واکنش‌گرا با Flexbox ایجاد کنید که در موبایل به منوی همبرگری تبدیل شود.</p>
+                    
+                    <h3>تمرین ۲: گالری تصاویر</h3>
+                    <p>گالری تصاویری با Grid ایجاد کنید که تعداد ستون‌ها بر اساس اندازه صفحه تغییر کند.</p>
+                    
+                    <h3>تمرین ۳: Layout صفحه</h3>
+                    <p>Layout کاملی برای یک وب‌سایت با header، sidebar، main و footer طراحی کنید.</p>
+                    
+                    <h3>تمرین ۴: کارت‌های محصول</h3>
+                    <p>مجموعه‌ای از کارت‌های محصول که با Grid چیده شده و هر کارت با Flexbox طراحی شده باشد.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">نکات مهم و بهترین شیوه‌ها</h2>
+                    </div>
+                    <h3>بهترین شیوه‌ها:</h3>
+                    <ul>
+                        <li>از Grid برای layout کلی و Flexbox برای کامپوننت‌ها استفاده کنید</li>
+                        <li>همیشه mobile-first طراحی کنید</li>
+                        <li>از minmax() برای انعطاف‌پذیری استفاده کنید</li>
+                        <li>gap را ترجیح دهید به margin</li>
+                        <li>از نام‌گذاری معنادار برای grid areas استفاده کنید</li>
+                    </ul>
+                    
+                    <h3>نکات عملکرد:</h3>
+                    <ul>
+                        <li>Grid و Flexbox عملکرد بهتری نسبت به float دارند</li>
+                        <li>از auto-fit/auto-fill برای بهینه‌سازی استفاده کنید</li>
+                        <li>تست در مرورگرهای مختلف انجام دهید</li>
+                        <li>از fallback برای مرورگرهای قدیمی استفاده کنید</li>
+                    </ul>
+                    
+                    <h3>اشتباهات رایج:</h3>
+                    <ul>
+                        <li>استفاده نادرست از flex-grow و flex-shrink</li>
+                        <li>فراموش کردن gap در Grid</li>
+                        <li>عدم تست در اندازه‌های مختلف</li>
+                        <li>پیچیده کردن بیش از حد layout</li>
+                        <li>عدم استفاده از semantic HTML</li>
+                    </ul>
+                </div>
+
+                <!-- Navigation -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">ادامه یادگیری</h2>
+                    </div>
+                    <p>تبریک! شما بخش CSS را به پایان رساندید. در ادامه با JavaScript و برنامه‌نویسی تعاملی آشنا خواهید شد.</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="lesson9.html" class="btn btn-secondary">درس قبلی: رنگ‌ها و پس‌زمینه</a>
+                        <a href="../js/lesson11.html" class="btn btn-primary" style="margin-right: 1rem;">درس بعدی: مقدمات JavaScript</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../../js/main.js"></script>
+    <script src="../../js/storage.js"></script>
+    
+    <!-- CodeMirror JavaScript -->
+    <script src="../../js/libs/codemirror/js/codemirror.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/xml.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/css.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/javascript.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/htmlmixed.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/matchbrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/closebrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/active-line.min.js"></script>
+    
+    <!-- Editor JavaScript -->
+    <script src="../../js/editor.js"></script>
+    
+    <script>
+        // Initialize the code editor when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const editor = new CodeEditor('codeEditor', {
+                initialContent: {
+                    html: `<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox و Grid CSS</title>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>سایت من</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link">خانه</a></li>
+                <li><a href="#" class="nav-link">درباره ما</a></li>
+                <li><a href="#" class="nav-link">خدمات</a></li>
+                <li><a href="#" class="nav-link">تماس</a></li>
+            </ul>
+            <button class="nav-toggle">☰</button>
+        </nav>
+    </header>
+    
+    <main class="main-content">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h2 class="hero-title">نمایش Flexbox و Grid</h2>
+                <p class="hero-subtitle">طراحی layout های مدرن و واکنش‌گرا</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary">شروع کنید</button>
+                    <button class="btn btn-secondary">بیشتر بدانید</button>
+                </div>
+            </div>
+        </section>
+        
+        <section class="flexbox-demo">
+            <h2 class="section-title">نمایش Flexbox</h2>
+            
+            <div class="demo-container">
+                <h3>justify-content: space-between</h3>
+                <div class="flex-container space-between">
+                    <div class="flex-item">آیتم ۱</div>
+                    <div class="flex-item">آیتم ۲</div>
+                    <div class="flex-item">آیتم ۳</div>
+                </div>
+            </div>
+            
+            <div class="demo-container">
+                <h3>justify-content: center</h3>
+                <div class="flex-container center">
+                    <div class="flex-item">آیتم ۱</div>
+                    <div class="flex-item">آیتم ۲</div>
+                    <div class="flex-item">آیتم ۳</div>
+                </div>
+            </div>
+            
+            <div class="demo-container">
+                <h3>flex-direction: column</h3>
+                <div class="flex-container column">
+                    <div class="flex-item">آیتم ۱</div>
+                    <div class="flex-item">آیتم ۲</div>
+                    <div class="flex-item">آیتم ۳</div>
+                </div>
+            </div>
+            
+            <div class="demo-container">
+                <h3>flex-grow مختلف</h3>
+                <div class="flex-container">
+                    <div class="flex-item grow-1">flex-grow: 1</div>
+                    <div class="flex-item grow-2">flex-grow: 2</div>
+                    <div class="flex-item grow-1">flex-grow: 1</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="grid-demo">
+            <h2 class="section-title">نمایش CSS Grid</h2>
+            
+            <div class="demo-container">
+                <h3>Grid ساده ۳×۳</h3>
+                <div class="grid-container simple-grid">
+                    <div class="grid-item">۱</div>
+                    <div class="grid-item">۲</div>
+                    <div class="grid-item">۳</div>
+                    <div class="grid-item">۴</div>
+                    <div class="grid-item">۵</div>
+                    <div class="grid-item">۶</div>
+                    <div class="grid-item">۷</div>
+                    <div class="grid-item">۸</div>
+                    <div class="grid-item">۹</div>
+                </div>
+            </div>
+            
+            <div class="demo-container">
+                <h3>Grid با اندازه‌های مختلف</h3>
+                <div class="grid-container varied-grid">
+                    <div class="grid-item">۱</div>
+                    <div class="grid-item">۲</div>
+                    <div class="grid-item">۳</div>
+                    <div class="grid-item">۴</div>
+                    <div class="grid-item">۵</div>
+                    <div class="grid-item">۶</div>
+                </div>
+            </div>
+            
+            <div class="demo-container">
+                <h3>Grid Areas</h3>
+                <div class="grid-container area-grid">
+                    <div class="grid-item header-area">Header</div>
+                    <div class="grid-item sidebar-area">Sidebar</div>
+                    <div class="grid-item main-area">Main Content</div>
+                    <div class="grid-item footer-area">Footer</div>
+                </div>
+            </div>
+            
+            <div class="demo-container">
+                <h3>Grid واکنش‌گرا</h3>
+                <div class="grid-container responsive-grid">
+                    <div class="grid-item">کارت ۱</div>
+                    <div class="grid-item">کارت ۲</div>
+                    <div class="grid-item">کارت ۳</div>
+                    <div class="grid-item">کارت ۴</div>
+                    <div class="grid-item">کارت ۵</div>
+                    <div class="grid-item">کارت ۶</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="combined-demo">
+            <h2 class="section-title">ترکیب Flexbox و Grid</h2>
+            
+            <div class="demo-container">
+                <h3>کارت‌های محصول</h3>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image">📱</div>
+                        <div class="product-info">
+                            <h4>گوشی هوشمند</h4>
+                            <p class="product-description">گوشی هوشمند با امکانات پیشرفته و طراحی زیبا</p>
+                            <div class="product-footer">
+                                <span class="product-price">۱۰,۰۰۰,۰۰۰ تومان</span>
+                                <button class="product-btn">خرید</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">💻</div>
+                        <div class="product-info">
+                            <h4>لپ‌تاپ</h4>
+                            <p class="product-description">لپ‌تاپ قدرتمند برای کار و سرگرمی</p>
+                            <div class="product-footer">
+                                <span class="product-price">۲۵,۰۰۰,۰۰۰ تومان</span>
+                                <button class="product-btn">خرید</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">🎧</div>
+                        <div class="product-info">
+                            <h4>هدفون</h4>
+                            <p class="product-description">هدفون بی‌سیم با کیفیت صدای عالی</p>
+                            <div class="product-footer">
+                                <span class="product-price">۲,۰۰۰,۰۰۰ تومان</span>
+                                <button class="product-btn">خرید</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">⌚</div>
+                        <div class="product-info">
+                            <h4>ساعت هوشمند</h4>
+                            <p class="product-description">ساعت هوشمند با قابلیت‌های سلامتی</p>
+                            <div class="product-footer">
+                                <span class="product-price">۵,۰۰۰,۰۰۰ تومان</span>
+                                <button class="product-btn">خرید</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="layout-demo">
+            <h2 class="section-title">Layout کامل صفحه</h2>
+            
+            <div class="page-layout">
+                <header class="page-header">
+                    <h3>Header</h3>
+                </header>
+                
+                <aside class="page-sidebar">
+                    <h4>Sidebar</h4>
+                    <ul>
+                        <li>منوی ۱</li>
+                        <li>منوی ۲</li>
+                        <li>منوی ۳</li>
+                    </ul>
+                </aside>
+                
+                <main class="page-main">
+                    <h3>Main Content</h3>
+                    <p>این بخش محتوای اصلی صفحه است که با Grid و Flexbox طراحی شده است.</p>
+                    
+                    <div class="content-cards">
+                        <div class="content-card">
+                            <h4>مقاله ۱</h4>
+                            <p>خلاصه مقاله اول...</p>
+                        </div>
+                        <div class="content-card">
+                            <h4>مقاله ۲</h4>
+                            <p>خلاصه مقاله دوم...</p>
+                        </div>
+                    </div>
+                </main>
+                
+                <footer class="page-footer">
+                    <h3>Footer</h3>
+                </footer>
+            </div>
+        </section>
+    </main>
+</body>
+</html>`,
+                    css: `/* تنظیمات پایه */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Tahoma', Arial, sans-serif;
+  direction: rtl;
+  text-align: right;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f8f9fa;
+}
+
+/* Header و Navigation */
+.site-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.nav-brand h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.btn-secondary:hover {
+  background-color: white;
+  color: #333;
+}
+
+/* بخش‌های محتوا */
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  text-align: center;
+  margin: 3rem 0 2rem 0;
+  color: #2c3e50;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 2px;
+}
+
+.demo-container {
+  margin-bottom: 3rem;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+.demo-container h3 {
+  margin-bottom: 1rem;
+  color: #495057;
+  font-size: 1.2rem;
+}
+
+/* Flexbox نمایش */
+.flex-container {
+  display: flex;
+  background-color: #e9ecef;
+  padding: 1rem;
+  border-radius: 8px;
+  min-height: 100px;
+  border: 2px dashed #6c757d;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.center {
+  justify-content: center;
+}
+
+.column {
+  flex-direction: column;
+  height: 200px;
+}
+
+.flex-item {
+  background-color: #007bff;
+  color: white;
+  padding: 1rem;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
+  min-width: 80px;
+}
+
+.grow-1 {
+  flex-grow: 1;
+}
+
+.grow-2 {
+  flex-grow: 2;
+  background-color: #28a745;
+}
+
+/* Grid نمایش */
+.grid-container {
+  display: grid;
+  gap: 1rem;
+  background-color: #e9ecef;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 2px dashed #6c757d;
+}
+
+.simple-grid {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 80px);
+}
+
+.varied-grid {
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: repeat(2, 100px);
+}
+
+.area-grid {
+  grid-template-areas:
+    "header header header"
+    "sidebar main main"
+    "footer footer footer";
+  grid-template-columns: 200px 1fr 1fr;
+  grid-template-rows: 80px 150px 60px;
+}
+
+.responsive-grid {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.grid-item {
+  background-color: #17a2b8;
+  color: white;
+  padding: 1rem;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-area {
+  grid-area: header;
+  background-color: #6f42c1;
+}
+
+.sidebar-area {
+  grid-area: sidebar;
+  background-color: #fd7e14;
+}
+
+.main-area {
+  grid-area: main;
+  background-color: #20c997;
+}
+
+.footer-area {
+  grid-area: footer;
+  background-color: #6c757d;
+}
+
+/* کارت‌های محصول */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.product-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  /* Flexbox برای چیدمان داخلی */
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.product-image {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-size: 3rem;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-info {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-info h4 {
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+  font-size: 1.2rem;
+}
+
+.product-description {
+  color: #6c757d;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+  font-size: 0.9rem;
+}
+
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.product-price {
+  font-weight: bold;
+  color: #e74c3c;
+  font-size: 1.1rem;
+}
+
+.product-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.product-btn:hover {
+  background-color: #218838;
+}
+
+/* Layout کامل صفحه */
+.page-layout {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: auto 1fr auto;
+  min-height: 400px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.page-header {
+  grid-area: header;
+  background-color: #343a40;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.page-sidebar {
+  grid-area: sidebar;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-left: 1px solid #dee2e6;
+}
+
+.page-sidebar ul {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.page-sidebar li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.page-main {
+  grid-area: main;
+  padding: 2rem;
+}
+
+.content-cards {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.content-card {
+  flex: 1;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+}
+
+.page-footer {
+  grid-area: footer;
+  background-color: #6c757d;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* طراحی واکنش‌گرا */
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    padding: 0 1rem;
+  }
+  
+  .nav-menu {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 1rem;
+  }
+  
+  .nav-menu.active {
+    display: flex;
+  }
+  
+  .nav-toggle {
+    display: block;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .main-content {
+    padding: 1rem;
+  }
+  
+  .demo-container {
+    padding: 1rem;
+  }
+  
+  .flex-container.column {
+    height: auto;
+  }
+  
+  .simple-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .varied-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .area-grid {
+    grid-template-areas:
+      "header"
+      "main"
+      "sidebar"
+      "footer";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+  }
+  
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .page-layout {
+    grid-template-areas:
+      "header"
+      "main"
+      "sidebar"
+      "footer";
+    grid-template-columns: 1fr;
+  }
+  
+  .content-cards {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .simple-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* انیمیشن‌ها */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.demo-container {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.flex-item,
+.grid-item {
+  transition: all 0.3s ease;
+}
+
+.flex-item:hover,
+.grid-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}`,
+                    js: `// تعامل با Flexbox و Grid
+document.addEventListener('DOMContentLoaded', function() {
+    // کنترل منوی موبایل
+    function setupMobileMenu() {
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                
+                // تغییر آیکون
+                if (navMenu.classList.contains('active')) {
+                    this.textContent = '✕';
+                } else {
+                    this.textContent = '☰';
+                }
+            });
+        }
+    }
+    
+    // نمایش اطلاعات Flexbox
+    function analyzeFlexbox() {
+        const flexContainers = document.querySelectorAll('.flex-container');
+        
+        flexContainers.forEach((container, index) => {
+            const styles = getComputedStyle(container);
+            
+            console.log('Flex Container ' + (index + 1) + ':');
+            console.log('flex-direction: ' + styles.flexDirection);
+            console.log('justify-content: ' + styles.justifyContent);
+            console.log('align-items: ' + styles.alignItems);
+            console.log('flex-wrap: ' + styles.flexWrap);
+            console.log('---');
+        });
+    }
+    
+    // نمایش اطلاعات Grid
+    function analyzeGrid() {
+        const gridContainers = document.querySelectorAll('.grid-container');
+        
+        gridContainers.forEach((container, index) => {
+            const styles = getComputedStyle(container);
+            
+            console.log('Grid Container ' + (index + 1) + ':');
+            console.log('grid-template-columns: ' + styles.gridTemplateColumns);
+            console.log('grid-template-rows: ' + styles.gridTemplateRows);
+            console.log('gap: ' + styles.gap);
+            if (styles.gridTemplateAreas !== 'none') {
+                console.log('grid-template-areas: ' + styles.gridTemplateAreas);
+            }
+            console.log('---');
+        });
+    }
+    
+    // ایجاد کنترل‌های تعاملی
+    function createInteractiveControls() {
+        const controlPanel = document.createElement('div');
+        controlPanel.style.cssText = 
+            'position: fixed; ' +
+            'top: 20px; ' +
+            'left: 20px; ' +
+            'background: white; ' +
+            'padding: 15px; ' +
+            'border-radius: 10px; ' +
+            'box-shadow: 0 4px 20px rgba(0,0,0,0.1); ' +
+            'z-index: 1000; ' +
+            'max-width: 250px;';
+        
+        controlPanel.innerHTML = 
+            '<h4 style="margin-bottom: 10px; font-size: 14px;">کنترل‌های Layout</h4>' +
+            
+            '<label style="display: block; margin-bottom: 5px; font-size: 12px;">Flex Direction:</label>' +
+            '<select id="flexDirection" style="width: 100%; margin-bottom: 10px; padding: 4px;">' +
+                '<option value="row">row</option>' +
+                '<option value="column">column</option>' +
+                '<option value="row-reverse">row-reverse</option>' +
+                '<option value="column-reverse">column-reverse</option>' +
+            '</select>' +
+            
+            '<label style="display: block; margin-bottom: 5px; font-size: 12px;">Justify Content:</label>' +
+            '<select id="justifyContent" style="width: 100%; margin-bottom: 10px; padding: 4px;">' +
+                '<option value="flex-start">flex-start</option>' +
+                '<option value="center">center</option>' +
+                '<option value="flex-end">flex-end</option>' +
+                '<option value="space-between">space-between</option>' +
+                '<option value="space-around">space-around</option>' +
+                '<option value="space-evenly">space-evenly</option>' +
+            '</select>' +
+            
+            '<label style="display: block; margin-bottom: 5px; font-size: 12px;">Grid Columns:</label>' +
+            '<select id="gridColumns" style="width: 100%; margin-bottom: 10px; padding: 4px;">' +
+                '<option value="repeat(3, 1fr)">3 columns</option>' +
+                '<option value="repeat(4, 1fr)">4 columns</option>' +
+                '<option value="1fr 2fr 1fr">1fr 2fr 1fr</option>' +
+                '<option value="repeat(auto-fit, minmax(150px, 1fr))">auto-fit</option>' +
+            '</select>' +
+            
+            '<button id="resetLayout" style="width: 100%; padding: 8px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 12px;">بازنشانی</button>';
+        
+        document.body.appendChild(controlPanel);
+        
+        // Event listeners
+        document.getElementById('flexDirection').addEventListener('change', function() {
+            const flexContainers = document.querySelectorAll('.flex-container');
+            flexContainers.forEach(container => {
+                container.style.flexDirection = this.value;
+            });
+        });
+        
+        document.getElementById('justifyContent').addEventListener('change', function() {
+            const flexContainers = document.querySelectorAll('.flex-container');
+            flexContainers.forEach(container => {
+                container.style.justifyContent = this.value;
+            });
+        });
+        
+        document.getElementById('gridColumns').addEventListener('change', function() {
+            const simpleGrid = document.querySelector('.simple-grid');
+            if (simpleGrid) {
+                simpleGrid.style.gridTemplateColumns = this.value;
+            }
+        });
+        
+        document.getElementById('resetLayout').addEventListener('click', function() {
+            location.reload();
+        });
+    }
+    
+    // نمایش ابعاد عناصر
+    function showElementDimensions() {
+        const items = document.querySelectorAll('.flex-item, .grid-item, .product-card');
+        
+        items.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                const rect = this.getBoundingClientRect();
+                const tooltip = document.createElement('div');
+                
+                tooltip.className = 'dimension-tooltip';
+                tooltip.innerHTML = 
+                    'عرض: ' + Math.round(rect.width) + 'px<br>' +
+                    'ارتفاع: ' + Math.round(rect.height) + 'px';
+                
+                tooltip.style.cssText = 
+                    'position: absolute; ' +
+                    'top: -50px; ' +
+                    'right: 50%; ' +
+                    'transform: translateX(50%); ' +
+                    'background: #2c3e50; ' +
+                    'color: white; ' +
+                    'padding: 8px 12px; ' +
+                    'border-radius: 4px; ' +
+                    'font-size: 11px; ' +
+                    'z-index: 1000; ' +
+                    'white-space: nowrap; ' +
+                    'box-shadow: 0 2px 10px rgba(0,0,0,0.2);';
+                
+                this.style.position = 'relative';
+                this.appendChild(tooltip);
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                const tooltip = this.querySelector('.dimension-tooltip');
+                if (tooltip) {
+                    tooltip.remove();
+                }
+            });
+        });
+    }
+    
+    // تست واکنش‌گرایی
+    function testResponsiveness() {
+        const testButton = document.createElement('button');
+        testButton.textContent = 'تست واکنش‌گرایی';
+        testButton.style.cssText = 
+            'position: fixed; ' +
+            'bottom: 20px; ' +
+            'left: 20px; ' +
+            'padding: 10px 15px; ' +
+            'background: #28a745; ' +
+            'color: white; ' +
+            'border: none; ' +
+            'border-radius: 6px; ' +
+            'cursor: pointer; ' +
+            'z-index: 1000; ' +
+            'font-size: 12px;';
+        
+        const sizes = [
+            { width: '320px', name: 'موبایل کوچک' },
+            { width: '768px', name: 'تبلت' },
+            { width: '1024px', name: 'دسکتاپ کوچک' },
+            { width: '100%', name: 'اندازه کامل' }
+        ];
+        
+        let currentSize = 0;
+        
+        testButton.addEventListener('click', function() {
+            const size = sizes[currentSize];
+            document.body.style.width = size.width;
+            document.body.style.margin = '0 auto';
+            document.body.style.border = '2px solid #007bff';
+            
+            console.log('تست اندازه: ' + size.name + ' (' + size.width + ')');
+            
+            currentSize = (currentSize + 1) % sizes.length;
+            
+            if (currentSize === 0) {
+                document.body.style.width = '';
+                document.body.style.margin = '';
+                document.body.style.border = '';
+                console.log('بازگشت به اندازه عادی');
+            }
+        });
+        
+        document.body.appendChild(testButton);
+    }
+    
+    // انیمیشن ورود عناصر
+    function animateElements() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        const elements = document.querySelectorAll('.demo-container, .product-card');
+        elements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    }
+    
+    // تولید layout تصادفی
+    function generateRandomLayout() {
+        const randomButton = document.createElement('button');
+        randomButton.textContent = 'Layout تصادفی';
+        randomButton.style.cssText = 
+            'position: fixed; ' +
+            'bottom: 70px; ' +
+            'left: 20px; ' +
+            'padding: 10px 15px; ' +
+            'background: #6f42c1; ' +
+            'color: white; ' +
+            'border: none; ' +
+            'border-radius: 6px; ' +
+            'cursor: pointer; ' +
+            'z-index: 1000; ' +
+            'font-size: 12px;';
+        
+        randomButton.addEventListener('click', function() {
+            // تغییر رنگ‌های تصادفی
+            const items = document.querySelectorAll('.flex-item, .grid-item');
+            const colors = ['#007bff', '#28a745', '#dc3545', '#ffc107', '#17a2b8', '#6f42c1'];
+            
+            items.forEach(item => {
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                item.style.backgroundColor = randomColor;
+                
+                // انیمیشن تغییر
+                item.style.transform = 'scale(0.8)';
+                setTimeout(() => {
+                    item.style.transform = 'scale(1)';
+                }, 150);
+            });
+            
+            console.log('رنگ‌های تصادفی اعمال شد');
+        });
+        
+        document.body.appendChild(randomButton);
+    }
+    
+    // اجرای توابع
+    setupMobileMenu();
+    createInteractiveControls();
+    showElementDimensions();
+    testResponsiveness();
+    animateElements();
+    generateRandomLayout();
+    
+    // تحلیل layout ها
+    setTimeout(() => {
+        console.log('=== تحلیل Flexbox ===');
+        analyzeFlexbox();
+        console.log('=== تحلیل Grid ===');
+        analyzeGrid();
+    }, 1000);
+    
+    // تعامل با دکمه‌ها
+    const buttons = document.querySelectorAll('.btn, .product-btn');
+    buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('دکمه کلیک شد: ' + this.textContent);
+            
+            // انیمیشن کلیک
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 150);
+        });
+    });
+    
+    console.log('=== کنترل‌های Layout ===');
+    console.log('کنترل‌های تعاملی در گوشه بالا سمت چپ');
+    console.log('دکمه تست واکنش‌گرایی در گوشه پایین سمت چپ');
+    console.log('دکمه layout تصادفی برای تغییر رنگ‌ها');
+    console.log('موس را روی عناصر ببرید تا ابعاد را ببینید');
+});`
+                }
+            });
+            
+            // Mark lesson as completed when user interacts with editor
+            let hasInteracted = false;
+            setTimeout(() => {
+                if (editor.isInitialized) {
+                    Object.keys(editor.editors).forEach(key => {
+                        editor.editors[key].on('change', () => {
+                            if (!hasInteracted) {
+                                hasInteracted = true;
+                                if (window.PersianWebTutorial) {
+                                    window.PersianWebTutorial.markLessonCompleted('lesson10');
+                                }
+                            }
+                        });
+                    });
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
+

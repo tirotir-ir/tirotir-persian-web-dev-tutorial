@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درس ۱: مقدمات HTML - آموزش توسعه وب</title>
+    <meta name="description" content="یادگیری مقدمات HTML و ساختار اساسی صفحات وب">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/rtl.css">
+    <link rel="stylesheet" href="../../css/themes.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/editor.css">
+    
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="../../js/libs/codemirror/css/codemirror.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/monokai.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/material.min.css">
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم">
+        <span class="theme-toggle-icon">🌙</span>
+    </button>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-brand">
+                <div class="header-brand-icon">وب</div>
+                <span>آموزش توسعه وب</span>
+            </div>
+            
+            <nav class="header-nav">
+                <div class="header-search">
+                    <input type="text" placeholder="جستجو در دروس..." id="searchInput">
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="منوی موبایل">
+                    ☰
+                </button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h2 class="sidebar-title">فهرست دروس</h2>
+                    <p class="sidebar-subtitle">۲۰ درس کامل برای یادگیری توسعه وب</p>
+                </div>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">HTML</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="lesson1.html" class="nav-link active">
+                                <span class="nav-link-icon">📄</span>
+                                <span class="nav-link-text">مقدمات HTML</span>
+                                <span class="nav-link-badge">۱</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson2.html" class="nav-link">
+                                <span class="nav-link-icon">📝</span>
+                                <span class="nav-link-text">متن و قالب‌بندی</span>
+                                <span class="nav-link-badge">۲</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson3.html" class="nav-link">
+                                <span class="nav-link-icon">🔗</span>
+                                <span class="nav-link-text">لینک‌ها و تصاویر</span>
+                                <span class="nav-link-badge">۳</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson4.html" class="nav-link">
+                                <span class="nav-link-icon">📊</span>
+                                <span class="nav-link-text">جداول و فرم‌ها</span>
+                                <span class="nav-link-badge">۴</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson5.html" class="nav-link">
+                                <span class="nav-link-icon">🏗️</span>
+                                <span class="nav-link-text">HTML معنایی</span>
+                                <span class="nav-link-badge">۵</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">منابع</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="../../reference/html-tags.html" class="nav-link">
+                                <span class="nav-link-icon">📚</span>
+                                <span class="nav-link-text">مرجع تگ‌های HTML</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../../index.html" class="nav-link">
+                                <span class="nav-link-icon">🏠</span>
+                                <span class="nav-link-text">صفحه اصلی</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb">
+                    <span class="breadcrumb-item"><a href="../../index.html">صفحه اصلی</a></span>
+                    <span class="breadcrumb-item"><a href="#html">HTML</a></span>
+                    <span class="breadcrumb-item active">درس ۱: مقدمات HTML</span>
+                </nav>
+
+                <div class="content-header">
+                    <h1 class="content-title">درس ۱: مقدمات HTML</h1>
+                    <p class="content-subtitle">آشنایی با HTML و ساختار اساسی صفحات وب</p>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>پیشرفت درس</span>
+                        <span>۱ از ۲۰ درس</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 5%"></div>
+                    </div>
+                </div>
+
+                <!-- Lesson Content -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">HTML چیست؟</h2>
+                    </div>
+                    <p>HTML مخفف HyperText Markup Language است و زبان استانداردی برای ایجاد صفحات وب محسوب می‌شود. HTML ساختار و محتوای صفحات وب را تعریف می‌کند و از تگ‌ها (Tags) برای نشان‌دادن عناصر مختلف استفاده می‌کند.</p>
+                    
+                    <h3>ویژگی‌های HTML:</h3>
+                    <ul>
+                        <li>زبان نشانه‌گذاری ساده و قابل فهم</li>
+                        <li>پایه و اساس تمام صفحات وب</li>
+                        <li>قابلیت ترکیب با CSS و JavaScript</li>
+                        <li>پشتیبانی از تمام مرورگرها</li>
+                        <li>استاندارد جهانی W3C</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">ساختار اساسی HTML</h2>
+                    </div>
+                    <p>هر سند HTML دارای ساختار مشخصی است که شامل عناصر اصلی زیر می‌باشد:</p>
+                    
+                    <h3>عناصر اصلی:</h3>
+                    <ul>
+                        <li><code>&lt;!DOCTYPE html&gt;</code> - تعریف نوع سند</li>
+                        <li><code>&lt;html&gt;</code> - عنصر ریشه</li>
+                        <li><code>&lt;head&gt;</code> - اطلاعات متا</li>
+                        <li><code>&lt;body&gt;</code> - محتوای قابل مشاهده</li>
+                    </ul>
+                </div>
+
+                <!-- Interactive Code Editor -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تمرین عملی: اولین صفحه HTML</h2>
+                    </div>
+                    <p>در ادامه، ساختار اساسی یک صفحه HTML را مشاهده می‌کنید. می‌توانید کد را ویرایش کرده و نتیجه را در نمایش زنده ببینید:</p>
+                    
+                    <div id="codeEditor"></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">توضیح کد</h2>
+                    </div>
+                    <h3>تگ‌های استفاده شده:</h3>
+                    <ul>
+                        <li><strong>&lt;!DOCTYPE html&gt;</strong> - به مرورگر می‌گوید که این سند HTML5 است</li>
+                        <li><strong>&lt;html lang="fa"&gt;</strong> - عنصر ریشه با تعریف زبان فارسی</li>
+                        <li><strong>&lt;head&gt;</strong> - شامل اطلاعات متا و تنظیمات صفحه</li>
+                        <li><strong>&lt;meta charset="UTF-8"&gt;</strong> - تعریف کدگذاری کاراکتر</li>
+                        <li><strong>&lt;title&gt;</strong> - عنوان صفحه که در تب مرورگر نمایش داده می‌شود</li>
+                        <li><strong>&lt;body&gt;</strong> - محتوای اصلی صفحه</li>
+                        <li><strong>&lt;h1&gt;</strong> - عنوان اصلی صفحه</li>
+                        <li><strong>&lt;p&gt;</strong> - پاراگراف متن</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تمرین‌های بیشتر</h2>
+                    </div>
+                    <p>حالا که با ساختار اساسی HTML آشنا شدید، تمرین‌های زیر را انجام دهید:</p>
+                    
+                    <h3>تمرین ۱:</h3>
+                    <p>عنوان صفحه را به "صفحه شخصی من" تغییر دهید.</p>
+                    
+                    <h3>تمرین ۲:</h3>
+                    <p>یک پاراگراف جدید اضافه کنید که در آن خودتان را معرفی کنید.</p>
+                    
+                    <h3>تمرین ۳:</h3>
+                    <p>یک عنوان دوم (h2) با متن "درباره من" اضافه کنید.</p>
+                </div>
+
+                <!-- Navigation -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">ادامه یادگیری</h2>
+                    </div>
+                    <p>در درس بعدی با تگ‌های متنی و قالب‌بندی در HTML آشنا خواهید شد.</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="lesson2.html" class="btn btn-primary">درس بعدی: متن و قالب‌بندی</a>
+                        <a href="../../index.html" class="btn btn-secondary" style="margin-right: 1rem;">بازگشت به صفحه اصلی</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../../js/main.js"></script>
+    <script src="../../js/storage.js"></script>
+    
+    <!-- CodeMirror JavaScript -->
+    <script src="../../js/libs/codemirror/js/codemirror.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/xml.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/css.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/javascript.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/htmlmixed.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/matchbrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/closebrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/active-line.min.js"></script>
+    
+    <!-- Editor JavaScript -->
+    <script src="../../js/editor.js"></script>
+    
+    <script>
+        // Initialize the code editor when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const editor = new CodeEditor('codeEditor', {
+                initialContent: {
+                    html: `<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اولین صفحه HTML من</title>
+</head>
+<body>
+    <h1>سلام دنیا!</h1>
+    <p>این اولین صفحه HTML من است.</p>
+    <p>من در حال یادگیری توسعه وب هستم.</p>
+</body>
+</html>`,
+                    css: `body {
+    font-family: 'Tahoma', Arial, sans-serif;
+    direction: rtl;
+    text-align: right;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+h1 {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+p {
+    line-height: 1.6;
+    color: #34495e;
+    margin: 15px 0;
+}`,
+                    js: `// JavaScript کد اختیاری
+console.log('صفحه HTML با موفقیت بارگذاری شد!');
+
+// اضافه کردن تعامل ساده
+document.addEventListener('DOMContentLoaded', function() {
+    const heading = document.querySelector('h1');
+    if (heading) {
+        heading.addEventListener('click', function() {
+            alert('روی عنوان کلیک کردید!');
+        });
+    }
+});`
+                }
+            });
+            
+            // Mark lesson as completed when user interacts with editor
+            let hasInteracted = false;
+            setTimeout(() => {
+                if (editor.isInitialized) {
+                    Object.keys(editor.editors).forEach(key => {
+                        editor.editors[key].on('change', () => {
+                            if (!hasInteracted) {
+                                hasInteracted = true;
+                                if (window.PersianWebTutorial) {
+                                    window.PersianWebTutorial.markLessonCompleted('lesson1');
+                                }
+                            }
+                        });
+                    });
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
+

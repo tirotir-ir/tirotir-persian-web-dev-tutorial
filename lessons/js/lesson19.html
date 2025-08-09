@@ -1,0 +1,2167 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درس ۱۹: مفاهیم پیشرفته - آموزش توسعه وب</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/rtl.css">
+    <link rel="stylesheet" href="../../css/themes.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/editor.css">
+    <link rel="stylesheet" href="../../css/quiz.css">
+    
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="../../js/libs/codemirror/css/codemirror.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/monokai.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/material.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-right">
+                    <h1 class="site-title">آموزش توسعه وب</h1>
+                    <div class="breadcrumb">
+                        <a href="../../index.html">صفحه اصلی</a>
+                        <span>/</span>
+                        <a href="#">JavaScript</a>
+                        <span>/</span>
+                        <span>درس ۱۹</span>
+                    </div>
+                </div>
+                <div class="header-left">
+                    <button class="theme-toggle" id="themeToggle">🌙</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h3>فهرست دروس</h3>
+                    <div class="search-box">
+                        <input type="text" placeholder="جستجو در دروس..." id="lessonSearch">
+                    </div>
+                </div>
+                
+                <nav class="lesson-nav">
+                    <div class="lesson-category">
+                        <h4>HTML</h4>
+                        <ul>
+                            <li><a href="../html/lesson1.html">📄 مقدمات HTML ۱</a></li>
+                            <li><a href="../html/lesson2.html">📝 متن و قالب‌بندی ۲</a></li>
+                            <li><a href="../html/lesson3.html">🔗 لینک‌ها و تصاویر ۳</a></li>
+                            <li><a href="../html/lesson4.html">📊 جداول و فرم‌ها ۴</a></li>
+                            <li><a href="../html/lesson5.html">🏗️ HTML معنایی ۵</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lesson-category">
+                        <h4>CSS</h4>
+                        <ul>
+                            <li><a href="../css/lesson6.html">🎨 مقدمات CSS ۶</a></li>
+                            <li><a href="../css/lesson7.html">📦 مدل جعبه و چیدمان ۷</a></li>
+                            <li><a href="../css/lesson8.html">🔤 تایپوگرافی و رنگ‌ها ۸</a></li>
+                            <li><a href="../css/lesson9.html">🌈 رنگ‌ها و پس‌زمینه ۹</a></li>
+                            <li><a href="../css/lesson10.html">📐 Flexbox و Grid ۱۰</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lesson-category">
+                        <h4>JavaScript</h4>
+                        <ul>
+                            <li><a href="lesson11.html">⚡ مقدمات JavaScript ۱۱</a></li>
+                            <li><a href="lesson12.html">🔧 متغیرها و انواع داده ۱۲</a></li>
+                            <li><a href="lesson13.html">🔀 عملگرها و شرط‌ها ۱۳</a></li>
+                            <li><a href="lesson14.html">🔄 حلقه‌ها و تکرار ۱۴</a></li>
+                            <li><a href="lesson15.html">⚙️ توابع ۱۵</a></li>
+                            <li><a href="lesson16.html">🎯 دستکاری DOM ۱۶</a></li>
+                            <li><a href="lesson17.html">🖱️ رویدادها و تعامل ۱۷</a></li>
+                            <li><a href="lesson18.html">📦 آرایه‌ها و اشیاء ۱۸</a></li>
+                            <li><a href="lesson19.html" class="active">🚀 مفاهیم پیشرفته ۱۹</a></li>
+                            <li><a href="lesson20.html">🎨 پروژه نهایی ۲۰</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                
+                <div class="sidebar-footer">
+                    <a href="../../reference/html-tags.html">📚 مرجع تگ‌های HTML</a>
+                    <a href="../../index.html">🏠 صفحه اصلی</a>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="content">
+                <article class="lesson">
+                    <header class="lesson-header">
+                        <h1>درس ۱۹: مفاهیم پیشرفته JavaScript</h1>
+                        <p class="lesson-subtitle">یادگیری تکنیک‌ها و مفاهیم پیشرفته برای توسعه‌دهندگان حرفه‌ای</p>
+                        <div class="lesson-meta">
+                            <span class="lesson-number">درس ۱۹ از ۲۰</span>
+                            <div class="lesson-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 95%"></div>
+                                </div>
+                                <span class="progress-text">پیشرفت درس</span>
+                            </div>
+                        </div>
+                    </header>
+
+                    <div class="lesson-content">
+                        <section class="content-section">
+                            <h2>Closures (بسته‌ها)</h2>
+                            <p>Closure یکی از مفاهیم قدرتمند JavaScript است که به تابع اجازه می‌دهد به متغیرهای محدوده بیرونی خود دسترسی داشته باشد، حتی پس از اتمام اجرای تابع بیرونی.</p>
+                            
+                            <div class="info-box">
+                                <h3>مزایای Closures:</h3>
+                                <ul>
+                                    <li>ایجاد متغیرهای خصوصی (Private Variables)</li>
+                                    <li>Factory Functions</li>
+                                    <li>Module Pattern</li>
+                                    <li>Callback Functions</li>
+                                    <li>Event Handlers</li>
+                                </ul>
+                            </div>
+
+                            <div class="code-example">
+                                <pre><code>// مثال ساده Closure
+function outerFunction(x) {
+    // متغیر محلی
+    const outerVariable = x;
+    
+    // تابع داخلی که به متغیر بیرونی دسترسی دارد
+    function innerFunction(y) {
+        return outerVariable + y;
+    }
+    
+    return innerFunction;
+}
+
+const addFive = outerFunction(5);
+console.log(addFive(3)); // 8
+
+// مثال متغیر خصوصی
+function createCounter() {
+    let count = 0;
+    
+    return {
+        increment: () => ++count,
+        decrement: () => --count,
+        getCount: () => count
+    };
+}
+
+const counter = createCounter();
+console.log(counter.increment()); // 1
+console.log(counter.getCount()); // 1</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>Promises و Async/Await</h2>
+                            <p>برای مدیریت عملیات ناهمزمان (Asynchronous) در JavaScript:</p>
+                            
+                            <h3>Promises</h3>
+                            <div class="code-example">
+                                <pre><code>// ایجاد Promise
+const myPromise = new Promise((resolve, reject) => {
+    const success = Math.random() > 0.5;
+    
+    setTimeout(() => {
+        if (success) {
+            resolve('عملیات موفق بود!');
+        } else {
+            reject('خطا رخ داد!');
+        }
+    }, 1000);
+});
+
+// استفاده از Promise
+myPromise
+    .then(result => console.log(result))
+    .catch(error => console.error(error))
+    .finally(() => console.log('عملیات تمام شد'));
+
+// Promise.all برای چندین Promise
+const promise1 = Promise.resolve(3);
+const promise2 = new Promise(resolve => setTimeout(() => resolve('foo'), 1000));
+const promise3 = Promise.resolve(42);
+
+Promise.all([promise1, promise2, promise3])
+    .then(values => console.log(values)); // [3, "foo", 42]</code></pre>
+                            </div>
+
+                            <h3>Async/Await</h3>
+                            <div class="code-example">
+                                <pre><code>// تابع async
+async function fetchData() {
+    try {
+        const response = await fetch('https://api.example.com/data');
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('خطا در دریافت داده:', error);
+        throw error;
+    }
+}
+
+// استفاده از async function
+async function processData() {
+    try {
+        const data = await fetchData();
+        console.log('داده دریافت شد:', data);
+    } catch (error) {
+        console.log('خطا در پردازش:', error);
+    }
+}
+
+// Promise.all با async/await
+async function fetchMultipleData() {
+    try {
+        const [users, posts, comments] = await Promise.all([
+            fetch('/api/users').then(r => r.json()),
+            fetch('/api/posts').then(r => r.json()),
+            fetch('/api/comments').then(r => r.json())
+        ]);
+        
+        return { users, posts, comments };
+    } catch (error) {
+        console.error('خطا در دریافت داده‌ها:', error);
+    }
+}</code></pre>
+                            </div>
+                        </section>
+
+                        <!-- Interactive Code Editor -->
+                        <section class="editor-section">
+                            <h2>تمرین عملی: مفاهیم پیشرفته</h2>
+                            <p>در ادامه، مفاهیم پیشرفته JavaScript را تمرین کنید:</p>
+                            
+                            <div class="editor-container">
+                                <div class="editor-tabs">
+                                    <button class="tab-button active" data-tab="html">📄 HTML</button>
+                                    <button class="tab-button" data-tab="css">🎨 CSS</button>
+                                    <button class="tab-button" data-tab="js">⚡ JavaScript</button>
+                                </div>
+                                
+                                <div class="editor-controls">
+                                    <button class="btn btn-primary" id="runCode">▶️ اجرا</button>
+                                    <button class="btn btn-secondary" id="resetCode">🔄 بازنشانی</button>
+                                    <button class="btn btn-secondary" id="fullscreen">⛶ تمام صفحه</button>
+                                </div>
+
+                                <div class="editor-wrapper">
+                                    <div class="editor-panel">
+                                        <div class="editor-header">
+                                            <span>ویرایشگر کد</span>
+                                            <span class="editor-info">خط <span id="lineNumber">1</span>، ستون <span id="columnNumber">1</span></span>
+                                        </div>
+                                        
+                                        <div class="tab-content active" id="html-tab">
+                                            <textarea id="htmlEditor"><!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مفاهیم پیشرفته JavaScript</title>
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            direction: rtl;
+            text-align: right;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        .demo-section {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-right: 4px solid #4CAF50;
+        }
+        .output-display {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: monospace;
+            direction: ltr;
+            text-align: left;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-family: 'Vazirmatn', sans-serif;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+        button:disabled {
+            background: #666;
+            cursor: not-allowed;
+            transform: none;
+        }
+        input, select {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+            font-family: 'Vazirmatn', sans-serif;
+            width: 200px;
+        }
+        .promise-demo {
+            background: rgba(33, 150, 243, 0.2);
+            border: 1px solid #2196F3;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .success {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        .error {
+            color: #f44336;
+            font-weight: bold;
+        }
+        .closure-demo {
+            background: rgba(156, 39, 176, 0.2);
+            border: 1px solid #9C27B0;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .module-demo {
+            background: rgba(255, 152, 0, 0.2);
+            border: 1px solid #FF9800;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .prototype-demo {
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid #4CAF50;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .controls {
+            background: rgba(0,0,0,0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px 0;
+            font-weight: bold;
+        }
+        .status.pending {
+            background: rgba(255, 193, 7, 0.3);
+            color: #FFC107;
+        }
+        .status.resolved {
+            background: rgba(76, 175, 80, 0.3);
+            color: #4CAF50;
+        }
+        .status.rejected {
+            background: rgba(244, 67, 54, 0.3);
+            color: #F44336;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 مفاهیم پیشرفته JavaScript</h1>
+        
+        <div class="demo-section">
+            <h2>Closures و متغیرهای خصوصی</h2>
+            <div class="closure-demo">
+                <h3>شمارنده با Closure</h3>
+                <div class="controls">
+                    <button onclick="createNewCounter()">ایجاد شمارنده جدید</button>
+                    <button onclick="incrementCounter()" id="incrementBtn" disabled>افزایش</button>
+                    <button onclick="decrementCounter()" id="decrementBtn" disabled>کاهش</button>
+                    <button onclick="resetCounter()" id="resetBtn" disabled>بازنشانی</button>
+                    <button onclick="getCounterValue()" id="getValueBtn" disabled>نمایش مقدار</button>
+                </div>
+                <div class="output-display" id="closureOutput">ابتدا شمارنده ای ایجاد کنید</div>
+            </div>
+            
+            <div class="closure-demo">
+                <h3>Factory Function</h3>
+                <div class="controls">
+                    <input type="text" id="personName" placeholder="نام شخص">
+                    <input type="number" id="personAge" placeholder="سن" min="1" max="120">
+                    <button onclick="createPerson()">ایجاد شخص</button>
+                    <button onclick="showAllPeople()">نمایش همه افراد</button>
+                </div>
+                <div class="output-display" id="factoryOutput">افراد ایجاد شده اینجا نمایش داده می‌شوند</div>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>Promises و عملیات ناهمزمان</h2>
+            <div class="promise-demo">
+                <h3>شبیه‌سازی درخواست API</h3>
+                <div class="controls">
+                    <button onclick="simulateAPICall()">درخواست ساده</button>
+                    <button onclick="simulateMultipleAPICalls()">درخواست‌های متعدد</button>
+                    <button onclick="simulateAPIWithError()">درخواست با خطا</button>
+                    <button onclick="chainedPromises()">Promise های زنجیره‌ای</button>
+                </div>
+                <div class="output-display" id="promiseOutput">نتایج درخواست‌ها اینجا نمایش داده می‌شوند</div>
+            </div>
+            
+            <div class="promise-demo">
+                <h3>Async/Await</h3>
+                <div class="controls">
+                    <button onclick="asyncAwaitDemo()">نمایش Async/Await</button>
+                    <button onclick="parallelAsyncDemo()">عملیات موازی</button>
+                    <button onclick="sequentialAsyncDemo()">عملیات ترتیبی</button>
+                    <button onclick="errorHandlingDemo()">مدیریت خطا</button>
+                </div>
+                <div class="output-display" id="asyncOutput">نتایج عملیات async اینجا نمایش داده می‌شوند</div>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>Prototypes و وراثت</h2>
+            <div class="prototype-demo">
+                <h3>Constructor Functions و Prototypes</h3>
+                <div class="controls">
+                    <button onclick="demonstratePrototypes()">نمایش Prototypes</button>
+                    <button onclick="demonstrateInheritance()">نمایش وراثت</button>
+                    <button onclick="demonstrateES6Classes()">کلاس‌های ES6</button>
+                    <button onclick="prototypeChainDemo()">زنجیره Prototype</button>
+                </div>
+                <div class="output-display" id="prototypeOutput">مفاهیم prototype اینجا نمایش داده می‌شوند</div>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>Module Pattern و Namespace</h2>
+            <div class="module-demo">
+                <h3>IIFE و Module Pattern</h3>
+                <div class="controls">
+                    <button onclick="demonstrateIIFE()">نمایش IIFE</button>
+                    <button onclick="demonstrateModulePattern()">Module Pattern</button>
+                    <button onclick="demonstrateNamespace()">Namespace</button>
+                    <button onclick="demonstrateRevealingModule()">Revealing Module</button>
+                </div>
+                <div class="output-display" id="moduleOutput">الگوهای module اینجا نمایش داده می‌شوند</div>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>مفاهیم پیشرفته دیگر</h2>
+            <div class="controls">
+                <button onclick="demonstrateDecorators()">Decorators</button>
+                <button onclick="demonstrateGenerators()">Generators</button>
+                <button onclick="demonstrateSymbols()">Symbols</button>
+                <button onclick="demonstrateWeakMap()">WeakMap و WeakSet</button>
+                <button onclick="demonstrateProxy()">Proxy</button>
+                <button onclick="demonstrateReflect()">Reflect</button>
+            </div>
+            <div class="output-display" id="advancedOutput">مفاهیم پیشرفته اینجا نمایش داده می‌شوند</div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>Performance و بهینه‌سازی</h2>
+            <div class="controls">
+                <button onclick="demonstrateDebounce()">Debounce</button>
+                <button onclick="demonstrateThrottle()">Throttle</button>
+                <button onclick="demonstrateMemoization()">Memoization</button>
+                <button onclick="demonstrateLazyLoading()">Lazy Loading</button>
+                <button onclick="measurePerformance()">اندازه‌گیری عملکرد</button>
+            </div>
+            <div class="output-display" id="performanceOutput">نتایج بهینه‌سازی اینجا نمایش داده می‌شوند</div>
+        </div>
+    </div>
+</body>
+</html></textarea>
+                                        </div>
+                                        
+                                        <div class="tab-content" id="css-tab">
+                                            <textarea id="cssEditor">/* استایل‌های اضافی برای مفاهیم پیشرفته */
+.advanced-concept {
+    border: 2px solid #9C27B0;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 15px 0;
+    background: linear-gradient(135deg, rgba(156, 39, 176, 0.1), rgba(156, 39, 176, 0.05));
+}
+
+.concept-title {
+    color: #E1BEE7;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.code-snippet {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Courier New', monospace;
+    direction: ltr;
+    text-align: left;
+    margin: 10px 0;
+    overflow-x: auto;
+}
+
+.execution-flow {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    flex-wrap: wrap;
+}
+
+.flow-step {
+    background: #4CAF50;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    margin: 5px;
+    position: relative;
+}
+
+.flow-step::after {
+    content: '→';
+    position: absolute;
+    left: -15px;
+    color: #FFD700;
+    font-weight: bold;
+}
+
+.flow-step:first-child::after {
+    display: none;
+}
+
+.promise-state {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0 5px;
+}
+
+.promise-pending {
+    background: rgba(255, 193, 7, 0.3);
+    color: #FFC107;
+}
+
+.promise-fulfilled {
+    background: rgba(76, 175, 80, 0.3);
+    color: #4CAF50;
+}
+
+.promise-rejected {
+    background: rgba(244, 67, 54, 0.3);
+    color: #F44336;
+}
+
+.prototype-chain {
+    border-right: 3px solid #2196F3;
+    padding-right: 15px;
+    margin: 10px 0;
+}
+
+.prototype-level {
+    background: rgba(33, 150, 243, 0.1);
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border-right: 2px solid #2196F3;
+}
+
+.memory-usage {
+    background: rgba(255, 152, 0, 0.2);
+    border: 1px solid #FF9800;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.performance-metric {
+    display: inline-block;
+    background: rgba(76, 175, 80, 0.2);
+    border: 1px solid #4CAF50;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 5px;
+    font-family: monospace;
+}
+
+.async-timeline {
+    background: rgba(33, 150, 243, 0.1);
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.timeline-event {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin: 5px 0;
+    border-right: 3px solid #2196F3;
+}
+
+.closure-scope {
+    background: rgba(156, 39, 176, 0.1);
+    border: 1px dashed #9C27B0;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px 0;
+    position: relative;
+}
+
+.closure-scope::before {
+    content: 'Closure Scope';
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    background: #9C27B0;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.module-interface {
+    background: rgba(255, 152, 0, 0.1);
+    border: 1px solid #FF9800;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.private-method {
+    color: #F44336;
+    font-style: italic;
+}
+
+.public-method {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.animation-demo {
+    transition: all 0.3s ease;
+}
+
+.animation-demo:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}</textarea>
+                                        </div>
+                                        
+                                        <div class="tab-content" id="js-tab">
+                                            <textarea id="jsEditor">// متغیرهای سراسری
+let currentCounter = null;
+let people = [];
+let promiseCounter = 0;
+
+// تابع کمکی برای نمایش خروجی
+function displayOutput(elementId, content, title = '') {
+    const element = document.getElementById(elementId);
+    const timestamp = new Date().toLocaleTimeString('fa-IR');
+    const header = title ? `=== ${title} ===\n` : '';
+    element.textContent = `[${timestamp}] ${header}${content}\n\n` + element.textContent;
+}
+
+// Closures و متغیرهای خصوصی
+function createNewCounter() {
+    currentCounter = (function() {
+        let count = 0;
+        
+        return {
+            increment: () => ++count,
+            decrement: () => --count,
+            reset: () => { count = 0; return count; },
+            getValue: () => count
+        };
+    })();
+    
+    // فعال کردن دکمه‌ها
+    ['incrementBtn', 'decrementBtn', 'resetBtn', 'getValueBtn'].forEach(id => {
+        document.getElementById(id).disabled = false;
+    });
+    
+    displayOutput('closureOutput', 'شمارنده جدید ایجاد شد. مقدار اولیه: 0', 'Closure Counter');
+}
+
+function incrementCounter() {
+    if (currentCounter) {
+        const newValue = currentCounter.increment();
+        displayOutput('closureOutput', `مقدار افزایش یافت: ${newValue}`, 'افزایش');
+    }
+}
+
+function decrementCounter() {
+    if (currentCounter) {
+        const newValue = currentCounter.decrement();
+        displayOutput('closureOutput', `مقدار کاهش یافت: ${newValue}`, 'کاهش');
+    }
+}
+
+function resetCounter() {
+    if (currentCounter) {
+        const newValue = currentCounter.reset();
+        displayOutput('closureOutput', `شمارنده بازنشانی شد: ${newValue}`, 'بازنشانی');
+    }
+}
+
+function getCounterValue() {
+    if (currentCounter) {
+        const value = currentCounter.getValue();
+        displayOutput('closureOutput', `مقدار فعلی: ${value}`, 'مقدار');
+    }
+}
+
+// Factory Function
+function createPersonFactory(name, age) {
+    return {
+        name: name,
+        age: age,
+        greet: function() {
+            return `سلام، من ${this.name} هستم و ${this.age} سال دارم`;
+        },
+        celebrateBirthday: function() {
+            this.age++;
+            return `تولدم مبارک! حالا ${this.age} سال دارم`;
+        },
+        getInfo: function() {
+            return {
+                name: this.name,
+                age: this.age,
+                isAdult: this.age >= 18
+            };
+        }
+    };
+}
+
+function createPerson() {
+    const name = document.getElementById('personName').value.trim();
+    const age = parseInt(document.getElementById('personAge').value);
+    
+    if (name && age) {
+        const person = createPersonFactory(name, age);
+        people.push(person);
+        
+        displayOutput('factoryOutput', 
+            `شخص جدید ایجاد شد:\n${JSON.stringify(person.getInfo(), null, 2)}\nپیام: ${person.greet()}`,
+            'Factory Function'
+        );
+        
+        // پاک کردن فرم
+        document.getElementById('personName').value = '';
+        document.getElementById('personAge').value = '';
+    } else {
+        alert('لطفا نام و سن را وارد کنید');
+    }
+}
+
+function showAllPeople() {
+    if (people.length === 0) {
+        displayOutput('factoryOutput', 'هیچ شخصی ایجاد نشده است', 'لیست افراد');
+        return;
+    }
+    
+    const peopleInfo = people.map(person => person.getInfo());
+    displayOutput('factoryOutput', 
+        `تعداد افراد: ${people.length}\n${JSON.stringify(peopleInfo, null, 2)}`,
+        'همه افراد'
+    );
+}
+
+// Promises
+function simulateAPICall() {
+    displayOutput('promiseOutput', 'شروع درخواست API...', 'Promise Demo');
+    
+    const promise = new Promise((resolve, reject) => {
+        const delay = Math.random() * 2000 + 1000; // 1-3 ثانیه
+        const success = Math.random() > 0.3; // 70% احتمال موفقیت
+        
+        setTimeout(() => {
+            if (success) {
+                resolve({
+                    id: ++promiseCounter,
+                    data: 'داده‌های دریافت شده از سرور',
+                    timestamp: new Date().toISOString()
+                });
+            } else {
+                reject(new Error('خطا در ارتباط با سرور'));
+            }
+        }, delay);
+    });
+    
+    promise
+        .then(result => {
+            displayOutput('promiseOutput', 
+                `✅ درخواست موفق:\n${JSON.stringify(result, null, 2)}`,
+                'نتیجه Promise'
+            );
+        })
+        .catch(error => {
+            displayOutput('promiseOutput', 
+                `❌ خطا: ${error.message}`,
+                'خطای Promise'
+            );
+        })
+        .finally(() => {
+            displayOutput('promiseOutput', 'درخواست تمام شد', 'Finally');
+        });
+}
+
+function simulateMultipleAPICalls() {
+    displayOutput('promiseOutput', 'شروع چندین درخواست همزمان...', 'Promise.all');
+    
+    const promises = [
+        new Promise(resolve => setTimeout(() => resolve('کاربران'), 500)),
+        new Promise(resolve => setTimeout(() => resolve('پست‌ها'), 1000)),
+        new Promise(resolve => setTimeout(() => resolve('نظرات'), 1500))
+    ];
+    
+    Promise.all(promises)
+        .then(results => {
+            displayOutput('promiseOutput', 
+                `✅ همه درخواست‌ها موفق:\n${JSON.stringify(results, null, 2)}`,
+                'Promise.all نتیجه'
+            );
+        })
+        .catch(error => {
+            displayOutput('promiseOutput', 
+                `❌ یکی از درخواست‌ها ناموفق: ${error.message}`,
+                'Promise.all خطا'
+            );
+        });
+}
+
+function simulateAPIWithError() {
+    displayOutput('promiseOutput', 'شروع درخواست با خطای حتمی...', 'Promise Error');
+    
+    const promise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            reject(new Error('خطای شبیه‌سازی شده'));
+        }, 1000);
+    });
+    
+    promise
+        .then(result => {
+            displayOutput('promiseOutput', `نتیجه: ${result}`, 'موفقیت');
+        })
+        .catch(error => {
+            displayOutput('promiseOutput', 
+                `❌ خطا مدیریت شد: ${error.message}`,
+                'مدیریت خطا'
+            );
+        });
+}
+
+function chainedPromises() {
+    displayOutput('promiseOutput', 'شروع Promise های زنجیره‌ای...', 'Promise Chaining');
+    
+    new Promise(resolve => {
+        setTimeout(() => resolve(1), 500);
+    })
+    .then(result => {
+        displayOutput('promiseOutput', `مرحله 1: ${result}`, 'زنجیره');
+        return result * 2;
+    })
+    .then(result => {
+        displayOutput('promiseOutput', `مرحله 2: ${result}`, 'زنجیره');
+        return result * 3;
+    })
+    .then(result => {
+        displayOutput('promiseOutput', `مرحله 3: ${result}`, 'زنجیره');
+        return result * 4;
+    })
+    .then(finalResult => {
+        displayOutput('promiseOutput', 
+            `✅ نتیجه نهایی: ${finalResult}`,
+            'پایان زنجیره'
+        );
+    });
+}
+
+// Async/Await
+async function asyncAwaitDemo() {
+    displayOutput('asyncOutput', 'شروع نمایش async/await...', 'Async/Await');
+    
+    try {
+        displayOutput('asyncOutput', 'در حال انتظار...', 'مرحله 1');
+        
+        const result1 = await new Promise(resolve => 
+            setTimeout(() => resolve('نتیجه اول'), 1000)
+        );
+        displayOutput('asyncOutput', `دریافت شد: ${result1}`, 'مرحله 2');
+        
+        const result2 = await new Promise(resolve => 
+            setTimeout(() => resolve('نتیجه دوم'), 1000)
+        );
+        displayOutput('asyncOutput', `دریافت شد: ${result2}`, 'مرحله 3');
+        
+        displayOutput('asyncOutput', 
+            `✅ همه عملیات تمام شد:\n- ${result1}\n- ${result2}`,
+            'تکمیل'
+        );
+        
+    } catch (error) {
+        displayOutput('asyncOutput', `❌ خطا: ${error.message}`, 'خطا');
+    }
+}
+
+async function parallelAsyncDemo() {
+    displayOutput('asyncOutput', 'شروع عملیات موازی...', 'Parallel Async');
+    
+    const startTime = Date.now();
+    
+    try {
+        const [result1, result2, result3] = await Promise.all([
+            new Promise(resolve => setTimeout(() => resolve('عملیات A'), 1000)),
+            new Promise(resolve => setTimeout(() => resolve('عملیات B'), 1500)),
+            new Promise(resolve => setTimeout(() => resolve('عملیات C'), 800))
+        ]);
+        
+        const endTime = Date.now();
+        const duration = endTime - startTime;
+        
+        displayOutput('asyncOutput', 
+            `✅ عملیات موازی تمام شد در ${duration}ms:\n- ${result1}\n- ${result2}\n- ${result3}`,
+            'نتیجه موازی'
+        );
+        
+    } catch (error) {
+        displayOutput('asyncOutput', `❌ خطا: ${error.message}`, 'خطا');
+    }
+}
+
+async function sequentialAsyncDemo() {
+    displayOutput('asyncOutput', 'شروع عملیات ترتیبی...', 'Sequential Async');
+    
+    const startTime = Date.now();
+    
+    try {
+        const result1 = await new Promise(resolve => 
+            setTimeout(() => resolve('عملیات A'), 1000)
+        );
+        displayOutput('asyncOutput', `تمام شد: ${result1}`, 'مرحله 1');
+        
+        const result2 = await new Promise(resolve => 
+            setTimeout(() => resolve('عملیات B'), 1000)
+        );
+        displayOutput('asyncOutput', `تمام شد: ${result2}`, 'مرحله 2');
+        
+        const result3 = await new Promise(resolve => 
+            setTimeout(() => resolve('عملیات C'), 1000)
+        );
+        displayOutput('asyncOutput', `تمام شد: ${result3}`, 'مرحله 3');
+        
+        const endTime = Date.now();
+        const duration = endTime - startTime;
+        
+        displayOutput('asyncOutput', 
+            `✅ عملیات ترتیبی تمام شد در ${duration}ms`,
+            'تکمیل ترتیبی'
+        );
+        
+    } catch (error) {
+        displayOutput('asyncOutput', `❌ خطا: ${error.message}`, 'خطا');
+    }
+}
+
+async function errorHandlingDemo() {
+    displayOutput('asyncOutput', 'نمایش مدیریت خطا در async/await...', 'Error Handling');
+    
+    try {
+        await new Promise((resolve, reject) => {
+            setTimeout(() => reject(new Error('خطای شبیه‌سازی شده')), 1000);
+        });
+    } catch (error) {
+        displayOutput('asyncOutput', 
+            `❌ خطا مدیریت شد: ${error.message}`,
+            'مدیریت خطا'
+        );
+    } finally {
+        displayOutput('asyncOutput', 'بلوک finally اجرا شد', 'Finally');
+    }
+}
+
+// Prototypes
+function demonstratePrototypes() {
+    // Constructor function
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    // اضافه کردن متد به prototype
+    Person.prototype.greet = function() {
+        return `سلام، من ${this.name} هستم`;
+    };
+    
+    Person.prototype.getAge = function() {
+        return this.age;
+    };
+    
+    const person1 = new Person('علی', 25);
+    const person2 = new Person('فاطمه', 22);
+    
+    displayOutput('prototypeOutput', 
+        `شخص 1: ${person1.greet()}, سن: ${person1.getAge()}\n` +
+        `شخص 2: ${person2.greet()}, سن: ${person2.getAge()}\n` +
+        `person1.constructor === Person: ${person1.constructor === Person}\n` +
+        `person1.__proto__ === Person.prototype: ${person1.__proto__ === Person.prototype}`,
+        'Prototype Demo'
+    );
+}
+
+function demonstrateInheritance() {
+    // کلاس پایه
+    function Animal(name) {
+        this.name = name;
+    }
+    
+    Animal.prototype.speak = function() {
+        return `${this.name} صدا می‌کند`;
+    };
+    
+    // کلاس مشتق
+    function Dog(name, breed) {
+        Animal.call(this, name); // فراخوانی constructor والد
+        this.breed = breed;
+    }
+    
+    // تنظیم وراثت
+    Dog.prototype = Object.create(Animal.prototype);
+    Dog.prototype.constructor = Dog;
+    
+    // متد اختصاصی
+    Dog.prototype.bark = function() {
+        return `${this.name} واق واق می‌کند`;
+    };
+    
+    const dog = new Dog('رکس', 'ژرمن');
+    
+    displayOutput('prototypeOutput', 
+        `نام: ${dog.name}\n` +
+        `نژاد: ${dog.breed}\n` +
+        `صحبت: ${dog.speak()}\n` +
+        `پارس: ${dog.bark()}\n` +
+        `instanceof Animal: ${dog instanceof Animal}\n` +
+        `instanceof Dog: ${dog instanceof Dog}`,
+        'وراثت'
+    );
+}
+
+function demonstrateES6Classes() {
+    class Vehicle {
+        constructor(brand, model) {
+            this.brand = brand;
+            this.model = model;
+        }
+        
+        getInfo() {
+            return `${this.brand} ${this.model}`;
+        }
+        
+        start() {
+            return `${this.getInfo()} روشن شد`;
+        }
+    }
+    
+    class Car extends Vehicle {
+        constructor(brand, model, doors) {
+            super(brand, model);
+            this.doors = doors;
+        }
+        
+        getInfo() {
+            return `${super.getInfo()} با ${this.doors} در`;
+        }
+        
+        honk() {
+            return `${this.brand} بوق زد`;
+        }
+    }
+    
+    const car = new Car('تویوتا', 'کمری', 4);
+    
+    displayOutput('prototypeOutput', 
+        `اطلاعات: ${car.getInfo()}\n` +
+        `شروع: ${car.start()}\n` +
+        `بوق: ${car.honk()}\n` +
+        `instanceof Vehicle: ${car instanceof Vehicle}\n` +
+        `instanceof Car: ${car instanceof Car}`,
+        'ES6 Classes'
+    );
+}
+
+function prototypeChainDemo() {
+    const obj = {};
+    
+    const chain = [];
+    let current = obj;
+    
+    while (current) {
+        chain.push(current.constructor.name);
+        current = Object.getPrototypeOf(current);
+    }
+    
+    displayOutput('prototypeOutput', 
+        `زنجیره prototype برای {}:\n${chain.join(' → ')}\n\n` +
+        `obj.hasOwnProperty: ${typeof obj.hasOwnProperty}\n` +
+        `obj.toString: ${typeof obj.toString}\n` +
+        `obj.valueOf: ${typeof obj.valueOf}`,
+        'Prototype Chain'
+    );
+}
+
+// Module Pattern
+function demonstrateIIFE() {
+    const result = (function() {
+        const privateVar = 'متغیر خصوصی';
+        let counter = 0;
+        
+        function privateFunction() {
+            return 'تابع خصوصی';
+        }
+        
+        return {
+            publicMethod: function() {
+                return `دسترسی به ${privateVar}`;
+            },
+            increment: function() {
+                return ++counter;
+            },
+            getPrivateFunction: function() {
+                return privateFunction();
+            }
+        };
+    })();
+    
+    displayOutput('moduleOutput', 
+        `متد عمومی: ${result.publicMethod()}\n` +
+        `افزایش: ${result.increment()}\n` +
+        `افزایش: ${result.increment()}\n` +
+        `تابع خصوصی: ${result.getPrivateFunction()}\n` +
+        `دسترسی مستقیم به privateVar: ${result.privateVar || 'undefined'}`,
+        'IIFE Pattern'
+    );
+}
+
+function demonstrateModulePattern() {
+    const Calculator = (function() {
+        let result = 0;
+        
+        return {
+            add: function(x) {
+                result += x;
+                return this;
+            },
+            subtract: function(x) {
+                result -= x;
+                return this;
+            },
+            multiply: function(x) {
+                result *= x;
+                return this;
+            },
+            divide: function(x) {
+                if (x !== 0) {
+                    result /= x;
+                }
+                return this;
+            },
+            getResult: function() {
+                return result;
+            },
+            reset: function() {
+                result = 0;
+                return this;
+            }
+        };
+    })();
+    
+    const finalResult = Calculator
+        .add(10)
+        .multiply(2)
+        .subtract(5)
+        .divide(3)
+        .getResult();
+    
+    displayOutput('moduleOutput', 
+        `محاسبه زنجیره‌ای: ((10 + 10) * 2 - 5) / 3 = ${finalResult}\n` +
+        `بازنشانی: ${Calculator.reset().getResult()}`,
+        'Module Pattern'
+    );
+}
+
+function demonstrateNamespace() {
+    const MyApp = {
+        utils: {
+            formatDate: function(date) {
+                return date.toLocaleDateString('fa-IR');
+            },
+            generateId: function() {
+                return Math.random().toString(36).substr(2, 9);
+            }
+        },
+        
+        data: {
+            users: [],
+            addUser: function(user) {
+                user.id = MyApp.utils.generateId();
+                user.createdAt = new Date();
+                this.users.push(user);
+                return user;
+            },
+            getUsers: function() {
+                return this.users;
+            }
+        },
+        
+        init: function() {
+            return 'اپلیکیشن راه‌اندازی شد';
+        }
+    };
+    
+    const user = MyApp.data.addUser({ name: 'علی احمدی', email: 'ali@example.com' });
+    
+    displayOutput('moduleOutput', 
+        `${MyApp.init()}\n` +
+        `کاربر جدید: ${JSON.stringify(user, null, 2)}\n` +
+        `تاریخ فرمت شده: ${MyApp.utils.formatDate(user.createdAt)}\n` +
+        `تعداد کاربران: ${MyApp.data.getUsers().length}`,
+        'Namespace Pattern'
+    );
+}
+
+function demonstrateRevealingModule() {
+    const RevealingModule = (function() {
+        let privateCounter = 0;
+        const privateArray = [];
+        
+        function privateFunction() {
+            return 'تابع خصوصی';
+        }
+        
+        function publicIncrement() {
+            privateCounter++;
+        }
+        
+        function publicDecrement() {
+            privateCounter--;
+        }
+        
+        function publicGetCount() {
+            return privateCounter;
+        }
+        
+        function publicAddItem(item) {
+            privateArray.push(item);
+        }
+        
+        function publicGetItems() {
+            return [...privateArray]; // کپی آرایه
+        }
+        
+        // فقط متدهای عمومی را نمایش می‌دهیم
+        return {
+            increment: publicIncrement,
+            decrement: publicDecrement,
+            getCount: publicGetCount,
+            addItem: publicAddItem,
+            getItems: publicGetItems
+        };
+    })();
+    
+    RevealingModule.increment();
+    RevealingModule.increment();
+    RevealingModule.addItem('آیتم 1');
+    RevealingModule.addItem('آیتم 2');
+    
+    displayOutput('moduleOutput', 
+        `شمارنده: ${RevealingModule.getCount()}\n` +
+        `آیتم‌ها: ${JSON.stringify(RevealingModule.getItems())}\n` +
+        `دسترسی به privateFunction: ${RevealingModule.privateFunction || 'undefined'}`,
+        'Revealing Module'
+    );
+}
+
+// مفاهیم پیشرفته دیگر
+function demonstrateDecorators() {
+    // شبیه‌سازی decorator pattern
+    function logExecutionTime(target, propertyName, descriptor) {
+        const method = descriptor.value;
+        
+        descriptor.value = function(...args) {
+            const start = performance.now();
+            const result = method.apply(this, args);
+            const end = performance.now();
+            console.log(`${propertyName} executed in ${end - start} milliseconds`);
+            return result;
+        };
+        
+        return descriptor;
+    }
+    
+    // مثال استفاده
+    function slowFunction() {
+        let sum = 0;
+        for (let i = 0; i < 1000000; i++) {
+            sum += i;
+        }
+        return sum;
+    }
+    
+    const start = performance.now();
+    const result = slowFunction();
+    const end = performance.now();
+    
+    displayOutput('advancedOutput', 
+        `نتیجه محاسبه: ${result}\n` +
+        `زمان اجرا: ${(end - start).toFixed(2)} میلی‌ثانیه\n` +
+        `Decorator pattern برای اندازه‌گیری عملکرد استفاده می‌شود`,
+        'Decorator Pattern'
+    );
+}
+
+function demonstrateGenerators() {
+    function* numberGenerator() {
+        let num = 1;
+        while (true) {
+            yield num++;
+        }
+    }
+    
+    function* fibonacciGenerator() {
+        let a = 0, b = 1;
+        while (true) {
+            yield a;
+            [a, b] = [b, a + b];
+        }
+    }
+    
+    const numbers = numberGenerator();
+    const fibonacci = fibonacciGenerator();
+    
+    const numberResults = [];
+    const fibResults = [];
+    
+    for (let i = 0; i < 5; i++) {
+        numberResults.push(numbers.next().value);
+        fibResults.push(fibonacci.next().value);
+    }
+    
+    displayOutput('advancedOutput', 
+        `اعداد متوالی: ${numberResults.join(', ')}\n` +
+        `دنباله فیبوناچی: ${fibResults.join(', ')}\n` +
+        `Generator ها برای تولید دنباله‌های بی‌نهایت مفیدند`,
+        'Generators'
+    );
+}
+
+function demonstrateSymbols() {
+    const sym1 = Symbol('description');
+    const sym2 = Symbol('description');
+    const sym3 = Symbol.for('global');
+    const sym4 = Symbol.for('global');
+    
+    const obj = {
+        [sym1]: 'مقدار symbol 1',
+        [sym3]: 'مقدار symbol global',
+        normalProp: 'مقدار عادی'
+    };
+    
+    displayOutput('advancedOutput', 
+        `sym1 === sym2: ${sym1 === sym2}\n` +
+        `sym3 === sym4: ${sym3 === sym4}\n` +
+        `obj[sym1]: ${obj[sym1]}\n` +
+        `obj[sym3]: ${obj[sym3]}\n` +
+        `Object.keys(obj): ${JSON.stringify(Object.keys(obj))}\n` +
+        `Object.getOwnPropertySymbols(obj): ${Object.getOwnPropertySymbols(obj).length} symbols`,
+        'Symbols'
+    );
+}
+
+function demonstrateWeakMap() {
+    const wm = new WeakMap();
+    const ws = new WeakSet();
+    
+    let obj1 = { name: 'شیء 1' };
+    let obj2 = { name: 'شیء 2' };
+    
+    wm.set(obj1, 'داده مربوط به شیء 1');
+    wm.set(obj2, 'داده مربوط به شیء 2');
+    
+    ws.add(obj1);
+    ws.add(obj2);
+    
+    displayOutput('advancedOutput', 
+        `WeakMap has obj1: ${wm.has(obj1)}\n` +
+        `WeakMap get obj1: ${wm.get(obj1)}\n` +
+        `WeakSet has obj1: ${ws.has(obj1)}\n` +
+        `WeakMap و WeakSet کلیدها را به صورت weak reference نگه می‌دارند\n` +
+        `وقتی شیء از بین برود، خودکار از WeakMap/WeakSet حذف می‌شود`,
+        'WeakMap & WeakSet'
+    );
+    
+    // شبیه‌سازی حذف reference
+    obj1 = null;
+    obj2 = null;
+}
+
+function demonstrateProxy() {
+    const target = {
+        name: 'علی',
+        age: 25
+    };
+    
+    const handler = {
+        get: function(obj, prop) {
+            console.log(`دسترسی به ویژگی: ${prop}`);
+            return prop in obj ? obj[prop] : `ویژگی ${prop} وجود ندارد`;
+        },
+        
+        set: function(obj, prop, value) {
+            console.log(`تنظیم ویژگی ${prop} به ${value}`);
+            if (prop === 'age' && typeof value !== 'number') {
+                throw new TypeError('سن باید عدد باشد');
+            }
+            obj[prop] = value;
+            return true;
+        }
+    };
+    
+    const proxy = new Proxy(target, handler);
+    
+    try {
+        const name = proxy.name;
+        const nonExistent = proxy.nonExistent;
+        proxy.age = 26;
+        
+        displayOutput('advancedOutput', 
+            `نام: ${name}\n` +
+            `ویژگی ناموجود: ${nonExistent}\n` +
+            `سن جدید: ${proxy.age}\n` +
+            `Proxy اجازه کنترل دسترسی به اشیاء را می‌دهد`,
+            'Proxy'
+        );
+    } catch (error) {
+        displayOutput('advancedOutput', `خطا: ${error.message}`, 'Proxy Error');
+    }
+}
+
+function demonstrateReflect() {
+    const obj = {
+        name: 'محمد',
+        age: 30,
+        greet: function() {
+            return `سلام، من ${this.name} هستم`;
+        }
+    };
+    
+    const properties = Reflect.ownKeys(obj);
+    const hasName = Reflect.has(obj, 'name');
+    const nameValue = Reflect.get(obj, 'name');
+    
+    Reflect.set(obj, 'city', 'تهران');
+    
+    const descriptor = Reflect.getOwnPropertyDescriptor(obj, 'name');
+    
+    displayOutput('advancedOutput', 
+        `ویژگی‌ها: ${JSON.stringify(properties)}\n` +
+        `دارای name: ${hasName}\n` +
+        `مقدار name: ${nameValue}\n` +
+        `شهر اضافه شد: ${obj.city}\n` +
+        `descriptor برای name: ${JSON.stringify(descriptor)}\n` +
+        `Reflect API جایگزین بهتری برای عملیات Object است`,
+        'Reflect API'
+    );
+}
+
+// Performance و بهینه‌سازی
+function demonstrateDebounce() {
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+    
+    let callCount = 0;
+    const expensiveFunction = () => {
+        callCount++;
+        displayOutput('performanceOutput', 
+            `تابع پرهزینه اجرا شد. تعداد فراخوانی: ${callCount}`,
+            'Debounce Result'
+        );
+    };
+    
+    const debouncedFunction = debounce(expensiveFunction, 300);
+    
+    // شبیه‌سازی فراخوانی‌های متعدد
+    for (let i = 0; i < 5; i++) {
+        setTimeout(() => debouncedFunction(), i * 50);
+    }
+    
+    displayOutput('performanceOutput', 
+        'Debounce: 5 فراخوانی در 250ms ارسال شد\n' +
+        'فقط آخرین فراخوانی اجرا خواهد شد',
+        'Debounce Demo'
+    );
+}
+
+function demonstrateThrottle() {
+    function throttle(func, limit) {
+        let inThrottle;
+        return function() {
+            const args = arguments;
+            const context = this;
+            if (!inThrottle) {
+                func.apply(context, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        };
+    }
+    
+    let callCount = 0;
+    const frequentFunction = () => {
+        callCount++;
+        displayOutput('performanceOutput', 
+            `تابع پرتکرار اجرا شد. تعداد فراخوانی: ${callCount}`,
+            'Throttle Result'
+        );
+    };
+    
+    const throttledFunction = throttle(frequentFunction, 200);
+    
+    // شبیه‌سازی فراخوانی‌های مکرر
+    for (let i = 0; i < 10; i++) {
+        setTimeout(() => throttledFunction(), i * 50);
+    }
+    
+    displayOutput('performanceOutput', 
+        'Throttle: 10 فراخوانی در 500ms ارسال شد\n' +
+        'حداکثر هر 200ms یک بار اجرا می‌شود',
+        'Throttle Demo'
+    );
+}
+
+function demonstrateMemoization() {
+    function memoize(fn) {
+        const cache = {};
+        return function(...args) {
+            const key = JSON.stringify(args);
+            if (key in cache) {
+                console.log('نتیجه از cache دریافت شد');
+                return cache[key];
+            }
+            console.log('محاسبه جدید انجام شد');
+            const result = fn.apply(this, args);
+            cache[key] = result;
+            return result;
+        };
+    }
+    
+    function expensiveCalculation(n) {
+        let result = 0;
+        for (let i = 0; i < n * 1000000; i++) {
+            result += i;
+        }
+        return result;
+    }
+    
+    const memoizedCalculation = memoize(expensiveCalculation);
+    
+    const start1 = performance.now();
+    const result1 = memoizedCalculation(100);
+    const end1 = performance.now();
+    
+    const start2 = performance.now();
+    const result2 = memoizedCalculation(100); // از cache
+    const end2 = performance.now();
+    
+    displayOutput('performanceOutput', 
+        `اولین محاسبه: ${(end1 - start1).toFixed(2)}ms\n` +
+        `دومین محاسبه (cache): ${(end2 - start2).toFixed(2)}ms\n` +
+        `نتیجه: ${result1}\n` +
+        `بهبود سرعت: ${((end1 - start1) / (end2 - start2)).toFixed(0)}x`,
+        'Memoization'
+    );
+}
+
+function demonstrateLazyLoading() {
+    const LazyLoader = {
+        cache: {},
+        
+        load: function(resource) {
+            if (this.cache[resource]) {
+                return Promise.resolve(this.cache[resource]);
+            }
+            
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    const data = `داده ${resource} بارگذاری شد`;
+                    this.cache[resource] = data;
+                    resolve(data);
+                }, Math.random() * 1000 + 500);
+            });
+        },
+        
+        getCache: function() {
+            return Object.keys(this.cache);
+        }
+    };
+    
+    displayOutput('performanceOutput', 'شروع Lazy Loading...', 'Lazy Loading');
+    
+    Promise.all([
+        LazyLoader.load('image1.jpg'),
+        LazyLoader.load('image2.jpg'),
+        LazyLoader.load('image1.jpg') // تکراری - از cache
+    ]).then(results => {
+        displayOutput('performanceOutput', 
+            `نتایج: ${JSON.stringify(results, null, 2)}\n` +
+            `Cache: ${JSON.stringify(LazyLoader.getCache())}\n` +
+            `image1.jpg فقط یک بار بارگذاری شد`,
+            'Lazy Loading Results'
+        );
+    });
+}
+
+function measurePerformance() {
+    const iterations = 1000000;
+    
+    // تست عملکرد for loop
+    const start1 = performance.now();
+    let sum1 = 0;
+    for (let i = 0; i < iterations; i++) {
+        sum1 += i;
+    }
+    const end1 = performance.now();
+    
+    // تست عملکرد while loop
+    const start2 = performance.now();
+    let sum2 = 0;
+    let i = 0;
+    while (i < iterations) {
+        sum2 += i;
+        i++;
+    }
+    const end2 = performance.now();
+    
+    // تست عملکرد Array.reduce
+    const start3 = performance.now();
+    const arr = Array.from({length: iterations}, (_, i) => i);
+    const sum3 = arr.reduce((acc, val) => acc + val, 0);
+    const end3 = performance.now();
+    
+    displayOutput('performanceOutput', 
+        `For Loop: ${(end1 - start1).toFixed(2)}ms\n` +
+        `While Loop: ${(end2 - start2).toFixed(2)}ms\n` +
+        `Array.reduce: ${(end3 - start3).toFixed(2)}ms\n` +
+        `همه نتایج: ${sum1 === sum2 && sum2 === sum3 ? 'یکسان' : 'متفاوت'}\n` +
+        `تعداد تکرار: ${iterations.toLocaleString()}`,
+        'Performance Measurement'
+    );
+}
+
+// اجرای اولیه
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('صفحه مفاهیم پیشرفته JavaScript آماده است!');
+});</textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="preview-panel">
+                                        <div class="preview-header">
+                                            <span>نمایش زنده</span>
+                                            <div class="preview-controls">
+                                                <button class="btn btn-sm" id="refreshPreview">🔄</button>
+                                                <button class="btn btn-sm" id="openInNewTab">🔗</button>
+                                            </div>
+                                        </div>
+                                        <iframe id="preview" src="about:blank"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>Prototypes و وراثت</h2>
+                            <p>JavaScript از prototype-based inheritance استفاده می‌کند:</p>
+                            
+                            <h3>Constructor Functions</h3>
+                            <div class="code-example">
+                                <pre><code>function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+// اضافه کردن متد به prototype
+Person.prototype.greet = function() {
+    return `سلام، من ${this.name} هستم`;
+};
+
+Person.prototype.getAge = function() {
+    return this.age;
+};
+
+const person1 = new Person('علی', 25);
+console.log(person1.greet()); // "سلام، من علی هستم"</code></pre>
+                            </div>
+
+                            <h3>وراثت با Prototypes</h3>
+                            <div class="code-example">
+                                <pre><code>// کلاس پایه
+function Animal(name) {
+    this.name = name;
+}
+
+Animal.prototype.speak = function() {
+    return `${this.name} صدا می‌کند`;
+};
+
+// کلاس مشتق
+function Dog(name, breed) {
+    Animal.call(this, name); // فراخوانی constructor والد
+    this.breed = breed;
+}
+
+// تنظیم وراثت
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+
+// متد اختصاصی
+Dog.prototype.bark = function() {
+    return `${this.name} واق واق می‌کند`;
+};
+
+const dog = new Dog('رکس', 'ژرمن');
+console.log(dog.speak()); // "رکس صدا می‌کند"
+console.log(dog.bark()); // "رکس واق واق می‌کند"</code></pre>
+                            </div>
+
+                            <h3>ES6 Classes</h3>
+                            <div class="code-example">
+                                <pre><code>class Vehicle {
+    constructor(brand, model) {
+        this.brand = brand;
+        this.model = model;
+    }
+    
+    getInfo() {
+        return `${this.brand} ${this.model}`;
+    }
+    
+    start() {
+        return `${this.getInfo()} روشن شد`;
+    }
+}
+
+class Car extends Vehicle {
+    constructor(brand, model, doors) {
+        super(brand, model);
+        this.doors = doors;
+    }
+    
+    getInfo() {
+        return `${super.getInfo()} با ${this.doors} در`;
+    }
+    
+    honk() {
+        return `${this.brand} بوق زد`;
+    }
+}
+
+const car = new Car('تویوتا', 'کمری', 4);
+console.log(car.start()); // "تویوتا کمری با 4 در روشن شد"</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>Module Pattern</h2>
+                            <p>الگوهای مختلف برای سازماندهی کد:</p>
+                            
+                            <h3>IIFE (Immediately Invoked Function Expression)</h3>
+                            <div class="code-example">
+                                <pre><code>const MyModule = (function() {
+    // متغیرهای خصوصی
+    let privateVar = 'متغیر خصوصی';
+    let counter = 0;
+    
+    // توابع خصوصی
+    function privateFunction() {
+        return 'تابع خصوصی';
+    }
+    
+    // API عمومی
+    return {
+        publicMethod: function() {
+            return `دسترسی به ${privateVar}`;
+        },
+        increment: function() {
+            return ++counter;
+        },
+        getCounter: function() {
+            return counter;
+        }
+    };
+})();
+
+console.log(MyModule.publicMethod()); // "دسترسی به متغیر خصوصی"
+console.log(MyModule.increment()); // 1</code></pre>
+                            </div>
+
+                            <h3>Revealing Module Pattern</h3>
+                            <div class="code-example">
+                                <pre><code>const RevealingModule = (function() {
+    let privateCounter = 0;
+    
+    function privateIncrement() {
+        privateCounter++;
+    }
+    
+    function privateDecrement() {
+        privateCounter--;
+    }
+    
+    function publicGetCount() {
+        return privateCounter;
+    }
+    
+    function publicReset() {
+        privateCounter = 0;
+    }
+    
+    // فقط متدهای عمومی را نمایش می‌دهیم
+    return {
+        increment: privateIncrement,
+        decrement: privateDecrement,
+        getCount: publicGetCount,
+        reset: publicReset
+    };
+})();</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>مفاهیم ES6+ پیشرفته</h2>
+                            
+                            <h3>Generators</h3>
+                            <div class="code-example">
+                                <pre><code>function* numberGenerator() {
+    let num = 1;
+    while (true) {
+        yield num++;
+    }
+}
+
+function* fibonacciGenerator() {
+    let a = 0, b = 1;
+    while (true) {
+        yield a;
+        [a, b] = [b, a + b];
+    }
+}
+
+const numbers = numberGenerator();
+console.log(numbers.next().value); // 1
+console.log(numbers.next().value); // 2
+
+const fibonacci = fibonacciGenerator();
+for (let i = 0; i < 5; i++) {
+    console.log(fibonacci.next().value); // 0, 1, 1, 2, 3
+}</code></pre>
+                            </div>
+
+                            <h3>Symbols</h3>
+                            <div class="code-example">
+                                <pre><code>// ایجاد Symbol
+const sym1 = Symbol('description');
+const sym2 = Symbol('description');
+console.log(sym1 === sym2); // false
+
+// Global Symbol Registry
+const sym3 = Symbol.for('global');
+const sym4 = Symbol.for('global');
+console.log(sym3 === sym4); // true
+
+// استفاده در اشیاء
+const obj = {
+    [sym1]: 'مقدار خصوصی',
+    normalProp: 'مقدار عادی'
+};
+
+console.log(Object.keys(obj)); // ['normalProp']
+console.log(Object.getOwnPropertySymbols(obj)); // [Symbol(description)]</code></pre>
+                            </div>
+
+                            <h3>Proxy و Reflect</h3>
+                            <div class="code-example">
+                                <pre><code>const target = {
+    name: 'علی',
+    age: 25
+};
+
+const handler = {
+    get: function(obj, prop) {
+        console.log(`دسترسی به ویژگی: ${prop}`);
+        return prop in obj ? obj[prop] : `ویژگی ${prop} وجود ندارد`;
+    },
+    
+    set: function(obj, prop, value) {
+        console.log(`تنظیم ویژگی ${prop} به ${value}`);
+        if (prop === 'age' && typeof value !== 'number') {
+            throw new TypeError('سن باید عدد باشد');
+        }
+        Reflect.set(obj, prop, value);
+        return true;
+    }
+};
+
+const proxy = new Proxy(target, handler);
+console.log(proxy.name); // "دسترسی به ویژگی: name" -> "علی"
+proxy.age = 26; // "تنظیم ویژگی age به 26"</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>بهینه‌سازی عملکرد</h2>
+                            
+                            <h3>Debouncing</h3>
+                            <div class="code-example">
+                                <pre><code>function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// استفاده برای جستجو
+const searchInput = document.getElementById('search');
+const debouncedSearch = debounce(function(e) {
+    console.log('جستجو برای:', e.target.value);
+    // انجام جستجو
+}, 300);
+
+searchInput.addEventListener('input', debouncedSearch);</code></pre>
+                            </div>
+
+                            <h3>Memoization</h3>
+                            <div class="code-example">
+                                <pre><code>function memoize(fn) {
+    const cache = {};
+    return function(...args) {
+        const key = JSON.stringify(args);
+        if (key in cache) {
+            return cache[key];
+        }
+        const result = fn.apply(this, args);
+        cache[key] = result;
+        return result;
+    };
+}
+
+// مثال: محاسبه فیبوناچی
+function fibonacci(n) {
+    if (n <= 1) return n;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+const memoizedFibonacci = memoize(fibonacci);
+console.log(memoizedFibonacci(40)); // سریع‌تر از حالت عادی</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>بهترین شیوه‌ها</h2>
+                            
+                            <div class="tip-box">
+                                <h3>💡 نکات مهم:</h3>
+                                <ul>
+                                    <li><strong>Memory Management:</strong> از memory leaks جلوگیری کنید</li>
+                                    <li><strong>Error Handling:</strong> همیشه خطاها را مدیریت کنید</li>
+                                    <li><strong>Performance:</strong> از تکنیک‌های بهینه‌سازی استفاده کنید</li>
+                                    <li><strong>Code Organization:</strong> از Module Pattern استفاده کنید</li>
+                                    <li><strong>Testing:</strong> کد خود را تست کنید</li>
+                                </ul>
+                            </div>
+
+                            <h3>مدیریت خطا</h3>
+                            <div class="code-example">
+                                <pre><code>// Global error handler
+window.addEventListener('error', function(e) {
+    console.error('خطای سراسری:', e.error);
+});
+
+// Promise rejection handler
+window.addEventListener('unhandledrejection', function(e) {
+    console.error('Promise رد شده:', e.reason);
+    e.preventDefault(); // جلوگیری از نمایش خطا در console
+});
+
+// Try-catch with async/await
+async function safeAsyncFunction() {
+    try {
+        const result = await riskyAsyncOperation();
+        return result;
+    } catch (error) {
+        console.error('خطا در عملیات async:', error);
+        throw new Error('عملیات ناموفق بود');
+    } finally {
+        console.log('تمیزکاری انجام شد');
+    }
+}</code></pre>
+                            </div>
+                        </section>
+
+                        <!-- Quiz Section -->
+                        <section class="quiz-section">
+                            <h2>آزمون درس ۱۹</h2>
+                            <div class="quiz-container" id="lesson19Quiz">
+                                <div class="quiz-question active" data-question="1">
+                                    <h3>سوال ۱: Closure چیست؟</h3>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q1" value="a"> تابعی که به متغیرهای محدوده بیرونی دسترسی دارد</label>
+                                        <label><input type="radio" name="q1" value="b"> تابعی که خودش را فراخوانی می‌کند</label>
+                                        <label><input type="radio" name="q1" value="c"> تابعی که Promise برمی‌گرداند</label>
+                                        <label><input type="radio" name="q1" value="d"> تابعی که async است</label>
+                                    </div>
+                                </div>
+
+                                <div class="quiz-question" data-question="2">
+                                    <h3>سوال ۲: کدام کلیدواژه برای انتظار Promise استفاده می‌شود؟</h3>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q2" value="a"> wait</label>
+                                        <label><input type="radio" name="q2" value="b"> await</label>
+                                        <label><input type="radio" name="q2" value="c"> async</label>
+                                        <label><input type="radio" name="q2" value="d"> promise</label>
+                                    </div>
+                                </div>
+
+                                <div class="quiz-question" data-question="3">
+                                    <h3>سوال ۳: IIFE مخفف چیست؟</h3>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q3" value="a"> Immediately Invoked Function Expression</label>
+                                        <label><input type="radio" name="q3" value="b"> Internal Interface Function Expression</label>
+                                        <label><input type="radio" name="q3" value="c"> Instantly Initialized Function Expression</label>
+                                        <label><input type="radio" name="q3" value="d"> Inline Invoked Function Expression</label>
+                                    </div>
+                                </div>
+
+                                <div class="quiz-navigation">
+                                    <button class="btn btn-secondary" id="prevQuestion">سوال قبلی</button>
+                                    <button class="btn btn-secondary" id="nextQuestion">سوال بعدی</button>
+                                    <button class="btn btn-primary" id="submitQuiz">ارسال پاسخ‌ها</button>
+                                </div>
+
+                                <div class="quiz-result" id="quizResult"></div>
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <nav class="lesson-navigation">
+                            <a href="lesson18.html" class="nav-button prev">
+                                <span>← درس قبلی</span>
+                                <small>آرایه‌ها و اشیاء</small>
+                            </a>
+                            <a href="lesson20.html" class="nav-button next">
+                                <span>درس بعدی →</span>
+                                <small>پروژه نهایی</small>
+                            </a>
+                        </nav>
+                    </div>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="../../js/libs/codemirror/js/codemirror.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/xml.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/css.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/javascript.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/htmlmixed.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/matchbrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/closebrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/active-line.min.js"></script>
+    
+    <script src="../../js/main.js"></script>
+    <script src="../../js/storage.js"></script>
+    <script src="../../js/editor.js"></script>
+    <script src="../../js/quiz.js"></script>
+
+    <script>
+        // Initialize lesson
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeLesson('lesson19');
+            
+            // Quiz answers
+            const quizAnswers = {
+                q1: 'a', // تابعی که به متغیرهای محدوده بیرونی دسترسی دارد
+                q2: 'b', // await
+                q3: 'a'  // Immediately Invoked Function Expression
+            };
+            
+            initializeQuiz('lesson19Quiz', quizAnswers);
+        });
+    </script>
+</body>
+</html>
+

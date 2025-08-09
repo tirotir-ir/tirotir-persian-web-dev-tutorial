@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آموزش توسعه وب تیروتیر - HTML، CSS و JavaScript</title>
+    <meta name="description" content="آموزش کامل توسعه وب با HTML، CSS و JavaScript به زبان فارسی">
+    <meta name="keywords" content="آموزش HTML, آموزش CSS, آموزش JavaScript, توسعه وب, برنامه نویسی">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/layout.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم">
+        <span class="theme-toggle-icon">🌙</span>
+    </button>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-brand">
+                <div class="header-brand-icon">وب</div>
+                <span>آموزش توسعه وب</span>
+            </div>
+            
+            <nav class="header-nav">
+                <div class="header-search">
+                    <input type="text" placeholder="جستجو در دروس..." id="searchInput">
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="منوی موبایل">
+                    ☰
+                </button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h2 class="sidebar-title">فهرست دروس</h2>
+                    <p class="sidebar-subtitle">۲۰ درس کامل برای یادگیری توسعه وب</p>
+                </div>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">HTML</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="lessons/html/lesson1.html" class="nav-link">
+                                <span class="nav-link-icon">📄</span>
+                                <span class="nav-link-text">مقدمات HTML</span>
+                                <span class="nav-link-badge">۱</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lessons/html/lesson2.html" class="nav-link">
+                                <span class="nav-link-icon">📝</span>
+                                <span class="nav-link-text">متن و قالب‌بندی</span>
+                                <span class="nav-link-badge">۲</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lessons/html/lesson3.html" class="nav-link">
+                                <span class="nav-link-icon">🔗</span>
+                                <span class="nav-link-text">لینک‌ها و تصاویر</span>
+                                <span class="nav-link-badge">۳</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lessons/html/lesson4.html" class="nav-link">
+                                <span class="nav-link-icon">📊</span>
+                                <span class="nav-link-text">جداول و فرم‌ها</span>
+                                <span class="nav-link-badge">۴</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lessons/html/lesson5.html" class="nav-link">
+                                <span class="nav-link-icon">🏗️</span>
+                                <span class="nav-link-text">HTML معنایی</span>
+                                <span class="nav-link-badge">۵</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">CSS</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="lessons/css/lesson6.html" class="nav-link">
+                                <span class="nav-link-icon">🎨</span>
+                                <span class="nav-link-text">مقدمات CSS</span>
+                                <span class="nav-link-badge">۶</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lessons/css/lesson7.html" class="nav-link">
+                                <span class="nav-link-icon">📦</span>
+                                <span class="nav-link-text">مدل جعبه و چیدمان</span>
+                                <span class="nav-link-badge">۷</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lessons/css/lesson8.html" class="nav-link">
+                                <span class="nav-link-icon">🔤</span>
+                                <span class="nav-link-text">تایپوگرافی و رنگ‌ها</span>
+                                <span class="nav-link-badge">۸</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lessons/css/lesson9.html" class="nav-link">
+                                <span class="nav-link-icon">📐</span>
+                                <span class="nav-link-text">Flexbox و Grid</span>
+                                <span class="nav-link-badge">۹</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lessons/css/lesson10.html" class="nav-link">
+                                <span class="nav-link-icon">📱</span>
+                                <span class="nav-link-text">طراحی واکنش‌گرا</span>
+                                <span class="nav-link-badge">۱۰</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">JavaScript</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="lessons/javascript/lesson11.html" class="nav-link">
+                                <span class="nav-link-icon">⚡</span>
+                                <span class="nav-link-text">مقدمات JavaScript</span>
+                                <span class="nav-link-badge">۱۱</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lessons/javascript/lesson12.html" class="nav-link">
+                                <span class="nav-link-icon">🔧</span>
+                                <span class="nav-link-text">توابع و محدوده</span>
+                                <span class="nav-link-badge">۱۲</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lessons/javascript/lesson13.html" class="nav-link">
+                                <span class="nav-link-icon">🔄</span>
+                                <span class="nav-link-text">ساختارهای کنترل</span>
+                                <span class="nav-link-badge">۱۳</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lessons/javascript/lesson14.html" class="nav-link">
+                                <span class="nav-link-icon">📋</span>
+                                <span class="nav-link-text">آرایه‌ها و اشیاء</span>
+                                <span class="nav-link-badge">۱۴</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lessons/javascript/lesson15.html" class="nav-link">
+                                <span class="nav-link-icon">🎯</span>
+                                <span class="nav-link-text">دستکاری DOM</span>
+                                <span class="nav-link-badge">۱۵</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lessons/javascript/lesson16.html" class="nav-link">
+                                <span class="nav-link-icon">👆</span>
+                                <span class="nav-link-text">مدیریت رویدادها</span>
+                                <span class="nav-link-badge">۱۶</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lessons/javascript/lesson17.html" class="nav-link">
+                                <span class="nav-link-icon">✅</span>
+                                <span class="nav-link-text">اعتبارسنجی فرم</span>
+                                <span class="nav-link-badge">۱۷</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lessons/javascript/lesson18.html" class="nav-link">
+                                <span class="nav-link-icon">💾</span>
+                                <span class="nav-link-text">ذخیره‌سازی محلی</span>
+                                <span class="nav-link-badge">۱۸</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lessons/javascript/lesson19.html" class="nav-link">
+                                <span class="nav-link-icon">🔄</span>
+                                <span class="nav-link-text">برنامه‌نویسی ناهمزمان</span>
+                                <span class="nav-link-badge">۱۹</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lessons/javascript/lesson20.html" class="nav-link">
+                                <span class="nav-link-icon">🚀</span>
+                                <span class="nav-link-text">پروژه نهایی</span>
+                                <span class="nav-link-badge">۲۰</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">منابع</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="reference/html-tags.html" class="nav-link">
+                                <span class="nav-link-icon">📚</span>
+                                <span class="nav-link-text">مرجع تگ‌های HTML</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="reference/css-properties.html" class="nav-link">
+                                <span class="nav-link-icon">🎨</span>
+                                <span class="nav-link-text">مرجع ویژگی‌های CSS</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="reference/js-methods.html" class="nav-link">
+                                <span class="nav-link-icon">⚡</span>
+                                <span class="nav-link-text">مرجع متدهای JavaScript</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Content -->
+            <div class="content">
+                <div class="content-header">
+                    <h1 class="content-title">به آموزش توسعه وب خوش آمدید</h1>
+                    <p class="content-subtitle">یادگیری کامل HTML، CSS و JavaScript به زبان فارسی</p>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>پیشرفت شما</span>
+                        <span id="progressText">۰ از ۲۰ درس</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">درباره این دوره</h2>
+                    </div>
+                    <p>این دوره جامع شما را با مفاهیم اساسی توسعه وب آشنا می‌کند. از HTML ساده شروع کرده و تا ساخت پروژه‌های تعاملی با JavaScript پیش می‌رویم.</p>
+                    
+                    <h3>ویژگی‌های دوره:</h3>
+                    <ul>
+                        <li>۲۰ درس ساختاریافته و کامل</li>
+                        <li>ویرایشگر کد تعاملی با نمایش زنده</li>
+                        <li>آزمون‌های خودکار در پایان هر درس</li>
+                        <li>مرجع کامل تگ‌های HTML و ویژگی‌های CSS</li>
+                        <li>پشتیبانی کامل از راست‌چین و فونت فارسی</li>
+                        <li>قابلیت استفاده آفلاین</li>
+                        <li>حالت تاریک و روشن</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">مسیر یادگیری</h2>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                        <div class="card bg-secondary">
+                            <h3 class="text-primary">مرحله اول: HTML</h3>
+                            <p>یادگیری ساختار صفحات وب با HTML. از تگ‌های ساده تا عناصر پیچیده و معنایی.</p>
+                            <ul>
+                                <li>ساختار اساسی HTML</li>
+                                <li>تگ‌های متنی و قالب‌بندی</li>
+                                <li>لینک‌ها، تصاویر و چندرسانه‌ای</li>
+                                <li>جداول و فرم‌ها</li>
+                                <li>HTML5 و تگ‌های معنایی</li>
+                            </ul>
+                        </div>
+
+                        <div class="card bg-secondary">
+                            <h3 class="text-primary">مرحله دوم: CSS</h3>
+                            <p>طراحی و زیباسازی صفحات وب با CSS. از استایل‌های ساده تا چیدمان‌های پیچیده.</p>
+                            <ul>
+                                <li>انتخابگرها و ویژگی‌های CSS</li>
+                                <li>مدل جعبه و موقعیت‌یابی</li>
+                                <li>تایپوگرافی و رنگ‌ها</li>
+                                <li>Flexbox و CSS Grid</li>
+                                <li>طراحی واکنش‌گرا</li>
+                            </ul>
+                        </div>
+
+                        <div class="card bg-secondary">
+                            <h3 class="text-primary">مرحله سوم: JavaScript</h3>
+                            <p>ایجاد تعامل و پویایی در صفحات وب با JavaScript. از مفاهیم پایه تا پروژه‌های عملی.</p>
+                            <ul>
+                                <li>متغیرها، توابع و ساختارهای کنترل</li>
+                                <li>آرایه‌ها، اشیاء و دستکاری DOM</li>
+                                <li>مدیریت رویدادها و تعامل کاربر</li>
+                                <li>اعتبارسنجی فرم و ذخیره‌سازی</li>
+                                <li>برنامه‌نویسی ناهمزمان و پروژه نهایی</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">شروع یادگیری</h2>
+                    </div>
+                    <p>برای شروع، روی درس اول کلیک کنید یا از منوی کناری درس مورد نظر خود را انتخاب کنید.</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="lessons/html/lesson1.html" class="btn btn-primary">شروع با درس اول</a>
+                        <a href="reference/html-tags.html" class="btn btn-secondary" style="margin-right: 1rem;">مشاهده مرجع HTML</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/storage.js"></script>
+</body>
+</html>
+

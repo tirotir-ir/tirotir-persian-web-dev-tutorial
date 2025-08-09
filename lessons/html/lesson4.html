@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درس ۴: جداول و فرم‌ها - آموزش توسعه وب</title>
+    <meta name="description" content="یادگیری ایجاد جداول و فرم‌ها در HTML">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/rtl.css">
+    <link rel="stylesheet" href="../../css/themes.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/editor.css">
+    
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="../../js/libs/codemirror/css/codemirror.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/monokai.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/material.min.css">
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم">
+        <span class="theme-toggle-icon">🌙</span>
+    </button>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-brand">
+                <div class="header-brand-icon">وب</div>
+                <span>آموزش توسعه وب</span>
+            </div>
+            
+            <nav class="header-nav">
+                <div class="header-search">
+                    <input type="text" placeholder="جستجو در دروس..." id="searchInput">
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="منوی موبایل">
+                    ☰
+                </button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h2 class="sidebar-title">فهرست دروس</h2>
+                    <p class="sidebar-subtitle">۲۰ درس کامل برای یادگیری توسعه وب</p>
+                </div>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">HTML</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="lesson1.html" class="nav-link">
+                                <span class="nav-link-icon">📄</span>
+                                <span class="nav-link-text">مقدمات HTML</span>
+                                <span class="nav-link-badge">۱</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson2.html" class="nav-link">
+                                <span class="nav-link-icon">📝</span>
+                                <span class="nav-link-text">متن و قالب‌بندی</span>
+                                <span class="nav-link-badge">۲</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson3.html" class="nav-link">
+                                <span class="nav-link-icon">🔗</span>
+                                <span class="nav-link-text">لینک‌ها و تصاویر</span>
+                                <span class="nav-link-badge">۳</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson4.html" class="nav-link active">
+                                <span class="nav-link-icon">📊</span>
+                                <span class="nav-link-text">جداول و فرم‌ها</span>
+                                <span class="nav-link-badge">۴</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson5.html" class="nav-link">
+                                <span class="nav-link-icon">🏗️</span>
+                                <span class="nav-link-text">HTML معنایی</span>
+                                <span class="nav-link-badge">۵</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">منابع</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="../../reference/html-tags.html" class="nav-link">
+                                <span class="nav-link-icon">📚</span>
+                                <span class="nav-link-text">مرجع تگ‌های HTML</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../../index.html" class="nav-link">
+                                <span class="nav-link-icon">🏠</span>
+                                <span class="nav-link-text">صفحه اصلی</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb">
+                    <span class="breadcrumb-item"><a href="../../index.html">صفحه اصلی</a></span>
+                    <span class="breadcrumb-item"><a href="#html">HTML</a></span>
+                    <span class="breadcrumb-item active">درس ۴: جداول و فرم‌ها</span>
+                </nav>
+
+                <div class="content-header">
+                    <h1 class="content-title">درس ۴: جداول و فرم‌ها</h1>
+                    <p class="content-subtitle">یادگیری ایجاد جداول و فرم‌ها در HTML</p>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>پیشرفت درس</span>
+                        <span>۴ از ۲۰ درس</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 20%"></div>
+                    </div>
+                </div>
+
+                <!-- Lesson Content -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">جداول در HTML</h2>
+                    </div>
+                    <p>جداول برای نمایش داده‌های ساختاریافته و مقایسه اطلاعات استفاده می‌شوند. در HTML از مجموعه‌ای از تگ‌ها برای ایجاد جداول استفاده می‌شود.</p>
+                    
+                    <h3>تگ‌های اصلی جدول:</h3>
+                    <ul>
+                        <li><code>&lt;table&gt;</code> - کانتینر اصلی جدول</li>
+                        <li><code>&lt;thead&gt;</code> - سربرگ جدول</li>
+                        <li><code>&lt;tbody&gt;</code> - بدنه جدول</li>
+                        <li><code>&lt;tfoot&gt;</code> - پاورقی جدول</li>
+                        <li><code>&lt;tr&gt;</code> - ردیف جدول</li>
+                        <li><code>&lt;th&gt;</code> - سلول سربرگ</li>
+                        <li><code>&lt;td&gt;</code> - سلول داده</li>
+                        <li><code>&lt;caption&gt;</code> - عنوان جدول</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">ویژگی‌های مهم جداول</h2>
+                    </div>
+                    <h3>ویژگی‌های کاربردی:</h3>
+                    <ul>
+                        <li><code>colspan</code> - ادغام سلول‌ها در عرض</li>
+                        <li><code>rowspan</code> - ادغام سلول‌ها در ارتفاع</li>
+                        <li><code>scope</code> - تعریف محدوده سربرگ (col, row, colgroup, rowgroup)</li>
+                        <li><code>headers</code> - ارتباط سلول با سربرگ‌ها</li>
+                    </ul>
+                    
+                    <h3>ساختار استاندارد جدول:</h3>
+                    <pre><code>&lt;table&gt;
+  &lt;caption&gt;عنوان جدول&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;ستون ۱&lt;/th&gt;
+      &lt;th&gt;ستون ۲&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;داده ۱&lt;/td&gt;
+      &lt;td&gt;داده ۲&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">فرم‌ها در HTML</h2>
+                    </div>
+                    <p>فرم‌ها برای جمع‌آوری اطلاعات از کاربران استفاده می‌شوند. HTML انواع مختلفی از عناصر فرم ارائه می‌دهد.</p>
+                    
+                    <h3>تگ‌های اصلی فرم:</h3>
+                    <ul>
+                        <li><code>&lt;form&gt;</code> - کانتینر اصلی فرم</li>
+                        <li><code>&lt;input&gt;</code> - فیلد ورودی</li>
+                        <li><code>&lt;textarea&gt;</code> - ناحیه متن چندخطی</li>
+                        <li><code>&lt;select&gt;</code> - لیست کشویی</li>
+                        <li><code>&lt;option&gt;</code> - گزینه در لیست کشویی</li>
+                        <li><code>&lt;button&gt;</code> - دکمه</li>
+                        <li><code>&lt;label&gt;</code> - برچسب فیلد</li>
+                        <li><code>&lt;fieldset&gt;</code> - گروه‌بندی فیلدها</li>
+                        <li><code>&lt;legend&gt;</code> - عنوان گروه فیلدها</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">انواع فیلدهای ورودی</h2>
+                    </div>
+                    <h3>انواع input:</h3>
+                    <ul>
+                        <li><code>text</code> - متن ساده</li>
+                        <li><code>password</code> - رمز عبور</li>
+                        <li><code>email</code> - آدرس ایمیل</li>
+                        <li><code>tel</code> - شماره تلفن</li>
+                        <li><code>url</code> - آدرس وب</li>
+                        <li><code>number</code> - عدد</li>
+                        <li><code>date</code> - تاریخ</li>
+                        <li><code>time</code> - زمان</li>
+                        <li><code>checkbox</code> - چک‌باکس</li>
+                        <li><code>radio</code> - دکمه رادیویی</li>
+                        <li><code>file</code> - انتخاب فایل</li>
+                        <li><code>submit</code> - دکمه ارسال</li>
+                        <li><code>reset</code> - دکمه بازنشانی</li>
+                    </ul>
+                </div>
+
+                <!-- Interactive Code Editor -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تمرین عملی: جداول و فرم‌ها</h2>
+                    </div>
+                    <p>در ادامه، مثالی از جدول و فرم کامل را مشاهده می‌کنید. کد را ویرایش کرده و ویژگی‌های مختلف را آزمایش کنید:</p>
+                    
+                    <div id="codeEditor"></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">ویژگی‌های مهم فرم‌ها</h2>
+                    </div>
+                    <h3>ویژگی‌های تگ form:</h3>
+                    <ul>
+                        <li><code>action</code> - آدرس ارسال داده‌ها</li>
+                        <li><code>method</code> - روش ارسال (GET, POST)</li>
+                        <li><code>enctype</code> - نوع کدگذاری داده‌ها</li>
+                        <li><code>target</code> - مقصد نمایش پاسخ</li>
+                        <li><code>autocomplete</code> - تکمیل خودکار</li>
+                        <li><code>novalidate</code> - غیرفعال کردن اعتبارسنجی</li>
+                    </ul>
+                    
+                    <h3>ویژگی‌های فیلدهای ورودی:</h3>
+                    <ul>
+                        <li><code>required</code> - فیلد اجباری</li>
+                        <li><code>placeholder</code> - متن راهنما</li>
+                        <li><code>value</code> - مقدار پیش‌فرض</li>
+                        <li><code>readonly</code> - فقط خواندنی</li>
+                        <li><code>disabled</code> - غیرفعال</li>
+                        <li><code>maxlength</code> - حداکثر طول</li>
+                        <li><code>min/max</code> - حداقل/حداکثر مقدار</li>
+                        <li><code>pattern</code> - الگوی اعتبارسنجی</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">اعتبارسنجی فرم‌ها</h2>
+                    </div>
+                    <p>HTML5 قابلیت‌های اعتبارسنجی داخلی ارائه می‌دهد که بدون نیاز به JavaScript کار می‌کند:</p>
+                    
+                    <h3>انواع اعتبارسنجی:</h3>
+                    <ul>
+                        <li><strong>required:</strong> فیلد اجباری</li>
+                        <li><strong>type:</strong> نوع داده (email, url, number)</li>
+                        <li><strong>pattern:</strong> الگوی regex</li>
+                        <li><strong>min/max:</strong> محدوده مقادیر</li>
+                        <li><strong>maxlength:</strong> حداکثر طول</li>
+                    </ul>
+                    
+                    <h3>پیام‌های خطای سفارشی:</h3>
+                    <p>می‌توانید با JavaScript پیام‌های خطای سفارشی تعریف کنید:</p>
+                    <pre><code>input.setCustomValidity("پیام خطای سفارشی");</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تمرین‌های عملی</h2>
+                    </div>
+                    <p>برای تسلط بیشتر بر مطالب این درس، تمرین‌های زیر را انجام دهید:</p>
+                    
+                    <h3>تمرین ۱: جدول نمرات</h3>
+                    <p>جدولی برای نمایش نمرات دانش‌آموزان ایجاد کنید که شامل نام، درس‌ها و میانگین باشد.</p>
+                    
+                    <h3>تمرین ۲: فرم ثبت‌نام</h3>
+                    <p>فرم کاملی برای ثبت‌نام کاربران ایجاد کنید که شامل اعتبارسنجی باشد.</p>
+                    
+                    <h3>تمرین ۳: جدول قیمت‌ها</h3>
+                    <p>جدول مقایسه قیمت محصولات با ادغام سلول‌ها ایجاد کنید.</p>
+                    
+                    <h3>تمرین ۴: فرم نظرسنجی</h3>
+                    <p>فرم نظرسنجی با انواع مختلف فیلدها (رادیو، چک‌باکس، لیست کشویی) ایجاد کنید.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">نکات مهم و بهترین شیوه‌ها</h2>
+                    </div>
+                    <h3>برای جداول:</h3>
+                    <ul>
+                        <li>از جداول فقط برای داده‌های جدولی استفاده کنید</li>
+                        <li>همیشه caption و th استفاده کنید</li>
+                        <li>از ویژگی scope برای دسترسی‌پذیری استفاده کنید</li>
+                        <li>جداول را واکنش‌گرا طراحی کنید</li>
+                        <li>از thead، tbody و tfoot استفاده کنید</li>
+                    </ul>
+                    
+                    <h3>برای فرم‌ها:</h3>
+                    <ul>
+                        <li>همیشه label برای فیلدها استفاده کنید</li>
+                        <li>از اعتبارسنجی HTML5 استفاده کنید</li>
+                        <li>پیام‌های خطای واضح ارائه دهید</li>
+                        <li>فیلدها را منطقی گروه‌بندی کنید</li>
+                        <li>از placeholder به جای label استفاده نکنید</li>
+                    </ul>
+                    
+                    <h3>اشتباهات رایج:</h3>
+                    <ul>
+                        <li>استفاده از جدول برای چیدمان صفحه</li>
+                        <li>فراموش کردن label برای فیلدها</li>
+                        <li>استفاده نادرست از colspan و rowspan</li>
+                        <li>عدم استفاده از اعتبارسنجی</li>
+                        <li>طراحی فرم‌های غیرقابل دسترس</li>
+                    </ul>
+                </div>
+
+                <!-- Navigation -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">ادامه یادگیری</h2>
+                    </div>
+                    <p>در درس بعدی با HTML معنایی و تگ‌های HTML5 آشنا خواهید شد.</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="lesson3.html" class="btn btn-secondary">درس قبلی: لینک‌ها و تصاویر</a>
+                        <a href="lesson5.html" class="btn btn-primary" style="margin-right: 1rem;">درس بعدی: HTML معنایی</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../../js/main.js"></script>
+    <script src="../../js/storage.js"></script>
+    
+    <!-- CodeMirror JavaScript -->
+    <script src="../../js/libs/codemirror/js/codemirror.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/xml.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/css.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/javascript.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/htmlmixed.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/matchbrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/closebrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/active-line.min.js"></script>
+    
+    <!-- Editor JavaScript -->
+    <script src="../../js/editor.js"></script>
+    
+    <script>
+        // Initialize the code editor when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const editor = new CodeEditor('codeEditor', {
+                initialContent: {
+                    html: `<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>جداول و فرم‌ها</title>
+</head>
+<body>
+    <h1>مثال جدول و فرم</h1>
+    
+    <!-- جدول نمرات دانش‌آموزان -->
+    <section>
+        <h2>جدول نمرات</h2>
+        <table>
+            <caption>نمرات دانش‌آموزان کلاس دهم</caption>
+            <thead>
+                <tr>
+                    <th scope="col">نام دانش‌آموز</th>
+                    <th scope="col">ریاضی</th>
+                    <th scope="col">فیزیک</th>
+                    <th scope="col">شیمی</th>
+                    <th scope="col">میانگین</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">علی احمدی</th>
+                    <td>18</td>
+                    <td>17</td>
+                    <td>19</td>
+                    <td>18</td>
+                </tr>
+                <tr>
+                    <th scope="row">فاطمه محمدی</th>
+                    <td>20</td>
+                    <td>19</td>
+                    <td>18</td>
+                    <td>19</td>
+                </tr>
+                <tr>
+                    <th scope="row">حسن رضایی</th>
+                    <td>16</td>
+                    <td>15</td>
+                    <td>17</td>
+                    <td>16</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th scope="row">میانگین کلاس</th>
+                    <td>18</td>
+                    <td>17</td>
+                    <td>18</td>
+                    <td>17.7</td>
+                </tr>
+            </tfoot>
+        </table>
+    </section>
+    
+    <!-- فرم ثبت‌نام -->
+    <section>
+        <h2>فرم ثبت‌نام</h2>
+        <form action="#" method="post">
+            <fieldset>
+                <legend>اطلاعات شخصی</legend>
+                
+                <div class="form-group">
+                    <label for="firstName">نام:</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="lastName">نام خانوادگی:</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">ایمیل:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">تلفن:</label>
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{11}">
+                </div>
+                
+                <div class="form-group">
+                    <label for="birthDate">تاریخ تولد:</label>
+                    <input type="date" id="birthDate" name="birthDate">
+                </div>
+            </fieldset>
+            
+            <fieldset>
+                <legend>اطلاعات تکمیلی</legend>
+                
+                <div class="form-group">
+                    <label>جنسیت:</label>
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">مرد</label>
+                    
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">زن</label>
+                </div>
+                
+                <div class="form-group">
+                    <label for="city">شهر:</label>
+                    <select id="city" name="city" required>
+                        <option value="">انتخاب کنید</option>
+                        <option value="tehran">تهران</option>
+                        <option value="isfahan">اصفهان</option>
+                        <option value="shiraz">شیراز</option>
+                        <option value="mashhad">مشهد</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>علایق:</label>
+                    <input type="checkbox" id="sports" name="interests" value="sports">
+                    <label for="sports">ورزش</label>
+                    
+                    <input type="checkbox" id="music" name="interests" value="music">
+                    <label for="music">موسیقی</label>
+                    
+                    <input type="checkbox" id="reading" name="interests" value="reading">
+                    <label for="reading">مطالعه</label>
+                </div>
+                
+                <div class="form-group">
+                    <label for="bio">درباره خود:</label>
+                    <textarea id="bio" name="bio" rows="4" cols="50" 
+                              placeholder="چند خط درباره خودتان بنویسید..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="avatar">تصویر پروفایل:</label>
+                    <input type="file" id="avatar" name="avatar" accept="image/*">
+                </div>
+                
+                <div class="form-group">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">قوانین و مقررات را می‌پذیرم</label>
+                </div>
+            </fieldset>
+            
+            <div class="form-actions">
+                <button type="submit">ثبت‌نام</button>
+                <button type="reset">پاک کردن</button>
+            </div>
+        </form>
+    </section>
+</body>
+</html>`,
+                    css: `body {
+    font-family: 'Tahoma', Arial, sans-serif;
+    direction: rtl;
+    text-align: right;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+h1, h2 {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+}
+
+section {
+    margin: 30px 0;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* استایل جدول */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+caption {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+tbody tr:hover {
+    background-color: #e3f2fd;
+}
+
+tfoot th, tfoot td {
+    background-color: #34495e;
+    color: white;
+    font-weight: bold;
+}
+
+/* استایل فرم */
+form {
+    max-width: 600px;
+}
+
+fieldset {
+    margin: 20px 0;
+    padding: 20px;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+}
+
+legend {
+    padding: 0 10px;
+    font-weight: bold;
+    color: #2c3e50;
+    background-color: white;
+}
+
+.form-group {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select,
+textarea {
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-left: 8px;
+    margin-right: 5px;
+}
+
+/* استایل دکمه‌های رادیو و چک‌باکس */
+.form-group:has(input[type="radio"]),
+.form-group:has(input[type="checkbox"]) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+}
+
+.form-group:has(input[type="radio"]) label:first-child,
+.form-group:has(input[type="checkbox"]) label:first-child {
+    margin-left: 20px;
+    min-width: 80px;
+}
+
+/* استایل دکمه‌ها */
+.form-actions {
+    margin-top: 30px;
+    text-align: center;
+}
+
+button {
+    padding: 12px 24px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"] {
+    background-color: #27ae60;
+    color: white;
+}
+
+button[type="submit"]:hover {
+    background-color: #229954;
+}
+
+button[type="reset"] {
+    background-color: #e74c3c;
+    color: white;
+}
+
+button[type="reset"]:hover {
+    background-color: #c0392b;
+}
+
+/* اعتبارسنجی */
+input:invalid {
+    border-color: #e74c3c;
+}
+
+input:valid {
+    border-color: #27ae60;
+}
+
+/* طراحی واکنش‌گرا */
+@media (max-width: 768px) {
+    table {
+        font-size: 12px;
+    }
+    
+    th, td {
+        padding: 8px 4px;
+    }
+    
+    .form-group {
+        margin: 10px 0;
+    }
+    
+    button {
+        width: 100%;
+        margin: 5px 0;
+    }
+}`,
+                    js: `// اضافه کردن تعامل به فرم و جدول
+document.addEventListener('DOMContentLoaded', function() {
+    // اعتبارسنجی فرم
+    const form = document.querySelector('form');
+    const inputs = form.querySelectorAll('input, select, textarea');
+    
+    // اضافه کردن event listener برای اعتبارسنجی
+    inputs.forEach(input => {
+        input.addEventListener('blur', function() {
+            validateField(this);
+        });
+        
+        input.addEventListener('input', function() {
+            if (this.classList.contains('error')) {
+                validateField(this);
+            }
+        });
+    });
+    
+    // تابع اعتبارسنجی فیلد
+    function validateField(field) {
+        const value = field.value.trim();
+        let isValid = true;
+        let message = '';
+        
+        // بررسی فیلدهای اجباری
+        if (field.hasAttribute('required') && !value) {
+            isValid = false;
+            message = 'این فیلد اجباری است';
+        }
+        
+        // بررسی ایمیل
+        if (field.type === 'email' && value) {
+            const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+            if (!emailRegex.test(value)) {
+                isValid = false;
+                message = 'فرمت ایمیل صحیح نیست';
+            }
+        }
+        
+        // بررسی تلفن
+        if (field.type === 'tel' && value) {
+            const phoneRegex = /^[0-9]{11}$/;
+            if (!phoneRegex.test(value)) {
+                isValid = false;
+                message = 'شماره تلفن باید ۱۱ رقم باشد';
+            }
+        }
+        
+        // نمایش پیام خطا
+        showFieldMessage(field, isValid, message);
+    }
+    
+    // نمایش پیام خطا یا موفقیت
+    function showFieldMessage(field, isValid, message) {
+        // حذف پیام قبلی
+        const existingMessage = field.parentNode.querySelector('.field-message');
+        if (existingMessage) {
+            existingMessage.remove();
+        }
+        
+        // اضافه کردن کلاس
+        field.classList.remove('error', 'success');
+        field.classList.add(isValid ? 'success' : 'error');
+        
+        // اضافه کردن پیام
+        if (!isValid && message) {
+            const messageElement = document.createElement('span');
+            messageElement.className = 'field-message error-message';
+            messageElement.textContent = message;
+            messageElement.style.color = '#e74c3c';
+            messageElement.style.fontSize = '12px';
+            messageElement.style.marginTop = '5px';
+            field.parentNode.appendChild(messageElement);
+        }
+    }
+    
+    // مدیریت ارسال فرم
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // اعتبارسنجی همه فیلدها
+        let isFormValid = true;
+        inputs.forEach(input => {
+            validateField(input);
+            if (input.classList.contains('error')) {
+                isFormValid = false;
+            }
+        });
+        
+        if (isFormValid) {
+            alert('فرم با موفقیت ارسال شد!');
+            console.log('داده‌های فرم:', new FormData(form));
+        } else {
+            alert('لطفاً خطاهای فرم را برطرف کنید');
+        }
+    });
+    
+    // افکت hover برای ردیف‌های جدول
+    const tableRows = document.querySelectorAll('tbody tr');
+    tableRows.forEach(row => {
+        row.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.02)';
+            this.style.transition = 'transform 0.2s';
+        });
+        
+        row.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
+    
+    // شمارش فیلدهای پر شده
+    function updateProgress() {
+        const totalFields = inputs.length;
+        const filledFields = Array.from(inputs).filter(input => {
+            if (input.type === 'checkbox' || input.type === 'radio') {
+                return input.checked;
+            }
+            return input.value.trim() !== '';
+        }).length;
+        
+        const progress = Math.round((filledFields / totalFields) * 100);
+        console.log('پیشرفت تکمیل فرم: ' + progress + '%');
+    }
+    
+    // بروزرسانی پیشرفت هنگام تغییر فیلدها
+    inputs.forEach(input => {
+        input.addEventListener('change', updateProgress);
+        input.addEventListener('input', updateProgress);
+    });
+    
+    // محاسبه میانگین در جدول
+    function calculateAverage() {
+        const rows = document.querySelectorAll('tbody tr');
+        let totalSum = 0;
+        let count = 0;
+        
+        rows.forEach(row => {
+            const avgCell = row.cells[4]; // ستون میانگین
+            if (avgCell) {
+                totalSum += parseFloat(avgCell.textContent);
+                count++;
+            }
+        });
+        
+        const classAverage = (totalSum / count).toFixed(1);
+        console.log('میانگین کلاس محاسبه شده: ' + classAverage);
+    }
+    
+    calculateAverage();
+});`
+                }
+            });
+            
+            // Mark lesson as completed when user interacts with editor
+            let hasInteracted = false;
+            setTimeout(() => {
+                if (editor.isInitialized) {
+                    Object.keys(editor.editors).forEach(key => {
+                        editor.editors[key].on('change', () => {
+                            if (!hasInteracted) {
+                                hasInteracted = true;
+                                if (window.PersianWebTutorial) {
+                                    window.PersianWebTutorial.markLessonCompleted('lesson4');
+                                }
+                            }
+                        });
+                    });
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
+

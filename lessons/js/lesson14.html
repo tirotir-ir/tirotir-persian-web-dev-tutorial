@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درس ۱۴: حلقه‌ها و تکرار - آموزش توسعه وب</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/rtl.css">
+    <link rel="stylesheet" href="../../css/themes.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/editor.css">
+    <link rel="stylesheet" href="../../css/quiz.css">
+    
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="../../js/libs/codemirror/css/codemirror.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/monokai.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/material.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-right">
+                    <h1 class="site-title">آموزش توسعه وب</h1>
+                    <div class="breadcrumb">
+                        <a href="../../index.html">صفحه اصلی</a>
+                        <span>/</span>
+                        <a href="#">JavaScript</a>
+                        <span>/</span>
+                        <span>درس ۱۴</span>
+                    </div>
+                </div>
+                <div class="header-left">
+                    <button class="theme-toggle" id="themeToggle">🌙</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h3>فهرست دروس</h3>
+                    <div class="search-box">
+                        <input type="text" placeholder="جستجو در دروس..." id="lessonSearch">
+                    </div>
+                </div>
+                
+                <nav class="lesson-nav">
+                    <div class="lesson-category">
+                        <h4>HTML</h4>
+                        <ul>
+                            <li><a href="../html/lesson1.html">📄 مقدمات HTML ۱</a></li>
+                            <li><a href="../html/lesson2.html">📝 متن و قالب‌بندی ۲</a></li>
+                            <li><a href="../html/lesson3.html">🔗 لینک‌ها و تصاویر ۳</a></li>
+                            <li><a href="../html/lesson4.html">📊 جداول و فرم‌ها ۴</a></li>
+                            <li><a href="../html/lesson5.html">🏗️ HTML معنایی ۵</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lesson-category">
+                        <h4>CSS</h4>
+                        <ul>
+                            <li><a href="../css/lesson6.html">🎨 مقدمات CSS ۶</a></li>
+                            <li><a href="../css/lesson7.html">📦 مدل جعبه و چیدمان ۷</a></li>
+                            <li><a href="../css/lesson8.html">🔤 تایپوگرافی و رنگ‌ها ۸</a></li>
+                            <li><a href="../css/lesson9.html">🌈 رنگ‌ها و پس‌زمینه ۹</a></li>
+                            <li><a href="../css/lesson10.html">📐 Flexbox و Grid ۱۰</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lesson-category">
+                        <h4>JavaScript</h4>
+                        <ul>
+                            <li><a href="lesson11.html">⚡ مقدمات JavaScript ۱۱</a></li>
+                            <li><a href="lesson12.html">🔧 متغیرها و انواع داده ۱۲</a></li>
+                            <li><a href="lesson13.html">🔀 عملگرها و شرط‌ها ۱۳</a></li>
+                            <li><a href="lesson14.html" class="active">🔄 حلقه‌ها و تکرار ۱۴</a></li>
+                            <li><a href="lesson15.html">⚙️ توابع ۱۵</a></li>
+                            <li><a href="lesson16.html">🎯 دستکاری DOM ۱۶</a></li>
+                            <li><a href="lesson17.html">🖱️ رویدادها و تعامل ۱۷</a></li>
+                            <li><a href="lesson18.html">📦 آرایه‌ها و اشیاء ۱۸</a></li>
+                            <li><a href="lesson19.html">🚀 مفاهیم پیشرفته ۱۹</a></li>
+                            <li><a href="lesson20.html">🎨 پروژه نهایی ۲۰</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                
+                <div class="sidebar-footer">
+                    <a href="../../reference/html-tags.html">📚 مرجع تگ‌های HTML</a>
+                    <a href="../../index.html">🏠 صفحه اصلی</a>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="content">
+                <article class="lesson">
+                    <header class="lesson-header">
+                        <h1>درس ۱۴: حلقه‌ها و تکرار</h1>
+                        <p class="lesson-subtitle">یادگیری حلقه‌های JavaScript برای تکرار عملیات</p>
+                        <div class="lesson-meta">
+                            <span class="lesson-number">درس ۱۴ از ۲۰</span>
+                            <div class="lesson-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 70%"></div>
+                                </div>
+                                <span class="progress-text">پیشرفت درس</span>
+                            </div>
+                        </div>
+                    </header>
+
+                    <div class="lesson-content">
+                        <section class="content-section">
+                            <h2>حلقه‌ها چیستند؟</h2>
+                            <p>حلقه‌ها (Loops) ابزارهای قدرتمندی در JavaScript هستند که به شما امکان تکرار یک بلوک کد را چندین بار می‌دهند. به جای نوشتن کد تکراری، می‌توانید از حلقه‌ها استفاده کنید تا کد خود را کوتاه‌تر و کارآمدتر کنید.</p>
+                            
+                            <div class="info-box">
+                                <h3>کاربردهای حلقه‌ها:</h3>
+                                <ul>
+                                    <li>پردازش آرایه‌ها و لیست‌ها</li>
+                                    <li>تولید محتوای تکراری</li>
+                                    <li>محاسبات ریاضی پیچیده</li>
+                                    <li>جستجو در داده‌ها</li>
+                                    <li>اعتبارسنجی ورودی‌ها</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>حلقه for</h2>
+                            <p>حلقه <code>for</code> رایج‌ترین نوع حلقه در JavaScript است. این حلقه زمانی استفاده می‌شود که تعداد تکرارها از قبل مشخص باشد.</p>
+                            
+                            <h3>ساختار حلقه for:</h3>
+                            <div class="code-example">
+                                <pre><code>for (مقداردهی اولیه; شرط; به‌روزرسانی) {
+    // کد قابل تکرار
+}</code></pre>
+                            </div>
+
+                            <h3>مثال عملی:</h3>
+                        </section>
+
+                        <!-- Interactive Code Editor -->
+                        <section class="editor-section">
+                            <h2>تمرین عملی: حلقه‌های مختلف</h2>
+                            <p>در ادامه، انواع مختلف حلقه‌ها را مشاهده و تست کنید:</p>
+                            
+                            <div class="editor-container">
+                                <div class="editor-tabs">
+                                    <button class="tab-button active" data-tab="html">📄 HTML</button>
+                                    <button class="tab-button" data-tab="css">🎨 CSS</button>
+                                    <button class="tab-button" data-tab="js">⚡ JavaScript</button>
+                                </div>
+                                
+                                <div class="editor-controls">
+                                    <button class="btn btn-primary" id="runCode">▶️ اجرا</button>
+                                    <button class="btn btn-secondary" id="resetCode">🔄 بازنشانی</button>
+                                    <button class="btn btn-secondary" id="fullscreen">⛶ تمام صفحه</button>
+                                </div>
+
+                                <div class="editor-wrapper">
+                                    <div class="editor-panel">
+                                        <div class="editor-header">
+                                            <span>ویرایشگر کد</span>
+                                            <span class="editor-info">خط <span id="lineNumber">1</span>، ستون <span id="columnNumber">1</span></span>
+                                        </div>
+                                        
+                                        <div class="tab-content active" id="html-tab">
+                                            <textarea id="htmlEditor"><!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حلقه‌های JavaScript</title>
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            direction: rtl;
+            text-align: right;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        .demo-section {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-right: 4px solid #4CAF50;
+        }
+        .output {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: monospace;
+            direction: ltr;
+            text-align: left;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .counter {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FFD700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔄 حلقه‌های JavaScript</h1>
+        
+        <div class="demo-section">
+            <h2>حلقه for ساده</h2>
+            <button onclick="simpleForLoop()">اجرای حلقه for</button>
+            <div id="forOutput" class="output"></div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>حلقه while</h2>
+            <button onclick="whileLoopDemo()">اجرای حلقه while</button>
+            <div id="whileOutput" class="output"></div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>حلقه do-while</h2>
+            <button onclick="doWhileDemo()">اجرای حلقه do-while</button>
+            <div id="doWhileOutput" class="output"></div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>شمارنده تعاملی</h2>
+            <div class="counter" id="counter">0</div>
+            <button onclick="startCounter()">شروع شمارش</button>
+            <button onclick="stopCounter()">توقف</button>
+            <button onclick="resetCounter()">بازنشانی</button>
+        </div>
+        
+        <div class="demo-section">
+            <h2>حلقه for...of برای آرایه</h2>
+            <button onclick="forOfDemo()">پردازش آرایه</button>
+            <div id="forOfOutput" class="output"></div>
+        </div>
+    </div>
+</body>
+</html></textarea>
+                                        </div>
+                                        
+                                        <div class="tab-content" id="css-tab">
+                                            <textarea id="cssEditor">/* استایل‌های اضافی برای حلقه‌ها */
+.loop-animation {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.highlight {
+    background: rgba(255, 255, 0, 0.3);
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.step-by-step {
+    border-left: 3px solid #2196F3;
+    padding-left: 15px;
+    margin: 10px 0;
+}
+
+.iteration {
+    background: rgba(33, 150, 243, 0.2);
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.iteration:hover {
+    background: rgba(33, 150, 243, 0.4);
+    transform: translateX(-5px);
+}</textarea>
+                                        </div>
+                                        
+                                        <div class="tab-content" id="js-tab">
+                                            <textarea id="jsEditor">// متغیر برای کنترل شمارنده
+let counterInterval;
+let currentCount = 0;
+
+// حلقه for ساده
+function simpleForLoop() {
+    const output = document.getElementById('forOutput');
+    let result = '';
+    
+    for (let i = 1; i <= 5; i++) {
+        result += `تکرار ${i}: مربع ${i} = ${i * i}\n`;
+    }
+    
+    output.textContent = result;
+}
+
+// حلقه while
+function whileLoopDemo() {
+    const output = document.getElementById('whileOutput');
+    let result = '';
+    let num = 1;
+    
+    while (num <= 10) {
+        if (num % 2 === 0) {
+            result += `${num} عدد زوج است\n`;
+        }
+        num++;
+    }
+    
+    output.textContent = result;
+}
+
+// حلقه do-while
+function doWhileDemo() {
+    const output = document.getElementById('doWhileOutput');
+    let result = '';
+    let password;
+    let attempts = 0;
+    
+    do {
+        attempts++;
+        password = prompt(`تلاش ${attempts}: رمز عبور را وارد کنید (123):`);
+        
+        if (password === null) {
+            result = 'کاربر عملیات را لغو کرد';
+            break;
+        }
+        
+        if (password !== '123') {
+            result += `تلاش ${attempts}: رمز اشتباه\n`;
+        }
+        
+    } while (password !== '123' && attempts < 3);
+    
+    if (password === '123') {
+        result += `موفق! رمز در تلاش ${attempts} درست بود`;
+    } else if (attempts >= 3) {
+        result += 'حداکثر تلاش انجام شد';
+    }
+    
+    output.textContent = result;
+}
+
+// شمارنده تعاملی
+function startCounter() {
+    if (counterInterval) return; // جلوگیری از شروع مجدد
+    
+    counterInterval = setInterval(() => {
+        currentCount++;
+        document.getElementById('counter').textContent = currentCount;
+        
+        // تغییر رنگ بر اساس عدد
+        const counter = document.getElementById('counter');
+        if (currentCount % 10 === 0) {
+            counter.style.color = '#FF6B6B';
+        } else if (currentCount % 5 === 0) {
+            counter.style.color = '#4ECDC4';
+        } else {
+            counter.style.color = '#FFD700';
+        }
+    }, 100);
+}
+
+function stopCounter() {
+    if (counterInterval) {
+        clearInterval(counterInterval);
+        counterInterval = null;
+    }
+}
+
+function resetCounter() {
+    stopCounter();
+    currentCount = 0;
+    document.getElementById('counter').textContent = '0';
+    document.getElementById('counter').style.color = '#FFD700';
+}
+
+// حلقه for...of برای آرایه
+function forOfDemo() {
+    const output = document.getElementById('forOfOutput');
+    const fruits = ['سیب', 'موز', 'پرتقال', 'انگور', 'هلو'];
+    let result = 'فهرست میوه‌ها:\n';
+    
+    for (const fruit of fruits) {
+        result += `🍎 ${fruit}\n`;
+    }
+    
+    result += '\nپردازش با ایندکس:\n';
+    
+    for (let i = 0; i < fruits.length; i++) {
+        result += `${i + 1}. ${fruits[i]}\n`;
+    }
+    
+    output.textContent = result;
+}
+
+// اجرای خودکار هنگام بارگذاری
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('صفحه حلقه‌های JavaScript آماده است!');
+});</textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="preview-panel">
+                                        <div class="preview-header">
+                                            <span>نمایش زنده</span>
+                                            <div class="preview-controls">
+                                                <button class="btn btn-sm" id="refreshPreview">🔄</button>
+                                                <button class="btn btn-sm" id="openInNewTab">🔗</button>
+                                            </div>
+                                        </div>
+                                        <iframe id="preview" src="about:blank"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>انواع حلقه‌ها در JavaScript</h2>
+                            
+                            <h3>۱. حلقه for</h3>
+                            <p>برای تکرار با تعداد مشخص استفاده می‌شود:</p>
+                            <div class="code-example">
+                                <pre><code>for (let i = 0; i < 5; i++) {
+    console.log("تکرار شماره: " + i);
+}</code></pre>
+                            </div>
+
+                            <h3>۲. حلقه while</h3>
+                            <p>تا زمانی که شرط برقرار باشد، تکرار می‌شود:</p>
+                            <div class="code-example">
+                                <pre><code>let i = 0;
+while (i < 5) {
+    console.log("شمارش: " + i);
+    i++;
+}</code></pre>
+                            </div>
+
+                            <h3>۳. حلقه do-while</h3>
+                            <p>حداقل یک بار اجرا می‌شود، سپس شرط بررسی می‌شود:</p>
+                            <div class="code-example">
+                                <pre><code>let i = 0;
+do {
+    console.log("اجرا شد: " + i);
+    i++;
+} while (i < 3);</code></pre>
+                            </div>
+
+                            <h3>۴. حلقه for...of</h3>
+                            <p>برای پیمایش آرایه‌ها و آبجکت‌های قابل تکرار:</p>
+                            <div class="code-example">
+                                <pre><code>const fruits = ['سیب', 'موز', 'پرتقال'];
+for (const fruit of fruits) {
+    console.log(fruit);
+}</code></pre>
+                            </div>
+
+                            <h3>۵. حلقه for...in</h3>
+                            <p>برای پیمایش ویژگی‌های آبجکت‌ها:</p>
+                            <div class="code-example">
+                                <pre><code>const person = {name: 'علی', age: 25, city: 'تهران'};
+for (const key in person) {
+    console.log(key + ': ' + person[key]);
+}</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>کنترل جریان حلقه</h2>
+                            
+                            <h3>دستور break</h3>
+                            <p>برای خروج زودهنگام از حلقه:</p>
+                            <div class="code-example">
+                                <pre><code>for (let i = 0; i < 10; i++) {
+    if (i === 5) {
+        break; // خروج از حلقه
+    }
+    console.log(i);
+}</code></pre>
+                            </div>
+
+                            <h3>دستور continue</h3>
+                            <p>برای رد کردن تکرار فعلی و ادامه به تکرار بعدی:</p>
+                            <div class="code-example">
+                                <pre><code>for (let i = 0; i < 10; i++) {
+    if (i % 2 === 0) {
+        continue; // رد کردن اعداد زوج
+    }
+    console.log(i); // فقط اعداد فرد چاپ می‌شوند
+}</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>مثال‌های کاربردی</h2>
+                            
+                            <h3>محاسبه فاکتوریل</h3>
+                            <div class="code-example">
+                                <pre><code>function factorial(n) {
+    let result = 1;
+    for (let i = 1; i <= n; i++) {
+                        result *= i;
+    }
+    return result;
+}
+
+console.log(factorial(5)); // 120</code></pre>
+                            </div>
+
+                            <h3>جستجو در آرایه</h3>
+                            <div class="code-example">
+                                <pre><code>function findInArray(array, target) {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === target) {
+            return i; // ایندکس عنصر پیدا شده
+        }
+    }
+    return -1; // عنصر پیدا نشد
+}
+
+const numbers = [10, 20, 30, 40, 50];
+console.log(findInArray(numbers, 30)); // 2</code></pre>
+                            </div>
+
+                            <h3>تولید جدول ضرب</h3>
+                            <div class="code-example">
+                                <pre><code>function multiplicationTable(n) {
+    for (let i = 1; i <= 10; i++) {
+        console.log(`${n} × ${i} = ${n * i}`);
+    }
+}
+
+multiplicationTable(7);</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>نکات مهم و بهترین شیوه‌ها</h2>
+                            
+                            <div class="warning-box">
+                                <h3>⚠️ خطر حلقه بی‌نهایت</h3>
+                                <p>همیشه مطمئن شوید که شرط حلقه در نهایت false می‌شود:</p>
+                                <div class="code-example">
+                                    <pre><code>// اشتباه - حلقه بی‌نهایت
+let i = 0;
+while (i < 10) {
+    console.log(i);
+    // i++ فراموش شده!
+}
+
+// درست
+let i = 0;
+while (i < 10) {
+    console.log(i);
+    i++; // به‌روزرسانی متغیر
+}</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="tip-box">
+                                <h3>💡 نکات بهینه‌سازی</h3>
+                                <ul>
+                                    <li>از حلقه مناسب برای هر موقعیت استفاده کنید</li>
+                                    <li>متغیرهای حلقه را در کمترین محدوده تعریف کنید</li>
+                                    <li>از break و continue برای کنترل بهتر استفاده کنید</li>
+                                    <li>برای آرایه‌ها از for...of استفاده کنید</li>
+                                    <li>برای آبجکت‌ها از for...in استفاده کنید</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <!-- Quiz Section -->
+                        <section class="quiz-section">
+                            <h2>آزمون درس ۱۴</h2>
+                            <div class="quiz-container" id="lesson14Quiz">
+                                <div class="quiz-question active" data-question="1">
+                                    <h3>سوال ۱: کدام حلقه حداقل یک بار اجرا می‌شود؟</h3>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q1" value="a"> for</label>
+                                        <label><input type="radio" name="q1" value="b"> while</label>
+                                        <label><input type="radio" name="q1" value="c"> do-while</label>
+                                        <label><input type="radio" name="q1" value="d"> for...of</label>
+                                    </div>
+                                </div>
+
+                                <div class="quiz-question" data-question="2">
+                                    <h3>سوال ۲: کدام دستور برای خروج از حلقه استفاده می‌شود؟</h3>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q2" value="a"> continue</label>
+                                        <label><input type="radio" name="q2" value="b"> break</label>
+                                        <label><input type="radio" name="q2" value="c"> return</label>
+                                        <label><input type="radio" name="q2" value="d"> exit</label>
+                                    </div>
+                                </div>
+
+                                <div class="quiz-question" data-question="3">
+                                    <h3>سوال ۳: خروجی این کد چیست؟</h3>
+                                    <div class="code-example">
+                                        <pre><code>for (let i = 0; i < 3; i++) {
+    if (i === 1) continue;
+    console.log(i);
+}</code></pre>
+                                    </div>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q3" value="a"> 0, 1, 2</label>
+                                        <label><input type="radio" name="q3" value="b"> 0, 2</label>
+                                        <label><input type="radio" name="q3" value="c"> 1, 2</label>
+                                        <label><input type="radio" name="q3" value="d"> 0, 1</label>
+                                    </div>
+                                </div>
+
+                                <div class="quiz-navigation">
+                                    <button class="btn btn-secondary" id="prevQuestion">سوال قبلی</button>
+                                    <button class="btn btn-secondary" id="nextQuestion">سوال بعدی</button>
+                                    <button class="btn btn-primary" id="submitQuiz">ارسال پاسخ‌ها</button>
+                                </div>
+
+                                <div class="quiz-result" id="quizResult"></div>
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <nav class="lesson-navigation">
+                            <a href="lesson13.html" class="nav-button prev">
+                                <span>← درس قبلی</span>
+                                <small>عملگرها و شرط‌ها</small>
+                            </a>
+                            <a href="lesson15.html" class="nav-button next">
+                                <span>درس بعدی →</span>
+                                <small>توابع</small>
+                            </a>
+                        </nav>
+                    </div>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="../../js/libs/codemirror/js/codemirror.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/xml.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/css.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/javascript.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/htmlmixed.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/matchbrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/closebrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/active-line.min.js"></script>
+    
+    <script src="../../js/main.js"></script>
+    <script src="../../js/storage.js"></script>
+    <script src="../../js/editor.js"></script>
+    <script src="../../js/quiz.js"></script>
+
+    <script>
+        // Initialize lesson
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeLesson('lesson14');
+            
+            // Quiz answers
+            const quizAnswers = {
+                q1: 'c', // do-while
+                q2: 'b', // break
+                q3: 'b'  // 0, 2
+            };
+            
+            initializeQuiz('lesson14Quiz', quizAnswers);
+        });
+    </script>
+</body>
+</html>
+

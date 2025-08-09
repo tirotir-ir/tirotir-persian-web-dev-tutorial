@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درس ۱۲: متغیرها و انواع داده - آموزش توسعه وب</title>
+    <meta name="description" content="یادگیری متغیرها و انواع داده در JavaScript">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/rtl.css">
+    <link rel="stylesheet" href="../../css/themes.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/editor.css">
+    
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="../../js/libs/codemirror/css/codemirror.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/monokai.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/material.min.css">
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم">
+        <span class="theme-toggle-icon">🌙</span>
+    </button>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-brand">
+                <div class="header-brand-icon">وب</div>
+                <span>آموزش توسعه وب</span>
+            </div>
+            
+            <nav class="header-nav">
+                <div class="header-search">
+                    <input type="text" placeholder="جستجو در دروس..." id="searchInput">
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="منوی موبایل">
+                    ☰
+                </button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h2 class="sidebar-title">فهرست دروس</h2>
+                    <p class="sidebar-subtitle">۲۰ درس کامل برای یادگیری توسعه وب</p>
+                </div>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">JavaScript</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="lesson11.html" class="nav-link">
+                                <span class="nav-link-icon">⚡</span>
+                                <span class="nav-link-text">مقدمات JavaScript</span>
+                                <span class="nav-link-badge">۱۱</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson12.html" class="nav-link active">
+                                <span class="nav-link-icon">📊</span>
+                                <span class="nav-link-text">متغیرها و انواع داده</span>
+                                <span class="nav-link-badge">۱۲</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson13.html" class="nav-link">
+                                <span class="nav-link-icon">🔧</span>
+                                <span class="nav-link-text">عملگرها و شرط‌ها</span>
+                                <span class="nav-link-badge">۱۳</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson14.html" class="nav-link">
+                                <span class="nav-link-icon">🔄</span>
+                                <span class="nav-link-text">حلقه‌ها و تکرار</span>
+                                <span class="nav-link-badge">۱۴</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson15.html" class="nav-link">
+                                <span class="nav-link-icon">🎯</span>
+                                <span class="nav-link-text">توابع</span>
+                                <span class="nav-link-badge">۱۵</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">منابع</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="../../reference/html-tags.html" class="nav-link">
+                                <span class="nav-link-icon">📚</span>
+                                <span class="nav-link-text">مرجع تگ‌های HTML</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../../index.html" class="nav-link">
+                                <span class="nav-link-icon">🏠</span>
+                                <span class="nav-link-text">صفحه اصلی</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb">
+                    <span class="breadcrumb-item"><a href="../../index.html">صفحه اصلی</a></span>
+                    <span class="breadcrumb-item"><a href="#javascript">JavaScript</a></span>
+                    <span class="breadcrumb-item active">درس ۱۲: متغیرها و انواع داده</span>
+                </nav>
+
+                <div class="content-header">
+                    <h1 class="content-title">درس ۱۲: متغیرها و انواع داده</h1>
+                    <p class="content-subtitle">یادگیری متغیرها و انواع داده در JavaScript</p>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>پیشرفت درس</span>
+                        <span>۱۲ از ۲۰ درس</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 60%"></div>
+                    </div>
+                </div>
+
+                <!-- Lesson Content -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">متغیرها چیستند؟</h2>
+                    </div>
+                    <p>متغیرها در JavaScript مانند ظرف‌هایی هستند که می‌توانند انواع مختلف داده را در خود نگهداری کنند. آن‌ها به ما امکان ذخیره، دسترسی و تغییر اطلاعات را می‌دهند.</p>
+                    
+                    <h3>تشبیه ساده:</h3>
+                    <p>متغیر مانند یک جعبه است که:</p>
+                    <ul>
+                        <li><strong>نام دارد:</strong> برای شناسایی آن</li>
+                        <li><strong>محتوا دارد:</strong> داده‌ای که در آن ذخیره شده</li>
+                        <li><strong>قابل تغییر است:</strong> می‌توان محتوای آن را عوض کرد</li>
+                        <li><strong>نوع دارد:</strong> نوع داده‌ای که نگهداری می‌کند</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تعریف متغیر در JavaScript</h2>
+                    </div>
+                    <p>در JavaScript سه روش برای تعریف متغیر وجود دارد:</p>
+                    
+                    <h3>۱. var (روش قدیمی):</h3>
+                    <pre><code>var name = 'علی';
+var age = 25;</code></pre>
+                    
+                    <h3>۲. let (روش مدرن):</h3>
+                    <pre><code>let name = 'علی';
+let age = 25;</code></pre>
+                    
+                    <h3>۳. const (ثابت):</h3>
+                    <pre><code>const PI = 3.14159;
+const siteName = 'وب‌سایت من';</code></pre>
+                    
+                    <h3>تفاوت‌های مهم:</h3>
+                    <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                        <thead>
+                            <tr style="background-color: #f8f9fa;">
+                                <th style="border: 1px solid #dee2e6; padding: 8px;">ویژگی</th>
+                                <th style="border: 1px solid #dee2e6; padding: 8px;">var</th>
+                                <th style="border: 1px solid #dee2e6; padding: 8px;">let</th>
+                                <th style="border: 1px solid #dee2e6; padding: 8px;">const</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">قابل تغییر</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">✅</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">✅</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">❌</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">محدوده بلوک</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">❌</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">✅</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">✅</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">تعریف مجدد</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">✅</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">❌</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">❌</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">مقداردهی اولیه</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">اختیاری</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">اختیاری</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">اجباری</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">قوانین نام‌گذاری متغیرها</h2>
+                    </div>
+                    <p>برای نام‌گذاری متغیرها در JavaScript قوانین خاصی وجود دارد:</p>
+                    
+                    <h3>قوانین اجباری:</h3>
+                    <ul>
+                        <li>باید با حرف، _ یا $ شروع شود</li>
+                        <li>نمی‌تواند با عدد شروع شود</li>
+                        <li>فقط حروف، اعداد، _ و $ مجاز است</li>
+                        <li>نمی‌تواند کلمه کلیدی باشد</li>
+                        <li>حساس به حروف کوچک و بزرگ است</li>
+                    </ul>
+                    
+                    <h3>مثال‌های صحیح:</h3>
+                    <pre><code>let userName = 'علی';
+let user_name = 'علی';
+let $price = 1000;
+let _id = 123;
+let firstName = 'محمد';
+let age25 = 25;</code></pre>
+                    
+                    <h3>مثال‌های نادرست:</h3>
+                    <pre><code>let 2name = 'علی';      // شروع با عدد
+let user-name = 'علی';  // استفاده از -
+let class = 'A';        // کلمه کلیدی
+let user name = 'علی';  // فاصله</code></pre>
+                    
+                    <h3>بهترین شیوه‌ها:</h3>
+                    <ul>
+                        <li><strong>camelCase:</strong> firstName, lastName</li>
+                        <li><strong>نام‌های معنادار:</strong> age به جای a</li>
+                        <li><strong>ثابت‌ها با حروف بزرگ:</strong> MAX_SIZE</li>
+                        <li><strong>متغیرهای بولی:</strong> isActive, hasPermission</li>
+                    </ul>
+                </div>
+
+                <!-- Interactive Code Editor -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تمرین عملی: متغیرها و انواع داده</h2>
+                    </div>
+                    <p>در ادامه، با انواع مختلف متغیرها و داده‌ها آزمایش کنید:</p>
+                    
+                    <div id="codeEditor"></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">انواع داده در JavaScript</h2>
+                    </div>
+                    <p>JavaScript دارای انواع مختلف داده است که به دو دسته کلی تقسیم می‌شوند:</p>
+                    
+                    <h3>۱. انواع ابتدایی (Primitive Types):</h3>
+                    
+                    <h4>Number (عدد):</h4>
+                    <pre><code>let age = 25;           // عدد صحیح
+let price = 99.99;      // عدد اعشاری
+let negative = -10;     // عدد منفی
+let infinity = Infinity; // بی‌نهایت
+let notANumber = NaN;   // Not a Number</code></pre>
+                    
+                    <h4>String (رشته):</h4>
+                    <pre><code>let name = 'علی';              // تک کوتیشن
+let message = "سلام دنیا";      // دابل کوتیشن
+let template = \`سلام \${name}\`; // Template literal</code></pre>
+                    
+                    <h4>Boolean (بولی):</h4>
+                    <pre><code>let isActive = true;
+let isComplete = false;
+let hasPermission = true;</code></pre>
+                    
+                    <h4>undefined:</h4>
+                    <pre><code>let x;                  // undefined
+let y = undefined;      // صراحتاً undefined</code></pre>
+                    
+                    <h4>null:</h4>
+                    <pre><code>let data = null;        // مقدار خالی</code></pre>
+                    
+                    <h4>Symbol (ES6):</h4>
+                    <pre><code>let sym = Symbol('id'); // شناسه یکتا</code></pre>
+                    
+                    <h4>BigInt (ES2020):</h4>
+                    <pre><code>let bigNumber = 123456789012345678901234567890n;</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">انواع داده پیچیده (Reference Types)</h2>
+                    </div>
+                    
+                    <h3>Object (شی):</h3>
+                    <pre><code>let person = {
+  name: 'علی',
+  age: 25,
+  city: 'تهران'
+};
+
+// دسترسی به ویژگی‌ها
+console.log(person.name);    // علی
+console.log(person['age']);  // 25</code></pre>
+                    
+                    <h3>Array (آرایه):</h3>
+                    <pre><code>let numbers = [1, 2, 3, 4, 5];
+let fruits = ['سیب', 'موز', 'پرتقال'];
+let mixed = [1, 'سلام', true, null];
+
+// دسترسی به عناصر
+console.log(numbers[0]);     // 1
+console.log(fruits[1]);      // موز</code></pre>
+                    
+                    <h3>Function (تابع):</h3>
+                    <pre><code>function greet(name) {
+  return 'سلام ' + name;
+}
+
+let sayHello = function(name) {
+  return 'درود ' + name;
+};
+
+// Arrow function
+let welcome = (name) => \`خوش آمدید \${name}\`;</code></pre>
+                    
+                    <h3>Date (تاریخ):</h3>
+                    <pre><code>let now = new Date();
+let birthday = new Date('1995-05-15');
+let timestamp = Date.now();</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تشخیص نوع داده</h2>
+                    </div>
+                    <p>برای تشخیص نوع داده از عملگر typeof استفاده می‌کنیم:</p>
+                    
+                    <pre><code>console.log(typeof 42);          // "number"
+console.log(typeof 'سلام');      // "string"
+console.log(typeof true);        // "boolean"
+console.log(typeof undefined);   // "undefined"
+console.log(typeof null);        // "object" (باگ تاریخی!)
+console.log(typeof {});          // "object"
+console.log(typeof []);          // "object"
+console.log(typeof function(){}); // "function"</code></pre>
+                    
+                    <h3>روش‌های دقیق‌تر:</h3>
+                    <pre><code>// برای آرایه‌ها
+Array.isArray([1, 2, 3]);       // true
+
+// برای null
+value === null;                  // true
+
+// برای NaN
+Number.isNaN(NaN);              // true
+
+// برای اشیاء
+Object.prototype.toString.call(value);</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تبدیل انواع داده</h2>
+                    </div>
+                    <p>JavaScript قابلیت تبدیل خودکار و دستی انواع داده را دارد:</p>
+                    
+                    <h3>تبدیل خودکار (Type Coercion):</h3>
+                    <pre><code>let result1 = '5' + 3;      // "53" (string)
+let result2 = '5' - 3;      // 2 (number)
+let result3 = '5' * 3;      // 15 (number)
+let result4 = true + 1;     // 2 (number)</code></pre>
+                    
+                    <h3>تبدیل دستی:</h3>
+                    
+                    <h4>به عدد:</h4>
+                    <pre><code>Number('123');        // 123
+parseInt('123px');    // 123
+parseFloat('12.34');  // 12.34
++'123';              // 123 (روش کوتاه)</code></pre>
+                    
+                    <h4>به رشته:</h4>
+                    <pre><code>String(123);         // "123"
+(123).toString();    // "123"
+123 + '';           // "123" (روش کوتاه)</code></pre>
+                    
+                    <h4>به بولی:</h4>
+                    <pre><code>Boolean(1);          // true
+Boolean(0);          // false
+Boolean('');         // false
+Boolean('سلام');     // true
+!!'سلام';           // true (روش کوتاه)</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">مقادیر Falsy و Truthy</h2>
+                    </div>
+                    <p>در JavaScript برخی مقادیر به false و برخی به true تبدیل می‌شوند:</p>
+                    
+                    <h3>مقادیر Falsy (معادل false):</h3>
+                    <ul>
+                        <li><code>false</code></li>
+                        <li><code>0</code></li>
+                        <li><code>-0</code></li>
+                        <li><code>0n</code> (BigInt)</li>
+                        <li><code>""</code> (رشته خالی)</li>
+                        <li><code>null</code></li>
+                        <li><code>undefined</code></li>
+                        <li><code>NaN</code></li>
+                    </ul>
+                    
+                    <h3>مقادیر Truthy (معادل true):</h3>
+                    <p>همه مقادیر دیگر، از جمله:</p>
+                    <ul>
+                        <li><code>true</code></li>
+                        <li>اعداد غیر صفر</li>
+                        <li>رشته‌های غیر خالی</li>
+                        <li>اشیاء و آرایه‌ها (حتی خالی)</li>
+                        <li>توابع</li>
+                    </ul>
+                    
+                    <h3>مثال عملی:</h3>
+                    <pre><code>if ('') {
+  console.log('اجرا نمی‌شود'); // falsy
+}
+
+if ('سلام') {
+  console.log('اجرا می‌شود'); // truthy
+}
+
+if ([]) {
+  console.log('اجرا می‌شود'); // آرایه خالی truthy است
+}</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">محدوده متغیرها (Scope)</h2>
+                    </div>
+                    <p>محدوده تعیین می‌کند که متغیر در کجا قابل دسترسی است:</p>
+                    
+                    <h3>محدوده سراسری (Global Scope):</h3>
+                    <pre><code>var globalVar = 'سراسری';
+let globalLet = 'سراسری';
+
+function test() {
+  console.log(globalVar); // قابل دسترسی
+  console.log(globalLet); // قابل دسترسی
+}</code></pre>
+                    
+                    <h3>محدوده تابع (Function Scope):</h3>
+                    <pre><code>function myFunction() {
+  var functionVar = 'محلی تابع';
+  let functionLet = 'محلی تابع';
+  
+  console.log(functionVar); // قابل دسترسی
+  console.log(functionLet); // قابل دسترسی
+}
+
+// console.log(functionVar); // خطا!</code></pre>
+                    
+                    <h3>محدوده بلوک (Block Scope):</h3>
+                    <pre><code>if (true) {
+  var blockVar = 'var در بلوک';
+  let blockLet = 'let در بلوک';
+  const blockConst = 'const در بلوک';
+}
+
+console.log(blockVar);   // قابل دسترسی (var)
+// console.log(blockLet);   // خطا! (let)
+// console.log(blockConst); // خطا! (const)</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تمرین‌های عملی</h2>
+                    </div>
+                    <p>برای تسلط بیشتر بر مطالب این درس، تمرین‌های زیر را انجام دهید:</p>
+                    
+                    <h3>تمرین ۱: تعریف متغیرها</h3>
+                    <p>متغیرهایی برای نگهداری اطلاعات شخصی (نام، سن، شهر) تعریف کنید.</p>
+                    
+                    <h3>تمرین ۲: تشخیص نوع داده</h3>
+                    <p>مقادیر مختلف ایجاد کرده و نوع آن‌ها را با typeof بررسی کنید.</p>
+                    
+                    <h3>تمرین ۳: تبدیل انواع</h3>
+                    <p>رشته‌ای حاوی عدد را به عدد تبدیل کرده و محاسبه انجام دهید.</p>
+                    
+                    <h3>تمرین ۴: محدوده متغیرها</h3>
+                    <p>متغیرهایی در محدوده‌های مختلف تعریف کرده و دسترسی آن‌ها را تست کنید.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">نکات مهم و بهترین شیوه‌ها</h2>
+                    </div>
+                    <h3>بهترین شیوه‌ها:</h3>
+                    <ul>
+                        <li>از let و const به جای var استفاده کنید</li>
+                        <li>const را برای مقادیر ثابت ترجیح دهید</li>
+                        <li>نام‌های معنادار برای متغیرها انتخاب کنید</li>
+                        <li>متغیرها را در کوچک‌ترین محدوده ممکن تعریف کنید</li>
+                        <li>همیشه متغیرها را مقداردهی اولیه کنید</li>
+                    </ul>
+                    
+                    <h3>نکات عملکرد:</h3>
+                    <ul>
+                        <li>تبدیل نوع خودکار می‌تواند کند باشد</li>
+                        <li>از === به جای == استفاده کنید</li>
+                        <li>متغیرهای سراسری را محدود کنید</li>
+                        <li>از نام‌های کوتاه برای متغیرهای محلی استفاده کنید</li>
+                    </ul>
+                    
+                    <h3>اشتباهات رایج:</h3>
+                    <ul>
+                        <li>استفاده از var در کد مدرن</li>
+                        <li>فراموش کردن تعریف متغیر (ایجاد متغیر سراسری)</li>
+                        <li>اشتباه در تبدیل انواع داده</li>
+                        <li>استفاده از نام‌های مبهم برای متغیرها</li>
+                        <li>عدم درک تفاوت null و undefined</li>
+                    </ul>
+                </div>
+
+                <!-- Navigation -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">ادامه یادگیری</h2>
+                    </div>
+                    <p>در درس بعدی با عملگرها و دستورات شرطی در JavaScript آشنا خواهید شد.</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="lesson11.html" class="btn btn-secondary">درس قبلی: مقدمات JavaScript</a>
+                        <a href="lesson13.html" class="btn btn-primary" style="margin-right: 1rem;">درس بعدی: عملگرها و شرط‌ها</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../../js/main.js"></script>
+    <script src="../../js/storage.js"></script>
+    
+    <!-- CodeMirror JavaScript -->
+    <script src="../../js/libs/codemirror/js/codemirror.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/xml.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/css.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/javascript.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/htmlmixed.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/matchbrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/closebrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/active-line.min.js"></script>
+    
+    <!-- Editor JavaScript -->
+    <script src="../../js/editor.js"></script>
+    
+    <script>
+        // Initialize the code editor when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const editor = new CodeEditor('codeEditor', {
+                initialContent: {
+                    html: `<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>متغیرها و انواع داده JavaScript</title>
+</head>
+<body>
+    <h1>آزمایشگاه متغیرها و انواع داده</h1>
+    
+    <div class="container">
+        <section class="variables-demo">
+            <h2>تعریف متغیرها</h2>
+            <div id="variablesOutput"></div>
+        </section>
+        
+        <section class="types-demo">
+            <h2>انواع داده</h2>
+            <div id="typesOutput"></div>
+        </section>
+        
+        <section class="conversion-demo">
+            <h2>تبدیل انواع</h2>
+            <div id="conversionOutput"></div>
+        </section>
+        
+        <section class="scope-demo">
+            <h2>محدوده متغیرها</h2>
+            <div id="scopeOutput"></div>
+        </section>
+        
+        <section class="interactive-demo">
+            <h2>تست تعاملی</h2>
+            <div class="input-group">
+                <label for="testInput">مقدار را وارد کنید:</label>
+                <input type="text" id="testInput" placeholder="مثال: 123, 'سلام', true">
+                <button id="analyzeBtn">تحلیل</button>
+            </div>
+            <div id="analysisResult"></div>
+        </section>
+    </div>
+</body>
+</html>`,
+                    css: `/* استایل‌های پایه */
+body {
+    font-family: 'Tahoma', Arial, sans-serif;
+    direction: rtl;
+    text-align: right;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* استایل بخش‌ها */
+section {
+    background: rgba(255,255,255,0.95);
+    border-radius: 15px;
+    padding: 25px;
+    margin: 20px 0;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+}
+
+section h2 {
+    color: #2c3e50;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+/* استایل خروجی‌ها */
+.output-box {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    font-family: 'Courier New', monospace;
+    direction: ltr;
+    text-align: left;
+}
+
+.output-box.rtl {
+    direction: rtl;
+    text-align: right;
+    font-family: 'Tahoma', Arial, sans-serif;
+}
+
+/* استایل انواع داده */
+.type-number { color: #e74c3c; font-weight: bold; }
+.type-string { color: #27ae60; font-weight: bold; }
+.type-boolean { color: #8e44ad; font-weight: bold; }
+.type-undefined { color: #95a5a6; font-weight: bold; }
+.type-null { color: #34495e; font-weight: bold; }
+.type-object { color: #3498db; font-weight: bold; }
+.type-function { color: #f39c12; font-weight: bold; }
+
+/* استایل فرم تعاملی */
+.input-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.input-group label {
+    font-weight: bold;
+    color: #2c3e50;
+    min-width: 120px;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #bdc3c7;
+    border-radius: 6px;
+    font-size: 1rem;
+    min-width: 200px;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+.input-group button {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.input-group button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* استایل نتایج تحلیل */
+#analysisResult {
+    background: #ecf0f1;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 15px;
+    min-height: 50px;
+}
+
+.analysis-item {
+    margin: 8px 0;
+    padding: 8px;
+    background: white;
+    border-radius: 4px;
+    border-right: 4px solid #3498db;
+}
+
+/* جداول */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+table th {
+    background: #3498db;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
+}
+
+table td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+table tr:hover {
+    background: #f8f9fa;
+}
+
+/* انیمیشن‌ها */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes highlight {
+    0% { background-color: #fff3cd; }
+    100% { background-color: transparent; }
+}
+
+.highlight {
+    animation: highlight 1s ease-out;
+}
+
+/* طراحی واکنش‌گرا */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    section {
+        padding: 15px;
+    }
+    
+    .input-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .input-group label {
+        min-width: auto;
+        margin-bottom: 5px;
+    }
+    
+    .input-group input,
+    .input-group button {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    table {
+        font-size: 0.9rem;
+    }
+    
+    table th,
+    table td {
+        padding: 8px 4px;
+    }
+}`,
+                    js: `// آزمایشگاه متغیرها و انواع داده
+console.log('🧪 آزمایشگاه متغیرها و انواع داده شروع شد');
+
+// تابع برای نمایش خروجی با فرمت زیبا
+function displayOutput(containerId, content, isRTL = true) {
+    const container = document.getElementById(containerId);
+    const outputBox = document.createElement('div');
+    outputBox.className = 'output-box' + (isRTL ? ' rtl' : '');
+    outputBox.innerHTML = content;
+    container.appendChild(outputBox);
+}
+
+// تابع برای تشخیص نوع داده با جزئیات
+function getDetailedType(value) {
+    const type = typeof value;
+    
+    if (type === 'object') {
+        if (value === null) return 'null';
+        if (Array.isArray(value)) return 'array';
+        if (value instanceof Date) return 'date';
+        if (value instanceof RegExp) return 'regexp';
+        return 'object';
+    }
+    
+    if (type === 'number') {
+        if (isNaN(value)) return 'NaN';
+        if (!isFinite(value)) return 'infinity';
+        if (Number.isInteger(value)) return 'integer';
+        return 'float';
+    }
+    
+    return type;
+}
+
+// تابع برای رنگ‌بندی بر اساس نوع
+function getTypeClass(type) {
+    const typeMap = {
+        'number': 'type-number',
+        'integer': 'type-number',
+        'float': 'type-number',
+        'string': 'type-string',
+        'boolean': 'type-boolean',
+        'undefined': 'type-undefined',
+        'null': 'type-null',
+        'object': 'type-object',
+        'array': 'type-object',
+        'date': 'type-object',
+        'function': 'type-function',
+        'NaN': 'type-number',
+        'infinity': 'type-number'
+    };
+    return typeMap[type] || '';
+}
+
+// نمایش انواع مختلف متغیرها
+function demonstrateVariables() {
+    console.log('📊 نمایش انواع متغیرها');
+    
+    // تعریف متغیرهای مختلف
+    var oldVar = 'متغیر var';
+    let modernLet = 'متغیر let';
+    const constantValue = 'متغیر const';
+    
+    let content = \`
+        <h3>انواع تعریف متغیر:</h3>
+        <p><strong>var:</strong> \${oldVar}</p>
+        <p><strong>let:</strong> \${modernLet}</p>
+        <p><strong>const:</strong> \${constantValue}</p>
+        
+        <h3>قوانین نام‌گذاری:</h3>
+        <table>
+            <tr><th>نام متغیر</th><th>وضعیت</th><th>دلیل</th></tr>
+            <tr><td>userName</td><td>✅ صحیح</td><td>camelCase</td></tr>
+            <tr><td>user_name</td><td>✅ صحیح</td><td>snake_case</td></tr>
+            <tr><td>$price</td><td>✅ صحیح</td><td>شروع با $</td></tr>
+            <tr><td>_id</td><td>✅ صحیح</td><td>شروع با _</td></tr>
+            <tr><td>2name</td><td>❌ نادرست</td><td>شروع با عدد</td></tr>
+            <tr><td>user-name</td><td>❌ نادرست</td><td>استفاده از -</td></tr>
+        </table>
+    \`;
+    
+    displayOutput('variablesOutput', content);
+}
+
+// نمایش انواع داده
+function demonstrateTypes() {
+    console.log('🔍 نمایش انواع داده');
+    
+    // تعریف انواع مختلف داده
+    const samples = [
+        { value: 42, name: 'عدد صحیح' },
+        { value: 3.14, name: 'عدد اعشاری' },
+        { value: 'سلام دنیا', name: 'رشته' },
+        { value: true, name: 'بولی true' },
+        { value: false, name: 'بولی false' },
+        { value: undefined, name: 'undefined' },
+        { value: null, name: 'null' },
+        { value: [1, 2, 3], name: 'آرایه' },
+        { value: {name: 'علی', age: 25}, name: 'شی' },
+        { value: function() {}, name: 'تابع' },
+        { value: new Date(), name: 'تاریخ' },
+        { value: NaN, name: 'NaN' },
+        { value: Infinity, name: 'بی‌نهایت' }
+    ];
+    
+    let content = '<h3>انواع داده و typeof آن‌ها:</h3>';
+    
+    samples.forEach(sample => {
+        const type = getDetailedType(sample.value);
+        const typeClass = getTypeClass(type);
+        const displayValue = typeof sample.value === 'string' ? 
+            \`"\${sample.value}"\` : 
+            typeof sample.value === 'object' && sample.value !== null ?
+            JSON.stringify(sample.value) :
+            String(sample.value);
+            
+        content += \`
+            <div class="analysis-item">
+                <strong>\${sample.name}:</strong> 
+                <code>\${displayValue}</code> → 
+                <span class="\${typeClass}">typeof: \${typeof sample.value}</span>
+                <span class="\${typeClass}"> (دقیق: \${type})</span>
+            </div>
+        \`;
+    });
+    
+    displayOutput('typesOutput', content);
+}
+
+// نمایش تبدیل انواع
+function demonstrateConversion() {
+    console.log('🔄 نمایش تبدیل انواع');
+    
+    let content = '<h3>تبدیل انواع داده:</h3>';
+    
+    // تبدیل به عدد
+    const numberConversions = [
+        { input: "'123'", result: Number('123') },
+        { input: "'12.34'", result: Number('12.34') },
+        { input: "'123px'", result: parseInt('123px') },
+        { input: "'12.34em'", result: parseFloat('12.34em') },
+        { input: "true", result: Number(true) },
+        { input: "false", result: Number(false) },
+        { input: "''", result: Number('') },
+        { input: "'سلام'", result: Number('سلام') }
+    ];
+    
+    content += '<h4>تبدیل به عدد:</h4>';
+    numberConversions.forEach(conv => {
+        const typeClass = getTypeClass(getDetailedType(conv.result));
+        content += \`
+            <div class="analysis-item">
+                <code>Number(\${conv.input})</code> → 
+                <span class="\${typeClass}">\${conv.result}</span>
+            </div>
+        \`;
+    });
+    
+    // تبدیل به رشته
+    const stringConversions = [
+        { input: "123", result: String(123) },
+        { input: "true", result: String(true) },
+        { input: "null", result: String(null) },
+        { input: "undefined", result: String(undefined) },
+        { input: "[1,2,3]", result: String([1,2,3]) },
+        { input: "{a:1}", result: String({a:1}) }
+    ];
+    
+    content += '<h4>تبدیل به رشته:</h4>';
+    stringConversions.forEach(conv => {
+        content += \`
+            <div class="analysis-item">
+                <code>String(\${conv.input})</code> → 
+                <span class="type-string">"\${conv.result}"</span>
+            </div>
+        \`;
+    });
+    
+    // تبدیل به بولی
+    const booleanConversions = [
+        { input: "1", result: Boolean(1) },
+        { input: "0", result: Boolean(0) },
+        { input: "''", result: Boolean('') },
+        { input: "'سلام'", result: Boolean('سلام') },
+        { input: "null", result: Boolean(null) },
+        { input: "undefined", result: Boolean(undefined) },
+        { input: "[]", result: Boolean([]) },
+        { input: "{}", result: Boolean({}) }
+    ];
+    
+    content += '<h4>تبدیل به بولی:</h4>';
+    booleanConversions.forEach(conv => {
+        const resultClass = conv.result ? 'type-boolean' : 'type-boolean';
+        content += \`
+            <div class="analysis-item">
+                <code>Boolean(\${conv.input})</code> → 
+                <span class="\${resultClass}">\${conv.result}</span>
+                <small>(\${conv.result ? 'truthy' : 'falsy'})</small>
+            </div>
+        \`;
+    });
+    
+    displayOutput('conversionOutput', content);
+}
+
+// نمایش محدوده متغیرها
+function demonstrateScope() {
+    console.log('🎯 نمایش محدوده متغیرها');
+    
+    // متغیر سراسری
+    var globalVar = 'متغیر سراسری';
+    let globalLet = 'let سراسری';
+    
+    let content = '<h3>محدوده متغیرها:</h3>';
+    
+    // تست محدوده تابع
+    function testFunctionScope() {
+        var functionVar = 'var در تابع';
+        let functionLet = 'let در تابع';
+        const functionConst = 'const در تابع';
+        
+        return \`
+            <p>داخل تابع:</p>
+            <ul>
+                <li>functionVar: \${functionVar}</li>
+                <li>functionLet: \${functionLet}</li>
+                <li>functionConst: \${functionConst}</li>
+                <li>globalVar: \${globalVar}</li>
+                <li>globalLet: \${globalLet}</li>
+            </ul>
+        \`;
+    }
+    
+    // تست محدوده بلوک
+    let blockScopeTest = '';
+    if (true) {
+        var blockVar = 'var در بلوک';
+        let blockLet = 'let در بلوک';
+        const blockConst = 'const در بلوک';
+        
+        blockScopeTest = \`
+            <p>داخل بلوک if:</p>
+            <ul>
+                <li>blockVar: \${blockVar}</li>
+                <li>blockLet: \${blockLet}</li>
+                <li>blockConst: \${blockConst}</li>
+            </ul>
+        \`;
+    }
+    
+    content += \`
+        <h4>محدوده سراسری:</h4>
+        <div class="analysis-item">
+            <p>globalVar: \${globalVar}</p>
+            <p>globalLet: \${globalLet}</p>
+        </div>
+        
+        <h4>محدوده تابع:</h4>
+        <div class="analysis-item">
+            \${testFunctionScope()}
+        </div>
+        
+        <h4>محدوده بلوک:</h4>
+        <div class="analysis-item">
+            \${blockScopeTest}
+            <p>خارج از بلوک:</p>
+            <ul>
+                <li>blockVar: \${typeof blockVar !== 'undefined' ? blockVar : 'تعریف نشده'} (var قابل دسترسی)</li>
+                <li>blockLet: تعریف نشده (let محدود به بلوک)</li>
+                <li>blockConst: تعریف نشده (const محدود به بلوک)</li>
+            </ul>
+        </div>
+        
+        <h4>خلاصه تفاوت‌ها:</h4>
+        <table>
+            <tr><th>نوع</th><th>محدوده تابع</th><th>محدوده بلوک</th><th>قابل تغییر</th><th>تعریف مجدد</th></tr>
+            <tr><td>var</td><td>✅</td><td>❌</td><td>✅</td><td>✅</td></tr>
+            <tr><td>let</td><td>✅</td><td>✅</td><td>✅</td><td>❌</td></tr>
+            <tr><td>const</td><td>✅</td><td>✅</td><td>❌</td><td>❌</td></tr>
+        </table>
+    \`;
+    
+    displayOutput('scopeOutput', content);
+}
+
+// تحلیل تعاملی ورودی کاربر
+function analyzeUserInput() {
+    const input = document.getElementById('testInput').value.trim();
+    const resultContainer = document.getElementById('analysisResult');
+    
+    if (!input) {
+        resultContainer.innerHTML = '<p style="color: #e74c3c;">لطفاً مقداری وارد کنید.</p>';
+        return;
+    }
+    
+    console.log(\`🔍 تحلیل ورودی کاربر: \${input}\`);
+    
+    let value;
+    let parseError = false;
+    
+    // تلاش برای تفسیر ورودی
+    try {
+        // تشخیص نوع ورودی
+        if (input === 'true') {
+            value = true;
+        } else if (input === 'false') {
+            value = false;
+        } else if (input === 'null') {
+            value = null;
+        } else if (input === 'undefined') {
+            value = undefined;
+        } else if (input.startsWith('"') && input.endsWith('"')) {
+            value = input.slice(1, -1);
+        } else if (input.startsWith("'") && input.endsWith("'")) {
+            value = input.slice(1, -1);
+        } else if (!isNaN(input) && !isNaN(parseFloat(input))) {
+            value = parseFloat(input);
+        } else if (input.startsWith('[') && input.endsWith(']')) {
+            value = JSON.parse(input);
+        } else if (input.startsWith('{') && input.endsWith('}')) {
+            value = JSON.parse(input);
+        } else {
+            value = input; // به عنوان رشته در نظر بگیر
+        }
+    } catch (e) {
+        value = input;
+        parseError = true;
+    }
+    
+    const type = getDetailedType(value);
+    const typeClass = getTypeClass(type);
+    const jsType = typeof value;
+    
+    let analysis = \`
+        <div class="fade-in">
+            <h3>نتیجه تحلیل:</h3>
+            
+            <div class="analysis-item highlight">
+                <strong>ورودی:</strong> <code>\${input}</code>
+            </div>
+            
+            <div class="analysis-item">
+                <strong>مقدار تفسیر شده:</strong> 
+                <code>\${typeof value === 'string' && !parseError ? '"' + value + '"' : 
+                      typeof value === 'object' && value !== null ? JSON.stringify(value) : 
+                      String(value)}</code>
+            </div>
+            
+            <div class="analysis-item">
+                <strong>نوع JavaScript:</strong> 
+                <span class="\${typeClass}">typeof: \${jsType}</span>
+            </div>
+            
+            <div class="analysis-item">
+                <strong>نوع دقیق:</strong> 
+                <span class="\${typeClass}">\${type}</span>
+            </div>
+            
+            <div class="analysis-item">
+                <strong>Truthy/Falsy:</strong> 
+                <span class="\${Boolean(value) ? 'type-boolean' : 'type-boolean'}">
+                    \${Boolean(value) ? 'Truthy (معادل true)' : 'Falsy (معادل false)'}
+                </span>
+            </div>
+    \`;
+    
+    // تبدیلات مختلف
+    analysis += \`
+            <h4>تبدیلات:</h4>
+            
+            <div class="analysis-item">
+                <strong>به عدد:</strong> 
+                <span class="type-number">Number() → \${Number(value)}</span>
+            </div>
+            
+            <div class="analysis-item">
+                <strong>به رشته:</strong> 
+                <span class="type-string">String() → "\${String(value)}"</span>
+            </div>
+            
+            <div class="analysis-item">
+                <strong>به بولی:</strong> 
+                <span class="type-boolean">Boolean() → \${Boolean(value)}</span>
+            </div>
+    \`;
+    
+    // اطلاعات اضافی بر اساس نوع
+    if (type === 'string') {
+        analysis += \`
+            <h4>اطلاعات رشته:</h4>
+            <div class="analysis-item">
+                <strong>طول:</strong> \${value.length} کاراکتر
+            </div>
+            <div class="analysis-item">
+                <strong>خالی بودن:</strong> \${value.length === 0 ? 'بله' : 'خیر'}
+            </div>
+        \`;
+    } else if (type === 'integer' || type === 'float') {
+        analysis += \`
+            <h4>اطلاعات عددی:</h4>
+            <div class="analysis-item">
+                <strong>مثبت/منفی:</strong> \${value > 0 ? 'مثبت' : value < 0 ? 'منفی' : 'صفر'}
+            </div>
+            <div class="analysis-item">
+                <strong>زوج/فرد:</strong> \${Number.isInteger(value) ? (value % 2 === 0 ? 'زوج' : 'فرد') : 'اعشاری'}
+            </div>
+        \`;
+    } else if (type === 'array') {
+        analysis += \`
+            <h4>اطلاعات آرایه:</h4>
+            <div class="analysis-item">
+                <strong>تعداد عناصر:</strong> \${value.length}
+            </div>
+            <div class="analysis-item">
+                <strong>خالی بودن:</strong> \${value.length === 0 ? 'بله' : 'خیر'}
+            </div>
+        \`;
+    } else if (type === 'object') {
+        const keys = Object.keys(value);
+        analysis += \`
+            <h4>اطلاعات شی:</h4>
+            <div class="analysis-item">
+                <strong>تعداد ویژگی‌ها:</strong> \${keys.length}
+            </div>
+            <div class="analysis-item">
+                <strong>کلیدها:</strong> \${keys.join(', ') || 'هیچ'}
+            </div>
+        \`;
+    }
+    
+    analysis += '</div>';
+    
+    resultContainer.innerHTML = analysis;
+}
+
+// اجرای نمایش‌ها هنگام بارگذاری صفحه
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('📚 صفحه متغیرها و انواع داده بارگذاری شد');
+    
+    // نمایش تدریجی بخش‌ها
+    setTimeout(() => demonstrateVariables(), 500);
+    setTimeout(() => demonstrateTypes(), 1000);
+    setTimeout(() => demonstrateConversion(), 1500);
+    setTimeout(() => demonstrateScope(), 2000);
+    
+    // رویداد دکمه تحلیل
+    document.getElementById('analyzeBtn').addEventListener('click', analyzeUserInput);
+    
+    // رویداد Enter در ورودی
+    document.getElementById('testInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            analyzeUserInput();
+        }
+    });
+    
+    // نمونه‌های پیش‌فرض برای تست
+    const examples = ['123', '"سلام"', 'true', 'null', '[1,2,3]', '{"name":"علی"}'];
+    let exampleIndex = 0;
+    
+    // تغییر نمونه هر 5 ثانیه
+    setInterval(() => {
+        const input = document.getElementById('testInput');
+        if (!input.value) {
+            input.placeholder = \`مثال: \${examples[exampleIndex]}\`;
+            exampleIndex = (exampleIndex + 1) % examples.length;
+        }
+    }, 5000);
+});
+
+// نمایش پیام‌های مفید در کنسول
+console.log('%c🎓 نکات یادگیری متغیرها:', 'color: #3498db; font-size: 14px; font-weight: bold;');
+console.log('• از let و const به جای var استفاده کنید');
+console.log('• نام‌های معنادار برای متغیرها انتخاب کنید');
+console.log('• typeof برای تشخیص نوع داده استفاده کنید');
+console.log('• مراقب تبدیل خودکار انواع باشید');
+console.log('• محدوده متغیرها را درک کنید');`
+                }
+            });
+            
+            // Mark lesson as completed when user interacts with editor
+            let hasInteracted = false;
+            setTimeout(() => {
+                if (editor.isInitialized) {
+                    Object.keys(editor.editors).forEach(key => {
+                        editor.editors[key].on('change', () => {
+                            if (!hasInteracted) {
+                                hasInteracted = true;
+                                if (window.PersianWebTutorial) {
+                                    window.PersianWebTutorial.markLessonCompleted('lesson12');
+                                }
+                            }
+                        });
+                    });
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
+

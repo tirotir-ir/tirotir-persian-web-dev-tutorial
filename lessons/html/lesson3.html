@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درس ۳: لینک‌ها و تصاویر - آموزش توسعه وب</title>
+    <meta name="description" content="یادگیری کار با لینک‌ها، تصاویر و عناصر چندرسانه‌ای در HTML">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/rtl.css">
+    <link rel="stylesheet" href="../../css/themes.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/editor.css">
+    
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="../../js/libs/codemirror/css/codemirror.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/monokai.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/material.min.css">
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم">
+        <span class="theme-toggle-icon">🌙</span>
+    </button>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-brand">
+                <div class="header-brand-icon">وب</div>
+                <span>آموزش توسعه وب</span>
+            </div>
+            
+            <nav class="header-nav">
+                <div class="header-search">
+                    <input type="text" placeholder="جستجو در دروس..." id="searchInput">
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="منوی موبایل">
+                    ☰
+                </button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h2 class="sidebar-title">فهرست دروس</h2>
+                    <p class="sidebar-subtitle">۲۰ درس کامل برای یادگیری توسعه وب</p>
+                </div>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">HTML</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="lesson1.html" class="nav-link">
+                                <span class="nav-link-icon">📄</span>
+                                <span class="nav-link-text">مقدمات HTML</span>
+                                <span class="nav-link-badge">۱</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson2.html" class="nav-link">
+                                <span class="nav-link-icon">📝</span>
+                                <span class="nav-link-text">متن و قالب‌بندی</span>
+                                <span class="nav-link-badge">۲</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson3.html" class="nav-link active">
+                                <span class="nav-link-icon">🔗</span>
+                                <span class="nav-link-text">لینک‌ها و تصاویر</span>
+                                <span class="nav-link-badge">۳</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson4.html" class="nav-link">
+                                <span class="nav-link-icon">📊</span>
+                                <span class="nav-link-text">جداول و فرم‌ها</span>
+                                <span class="nav-link-badge">۴</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson5.html" class="nav-link">
+                                <span class="nav-link-icon">🏗️</span>
+                                <span class="nav-link-text">HTML معنایی</span>
+                                <span class="nav-link-badge">۵</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">منابع</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="../../reference/html-tags.html" class="nav-link">
+                                <span class="nav-link-icon">📚</span>
+                                <span class="nav-link-text">مرجع تگ‌های HTML</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../../index.html" class="nav-link">
+                                <span class="nav-link-icon">🏠</span>
+                                <span class="nav-link-text">صفحه اصلی</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb">
+                    <span class="breadcrumb-item"><a href="../../index.html">صفحه اصلی</a></span>
+                    <span class="breadcrumb-item"><a href="#html">HTML</a></span>
+                    <span class="breadcrumb-item active">درس ۳: لینک‌ها و تصاویر</span>
+                </nav>
+
+                <div class="content-header">
+                    <h1 class="content-title">درس ۳: لینک‌ها و تصاویر</h1>
+                    <p class="content-subtitle">یادگیری کار با لینک‌ها، تصاویر و عناصر چندرسانه‌ای در HTML</p>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>پیشرفت درس</span>
+                        <span>۳ از ۲۰ درس</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 15%"></div>
+                    </div>
+                </div>
+
+                <!-- Lesson Content -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">لینک‌ها در HTML</h2>
+                    </div>
+                    <p>لینک‌ها یکی از مهم‌ترین ویژگی‌های وب هستند که امکان پیوند دادن صفحات و منابع مختلف را فراهم می‌کنند. در HTML از تگ <code>&lt;a&gt;</code> برای ایجاد لینک استفاده می‌شود.</p>
+                    
+                    <h3>ساختار تگ لینک:</h3>
+                    <p><code>&lt;a href="آدرس"&gt;متن لینک&lt;/a&gt;</code></p>
+                    
+                    <h3>انواع لینک‌ها:</h3>
+                    <ul>
+                        <li><strong>لینک‌های خارجی:</strong> به سایت‌های دیگر</li>
+                        <li><strong>لینک‌های داخلی:</strong> به صفحات همان سایت</li>
+                        <li><strong>لینک‌های لنگری:</strong> به بخش‌های همان صفحه</li>
+                        <li><strong>لینک‌های ایمیل:</strong> برای ارسال ایمیل</li>
+                        <li><strong>لینک‌های تلفن:</strong> برای تماس تلفنی</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">ویژگی‌های مهم تگ لینک</h2>
+                    </div>
+                    <h3>ویژگی‌های کاربردی:</h3>
+                    <ul>
+                        <li><code>href</code> - آدرس مقصد لینک</li>
+                        <li><code>target</code> - نحوه باز شدن لینک (_blank, _self, _parent, _top)</li>
+                        <li><code>title</code> - توضیح اضافی که هنگام hover نمایش داده می‌شود</li>
+                        <li><code>download</code> - برای دانلود فایل به جای باز کردن</li>
+                        <li><code>rel</code> - رابطه بین صفحه فعلی و مقصد (nofollow, noopener, noreferrer)</li>
+                    </ul>
+                    
+                    <h3>مثال‌های مختلف:</h3>
+                    <ul>
+                        <li><code>&lt;a href="https://google.com"&gt;گوگل&lt;/a&gt;</code></li>
+                        <li><code>&lt;a href="page2.html"&gt;صفحه دوم&lt;/a&gt;</code></li>
+                        <li><code>&lt;a href="#section1"&gt;بخش اول&lt;/a&gt;</code></li>
+                        <li><code>&lt;a href="mailto:info@example.com"&gt;ایمیل&lt;/a&gt;</code></li>
+                        <li><code>&lt;a href="tel:+989123456789"&gt;تماس&lt;/a&gt;</code></li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تصاویر در HTML</h2>
+                    </div>
+                    <p>تصاویر بخش مهمی از محتوای وب هستند. در HTML از تگ <code>&lt;img&gt;</code> برای نمایش تصاویر استفاده می‌شود. این تگ خودبسته است و نیاز به تگ بسته ندارد.</p>
+                    
+                    <h3>ساختار تگ تصویر:</h3>
+                    <p><code>&lt;img src="آدرس تصویر" alt="توضیح تصویر"&gt;</code></p>
+                    
+                    <h3>ویژگی‌های مهم:</h3>
+                    <ul>
+                        <li><code>src</code> - آدرس فایل تصویر (اجباری)</li>
+                        <li><code>alt</code> - متن جایگزین برای دسترسی‌پذیری (اجباری)</li>
+                        <li><code>width</code> - عرض تصویر</li>
+                        <li><code>height</code> - ارتفاع تصویر</li>
+                        <li><code>title</code> - توضیح اضافی</li>
+                        <li><code>loading</code> - نحوه بارگذاری (lazy, eager)</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">فرمت‌های تصویر و بهینه‌سازی</h2>
+                    </div>
+                    <h3>فرمت‌های رایج:</h3>
+                    <ul>
+                        <li><strong>JPEG:</strong> برای عکس‌های رنگی با کیفیت بالا</li>
+                        <li><strong>PNG:</strong> برای تصاویر با شفافیت</li>
+                        <li><strong>GIF:</strong> برای انیمیشن‌های ساده</li>
+                        <li><strong>SVG:</strong> برای تصاویر برداری</li>
+                        <li><strong>WebP:</strong> فرمت مدرن با کیفیت بالا و حجم کم</li>
+                    </ul>
+                    
+                    <h3>نکات بهینه‌سازی:</h3>
+                    <ul>
+                        <li>اندازه مناسب تصاویر را انتخاب کنید</li>
+                        <li>از فرمت‌های مدرن استفاده کنید</li>
+                        <li>همیشه ویژگی alt را تعریف کنید</li>
+                        <li>از lazy loading برای بهبود سرعت استفاده کنید</li>
+                        <li>تصاویر واکنش‌گرا طراحی کنید</li>
+                    </ul>
+                </div>
+
+                <!-- Interactive Code Editor -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تمرین عملی: لینک‌ها و تصاویر</h2>
+                    </div>
+                    <p>در ادامه، مثالی از استفاده از لینک‌ها و تصاویر را مشاهده می‌کنید. کد را ویرایش کرده و تأثیرات مختلف را ببینید:</p>
+                    
+                    <div id="codeEditor"></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">عناصر چندرسانه‌ای</h2>
+                    </div>
+                    <p>HTML5 تگ‌های جدیدی برای کار با صوت و ویدیو ارائه داده است:</p>
+                    
+                    <h3>تگ ویدیو:</h3>
+                    <p><code>&lt;video src="video.mp4" controls&gt;&lt;/video&gt;</code></p>
+                    
+                    <h3>تگ صوت:</h3>
+                    <p><code>&lt;audio src="audio.mp3" controls&gt;&lt;/audio&gt;</code></p>
+                    
+                    <h3>ویژگی‌های مشترک:</h3>
+                    <ul>
+                        <li><code>controls</code> - نمایش کنترل‌های پخش</li>
+                        <li><code>autoplay</code> - پخش خودکار</li>
+                        <li><code>loop</code> - تکرار پخش</li>
+                        <li><code>muted</code> - بی‌صدا</li>
+                        <li><code>preload</code> - نحوه پیش‌بارگذاری</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تمرین‌های عملی</h2>
+                    </div>
+                    <p>برای تسلط بیشتر بر مطالب این درس، تمرین‌های زیر را انجام دهید:</p>
+                    
+                    <h3>تمرین ۱: منوی ناوبری</h3>
+                    <p>یک منوی ناوبری ایجاد کنید که شامل لینک‌های مختلف به بخش‌های صفحه باشد.</p>
+                    
+                    <h3>تمرین ۲: گالری تصاویر</h3>
+                    <p>یک گالری ساده از تصاویر ایجاد کنید که هر تصویر قابل کلیک باشد.</p>
+                    
+                    <h3>تمرین ۳: کارت تماس</h3>
+                    <p>کارت تماسی ایجاد کنید که شامل لینک‌های ایمیل، تلفن و آدرس باشد.</p>
+                    
+                    <h3>تمرین ۴: صفحه محصول</h3>
+                    <p>صفحه‌ای برای معرفی محصول ایجاد کنید که شامل تصاویر، توضیحات و لینک‌های مرتبط باشد.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">نکات مهم و بهترین شیوه‌ها</h2>
+                    </div>
+                    <h3>برای لینک‌ها:</h3>
+                    <ul>
+                        <li>متن لینک باید توصیفی و معنادار باشد</li>
+                        <li>از "اینجا کلیک کنید" استفاده نکنید</li>
+                        <li>لینک‌های خارجی را در تب جدید باز کنید</li>
+                        <li>از ویژگی rel="noopener" برای امنیت استفاده کنید</li>
+                        <li>لینک‌های شکسته را بررسی کنید</li>
+                    </ul>
+                    
+                    <h3>برای تصاویر:</h3>
+                    <ul>
+                        <li>همیشه ویژگی alt را تعریف کنید</li>
+                        <li>اندازه تصاویر را مشخص کنید</li>
+                        <li>از تصاویر بهینه شده استفاده کنید</li>
+                        <li>برای تصاویر تزیینی alt خالی قرار دهید</li>
+                        <li>از lazy loading برای بهبود عملکرد استفاده کنید</li>
+                    </ul>
+                    
+                    <h3>اشتباهات رایج:</h3>
+                    <ul>
+                        <li>استفاده از تصاویر بدون ویژگی alt</li>
+                        <li>لینک‌های بدون متن توصیفی</li>
+                        <li>استفاده از تصاویر با حجم زیاد</li>
+                        <li>باز کردن همه لینک‌ها در تب جدید</li>
+                        <li>استفاده از آدرس‌های مطلق برای فایل‌های محلی</li>
+                    </ul>
+                </div>
+
+                <!-- Navigation -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">ادامه یادگیری</h2>
+                    </div>
+                    <p>در درس بعدی با جداول و فرم‌ها در HTML آشنا خواهید شد.</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="lesson2.html" class="btn btn-secondary">درس قبلی: متن و قالب‌بندی</a>
+                        <a href="lesson4.html" class="btn btn-primary" style="margin-right: 1rem;">درس بعدی: جداول و فرم‌ها</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../../js/main.js"></script>
+    <script src="../../js/storage.js"></script>
+    
+    <!-- CodeMirror JavaScript -->
+    <script src="../../js/libs/codemirror/js/codemirror.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/xml.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/css.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/javascript.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/htmlmixed.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/matchbrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/closebrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/active-line.min.js"></script>
+    
+    <!-- Editor JavaScript -->
+    <script src="../../js/editor.js"></script>
+    
+    <script>
+        // Initialize the code editor when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const editor = new CodeEditor('codeEditor', {
+                initialContent: {
+                    html: `<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>لینک‌ها و تصاویر</title>
+</head>
+<body>
+    <h1>صفحه نمونه لینک‌ها و تصاویر</h1>
+    
+    <!-- منوی ناوبری -->
+    <nav>
+        <ul>
+            <li><a href="#about">درباره ما</a></li>
+            <li><a href="#services">خدمات</a></li>
+            <li><a href="#contact">تماس</a></li>
+            <li><a href="https://google.com" target="_blank" rel="noopener">گوگل</a></li>
+        </ul>
+    </nav>
+    
+    <!-- بخش درباره ما -->
+    <section id="about">
+        <h2>درباره ما</h2>
+        <p>ما یک تیم متخصص در زمینه توسعه وب هستیم.</p>
+        
+        <!-- تصویر نمونه -->
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPtiq2LXZiNuM2LEg2YbZhdmI2YbZhzwvdGV4dD4KICA8L3N2Zz4K" 
+             alt="تصویر نمونه تیم ما" 
+             width="300" 
+             height="200">
+    </section>
+    
+    <!-- بخش خدمات -->
+    <section id="services">
+        <h2>خدمات ما</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>طراحی وب</h3>
+                <p>طراحی واکنش‌گرا و مدرن</p>
+                <a href="#" title="اطلاعات بیشتر">بیشتر بخوانید</a>
+            </div>
+            
+            <div class="service-card">
+                <h3>توسعه اپلیکیشن</h3>
+                <p>ساخت اپلیکیشن‌های موبایل</p>
+                <a href="#" title="اطلاعات بیشتر">بیشتر بخوانید</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- بخش تماس -->
+    <section id="contact">
+        <h2>تماس با ما</h2>
+        <p>راه‌های ارتباط با تیم ما:</p>
+        <ul>
+            <li>📧 <a href="mailto:info@example.com">info@example.com</a></li>
+            <li>📞 <a href="tel:+989123456789">۰۹۱۲-۳۴۵-۶۷۸۹</a></li>
+            <li>🌐 <a href="https://example.com" target="_blank" rel="noopener">وب‌سایت ما</a></li>
+        </ul>
+        
+        <!-- دکمه دانلود -->
+        <p>
+            <a href="data:text/plain;charset=utf-8,سلام%20دنیا" 
+               download="sample.txt" 
+               class="download-btn">دانلود فایل نمونه</a>
+        </p>
+    </section>
+    
+    <!-- گالری تصاویر -->
+    <section>
+        <h2>گالری تصاویر</h2>
+        <div class="gallery">
+            <a href="#" title="تصویر ۱">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjNGY4MWJkIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7Yqti12YjbjNixIDEgPC90ZXh0Pgo8L3N2Zz4K" 
+                     alt="تصویر ۱" 
+                     width="150" 
+                     height="150">
+            </a>
+            
+            <a href="#" title="تصویر ۲">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjNWNiODVjIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7Yqti12YjbjNixIDI8L3RleHQ+Cjwvc3ZnPgo=" 
+                     alt="تصویر ۲" 
+                     width="150" 
+                     height="150">
+            </a>
+            
+            <a href="#" title="تصویر ۳">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBhZDRlIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7Yqti12YjbjNixIDM8L3RleHQ+Cjwvc3ZnPgo=" 
+                     alt="تصویر ۳" 
+                     width="150" 
+                     height="150">
+            </a>
+        </div>
+    </section>
+</body>
+</html>`,
+                    css: `body {
+    font-family: 'Tahoma', Arial, sans-serif;
+    direction: rtl;
+    text-align: right;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+h1, h2, h3 {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+}
+
+/* استایل منوی ناوبری */
+nav ul {
+    list-style: none;
+    padding: 0;
+    background-color: #34495e;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+nav li {
+    margin: 0;
+}
+
+nav a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #2c3e50;
+}
+
+/* استایل بخش‌ها */
+section {
+    margin: 30px 0;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* استایل تصاویر */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+img:hover {
+    transform: scale(1.05);
+}
+
+/* استایل کارت‌های خدمات */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.service-card {
+    background-color: #ecf0f1;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.service-card h3 {
+    color: #2c3e50;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.service-card a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.service-card a:hover {
+    background-color: #2980b9;
+}
+
+/* استایل لینک‌های تماس */
+#contact ul {
+    list-style: none;
+    padding: 0;
+}
+
+#contact li {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+#contact a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+#contact a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+/* استایل دکمه دانلود */
+.download-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #27ae60;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.download-btn:hover {
+    background-color: #229954;
+}
+
+/* استایل گالری */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.gallery a {
+    display: block;
+    text-decoration: none;
+}
+
+.gallery img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+/* طراحی واکنش‌گرا */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}`,
+                    js: `// اضافه کردن تعامل به صفحه
+document.addEventListener('DOMContentLoaded', function() {
+    // اسکرول نرم برای لینک‌های لنگری
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    anchorLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // تأیید برای لینک‌های خارجی
+    const externalLinks = document.querySelectorAll('a[target="_blank"]');
+    externalLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const confirmed = confirm('آیا می‌خواهید این لینک را در تب جدید باز کنید؟');
+            if (!confirmed) {
+                e.preventDefault();
+            }
+        });
+    });
+    
+    // افکت hover برای تصاویر گالری
+    const galleryImages = document.querySelectorAll('.gallery img');
+    galleryImages.forEach(img => {
+        img.addEventListener('mouseenter', function() {
+            this.style.filter = 'brightness(1.1)';
+        });
+        
+        img.addEventListener('mouseleave', function() {
+            this.style.filter = 'brightness(1)';
+        });
+    });
+    
+    // شمارش لینک‌ها در صفحه
+    const allLinks = document.querySelectorAll('a');
+    console.log('تعداد کل لینک‌ها در صفحه: ' + allLinks.length);
+    
+    // شمارش تصاویر در صفحه
+    const allImages = document.querySelectorAll('img');
+    console.log('تعداد کل تصاویر در صفحه: ' + allImages.length);
+    
+    // اضافه کردن اطلاعات بارگذاری تصاویر
+    allImages.forEach((img, index) => {
+        img.addEventListener('load', function() {
+            console.log('تصویر ' + (index + 1) + ' بارگذاری شد');
+        });
+        
+        img.addEventListener('error', function() {
+            console.log('خطا در بارگذاری تصویر ' + (index + 1));
+            this.alt = 'خطا در بارگذاری تصویر';
+        });
+    });
+});`
+                }
+            });
+            
+            // Mark lesson as completed when user interacts with editor
+            let hasInteracted = false;
+            setTimeout(() => {
+                if (editor.isInitialized) {
+                    Object.keys(editor.editors).forEach(key => {
+                        editor.editors[key].on('change', () => {
+                            if (!hasInteracted) {
+                                hasInteracted = true;
+                                if (window.PersianWebTutorial) {
+                                    window.PersianWebTutorial.markLessonCompleted('lesson3');
+                                }
+                            }
+                        });
+                    });
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
+

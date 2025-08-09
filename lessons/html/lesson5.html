@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درس ۵: HTML معنایی - آموزش توسعه وب</title>
+    <meta name="description" content="یادگیری HTML معنایی و تگ‌های HTML5">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/rtl.css">
+    <link rel="stylesheet" href="../../css/themes.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/editor.css">
+    
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="../../js/libs/codemirror/css/codemirror.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/monokai.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/material.min.css">
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم">
+        <span class="theme-toggle-icon">🌙</span>
+    </button>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-brand">
+                <div class="header-brand-icon">وب</div>
+                <span>آموزش توسعه وب</span>
+            </div>
+            
+            <nav class="header-nav">
+                <div class="header-search">
+                    <input type="text" placeholder="جستجو در دروس..." id="searchInput">
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="منوی موبایل">
+                    ☰
+                </button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h2 class="sidebar-title">فهرست دروس</h2>
+                    <p class="sidebar-subtitle">۲۰ درس کامل برای یادگیری توسعه وب</p>
+                </div>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">HTML</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="lesson1.html" class="nav-link">
+                                <span class="nav-link-icon">📄</span>
+                                <span class="nav-link-text">مقدمات HTML</span>
+                                <span class="nav-link-badge">۱</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson2.html" class="nav-link">
+                                <span class="nav-link-icon">📝</span>
+                                <span class="nav-link-text">متن و قالب‌بندی</span>
+                                <span class="nav-link-badge">۲</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson3.html" class="nav-link">
+                                <span class="nav-link-icon">🔗</span>
+                                <span class="nav-link-text">لینک‌ها و تصاویر</span>
+                                <span class="nav-link-badge">۳</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson4.html" class="nav-link">
+                                <span class="nav-link-icon">📊</span>
+                                <span class="nav-link-text">جداول و فرم‌ها</span>
+                                <span class="nav-link-badge">۴</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson5.html" class="nav-link active">
+                                <span class="nav-link-icon">🏗️</span>
+                                <span class="nav-link-text">HTML معنایی</span>
+                                <span class="nav-link-badge">۵</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">CSS</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="../css/lesson6.html" class="nav-link">
+                                <span class="nav-link-icon">🎨</span>
+                                <span class="nav-link-text">مقدمات CSS</span>
+                                <span class="nav-link-badge">۶</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">منابع</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="../../reference/html-tags.html" class="nav-link">
+                                <span class="nav-link-icon">📚</span>
+                                <span class="nav-link-text">مرجع تگ‌های HTML</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../../index.html" class="nav-link">
+                                <span class="nav-link-icon">🏠</span>
+                                <span class="nav-link-text">صفحه اصلی</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb">
+                    <span class="breadcrumb-item"><a href="../../index.html">صفحه اصلی</a></span>
+                    <span class="breadcrumb-item"><a href="#html">HTML</a></span>
+                    <span class="breadcrumb-item active">درس ۵: HTML معنایی</span>
+                </nav>
+
+                <div class="content-header">
+                    <h1 class="content-title">درس ۵: HTML معنایی</h1>
+                    <p class="content-subtitle">یادگیری HTML معنایی و تگ‌های HTML5</p>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>پیشرفت درس</span>
+                        <span>۵ از ۲۰ درس</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 25%"></div>
+                    </div>
+                </div>
+
+                <!-- Lesson Content -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">HTML معنایی چیست؟</h2>
+                    </div>
+                    <p>HTML معنایی (Semantic HTML) به استفاده از تگ‌هایی اطلاق می‌شود که علاوه بر نمایش محتوا، معنا و هدف آن را نیز مشخص می‌کنند. این تگ‌ها به مرورگرها، موتورهای جستجو و فناوری‌های کمکی کمک می‌کنند تا محتوا را بهتر درک کنند.</p>
+                    
+                    <h3>مزایای HTML معنایی:</h3>
+                    <ul>
+                        <li><strong>SEO بهتر:</strong> موتورهای جستجو محتوا را بهتر درک می‌کنند</li>
+                        <li><strong>دسترسی‌پذیری:</strong> صفحه‌خوان‌ها بهتر کار می‌کنند</li>
+                        <li><strong>نگهداری آسان‌تر:</strong> کد قابل فهم‌تر و سازمان‌یافته‌تر</li>
+                        <li><strong>سازگاری بیشتر:</strong> با دستگاه‌ها و مرورگرهای مختلف</li>
+                        <li><strong>استایل‌دهی بهتر:</strong> CSS هدفمندتر</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تگ‌های ساختاری HTML5</h2>
+                    </div>
+                    <p>HTML5 تگ‌های جدیدی برای ساختاردهی بهتر به صفحات وب ارائه داده است:</p>
+                    
+                    <h3>تگ‌های اصلی:</h3>
+                    <ul>
+                        <li><code>&lt;header&gt;</code> - سربرگ صفحه یا بخش</li>
+                        <li><code>&lt;nav&gt;</code> - منوی ناوبری</li>
+                        <li><code>&lt;main&gt;</code> - محتوای اصلی صفحه</li>
+                        <li><code>&lt;section&gt;</code> - بخش مستقل از محتوا</li>
+                        <li><code>&lt;article&gt;</code> - مقاله یا محتوای مستقل</li>
+                        <li><code>&lt;aside&gt;</code> - محتوای جانبی</li>
+                        <li><code>&lt;footer&gt;</code> - پاورقی صفحه یا بخش</li>
+                    </ul>
+                    
+                    <h3>ساختار نمونه:</h3>
+                    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;...&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;سربرگ&lt;/header&gt;
+  &lt;nav&gt;منوی ناوبری&lt;/nav&gt;
+  &lt;main&gt;
+    &lt;article&gt;مقاله اصلی&lt;/article&gt;
+    &lt;aside&gt;نوار کناری&lt;/aside&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;پاورقی&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تگ‌های محتوایی HTML5</h2>
+                    </div>
+                    <p>HTML5 تگ‌های جدیدی برای انواع مختلف محتوا ارائه داده است:</p>
+                    
+                    <h3>تگ‌های مهم:</h3>
+                    <ul>
+                        <li><code>&lt;figure&gt;</code> - تصویر، نمودار یا کد با توضیح</li>
+                        <li><code>&lt;figcaption&gt;</code> - توضیح figure</li>
+                        <li><code>&lt;details&gt;</code> - محتوای قابل باز/بسته شدن</li>
+                        <li><code>&lt;summary&gt;</code> - خلاصه details</li>
+                        <li><code>&lt;mark&gt;</code> - متن برجسته</li>
+                        <li><code>&lt;time&gt;</code> - تاریخ و زمان</li>
+                        <li><code>&lt;progress&gt;</code> - نوار پیشرفت</li>
+                        <li><code>&lt;meter&gt;</code> - اندازه‌گیری</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تگ‌های چندرسانه‌ای HTML5</h2>
+                    </div>
+                    <p>HTML5 پشتیبانی بومی از صوت و تصویر ارائه می‌دهد:</p>
+                    
+                    <h3>تگ‌های چندرسانه‌ای:</h3>
+                    <ul>
+                        <li><code>&lt;video&gt;</code> - پخش ویدیو</li>
+                        <li><code>&lt;audio&gt;</code> - پخش صوت</li>
+                        <li><code>&lt;source&gt;</code> - منبع چندگانه برای ویدیو/صوت</li>
+                        <li><code>&lt;track&gt;</code> - زیرنویس برای ویدیو</li>
+                        <li><code>&lt;canvas&gt;</code> - نقاشی و گرافیک</li>
+                        <li><code>&lt;svg&gt;</code> - گرافیک برداری</li>
+                    </ul>
+                    
+                    <h3>مثال ویدیو:</h3>
+                    <pre><code>&lt;video controls width="400"&gt;
+  &lt;source src="video.mp4" type="video/mp4"&gt;
+  &lt;source src="video.webm" type="video/webm"&gt;
+  &lt;track src="subtitles.vtt" kind="subtitles" srclang="fa" label="فارسی"&gt;
+  مرورگر شما از ویدیو پشتیبانی نمی‌کند.
+&lt;/video&gt;</code></pre>
+                </div>
+
+                <!-- Interactive Code Editor -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تمرین عملی: HTML معنایی</h2>
+                    </div>
+                    <p>در ادامه، مثالی از صفحه‌ای با HTML معنایی را مشاهده می‌کنید. کد را ویرایش کرده و ساختار مختلف را آزمایش کنید:</p>
+                    
+                    <div id="codeEditor"></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">میکرودیتا و Schema.org</h2>
+                    </div>
+                    <p>میکرودیتا راهی برای اضافه کردن اطلاعات ساختاریافته به HTML است که به موتورهای جستجو کمک می‌کند:</p>
+                    
+                    <h3>ویژگی‌های میکرودیتا:</h3>
+                    <ul>
+                        <li><code>itemscope</code> - تعریف محدوده آیتم</li>
+                        <li><code>itemtype</code> - نوع آیتم</li>
+                        <li><code>itemprop</code> - ویژگی آیتم</li>
+                    </ul>
+                    
+                    <h3>مثال شخص:</h3>
+                    <pre><code>&lt;div itemscope itemtype="http://schema.org/Person"&gt;
+  &lt;h1 itemprop="name"&gt;علی احمدی&lt;/h1&gt;
+  &lt;p itemprop="jobTitle"&gt;توسعه‌دهنده وب&lt;/p&gt;
+  &lt;p itemprop="email"&gt;ali@example.com&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">WAI-ARIA و دسترسی‌پذیری</h2>
+                    </div>
+                    <p>WAI-ARIA مجموعه‌ای از ویژگی‌ها برای بهبود دسترسی‌پذیری وب است:</p>
+                    
+                    <h3>ویژگی‌های مهم ARIA:</h3>
+                    <ul>
+                        <li><code>role</code> - نقش عنصر</li>
+                        <li><code>aria-label</code> - برچسب دسترسی</li>
+                        <li><code>aria-labelledby</code> - ارجاع به برچسب</li>
+                        <li><code>aria-describedby</code> - ارجاع به توضیح</li>
+                        <li><code>aria-hidden</code> - مخفی کردن از صفحه‌خوان</li>
+                        <li><code>aria-expanded</code> - وضعیت باز/بسته</li>
+                        <li><code>aria-live</code> - اعلام تغییرات</li>
+                    </ul>
+                    
+                    <h3>مثال دکمه:</h3>
+                    <pre><code>&lt;button aria-label="بستن پنجره" aria-expanded="false"&gt;
+  ×
+&lt;/button&gt;</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تمرین‌های عملی</h2>
+                    </div>
+                    <p>برای تسلط بیشتر بر مطالب این درس، تمرین‌های زیر را انجام دهید:</p>
+                    
+                    <h3>تمرین ۱: ساختار وبلاگ</h3>
+                    <p>صفحه‌ای برای وبلاگ ایجاد کنید که شامل header، nav، main، article، aside و footer باشد.</p>
+                    
+                    <h3>تمرین ۲: صفحه محصول</h3>
+                    <p>صفحه محصولی با میکرودیتا Schema.org ایجاد کنید.</p>
+                    
+                    <h3>تمرین ۳: گالری تصاویر</h3>
+                    <p>گالری تصاویری با figure و figcaption ایجاد کنید.</p>
+                    
+                    <h3>تمرین ۴: صفحه دسترسی‌پذیر</h3>
+                    <p>صفحه‌ای با ویژگی‌های ARIA برای بهبود دسترسی‌پذیری ایجاد کنید.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">نکات مهم و بهترین شیوه‌ها</h2>
+                    </div>
+                    <h3>برای HTML معنایی:</h3>
+                    <ul>
+                        <li>از تگ‌های معنایی به جای div استفاده کنید</li>
+                        <li>ساختار منطقی و سلسله‌مراتبی ایجاد کنید</li>
+                        <li>فقط یک main در هر صفحه استفاده کنید</li>
+                        <li>از heading‌ها به ترتیب استفاده کنید</li>
+                        <li>alt برای تصاویر تعریف کنید</li>
+                    </ul>
+                    
+                    <h3>برای دسترسی‌پذیری:</h3>
+                    <ul>
+                        <li>کنتراست رنگی مناسب استفاده کنید</li>
+                        <li>سایز فونت قابل خواندن انتخاب کنید</li>
+                        <li>کیبورد ناوبری را پشتیبانی کنید</li>
+                        <li>از ARIA labels استفاده کنید</li>
+                        <li>فرم‌ها را با label مرتبط کنید</li>
+                    </ul>
+                    
+                    <h3>اشتباهات رایج:</h3>
+                    <ul>
+                        <li>استفاده از div برای همه چیز</li>
+                        <li>نادیده گرفتن ساختار سلسله‌مراتبی</li>
+                        <li>استفاده نادرست از تگ‌های معنایی</li>
+                        <li>فراموش کردن ویژگی‌های دسترسی‌پذیری</li>
+                        <li>عدم تست با صفحه‌خوان</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">خلاصه دروس HTML</h2>
+                    </div>
+                    <p>تبریک! شما تمام دروس HTML را به پایان رساندید. در این ۵ درس یاد گرفتید:</p>
+                    
+                    <h3>مطالب آموخته شده:</h3>
+                    <ul>
+                        <li>ساختار اساسی HTML و تگ‌های پایه</li>
+                        <li>قالب‌بندی متن و لیست‌ها</li>
+                        <li>لینک‌ها، تصاویر و عناصر چندرسانه‌ای</li>
+                        <li>جداول و فرم‌های تعاملی</li>
+                        <li>HTML معنایی و دسترسی‌پذیری</li>
+                    </ul>
+                    
+                    <p>حالا آماده یادگیری CSS هستید تا صفحات زیبا و حرفه‌ای طراحی کنید!</p>
+                </div>
+
+                <!-- Navigation -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">ادامه یادگیری</h2>
+                    </div>
+                    <p>در درس بعدی با مقدمات CSS و استایل‌دهی صفحات وب آشنا خواهید شد.</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="lesson4.html" class="btn btn-secondary">درس قبلی: جداول و فرم‌ها</a>
+                        <a href="../css/lesson6.html" class="btn btn-primary" style="margin-right: 1rem;">درس بعدی: مقدمات CSS</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../../js/main.js"></script>
+    <script src="../../js/storage.js"></script>
+    
+    <!-- CodeMirror JavaScript -->
+    <script src="../../js/libs/codemirror/js/codemirror.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/xml.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/css.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/javascript.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/htmlmixed.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/matchbrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/closebrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/active-line.min.js"></script>
+    
+    <!-- Editor JavaScript -->
+    <script src="../../js/editor.js"></script>
+    
+    <script>
+        // Initialize the code editor when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const editor = new CodeEditor('codeEditor', {
+                initialContent: {
+                    html: `<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>وبلاگ شخصی - HTML معنایی</title>
+</head>
+<body>
+    <!-- سربرگ سایت -->
+    <header>
+        <h1>وبلاگ شخصی من</h1>
+        <p>به وبلاگ شخصی من خوش آمدید</p>
+    </header>
+    
+    <!-- منوی ناوبری -->
+    <nav aria-label="منوی اصلی">
+        <ul>
+            <li><a href="#home" aria-current="page">خانه</a></li>
+            <li><a href="#about">درباره من</a></li>
+            <li><a href="#blog">وبلاگ</a></li>
+            <li><a href="#contact">تماس</a></li>
+        </ul>
+    </nav>
+    
+    <!-- محتوای اصلی -->
+    <main>
+        <!-- مقاله اصلی -->
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+            <header>
+                <h2 itemprop="headline">آموزش HTML معنایی</h2>
+                <p>
+                    نویسنده: <span itemprop="author">علی احمدی</span> | 
+                    <time itemprop="datePublished" datetime="2024-01-15">۱۵ ژانویه ۲۰۲۴</time>
+                </p>
+            </header>
+            
+            <div itemprop="articleBody">
+                <p>HTML معنایی یکی از مهم‌ترین مفاهیم در توسعه وب مدرن است که به بهبود 
+                <mark>دسترسی‌پذیری</mark> و <mark>SEO</mark> کمک می‌کند.</p>
+                
+                <section>
+                    <h3>مزایای HTML معنایی</h3>
+                    <p>استفاده از تگ‌های معنایی مزایای زیادی دارد:</p>
+                    <ul>
+                        <li>بهبود SEO</li>
+                        <li>دسترسی‌پذیری بهتر</li>
+                        <li>کد تمیزتر و قابل نگهداری</li>
+                    </ul>
+                </section>
+                
+                <!-- تصویر با توضیح -->
+                <figure>
+                    <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="#e3f2fd"/>
+                        <text x="50%" y="50%" font-family="Arial, sans-serif" 
+                              font-size="16" fill="#1976d2" text-anchor="middle" dy=".3em">
+                            ساختار HTML معنایی
+                        </text>
+                        <rect x="50" y="50" width="200" height="30" fill="#2196f3" opacity="0.7"/>
+                        <text x="150" y="70" font-family="Arial, sans-serif" 
+                              font-size="12" fill="white" text-anchor="middle">Header</text>
+                        <rect x="50" y="90" width="200" height="60" fill="#4caf50" opacity="0.7"/>
+                        <text x="150" y="125" font-family="Arial, sans-serif" 
+                              font-size="12" fill="white" text-anchor="middle">Main Content</text>
+                        <rect x="50" y="160" width="200" height="30" fill="#ff9800" opacity="0.7"/>
+                        <text x="150" y="180" font-family="Arial, sans-serif" 
+                              font-size="12" fill="white" text-anchor="middle">Footer</text>
+                    </svg>
+                    <figcaption>نمودار ساختار HTML معنایی</figcaption>
+                </figure>
+                
+                <!-- محتوای قابل باز/بسته شدن -->
+                <details>
+                    <summary>کد نمونه HTML معنایی</summary>
+                    <pre><code>&lt;article&gt;
+  &lt;header&gt;
+    &lt;h1&gt;عنوان مقاله&lt;/h1&gt;
+  &lt;/header&gt;
+  &lt;section&gt;
+    &lt;p&gt;محتوای مقاله...&lt;/p&gt;
+  &lt;/section&gt;
+&lt;/article&gt;</code></pre>
+                </details>
+                
+                <!-- نوار پیشرفت -->
+                <section>
+                    <h3>پیشرفت یادگیری</h3>
+                    <p>پیشرفت شما در یادگیری HTML:</p>
+                    <progress value="85" max="100" aria-label="پیشرفت یادگیری">85%</progress>
+                    <p>۸۵ درصد تکمیل شده</p>
+                </section>
+            </div>
+            
+            <footer>
+                <p>برچسب‌ها: 
+                    <span itemprop="keywords">HTML, معنایی, توسعه وب</span>
+                </p>
+            </footer>
+        </article>
+        
+        <!-- نوار کناری -->
+        <aside aria-label="اطلاعات جانبی">
+            <section>
+                <h3>درباره نویسنده</h3>
+                <div itemscope itemtype="http://schema.org/Person">
+                    <p><strong itemprop="name">علی احمدی</strong></p>
+                    <p itemprop="jobTitle">توسعه‌دهنده فرانت‌اند</p>
+                    <p>تجربه: <meter value="7" min="0" max="10">7 از 10</meter></p>
+                </div>
+            </section>
+            
+            <section>
+                <h3>مقالات مرتبط</h3>
+                <ul>
+                    <li><a href="#">مقدمات HTML</a></li>
+                    <li><a href="#">CSS برای مبتدیان</a></li>
+                    <li><a href="#">JavaScript پایه</a></li>
+                </ul>
+            </section>
+        </aside>
+    </main>
+    
+    <!-- پاورقی سایت -->
+    <footer>
+        <p>&copy; ۲۰۲۴ وبلاگ شخصی من. تمام حقوق محفوظ است.</p>
+        <address>
+            تماس با ما: <a href="mailto:info@example.com">info@example.com</a>
+        </address>
+    </footer>
+</body>
+</html>`,
+                    css: `/* استایل‌های پایه */
+body {
+    font-family: 'Tahoma', Arial, sans-serif;
+    direction: rtl;
+    text-align: right;
+    line-height: 1.6;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* سربرگ */
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin: 0 0 0.5rem 0;
+    font-size: 2.5rem;
+}
+
+header p {
+    margin: 0;
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* منوی ناوبری */
+nav {
+    background-color: #2c3e50;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav li {
+    margin: 0;
+}
+
+nav a {
+    display: block;
+    padding: 1rem 1.5rem;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    border-radius: 8px;
+}
+
+nav a:hover,
+nav a[aria-current="page"] {
+    background-color: #34495e;
+}
+
+/* محتوای اصلی */
+main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* مقاله */
+article {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+article header {
+    background: none;
+    color: #333;
+    padding: 0 0 1rem 0;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #e9ecef;
+    text-align: right;
+}
+
+article header h2 {
+    color: #2c3e50;
+    margin: 0 0 0.5rem 0;
+    font-size: 2rem;
+}
+
+article header p {
+    color: #6c757d;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* بخش‌ها */
+section {
+    margin: 2rem 0;
+}
+
+section h3 {
+    color: #495057;
+    border-bottom: 2px solid #dee2e6;
+    padding-bottom: 0.5rem;
+}
+
+/* تصویر و توضیح */
+figure {
+    margin: 2rem 0;
+    text-align: center;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+figcaption {
+    margin-top: 1rem;
+    font-style: italic;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* محتوای قابل باز/بسته */
+details {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1.5rem 0;
+}
+
+summary {
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0.5rem;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    margin: -1rem -1rem 1rem -1rem;
+    transition: background-color 0.3s;
+}
+
+summary:hover {
+    background-color: #dee2e6;
+}
+
+details pre {
+    background-color: #2d3748;
+    color: #e2e8f0;
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 1rem 0 0 0;
+}
+
+/* نوار پیشرفت */
+progress {
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    margin: 0.5rem 0;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #e9ecef;
+    border-radius: 10px;
+}
+
+progress::-webkit-progress-value {
+    background: linear-gradient(90deg, #28a745, #20c997);
+    border-radius: 10px;
+}
+
+/* اندازه‌گیری */
+meter {
+    width: 100%;
+    height: 20px;
+}
+
+/* متن برجسته */
+mark {
+    background-color: #fff3cd;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+/* نوار کناری */
+aside {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    height: fit-content;
+}
+
+aside h3 {
+    color: #495057;
+    margin-top: 0;
+    border-bottom: 2px solid #dee2e6;
+    padding-bottom: 0.5rem;
+}
+
+aside ul {
+    list-style: none;
+    padding: 0;
+}
+
+aside li {
+    margin: 0.5rem 0;
+}
+
+aside a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+aside a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* پاورقی */
+footer {
+    background-color: #343a40;
+    color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+footer a {
+    color: #ffc107;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+address {
+    font-style: normal;
+    margin-top: 1rem;
+}
+
+/* طراحی واکنش‌گرا */
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+    
+    nav ul {
+        flex-direction: column;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    article {
+        padding: 1rem;
+    }
+}`,
+                    js: `// تعامل با صفحه HTML معنایی
+document.addEventListener('DOMContentLoaded', function() {
+    // اضافه کردن تعامل به منوی ناوبری
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // حذف aria-current از همه لینک‌ها
+            navLinks.forEach(l => l.removeAttribute('aria-current'));
+            // اضافه کردن به لینک فعلی
+            this.setAttribute('aria-current', 'page');
+        });
+    });
+    
+    // تعامل با details/summary
+    const detailsElements = document.querySelectorAll('details');
+    detailsElements.forEach(details => {
+        const summary = details.querySelector('summary');
+        
+        details.addEventListener('toggle', function() {
+            if (this.open) {
+                summary.setAttribute('aria-expanded', 'true');
+                console.log('جزئیات باز شد');
+            } else {
+                summary.setAttribute('aria-expanded', 'false');
+                console.log('جزئیات بسته شد');
+            }
+        });
+    });
+    
+    // انیمیشن نوار پیشرفت
+    const progressBar = document.querySelector('progress');
+    if (progressBar) {
+        let currentValue = 0;
+        const targetValue = parseInt(progressBar.value);
+        
+        const animateProgress = () => {
+            if (currentValue < targetValue) {
+                currentValue += 1;
+                progressBar.value = currentValue;
+                setTimeout(animateProgress, 50);
+            }
+        };
+        
+        // شروع انیمیشن پس از 1 ثانیه
+        setTimeout(() => {
+            progressBar.value = 0;
+            animateProgress();
+        }, 1000);
+    }
+    
+    // اضافه کردن تاریخ به time element
+    const timeElement = document.querySelector('time[itemprop="datePublished"]');
+    if (timeElement) {
+        const date = new Date(timeElement.getAttribute('datetime'));
+        const persianDate = date.toLocaleDateString('fa-IR');
+        timeElement.textContent = persianDate;
+    }
+    
+    // تعامل با میکرودیتا
+    const authorElement = document.querySelector('[itemprop="author"]');
+    if (authorElement) {
+        authorElement.addEventListener('click', function() {
+            alert('نویسنده: ' + this.textContent);
+        });
+        
+        // اضافه کردن cursor pointer
+        authorElement.style.cursor = 'pointer';
+        authorElement.style.textDecoration = 'underline';
+    }
+    
+    // بررسی دسترسی‌پذیری
+    function checkAccessibility() {
+        const issues = [];
+        
+        // بررسی alt برای تصاویر
+        const images = document.querySelectorAll('img');
+        images.forEach((img, index) => {
+            if (!img.alt) {
+                issues.push('تصویر ' + (index + 1) + ' فاقد alt است');
+            }
+        });
+        
+        // بررسی heading hierarchy
+        const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+        let lastLevel = 0;
+        headings.forEach(heading => {
+            const level = parseInt(heading.tagName.charAt(1));
+            if (level > lastLevel + 1) {
+                issues.push('سطح heading نادرست: ' + heading.textContent);
+            }
+            lastLevel = level;
+        });
+        
+        // بررسی label برای فیلدها
+        const inputs = document.querySelectorAll('input, select, textarea');
+        inputs.forEach((input, index) => {
+            const label = document.querySelector('label[for="' + input.id + '"]');
+            if (!label && !input.getAttribute('aria-label')) {
+                issues.push('فیلد ' + (index + 1) + ' فاقد label است');
+            }
+        });
+        
+        if (issues.length > 0) {
+            console.warn('مسائل دسترسی‌پذیری:', issues);
+        } else {
+            console.log('هیچ مشکل دسترسی‌پذیری یافت نشد!');
+        }
+    }
+    
+    // اجرای بررسی دسترسی‌پذیری
+    checkAccessibility();
+    
+    // اضافه کردن کیبورد ناوبری
+    document.addEventListener('keydown', function(e) {
+        // Tab navigation enhancement
+        if (e.key === 'Tab') {
+            const focusableElements = document.querySelectorAll(
+                'a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+            );
+            
+            // اضافه کردن outline برای focus
+            focusableElements.forEach(el => {
+                el.addEventListener('focus', function() {
+                    this.style.outline = '2px solid #007bff';
+                    this.style.outlineOffset = '2px';
+                });
+                
+                el.addEventListener('blur', function() {
+                    this.style.outline = 'none';
+                });
+            });
+        }
+    });
+    
+    // اعلام تغییرات برای screen readers
+    function announceChange(message) {
+        const announcement = document.createElement('div');
+        announcement.setAttribute('aria-live', 'polite');
+        announcement.setAttribute('aria-atomic', 'true');
+        announcement.style.position = 'absolute';
+        announcement.style.left = '-10000px';
+        announcement.textContent = message;
+        
+        document.body.appendChild(announcement);
+        
+        setTimeout(() => {
+            document.body.removeChild(announcement);
+        }, 1000);
+    }
+    
+    // مثال استفاده از announceChange
+    setTimeout(() => {
+        announceChange('صفحه به طور کامل بارگذاری شد');
+    }, 2000);
+});`
+                }
+            });
+            
+            // Mark lesson as completed when user interacts with editor
+            let hasInteracted = false;
+            setTimeout(() => {
+                if (editor.isInitialized) {
+                    Object.keys(editor.editors).forEach(key => {
+                        editor.editors[key].on('change', () => {
+                            if (!hasInteracted) {
+                                hasInteracted = true;
+                                if (window.PersianWebTutorial) {
+                                    window.PersianWebTutorial.markLessonCompleted('lesson5');
+                                }
+                            }
+                        });
+                    });
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
+

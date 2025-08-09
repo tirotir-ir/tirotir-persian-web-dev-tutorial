@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درس ۱۷: رویدادها و تعامل - آموزش توسعه وب</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/rtl.css">
+    <link rel="stylesheet" href="../../css/themes.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/editor.css">
+    <link rel="stylesheet" href="../../css/quiz.css">
+    
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="../../js/libs/codemirror/css/codemirror.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/monokai.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/material.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-right">
+                    <h1 class="site-title">آموزش توسعه وب</h1>
+                    <div class="breadcrumb">
+                        <a href="../../index.html">صفحه اصلی</a>
+                        <span>/</span>
+                        <a href="#">JavaScript</a>
+                        <span>/</span>
+                        <span>درس ۱۷</span>
+                    </div>
+                </div>
+                <div class="header-left">
+                    <button class="theme-toggle" id="themeToggle">🌙</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h3>فهرست دروس</h3>
+                    <div class="search-box">
+                        <input type="text" placeholder="جستجو در دروس..." id="lessonSearch">
+                    </div>
+                </div>
+                
+                <nav class="lesson-nav">
+                    <div class="lesson-category">
+                        <h4>HTML</h4>
+                        <ul>
+                            <li><a href="../html/lesson1.html">📄 مقدمات HTML ۱</a></li>
+                            <li><a href="../html/lesson2.html">📝 متن و قالب‌بندی ۲</a></li>
+                            <li><a href="../html/lesson3.html">🔗 لینک‌ها و تصاویر ۳</a></li>
+                            <li><a href="../html/lesson4.html">📊 جداول و فرم‌ها ۴</a></li>
+                            <li><a href="../html/lesson5.html">🏗️ HTML معنایی ۵</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lesson-category">
+                        <h4>CSS</h4>
+                        <ul>
+                            <li><a href="../css/lesson6.html">🎨 مقدمات CSS ۶</a></li>
+                            <li><a href="../css/lesson7.html">📦 مدل جعبه و چیدمان ۷</a></li>
+                            <li><a href="../css/lesson8.html">🔤 تایپوگرافی و رنگ‌ها ۸</a></li>
+                            <li><a href="../css/lesson9.html">🌈 رنگ‌ها و پس‌زمینه ۹</a></li>
+                            <li><a href="../css/lesson10.html">📐 Flexbox و Grid ۱۰</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lesson-category">
+                        <h4>JavaScript</h4>
+                        <ul>
+                            <li><a href="lesson11.html">⚡ مقدمات JavaScript ۱۱</a></li>
+                            <li><a href="lesson12.html">🔧 متغیرها و انواع داده ۱۲</a></li>
+                            <li><a href="lesson13.html">🔀 عملگرها و شرط‌ها ۱۳</a></li>
+                            <li><a href="lesson14.html">🔄 حلقه‌ها و تکرار ۱۴</a></li>
+                            <li><a href="lesson15.html">⚙️ توابع ۱۵</a></li>
+                            <li><a href="lesson16.html">🎯 دستکاری DOM ۱۶</a></li>
+                            <li><a href="lesson17.html" class="active">🖱️ رویدادها و تعامل ۱۷</a></li>
+                            <li><a href="lesson18.html">📦 آرایه‌ها و اشیاء ۱۸</a></li>
+                            <li><a href="lesson19.html">🚀 مفاهیم پیشرفته ۱۹</a></li>
+                            <li><a href="lesson20.html">🎨 پروژه نهایی ۲۰</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                
+                <div class="sidebar-footer">
+                    <a href="../../reference/html-tags.html">📚 مرجع تگ‌های HTML</a>
+                    <a href="../../index.html">🏠 صفحه اصلی</a>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="content">
+                <article class="lesson">
+                    <header class="lesson-header">
+                        <h1>درس ۱۷: رویدادها و تعامل</h1>
+                        <p class="lesson-subtitle">یادگیری مدیریت رویدادها و ایجاد تعامل کاربر</p>
+                        <div class="lesson-meta">
+                            <span class="lesson-number">درس ۱۷ از ۲۰</span>
+                            <div class="lesson-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 85%"></div>
+                                </div>
+                                <span class="progress-text">پیشرفت درس</span>
+                            </div>
+                        </div>
+                    </header>
+
+                    <div class="lesson-content">
+                        <section class="content-section">
+                            <h2>رویدادها چیستند؟</h2>
+                            <p>رویدادها (Events) اتفاقاتی هستند که در صفحه وب رخ می‌دهند و JavaScript می‌تواند به آن‌ها واکنش نشان دهد. این رویدادها می‌توانند توسط کاربر (مانند کلیک کردن) یا توسط مرورگر (مانند بارگذاری صفحه) ایجاد شوند.</p>
+                            
+                            <div class="info-box">
+                                <h3>انواع رویدادهای رایج:</h3>
+                                <ul>
+                                    <li><strong>Mouse Events:</strong> click, dblclick, mousedown, mouseup, mouseover</li>
+                                    <li><strong>Keyboard Events:</strong> keydown, keyup, keypress</li>
+                                    <li><strong>Form Events:</strong> submit, change, input, focus, blur</li>
+                                    <li><strong>Window Events:</strong> load, resize, scroll</li>
+                                    <li><strong>Touch Events:</strong> touchstart, touchend, touchmove</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>اضافه کردن Event Listeners</h2>
+                            
+                            <h3>روش addEventListener</h3>
+                            <p>بهترین روش برای مدیریت رویدادها:</p>
+                            <div class="code-example">
+                                <pre><code>const button = document.getElementById('myButton');
+
+button.addEventListener('click', function() {
+    console.log('دکمه کلیک شد!');
+});
+
+// یا با Arrow Function
+button.addEventListener('click', () => {
+    console.log('دکمه کلیک شد!');
+});</code></pre>
+                            </div>
+
+                            <h3>روش‌های دیگر</h3>
+                            <div class="code-example">
+                                <pre><code>// روش inline (توصیه نمی‌شود)
+// &lt;button onclick="myFunction()"&gt;کلیک&lt;/button&gt;
+
+// روش property
+button.onclick = function() {
+    console.log('کلیک شد');
+};
+
+// مشکل: فقط یک listener می‌تواند داشته باشد</code></pre>
+                            </div>
+                        </section>
+
+                        <!-- Interactive Code Editor -->
+                        <section class="editor-section">
+                            <h2>تمرین عملی: رویدادها و تعامل</h2>
+                            <p>در ادامه، انواع مختلف رویدادها و نحوه مدیریت آن‌ها را تمرین کنید:</p>
+                            
+                            <div class="editor-container">
+                                <div class="editor-tabs">
+                                    <button class="tab-button active" data-tab="html">📄 HTML</button>
+                                    <button class="tab-button" data-tab="css">🎨 CSS</button>
+                                    <button class="tab-button" data-tab="js">⚡ JavaScript</button>
+                                </div>
+                                
+                                <div class="editor-controls">
+                                    <button class="btn btn-primary" id="runCode">▶️ اجرا</button>
+                                    <button class="btn btn-secondary" id="resetCode">🔄 بازنشانی</button>
+                                    <button class="btn btn-secondary" id="fullscreen">⛶ تمام صفحه</button>
+                                </div>
+
+                                <div class="editor-wrapper">
+                                    <div class="editor-panel">
+                                        <div class="editor-header">
+                                            <span>ویرایشگر کد</span>
+                                            <span class="editor-info">خط <span id="lineNumber">1</span>، ستون <span id="columnNumber">1</span></span>
+                                        </div>
+                                        
+                                        <div class="tab-content active" id="html-tab">
+                                            <textarea id="htmlEditor"><!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رویدادها و تعامل</title>
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            direction: rtl;
+            text-align: right;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        .demo-section {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-right: 4px solid #4CAF50;
+        }
+        .event-log {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: monospace;
+            direction: ltr;
+            text-align: left;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-family: 'Vazirmatn', sans-serif;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+        .interactive-box {
+            width: 150px;
+            height: 150px;
+            background: #FF6B6B;
+            margin: 10px;
+            border-radius: 10px;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            user-select: none;
+        }
+        .draggable {
+            position: absolute;
+            cursor: move;
+        }
+        .drop-zone {
+            width: 200px;
+            height: 200px;
+            border: 3px dashed #4CAF50;
+            border-radius: 10px;
+            display: inline-block;
+            margin: 10px;
+            text-align: center;
+            line-height: 200px;
+            background: rgba(76, 175, 80, 0.1);
+        }
+        .drop-zone.dragover {
+            background: rgba(76, 175, 80, 0.3);
+            border-color: #2E7D32;
+        }
+        input, textarea {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+            font-family: 'Vazirmatn', sans-serif;
+            width: 200px;
+        }
+        .game-area {
+            background: rgba(0,0,0,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 10px 0;
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+        .ball {
+            width: 30px;
+            height: 30px;
+            background: #FFD700;
+            border-radius: 50%;
+            position: absolute;
+            transition: all 0.1s ease;
+        }
+        .score {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FFD700;
+            text-align: center;
+        }
+        .key-display {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 18px;
+            min-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🖱️ رویدادها و تعامل JavaScript</h1>
+        
+        <div class="demo-section">
+            <h2>رویدادهای موس</h2>
+            <div class="interactive-box" id="mouseBox">
+                کلیک کنید!
+            </div>
+            <div class="interactive-box" id="hoverBox" style="background: #4ECDC4;">
+                موس را روی من بکشید!
+            </div>
+            <button onclick="clearLog()">پاک کردن لاگ</button>
+            <div class="event-log" id="mouseLog">رویدادهای موس اینجا نمایش داده می‌شوند...</div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>رویدادهای کیبورد</h2>
+            <input type="text" id="keyInput" placeholder="تایپ کنید...">
+            <div class="key-display" id="keyDisplay">کلیدی فشرده نشده</div>
+            <div class="event-log" id="keyLog">رویدادهای کیبورد اینجا نمایش داده می‌شوند...</div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>رویدادهای فرم</h2>
+            <form id="demoForm">
+                <input type="text" id="nameField" placeholder="نام" required>
+                <input type="email" id="emailField" placeholder="ایمیل" required>
+                <textarea id="messageField" placeholder="پیام" rows="3"></textarea>
+                <button type="submit">ارسال</button>
+                <button type="reset">بازنشانی</button>
+            </form>
+            <div class="event-log" id="formLog">رویدادهای فرم اینجا نمایش داده می‌شوند...</div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>Drag and Drop</h2>
+            <div class="interactive-box draggable" id="dragBox" draggable="true" style="background: #9B59B6;">
+                مرا بکشید!
+            </div>
+            <div class="drop-zone" id="dropZone">
+                اینجا رها کنید
+            </div>
+            <div class="event-log" id="dragLog">رویدادهای Drag & Drop اینجا نمایش داده می‌شوند...</div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>بازی ساده - حرکت توپ</h2>
+            <div class="score">امتیاز: <span id="score">0</span></div>
+            <div class="game-area" id="gameArea">
+                <div class="ball" id="ball"></div>
+            </div>
+            <p>از کلیدهای جهت‌دار برای حرکت توپ استفاده کنید. با کلیک روی توپ امتیاز کسب کنید!</p>
+        </div>
+        
+        <div class="demo-section">
+            <h2>رویدادهای پنجره</h2>
+            <button onclick="testWindowEvents()">تست رویدادهای پنجره</button>
+            <button onclick="showWindowInfo()">اطلاعات پنجره</button>
+            <div class="event-log" id="windowLog">رویدادهای پنجره اینجا نمایش داده می‌شوند...</div>
+        </div>
+    </div>
+</body>
+</html></textarea>
+                                        </div>
+                                        
+                                        <div class="tab-content" id="css-tab">
+                                            <textarea id="cssEditor">/* استایل‌های اضافی برای رویدادها */
+.event-active {
+    animation: eventPulse 0.5s ease-in-out;
+    border: 3px solid #FFD700;
+}
+
+@keyframes eventPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.clicked {
+    background: #E74C3C !important;
+    transform: scale(0.95);
+}
+
+.hovered {
+    background: #F39C12 !important;
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.typing {
+    border: 2px solid #3498DB;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+}
+
+.form-valid {
+    border-color: #27AE60;
+    background: rgba(39, 174, 96, 0.1);
+}
+
+.form-invalid {
+    border-color: #E74C3C;
+    background: rgba(231, 76, 60, 0.1);
+}
+
+.dragging {
+    opacity: 0.7;
+    transform: rotate(5deg);
+}
+
+.game-over {
+    animation: gameOverShake 0.5s ease-in-out;
+}
+
+@keyframes gameOverShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+.success-message {
+    background: rgba(39, 174, 96, 0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}</textarea>
+                                        </div>
+                                        
+                                        <div class="tab-content" id="js-tab">
+                                            <textarea id="jsEditor">// متغیرهای سراسری
+let score = 0;
+let ballPosition = { x: 50, y: 50 };
+let gameActive = true;
+
+// تابع کمکی برای لاگ کردن رویدادها
+function logEvent(logId, message) {
+    const log = document.getElementById(logId);
+    const timestamp = new Date().toLocaleTimeString('fa-IR');
+    log.innerHTML += `[${timestamp}] ${message}\n`;
+    log.scrollTop = log.scrollHeight;
+}
+
+function clearLog() {
+    document.getElementById('mouseLog').innerHTML = '';
+}
+
+// رویدادهای موس
+document.addEventListener('DOMContentLoaded', function() {
+    const mouseBox = document.getElementById('mouseBox');
+    const hoverBox = document.getElementById('hoverBox');
+    
+    // رویدادهای کلیک
+    mouseBox.addEventListener('click', function(e) {
+        logEvent('mouseLog', `کلیک در موقعیت: (${e.offsetX}, ${e.offsetY})`);
+        this.classList.add('clicked');
+        setTimeout(() => this.classList.remove('clicked'), 200);
+    });
+    
+    mouseBox.addEventListener('dblclick', function() {
+        logEvent('mouseLog', 'دابل کلیک انجام شد');
+        this.style.background = '#' + Math.floor(Math.random()*16777215).toString(16);
+    });
+    
+    // رویدادهای hover
+    hoverBox.addEventListener('mouseenter', function() {
+        logEvent('mouseLog', 'موس وارد جعبه شد');
+        this.classList.add('hovered');
+    });
+    
+    hoverBox.addEventListener('mouseleave', function() {
+        logEvent('mouseLog', 'موس از جعبه خارج شد');
+        this.classList.remove('hovered');
+    });
+    
+    hoverBox.addEventListener('mousemove', function(e) {
+        const rect = this.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        this.style.background = `radial-gradient(circle at ${x}px ${y}px, #FFD700, #4ECDC4)`;
+    });
+});
+
+// رویدادهای کیبورد
+document.addEventListener('DOMContentLoaded', function() {
+    const keyInput = document.getElementById('keyInput');
+    const keyDisplay = document.getElementById('keyDisplay');
+    
+    keyInput.addEventListener('keydown', function(e) {
+        logEvent('keyLog', `کلید فشرده شد: ${e.key} (کد: ${e.keyCode})`);
+        keyDisplay.textContent = `کلید فشرده شده: ${e.key}`;
+        keyDisplay.style.background = 'rgba(52, 152, 219, 0.3)';
+    });
+    
+    keyInput.addEventListener('keyup', function(e) {
+        logEvent('keyLog', `کلید رها شد: ${e.key}`);
+        keyDisplay.style.background = 'rgba(255,255,255,0.2)';
+    });
+    
+    keyInput.addEventListener('input', function(e) {
+        logEvent('keyLog', `متن تغییر کرد: "${e.target.value}"`);
+        this.classList.add('typing');
+        setTimeout(() => this.classList.remove('typing'), 300);
+    });
+});
+
+// رویدادهای فرم
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('demoForm');
+    const nameField = document.getElementById('nameField');
+    const emailField = document.getElementById('emailField');
+    const messageField = document.getElementById('messageField');
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        logEvent('formLog', 'فرم ارسال شد');
+        
+        const formData = new FormData(this);
+        const data = {
+            name: nameField.value,
+            email: emailField.value,
+            message: messageField.value
+        };
+        
+        logEvent('formLog', `داده‌ها: ${JSON.stringify(data, null, 2)}`);
+        
+        // نمایش پیام موفقیت
+        const successMsg = document.createElement('div');
+        successMsg.className = 'success-message';
+        successMsg.textContent = 'فرم با موفقیت ارسال شد!';
+        form.appendChild(successMsg);
+        
+        setTimeout(() => successMsg.remove(), 3000);
+    });
+    
+    form.addEventListener('reset', function() {
+        logEvent('formLog', 'فرم بازنشانی شد');
+    });
+    
+    // اعتبارسنجی زنده
+    [nameField, emailField, messageField].forEach(field => {
+        field.addEventListener('blur', function() {
+            if (this.checkValidity()) {
+                this.classList.add('form-valid');
+                this.classList.remove('form-invalid');
+                logEvent('formLog', `فیلد ${this.placeholder} معتبر است`);
+            } else {
+                this.classList.add('form-invalid');
+                this.classList.remove('form-valid');
+                logEvent('formLog', `فیلد ${this.placeholder} نامعتبر است`);
+            }
+        });
+        
+        field.addEventListener('focus', function() {
+            logEvent('formLog', `فوکوس روی فیلد ${this.placeholder}`);
+        });
+    });
+});
+
+// Drag and Drop
+document.addEventListener('DOMContentLoaded', function() {
+    const dragBox = document.getElementById('dragBox');
+    const dropZone = document.getElementById('dropZone');
+    
+    dragBox.addEventListener('dragstart', function(e) {
+        logEvent('dragLog', 'شروع کشیدن');
+        this.classList.add('dragging');
+        e.dataTransfer.setData('text/plain', 'dragBox');
+    });
+    
+    dragBox.addEventListener('dragend', function() {
+        logEvent('dragLog', 'پایان کشیدن');
+        this.classList.remove('dragging');
+    });
+    
+    dropZone.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        this.classList.add('dragover');
+    });
+    
+    dropZone.addEventListener('dragleave', function() {
+        this.classList.remove('dragover');
+    });
+    
+    dropZone.addEventListener('drop', function(e) {
+        e.preventDefault();
+        this.classList.remove('dragover');
+        logEvent('dragLog', 'عنصر رها شد');
+        
+        const data = e.dataTransfer.getData('text/plain');
+        if (data === 'dragBox') {
+            this.textContent = 'موفق! 🎉';
+            this.style.background = 'rgba(39, 174, 96, 0.3)';
+            
+            setTimeout(() => {
+                this.textContent = 'اینجا رها کنید';
+                this.style.background = 'rgba(76, 175, 80, 0.1)';
+            }, 2000);
+        }
+    });
+});
+
+// بازی توپ
+document.addEventListener('DOMContentLoaded', function() {
+    const ball = document.getElementById('ball');
+    const gameArea = document.getElementById('gameArea');
+    const scoreElement = document.getElementById('score');
+    
+    // موقعیت اولیه توپ
+    updateBallPosition();
+    
+    function updateBallPosition() {
+        ball.style.left = ballPosition.x + 'px';
+        ball.style.top = ballPosition.y + 'px';
+    }
+    
+    // کنترل با کیبورد
+    document.addEventListener('keydown', function(e) {
+        if (!gameActive) return;
+        
+        const step = 10;
+        const gameRect = gameArea.getBoundingClientRect();
+        const maxX = gameArea.offsetWidth - ball.offsetWidth;
+        const maxY = gameArea.offsetHeight - ball.offsetHeight;
+        
+        switch(e.key) {
+            case 'ArrowUp':
+                ballPosition.y = Math.max(0, ballPosition.y - step);
+                break;
+            case 'ArrowDown':
+                ballPosition.y = Math.min(maxY, ballPosition.y + step);
+                break;
+            case 'ArrowLeft':
+                ballPosition.x = Math.max(0, ballPosition.x - step);
+                break;
+            case 'ArrowRight':
+                ballPosition.x = Math.min(maxX, ballPosition.x + step);
+                break;
+        }
+        
+        updateBallPosition();
+    });
+    
+    // کلیک روی توپ برای امتیاز
+    ball.addEventListener('click', function() {
+        score++;
+        scoreElement.textContent = score;
+        
+        // انیمیشن امتیاز
+        this.style.background = '#E74C3C';
+        this.style.transform = 'scale(1.5)';
+        
+        setTimeout(() => {
+            this.style.background = '#FFD700';
+            this.style.transform = 'scale(1)';
+        }, 200);
+        
+        // موقعیت تصادفی جدید
+        ballPosition.x = Math.random() * (gameArea.offsetWidth - ball.offsetWidth);
+        ballPosition.y = Math.random() * (gameArea.offsetHeight - ball.offsetHeight);
+        updateBallPosition();
+    });
+});
+
+// رویدادهای پنجره
+function testWindowEvents() {
+    logEvent('windowLog', 'تست رویدادهای پنجره شروع شد');
+    
+    // رویداد resize
+    const originalResize = window.onresize;
+    window.onresize = function() {
+        logEvent('windowLog', `اندازه پنجره تغییر کرد: ${window.innerWidth}x${window.innerHeight}`);
+        if (originalResize) originalResize();
+    };
+    
+    // رویداد scroll
+    const originalScroll = window.onscroll;
+    window.onscroll = function() {
+        logEvent('windowLog', `اسکرول: ${window.pageYOffset}px`);
+        if (originalScroll) originalScroll();
+    };
+    
+    logEvent('windowLog', 'Event listeners اضافه شدند. پنجره را resize کنید یا اسکرول کنید');
+}
+
+function showWindowInfo() {
+    const info = {
+        'عرض پنجره': window.innerWidth,
+        'ارتفاع پنجره': window.innerHeight,
+        'موقعیت اسکرول': window.pageYOffset,
+        'User Agent': navigator.userAgent.substring(0, 50) + '...'
+    };
+    
+    Object.entries(info).forEach(([key, value]) => {
+        logEvent('windowLog', `${key}: ${value}`);
+    });
+}
+
+// رویدادهای اولیه
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('صفحه رویدادها و تعامل آماده است!');
+    logEvent('windowLog', 'صفحه بارگذاری شد');
+});
+
+window.addEventListener('beforeunload', function(e) {
+    e.returnValue = 'آیا مطمئن هستید که می‌خواهید صفحه را ترک کنید؟';
+});</textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="preview-panel">
+                                        <div class="preview-header">
+                                            <span>نمایش زنده</span>
+                                            <div class="preview-controls">
+                                                <button class="btn btn-sm" id="refreshPreview">🔄</button>
+                                                <button class="btn btn-sm" id="openInNewTab">🔗</button>
+                                            </div>
+                                        </div>
+                                        <iframe id="preview" src="about:blank"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>Event Object</h2>
+                            <p>هنگام وقوع یک رویداد، JavaScript یک شیء Event ایجاد می‌کند که حاوی اطلاعات مفیدی درباره رویداد است:</p>
+                            
+                            <h3>ویژگی‌های مهم Event Object</h3>
+                            <div class="code-example">
+                                <pre><code>button.addEventListener('click', function(event) {
+    console.log('نوع رویداد:', event.type);
+    console.log('عنصر هدف:', event.target);
+    console.log('عنصر فعلی:', event.currentTarget);
+    console.log('موقعیت موس:', event.clientX, event.clientY);
+    console.log('زمان رویداد:', event.timeStamp);
+});</code></pre>
+                            </div>
+
+                            <h3>متدهای مهم Event Object</h3>
+                            <div class="code-example">
+                                <pre><code>// جلوگیری از رفتار پیش‌فرض
+event.preventDefault();
+
+// توقف انتشار رویداد
+event.stopPropagation();
+
+// توقف کامل رویداد
+event.stopImmediatePropagation();</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>Event Delegation</h2>
+                            <p>تکنیک قدرتمندی برای مدیریت رویدادها در عناصر متعدد:</p>
+                            
+                            <div class="code-example">
+                                <pre><code>// به جای اضافه کردن listener به هر دکمه
+const container = document.getElementById('buttonContainer');
+
+container.addEventListener('click', function(e) {
+    if (e.target.tagName === 'BUTTON') {
+        console.log('دکمه کلیک شد:', e.target.textContent);
+        
+        // انجام عمل بر اساس کلاس یا ID
+        if (e.target.classList.contains('delete-btn')) {
+            deleteItem(e.target.dataset.id);
+        } else if (e.target.classList.contains('edit-btn')) {
+            editItem(e.target.dataset.id);
+        }
+    }
+});</code></pre>
+                            </div>
+
+                            <h3>مزایای Event Delegation</h3>
+                            <div class="info-box">
+                                <ul>
+                                    <li>کاهش مصرف حافظه</li>
+                                    <li>مدیریت عناصر اضافه شده بعداً</li>
+                                    <li>کد تمیزتر و قابل نگهداری</li>
+                                    <li>عملکرد بهتر</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>رویدادهای مختلف</h2>
+                            
+                            <h3>رویدادهای موس</h3>
+                            <div class="code-example">
+                                <pre><code>element.addEventListener('click', handleClick);
+element.addEventListener('dblclick', handleDoubleClick);
+element.addEventListener('mousedown', handleMouseDown);
+element.addEventListener('mouseup', handleMouseUp);
+element.addEventListener('mouseover', handleMouseOver);
+element.addEventListener('mouseout', handleMouseOut);
+element.addEventListener('mousemove', handleMouseMove);
+element.addEventListener('contextmenu', handleRightClick);</code></pre>
+                            </div>
+
+                            <h3>رویدادهای کیبورد</h3>
+                            <div class="code-example">
+                                <pre><code>document.addEventListener('keydown', function(e) {
+    console.log('کلید فشرده شد:', e.key);
+    
+    // بررسی کلیدهای خاص
+    if (e.key === 'Enter') {
+        console.log('اینتر فشرده شد');
+    }
+    
+    // بررسی کلیدهای ترکیبی
+    if (e.ctrlKey && e.key === 's') {
+        e.preventDefault();
+        console.log('Ctrl+S فشرده شد');
+    }
+});
+
+document.addEventListener('keyup', function(e) {
+    console.log('کلید رها شد:', e.key);
+});</code></pre>
+                            </div>
+
+                            <h3>رویدادهای فرم</h3>
+                            <div class="code-example">
+                                <pre><code>const form = document.getElementById('myForm');
+const input = document.getElementById('myInput');
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    console.log('فرم ارسال شد');
+});
+
+input.addEventListener('focus', function() {
+    console.log('فیلد فوکوس شد');
+});
+
+input.addEventListener('blur', function() {
+    console.log('فیلد فوکوس را از دست داد');
+});
+
+input.addEventListener('change', function() {
+    console.log('مقدار تغییر کرد:', this.value);
+});
+
+input.addEventListener('input', function() {
+    console.log('در حال تایپ:', this.value);
+});</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>رویدادهای Touch (لمسی)</h2>
+                            <p>برای دستگاه‌های لمسی مانند موبایل و تبلت:</p>
+                            
+                            <div class="code-example">
+                                <pre><code>element.addEventListener('touchstart', function(e) {
+    console.log('لمس شروع شد');
+    const touch = e.touches[0];
+    console.log('موقعیت لمس:', touch.clientX, touch.clientY);
+});
+
+element.addEventListener('touchmove', function(e) {
+    e.preventDefault(); // جلوگیری از اسکرول
+    const touch = e.touches[0];
+    console.log('لمس در حرکت:', touch.clientX, touch.clientY);
+});
+
+element.addEventListener('touchend', function(e) {
+    console.log('لمس پایان یافت');
+});</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>Custom Events</h2>
+                            <p>ایجاد و ارسال رویدادهای سفارشی:</p>
+                            
+                            <div class="code-example">
+                                <pre><code>// ایجاد رویداد سفارشی
+const customEvent = new CustomEvent('myCustomEvent', {
+    detail: {
+        message: 'این یک رویداد سفارشی است',
+        timestamp: Date.now()
+    }
+});
+
+// گوش دادن به رویداد سفارشی
+element.addEventListener('myCustomEvent', function(e) {
+    console.log('رویداد سفارشی دریافت شد:', e.detail);
+});
+
+// ارسال رویداد
+element.dispatchEvent(customEvent);
+
+// مثال کاربردی
+function notifyUserAction(action, data) {
+    const event = new CustomEvent('userAction', {
+        detail: { action, data, user: getCurrentUser() }
+    });
+    document.dispatchEvent(event);
+}
+
+document.addEventListener('userAction', function(e) {
+    console.log(`کاربر ${e.detail.user} انجام داد: ${e.detail.action}`);
+});</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>بهترین شیوه‌ها</h2>
+                            
+                            <div class="tip-box">
+                                <h3>💡 نکات مهم:</h3>
+                                <ul>
+                                    <li><strong>حذف Event Listeners:</strong> همیشه listeners غیرضروری را حذف کنید</li>
+                                    <li><strong>Event Delegation:</strong> برای عناصر متعدد استفاده کنید</li>
+                                    <li><strong>preventDefault:</strong> هنگام نیاز از رفتار پیش‌فرض جلوگیری کنید</li>
+                                    <li><strong>Throttling/Debouncing:</strong> برای رویدادهای پرتکرار استفاده کنید</li>
+                                    <li><strong>Passive Listeners:</strong> برای بهبود عملکرد استفاده کنید</li>
+                                </ul>
+                            </div>
+
+                            <h3>مثال Debouncing</h3>
+                            <div class="code-example">
+                                <pre><code>function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// استفاده برای جستجو
+const searchInput = document.getElementById('search');
+const debouncedSearch = debounce(function(e) {
+    console.log('جستجو برای:', e.target.value);
+    // انجام جستجو
+}, 300);
+
+searchInput.addEventListener('input', debouncedSearch);</code></pre>
+                            </div>
+
+                            <h3>حذف Event Listeners</h3>
+                            <div class="code-example">
+                                <pre><code>// تعریف تابع جداگانه
+function handleClick() {
+    console.log('کلیک شد');
+}
+
+// اضافه کردن
+element.addEventListener('click', handleClick);
+
+// حذف کردن
+element.removeEventListener('click', handleClick);
+
+// برای توابع anonymous از AbortController استفاده کنید
+const controller = new AbortController();
+
+element.addEventListener('click', function() {
+    console.log('کلیک شد');
+}, { signal: controller.signal });
+
+// حذف همه listeners
+controller.abort();</code></pre>
+                            </div>
+                        </section>
+
+                        <!-- Quiz Section -->
+                        <section class="quiz-section">
+                            <h2>آزمون درس ۱۷</h2>
+                            <div class="quiz-container" id="lesson17Quiz">
+                                <div class="quiz-question active" data-question="1">
+                                    <h3>سوال ۱: کدام متد برای اضافه کردن Event Listener توصیه می‌شود؟</h3>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q1" value="a"> onclick property</label>
+                                        <label><input type="radio" name="q1" value="b"> addEventListener</label>
+                                        <label><input type="radio" name="q1" value="c"> inline onclick</label>
+                                        <label><input type="radio" name="q1" value="d"> attachEvent</label>
+                                    </div>
+                                </div>
+
+                                <div class="quiz-question" data-question="2">
+                                    <h3>سوال ۲: کدام متد برای جلوگیری از رفتار پیش‌فرض استفاده می‌شود؟</h3>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q2" value="a"> stopPropagation()</label>
+                                        <label><input type="radio" name="q2" value="b"> preventDefault()</label>
+                                        <label><input type="radio" name="q2" value="c"> stopImmediatePropagation()</label>
+                                        <label><input type="radio" name="q2" value="d"> cancelEvent()</label>
+                                    </div>
+                                </div>
+
+                                <div class="quiz-question" data-question="3">
+                                    <h3>سوال ۳: Event Delegation چه مزیتی دارد؟</h3>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q3" value="a"> فقط کاهش مصرف حافظه</label>
+                                        <label><input type="radio" name="q3" value="b"> فقط مدیریت عناصر جدید</label>
+                                        <label><input type="radio" name="q3" value="c"> کاهش حافظه و مدیریت عناصر جدید</label>
+                                        <label><input type="radio" name="q3" value="d"> هیچ مزیتی ندارد</label>
+                                    </div>
+                                </div>
+
+                                <div class="quiz-navigation">
+                                    <button class="btn btn-secondary" id="prevQuestion">سوال قبلی</button>
+                                    <button class="btn btn-secondary" id="nextQuestion">سوال بعدی</button>
+                                    <button class="btn btn-primary" id="submitQuiz">ارسال پاسخ‌ها</button>
+                                </div>
+
+                                <div class="quiz-result" id="quizResult"></div>
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <nav class="lesson-navigation">
+                            <a href="lesson16.html" class="nav-button prev">
+                                <span>← درس قبلی</span>
+                                <small>دستکاری DOM</small>
+                            </a>
+                            <a href="lesson18.html" class="nav-button next">
+                                <span>درس بعدی →</span>
+                                <small>آرایه‌ها و اشیاء</small>
+                            </a>
+                        </nav>
+                    </div>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="../../js/libs/codemirror/js/codemirror.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/xml.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/css.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/javascript.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/htmlmixed.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/matchbrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/closebrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/active-line.min.js"></script>
+    
+    <script src="../../js/main.js"></script>
+    <script src="../../js/storage.js"></script>
+    <script src="../../js/editor.js"></script>
+    <script src="../../js/quiz.js"></script>
+
+    <script>
+        // Initialize lesson
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeLesson('lesson17');
+            
+            // Quiz answers
+            const quizAnswers = {
+                q1: 'b', // addEventListener
+                q2: 'b', // preventDefault()
+                q3: 'c'  // کاهش حافظه و مدیریت عناصر جدید
+            };
+            
+            initializeQuiz('lesson17Quiz', quizAnswers);
+        });
+    </script>
+</body>
+</html>
+

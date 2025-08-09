@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درس ۱۳: عملگرها و شرط‌ها - آموزش توسعه وب</title>
+    <meta name="description" content="یادگیری عملگرها و دستورات شرطی در JavaScript">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/rtl.css">
+    <link rel="stylesheet" href="../../css/themes.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/editor.css">
+    
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="../../js/libs/codemirror/css/codemirror.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/monokai.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/material.min.css">
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم">
+        <span class="theme-toggle-icon">🌙</span>
+    </button>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-brand">
+                <div class="header-brand-icon">وب</div>
+                <span>آموزش توسعه وب</span>
+            </div>
+            
+            <nav class="header-nav">
+                <div class="header-search">
+                    <input type="text" placeholder="جستجو در دروس..." id="searchInput">
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="منوی موبایل">
+                    ☰
+                </button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h2 class="sidebar-title">فهرست دروس</h2>
+                    <p class="sidebar-subtitle">۲۰ درس کامل برای یادگیری توسعه وب</p>
+                </div>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">JavaScript</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="lesson11.html" class="nav-link">
+                                <span class="nav-link-icon">⚡</span>
+                                <span class="nav-link-text">مقدمات JavaScript</span>
+                                <span class="nav-link-badge">۱۱</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson12.html" class="nav-link">
+                                <span class="nav-link-icon">📊</span>
+                                <span class="nav-link-text">متغیرها و انواع داده</span>
+                                <span class="nav-link-badge">۱۲</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson13.html" class="nav-link active">
+                                <span class="nav-link-icon">🔧</span>
+                                <span class="nav-link-text">عملگرها و شرط‌ها</span>
+                                <span class="nav-link-badge">۱۳</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson14.html" class="nav-link">
+                                <span class="nav-link-icon">🔄</span>
+                                <span class="nav-link-text">حلقه‌ها و تکرار</span>
+                                <span class="nav-link-badge">۱۴</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson15.html" class="nav-link">
+                                <span class="nav-link-icon">🎯</span>
+                                <span class="nav-link-text">توابع</span>
+                                <span class="nav-link-badge">۱۵</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">منابع</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="../../reference/html-tags.html" class="nav-link">
+                                <span class="nav-link-icon">📚</span>
+                                <span class="nav-link-text">مرجع تگ‌های HTML</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../../index.html" class="nav-link">
+                                <span class="nav-link-icon">🏠</span>
+                                <span class="nav-link-text">صفحه اصلی</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb">
+                    <span class="breadcrumb-item"><a href="../../index.html">صفحه اصلی</a></span>
+                    <span class="breadcrumb-item"><a href="#javascript">JavaScript</a></span>
+                    <span class="breadcrumb-item active">درس ۱۳: عملگرها و شرط‌ها</span>
+                </nav>
+
+                <div class="content-header">
+                    <h1 class="content-title">درس ۱۳: عملگرها و شرط‌ها</h1>
+                    <p class="content-subtitle">یادگیری عملگرها و دستورات شرطی در JavaScript</p>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>پیشرفت درس</span>
+                        <span>۱۳ از ۲۰ درس</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 65%"></div>
+                    </div>
+                </div>
+
+                <!-- Lesson Content -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">عملگرها در JavaScript</h2>
+                    </div>
+                    <p>عملگرها نمادهایی هستند که برای انجام عملیات بر روی متغیرها و مقادیر استفاده می‌شوند. JavaScript انواع مختلفی از عملگرها دارد که هر کدام کاربرد خاص خود را دارند.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">عملگرهای ریاضی (Arithmetic Operators)</h2>
+                    </div>
+                    <p>برای انجام محاسبات ریاضی استفاده می‌شوند:</p>
+                    
+                    <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                        <thead>
+                            <tr style="background-color: #f8f9fa;">
+                                <th style="border: 1px solid #dee2e6; padding: 8px;">عملگر</th>
+                                <th style="border: 1px solid #dee2e6; padding: 8px;">نام</th>
+                                <th style="border: 1px solid #dee2e6; padding: 8px;">مثال</th>
+                                <th style="border: 1px solid #dee2e6; padding: 8px;">نتیجه</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>+</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">جمع</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>5 + 3</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">8</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>-</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">تفریق</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>5 - 3</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">2</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>*</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">ضرب</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>5 * 3</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">15</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>/</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">تقسیم</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>15 / 3</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">5</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>%</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">باقی‌مانده</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>10 % 3</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">1</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>**</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">توان</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>2 ** 3</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">8</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>مثال‌های عملی:</h3>
+                    <pre><code>let a = 10;
+let b = 3;
+
+console.log(a + b);  // 13
+console.log(a - b);  // 7
+console.log(a * b);  // 30
+console.log(a / b);  // 3.333...
+console.log(a % b);  // 1 (باقی‌مانده)
+console.log(a ** b); // 1000 (10 به توان 3)</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">عملگرهای انتساب (Assignment Operators)</h2>
+                    </div>
+                    <p>برای انتساب مقدار به متغیرها استفاده می‌شوند:</p>
+                    
+                    <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                        <thead>
+                            <tr style="background-color: #f8f9fa;">
+                                <th style="border: 1px solid #dee2e6; padding: 8px;">عملگر</th>
+                                <th style="border: 1px solid #dee2e6; padding: 8px;">معادل</th>
+                                <th style="border: 1px solid #dee2e6; padding: 8px;">مثال</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>=</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">انتساب ساده</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>x = 5</code></td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>+=</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>x = x + y</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>x += 3</code></td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>-=</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>x = x - y</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>x -= 2</code></td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>*=</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>x = x * y</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>x *= 4</code></td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>/=</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>x = x / y</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>x /= 2</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>مثال:</h3>
+                    <pre><code>let score = 100;
+score += 50;  // score = 150
+score -= 20;  // score = 130
+score *= 2;   // score = 260
+score /= 4;   // score = 65</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">عملگرهای مقایسه (Comparison Operators)</h2>
+                    </div>
+                    <p>برای مقایسه مقادیر استفاده می‌شوند و نتیجه true یا false برمی‌گردانند:</p>
+                    
+                    <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                        <thead>
+                            <tr style="background-color: #f8f9fa;">
+                                <th style="border: 1px solid #dee2e6; padding: 8px;">عملگر</th>
+                                <th style="border: 1px solid #dee2e6; padding: 8px;">نام</th>
+                                <th style="border: 1px solid #dee2e6; padding: 8px;">مثال</th>
+                                <th style="border: 1px solid #dee2e6; padding: 8px;">نتیجه</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>==</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">مساوی (مقدار)</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>5 == '5'</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">true</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>===</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">مساوی (مقدار و نوع)</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>5 === '5'</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">false</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>!=</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">نامساوی (مقدار)</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>5 != '5'</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">false</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>!==</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">نامساوی (مقدار و نوع)</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>5 !== '5'</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">true</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>&gt;</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">بزرگ‌تر</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>5 > 3</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">true</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>&lt;</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">کوچک‌تر</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>3 < 5</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">true</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>&gt;=</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">بزرگ‌تر مساوی</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>5 >= 5</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">true</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>&lt;=</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">کوچک‌تر مساوی</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>3 <= 5</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">true</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>تفاوت == و ===:</h3>
+                    <pre><code>console.log(5 == '5');   // true (تبدیل نوع)
+console.log(5 === '5');  // false (بدون تبدیل نوع)
+console.log(0 == false); // true
+console.log(0 === false); // false</code></pre>
+                </div>
+
+                <!-- Interactive Code Editor -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تمرین عملی: عملگرها و شرط‌ها</h2>
+                    </div>
+                    <p>در ادامه، با عملگرها و دستورات شرطی آزمایش کنید:</p>
+                    
+                    <div id="codeEditor"></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">عملگرهای منطقی (Logical Operators)</h2>
+                    </div>
+                    <p>برای ترکیب شرط‌ها استفاده می‌شوند:</p>
+                    
+                    <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                        <thead>
+                            <tr style="background-color: #f8f9fa;">
+                                <th style="border: 1px solid #dee2e6; padding: 8px;">عملگر</th>
+                                <th style="border: 1px solid #dee2e6; padding: 8px;">نام</th>
+                                <th style="border: 1px solid #dee2e6; padding: 8px;">توضیح</th>
+                                <th style="border: 1px solid #dee2e6; padding: 8px;">مثال</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>&&</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">AND (و)</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">هر دو شرط باید true باشد</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>true && false</code> → false</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>||</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">OR (یا)</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">یکی از شرط‌ها باید true باشد</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>true || false</code> → true</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>!</code></td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">NOT (نه)</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;">معکوس شرط</td>
+                                <td style="border: 1px solid #dee2e6; padding: 8px;"><code>!true</code> → false</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>مثال‌های عملی:</h3>
+                    <pre><code>let age = 25;
+let hasLicense = true;
+let hasInsurance = false;
+
+// AND - هر دو شرط باید برقرار باشد
+if (age >= 18 && hasLicense) {
+  console.log('می‌تواند رانندگی کند');
+}
+
+// OR - یکی از شرط‌ها کافی است
+if (hasLicense || hasInsurance) {
+  console.log('حداقل یکی از مدارک را دارد');
+}
+
+// NOT - معکوس شرط
+if (!hasInsurance) {
+  console.log('بیمه ندارد');
+}</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">دستور if</h2>
+                    </div>
+                    <p>دستور if برای اجرای کد بر اساس شرط استفاده می‌شود:</p>
+                    
+                    <h3>ساختار پایه:</h3>
+                    <pre><code>if (شرط) {
+  // کدی که در صورت true بودن شرط اجرا می‌شود
+}</code></pre>
+                    
+                    <h3>مثال:</h3>
+                    <pre><code>let score = 85;
+
+if (score >= 60) {
+  console.log('قبول شدید!');
+}</code></pre>
+                    
+                    <h3>if...else:</h3>
+                    <pre><code>let age = 16;
+
+if (age >= 18) {
+  console.log('بالغ هستید');
+} else {
+  console.log('نابالغ هستید');
+}</code></pre>
+                    
+                    <h3>if...else if...else:</h3>
+                    <pre><code>let grade = 85;
+
+if (grade >= 90) {
+  console.log('عالی');
+} else if (grade >= 80) {
+  console.log('خوب');
+} else if (grade >= 70) {
+  console.log('متوسط');
+} else if (grade >= 60) {
+  console.log('قابل قبول');
+} else {
+  console.log('مردود');
+}</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">عملگر سه‌گانه (Ternary Operator)</h2>
+                    </div>
+                    <p>روش کوتاه‌تر برای نوشتن if...else ساده:</p>
+                    
+                    <h3>ساختار:</h3>
+                    <pre><code>شرط ? مقدار_در_صورت_true : مقدار_در_صورت_false</code></pre>
+                    
+                    <h3>مثال‌ها:</h3>
+                    <pre><code>let age = 20;
+let status = age >= 18 ? 'بالغ' : 'نابالغ';
+console.log(status); // بالغ
+
+// معادل با:
+let status2;
+if (age >= 18) {
+  status2 = 'بالغ';
+} else {
+  status2 = 'نابالغ';
+}
+
+// استفاده در تابع
+function getDiscount(isMember) {
+  return isMember ? 0.1 : 0;
+}
+
+// استفاده تودرتو
+let score = 85;
+let result = score >= 90 ? 'عالی' : 
+             score >= 80 ? 'خوب' : 
+             score >= 70 ? 'متوسط' : 'ضعیف';</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">دستور switch</h2>
+                    </div>
+                    <p>برای مقایسه یک متغیر با مقادیر مختلف استفاده می‌شود:</p>
+                    
+                    <h3>ساختار:</h3>
+                    <pre><code>switch (متغیر) {
+  case مقدار1:
+    // کد
+    break;
+  case مقدار2:
+    // کد
+    break;
+  default:
+    // کد پیش‌فرض
+}</code></pre>
+                    
+                    <h3>مثال:</h3>
+                    <pre><code>let day = 3;
+let dayName;
+
+switch (day) {
+  case 1:
+    dayName = 'شنبه';
+    break;
+  case 2:
+    dayName = 'یکشنبه';
+    break;
+  case 3:
+    dayName = 'دوشنبه';
+    break;
+  case 4:
+    dayName = 'سه‌شنبه';
+    break;
+  case 5:
+    dayName = 'چهارشنبه';
+    break;
+  case 6:
+    dayName = 'پنج‌شنبه';
+    break;
+  case 7:
+    dayName = 'جمعه';
+    break;
+  default:
+    dayName = 'نامعلوم';
+}
+
+console.log(dayName); // دوشنبه</code></pre>
+                    
+                    <h3>بدون break (Fall-through):</h3>
+                    <pre><code>let month = 12;
+let season;
+
+switch (month) {
+  case 12:
+  case 1:
+  case 2:
+    season = 'زمستان';
+    break;
+  case 3:
+  case 4:
+  case 5:
+    season = 'بهار';
+    break;
+  case 6:
+  case 7:
+  case 8:
+    season = 'تابستان';
+    break;
+  case 9:
+  case 10:
+  case 11:
+    season = 'پاییز';
+    break;
+  default:
+    season = 'نامعلوم';
+}</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تمرین‌های عملی</h2>
+                    </div>
+                    <p>برای تسلط بیشتر بر مطالب این درس، تمرین‌های زیر را انجام دهید:</p>
+                    
+                    <h3>تمرین ۱: ماشین حساب ساده</h3>
+                    <p>برنامه‌ای بنویسید که دو عدد و یک عملگر دریافت کرده و نتیجه را نمایش دهد.</p>
+                    
+                    <h3>تمرین ۲: تشخیص سال کبیسه</h3>
+                    <p>برنامه‌ای بنویسید که تشخیص دهد سالی کبیسه است یا نه.</p>
+                    
+                    <h3>تمرین ۳: نمره‌گذاری</h3>
+                    <p>برنامه‌ای بنویسید که بر اساس نمره، درجه (A, B, C, D, F) تعیین کند.</p>
+                    
+                    <h3>تمرین ۴: تشخیص عدد زوج یا فرد</h3>
+                    <p>برنامه‌ای بنویسید که تشخیص دهد عددی زوج است یا فرد.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">نکات مهم و بهترین شیوه‌ها</h2>
+                    </div>
+                    <h3>بهترین شیوه‌ها:</h3>
+                    <ul>
+                        <li>از === به جای == استفاده کنید</li>
+                        <li>شرط‌های پیچیده را به متغیرهای جداگانه تقسیم کنید</li>
+                        <li>از عملگر سه‌گانه برای شرط‌های ساده استفاده کنید</li>
+                        <li>همیشه break در switch استفاده کنید (مگر عمداً)</li>
+                        <li>شرط‌ها را خوانا و قابل فهم بنویسید</li>
+                    </ul>
+                    
+                    <h3>نکات عملکرد:</h3>
+                    <ul>
+                        <li>عملگرهای منطقی short-circuit evaluation دارند</li>
+                        <li>switch سریع‌تر از if...else if زیاد است</li>
+                        <li>شرط‌های ساده‌تر را ابتدا قرار دهید</li>
+                        <li>از مقایسه‌های غیرضروری اجتناب کنید</li>
+                    </ul>
+                    
+                    <h3>اشتباهات رایج:</h3>
+                    <ul>
+                        <li>استفاده از = به جای == یا ===</li>
+                        <li>فراموش کردن break در switch</li>
+                        <li>عدم درک تفاوت == و ===</li>
+                        <li>شرط‌های پیچیده و غیرخوانا</li>
+                        <li>عدم استفاده از پرانتز در شرط‌های ترکیبی</li>
+                    </ul>
+                </div>
+
+                <!-- Navigation -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">ادامه یادگیری</h2>
+                    </div>
+                    <p>در درس بعدی با حلقه‌ها و تکرار در JavaScript آشنا خواهید شد.</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="lesson12.html" class="btn btn-secondary">درس قبلی: متغیرها و انواع داده</a>
+                        <a href="lesson14.html" class="btn btn-primary" style="margin-right: 1rem;">درس بعدی: حلقه‌ها و تکرار</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../../js/main.js"></script>
+    <script src="../../js/storage.js"></script>
+    
+    <!-- CodeMirror JavaScript -->
+    <script src="../../js/libs/codemirror/js/codemirror.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/xml.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/css.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/javascript.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/htmlmixed.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/matchbrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/closebrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/active-line.min.js"></script>
+    
+    <!-- Editor JavaScript -->
+    <script src="../../js/editor.js"></script>
+    
+    <script>
+        // Initialize the code editor when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const editor = new CodeEditor('codeEditor', {
+                initialContent: {
+                    html: `<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>عملگرها و شرط‌ها در JavaScript</title>
+</head>
+<body>
+    <h1>آزمایشگاه عملگرها و شرط‌ها</h1>
+    
+    <div class="container">
+        <section class="calculator-section">
+            <h2>ماشین حساب ساده</h2>
+            <div class="calculator">
+                <input type="number" id="num1" placeholder="عدد اول" value="10">
+                <select id="operator">
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="*">×</option>
+                    <option value="/">/</option>
+                    <option value="%">%</option>
+                    <option value="**">^</option>
+                </select>
+                <input type="number" id="num2" placeholder="عدد دوم" value="5">
+                <button id="calculateBtn">=</button>
+                <div id="calcResult">نتیجه: 15</div>
+            </div>
+        </section>
+        
+        <section class="comparison-section">
+            <h2>مقایسه‌گر</h2>
+            <div class="comparator">
+                <input type="text" id="value1" placeholder="مقدار اول" value="5">
+                <select id="compOperator">
+                    <option value="==">==</option>
+                    <option value="===">=== </option>
+                    <option value="!=">!=</option>
+                    <option value="!==">!==</option>
+                    <option value=">">&gt;</option>
+                    <option value="<">&lt;</option>
+                    <option value=">=">&gt;=</option>
+                    <option value="<=">&lt;=</option>
+                </select>
+                <input type="text" id="value2" placeholder="مقدار دوم" value="'5'">
+                <button id="compareBtn">مقایسه</button>
+                <div id="compResult">نتیجه: true</div>
+            </div>
+        </section>
+        
+        <section class="grade-section">
+            <h2>سیستم نمره‌گذاری</h2>
+            <div class="grader">
+                <label for="scoreInput">نمره (0-100):</label>
+                <input type="number" id="scoreInput" min="0" max="100" value="85">
+                <button id="gradeBtn">محاسبه درجه</button>
+                <div id="gradeResult">درجه: B - خوب</div>
+            </div>
+        </section>
+        
+        <section class="age-section">
+            <h2>تشخیص رده سنی</h2>
+            <div class="age-checker">
+                <label for="ageInput">سن:</label>
+                <input type="number" id="ageInput" min="0" max="120" value="25">
+                <button id="ageBtn">تشخیص رده</button>
+                <div id="ageResult">رده سنی: بزرگسال</div>
+            </div>
+        </section>
+        
+        <section class="day-section">
+            <h2>تشخیص روز هفته</h2>
+            <div class="day-checker">
+                <label for="dayInput">شماره روز (1-7):</label>
+                <input type="number" id="dayInput" min="1" max="7" value="3">
+                <button id="dayBtn">تشخیص روز</button>
+                <div id="dayResult">روز: دوشنبه</div>
+            </div>
+        </section>
+        
+        <section class="logic-section">
+            <h2>عملگرهای منطقی</h2>
+            <div class="logic-tester">
+                <div class="logic-inputs">
+                    <label>
+                        <input type="checkbox" id="condition1" checked> شرط اول
+                    </label>
+                    <label>
+                        <input type="checkbox" id="condition2"> شرط دوم
+                    </label>
+                </div>
+                <div class="logic-results">
+                    <div id="andResult">AND (&&): true</div>
+                    <div id="orResult">OR (||): true</div>
+                    <div id="notResult">NOT (!): false</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="interactive-section">
+            <h2>تست تعاملی</h2>
+            <div class="interactive-tester">
+                <textarea id="conditionInput" placeholder="شرط خود را بنویسید (مثال: 5 > 3 && true)" rows="3">5 > 3 && 2 < 10</textarea>
+                <button id="testBtn">تست شرط</button>
+                <div id="testResult">نتیجه: true</div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>`,
+                    css: `/* استایل‌های پایه */
+body {
+    font-family: 'Tahoma', Arial, sans-serif;
+    direction: rtl;
+    text-align: right;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+/* استایل بخش‌ها */
+section {
+    background: rgba(255,255,255,0.95);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-5px);
+}
+
+section h2 {
+    color: #2c3e50;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+/* استایل ماشین حساب */
+.calculator {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto;
+    gap: 10px;
+    align-items: center;
+}
+
+.calculator input,
+.calculator select,
+.calculator button {
+    padding: 10px;
+    border: 2px solid #bdc3c7;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.calculator button {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.calculator button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+#calcResult {
+    grid-column: 1 / -1;
+    background: #ecf0f1;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #2c3e50;
+    margin-top: 10px;
+}
+
+/* استایل مقایسه‌گر */
+.comparator {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto;
+    gap: 10px;
+    align-items: center;
+}
+
+.comparator input,
+.comparator select,
+.comparator button {
+    padding: 10px;
+    border: 2px solid #bdc3c7;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.comparator button {
+    background: linear-gradient(45deg, #e74c3c, #c0392b);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.comparator button:hover {
+    transform: scale(1.05);
+}
+
+#compResult {
+    grid-column: 1 / -1;
+    background: #fdf2e9;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #e67e22;
+    margin-top: 10px;
+}
+
+/* استایل نمره‌گذاری */
+.grader {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.grader label {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.grader input,
+.grader button {
+    padding: 12px;
+    border: 2px solid #bdc3c7;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.grader button {
+    background: linear-gradient(45deg, #27ae60, #229954);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.grader button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+#gradeResult {
+    background: #eafaf1;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #27ae60;
+}
+
+/* استایل تشخیص سن */
+.age-checker {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.age-checker label {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.age-checker input,
+.age-checker button {
+    padding: 12px;
+    border: 2px solid #bdc3c7;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.age-checker button {
+    background: linear-gradient(45deg, #9b59b6, #8e44ad);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.age-checker button:hover {
+    transform: translateY(-2px);
+}
+
+#ageResult {
+    background: #f4ecf7;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #9b59b6;
+}
+
+/* استایل تشخیص روز */
+.day-checker {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.day-checker label {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.day-checker input,
+.day-checker button {
+    padding: 12px;
+    border: 2px solid #bdc3c7;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.day-checker button {
+    background: linear-gradient(45deg, #f39c12, #e67e22);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.day-checker button:hover {
+    transform: translateY(-2px);
+}
+
+#dayResult {
+    background: #fef9e7;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #f39c12;
+}
+
+/* استایل عملگرهای منطقی */
+.logic-tester {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.logic-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.logic-inputs label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    color: #2c3e50;
+    cursor: pointer;
+}
+
+.logic-inputs input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.logic-results {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.logic-results div {
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#andResult {
+    background: #e8f5e8;
+    color: #27ae60;
+}
+
+#orResult {
+    background: #fff3cd;
+    color: #f39c12;
+}
+
+#notResult {
+    background: #f8d7da;
+    color: #e74c3c;
+}
+
+/* استایل تست تعاملی */
+.interactive-tester {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.interactive-tester textarea {
+    padding: 12px;
+    border: 2px solid #bdc3c7;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: 'Courier New', monospace;
+    resize: vertical;
+    min-height: 80px;
+}
+
+.interactive-tester button {
+    padding: 12px;
+    background: linear-gradient(45deg, #34495e, #2c3e50);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.interactive-tester button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+#testResult {
+    background: #ecf0f1;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #2c3e50;
+    font-family: 'Courier New', monospace;
+}
+
+/* انیمیشن‌ها */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.pulse {
+    animation: pulse 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* طراحی واکنش‌گرا */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    section {
+        padding: 15px;
+    }
+    
+    .calculator {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .comparator {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    #calcResult,
+    #compResult {
+        grid-column: 1;
+    }
+}`,
+                    js: `// آزمایشگاه عملگرها و شرط‌ها
+console.log('🧮 آزمایشگاه عملگرها و شرط‌ها شروع شد');
+
+// ماشین حساب ساده
+function calculate() {
+    const num1 = parseFloat(document.getElementById('num1').value) || 0;
+    const num2 = parseFloat(document.getElementById('num2').value) || 0;
+    const operator = document.getElementById('operator').value;
+    
+    let result;
+    let operation;
+    
+    switch (operator) {
+        case '+':
+            result = num1 + num2;
+            operation = \`\${num1} + \${num2}\`;
+            break;
+        case '-':
+            result = num1 - num2;
+            operation = \`\${num1} - \${num2}\`;
+            break;
+        case '*':
+            result = num1 * num2;
+            operation = \`\${num1} × \${num2}\`;
+            break;
+        case '/':
+            if (num2 === 0) {
+                result = 'خطا: تقسیم بر صفر';
+                operation = \`\${num1} ÷ 0\`;
+            } else {
+                result = num1 / num2;
+                operation = \`\${num1} ÷ \${num2}\`;
+            }
+            break;
+        case '%':
+            result = num1 % num2;
+            operation = \`\${num1} % \${num2}\`;
+            break;
+        case '**':
+            result = num1 ** num2;
+            operation = \`\${num1} ^ \${num2}\`;
+            break;
+        default:
+            result = 'عملگر نامعلوم';
+            operation = '';
+    }
+    
+    const resultElement = document.getElementById('calcResult');
+    resultElement.textContent = \`\${operation} = \${result}\`;
+    resultElement.classList.add('pulse');
+    
+    setTimeout(() => {
+        resultElement.classList.remove('pulse');
+    }, 600);
+    
+    console.log(\`🧮 محاسبه: \${operation} = \${result}\`);
+}
+
+// مقایسه‌گر
+function compare() {
+    const value1Input = document.getElementById('value1').value;
+    const value2Input = document.getElementById('value2').value;
+    const operator = document.getElementById('compOperator').value;
+    
+    // تبدیل مقادیر
+    let value1 = parseValue(value1Input);
+    let value2 = parseValue(value2Input);
+    
+    let result;
+    let operation;
+    
+    switch (operator) {
+        case '==':
+            result = value1 == value2;
+            operation = \`\${value1Input} == \${value2Input}\`;
+            break;
+        case '===':
+            result = value1 === value2;
+            operation = \`\${value1Input} === \${value2Input}\`;
+            break;
+        case '!=':
+            result = value1 != value2;
+            operation = \`\${value1Input} != \${value2Input}\`;
+            break;
+        case '!==':
+            result = value1 !== value2;
+            operation = \`\${value1Input} !== \${value2Input}\`;
+            break;
+        case '>':
+            result = value1 > value2;
+            operation = \`\${value1Input} > \${value2Input}\`;
+            break;
+        case '<':
+            result = value1 < value2;
+            operation = \`\${value1Input} < \${value2Input}\`;
+            break;
+        case '>=':
+            result = value1 >= value2;
+            operation = \`\${value1Input} >= \${value2Input}\`;
+            break;
+        case '<=':
+            result = value1 <= value2;
+            operation = \`\${value1Input} <= \${value2Input}\`;
+            break;
+        default:
+            result = 'عملگر نامعلوم';
+            operation = '';
+    }
+    
+    const resultElement = document.getElementById('compResult');
+    resultElement.innerHTML = \`
+        \${operation} = <strong>\${result}</strong><br>
+        <small>نوع value1: \${typeof value1}, نوع value2: \${typeof value2}</small>
+    \`;
+    resultElement.classList.add('pulse');
+    
+    setTimeout(() => {
+        resultElement.classList.remove('pulse');
+    }, 600);
+    
+    console.log(\`🔍 مقایسه: \${operation} = \${result}\`);
+}
+
+// تابع کمکی برای تبدیل مقادیر
+function parseValue(input) {
+    input = input.trim();
+    
+    if (input === 'true') return true;
+    if (input === 'false') return false;
+    if (input === 'null') return null;
+    if (input === 'undefined') return undefined;
+    if (input.startsWith('"') && input.endsWith('"')) return input.slice(1, -1);
+    if (input.startsWith("'") && input.endsWith("'")) return input.slice(1, -1);
+    if (!isNaN(input) && !isNaN(parseFloat(input))) return parseFloat(input);
+    
+    return input;
+}
+
+// سیستم نمره‌گذاری
+function calculateGrade() {
+    const score = parseInt(document.getElementById('scoreInput').value) || 0;
+    
+    let grade, description, color;
+    
+    if (score >= 90) {
+        grade = 'A';
+        description = 'عالی';
+        color = '#27ae60';
+    } else if (score >= 80) {
+        grade = 'B';
+        description = 'خوب';
+        color = '#3498db';
+    } else if (score >= 70) {
+        grade = 'C';
+        description = 'متوسط';
+        color = '#f39c12';
+    } else if (score >= 60) {
+        grade = 'D';
+        description = 'قابل قبول';
+        color = '#e67e22';
+    } else {
+        grade = 'F';
+        description = 'مردود';
+        color = '#e74c3c';
+    }
+    
+    const resultElement = document.getElementById('gradeResult');
+    resultElement.innerHTML = \`درجه: <strong>\${grade}</strong> - \${description} (نمره: \${score})\`;
+    resultElement.style.color = color;
+    resultElement.classList.add('pulse');
+    
+    setTimeout(() => {
+        resultElement.classList.remove('pulse');
+    }, 600);
+    
+    console.log(\`📊 نمره‌گذاری: \${score} → \${grade} (\${description})\`);
+}
+
+// تشخیص رده سنی
+function checkAgeCategory() {
+    const age = parseInt(document.getElementById('ageInput').value) || 0;
+    
+    let category, description, color;
+    
+    if (age < 0) {
+        category = 'نامعلوم';
+        description = 'سن نامعتبر';
+        color = '#e74c3c';
+    } else if (age < 2) {
+        category = 'نوزاد';
+        description = 'کودک زیر 2 سال';
+        color = '#ff69b4';
+    } else if (age < 13) {
+        category = 'کودک';
+        description = 'کودک 2-12 سال';
+        color = '#3498db';
+    } else if (age < 18) {
+        category = 'نوجوان';
+        description = 'نوجوان 13-17 سال';
+        color = '#9b59b6';
+    } else if (age < 65) {
+        category = 'بزرگسال';
+        description = 'بزرگسال 18-64 سال';
+        color = '#27ae60';
+    } else {
+        category = 'سالمند';
+        description = 'سالمند 65+ سال';
+        color = '#f39c12';
+    }
+    
+    const resultElement = document.getElementById('ageResult');
+    resultElement.innerHTML = \`رده سنی: <strong>\${category}</strong><br><small>\${description}</small>\`;
+    resultElement.style.color = color;
+    resultElement.classList.add('pulse');
+    
+    setTimeout(() => {
+        resultElement.classList.remove('pulse');
+    }, 600);
+    
+    console.log(\`👶 رده سنی: \${age} سال → \${category}\`);
+}
+
+// تشخیص روز هفته
+function checkDayOfWeek() {
+    const dayNumber = parseInt(document.getElementById('dayInput').value) || 1;
+    
+    let dayName, description, color;
+    
+    switch (dayNumber) {
+        case 1:
+            dayName = 'شنبه';
+            description = 'اول هفته';
+            color = '#e74c3c';
+            break;
+        case 2:
+            dayName = 'یکشنبه';
+            description = 'دوم هفته';
+            color = '#e67e22';
+            break;
+        case 3:
+            dayName = 'دوشنبه';
+            description = 'سوم هفته';
+            color = '#f39c12';
+            break;
+        case 4:
+            dayName = 'سه‌شنبه';
+            description = 'چهارم هفته';
+            color = '#27ae60';
+            break;
+        case 5:
+            dayName = 'چهارشنبه';
+            description = 'پنجم هفته';
+            color = '#3498db';
+            break;
+        case 6:
+            dayName = 'پنج‌شنبه';
+            description = 'ششم هفته';
+            color = '#9b59b6';
+            break;
+        case 7:
+            dayName = 'جمعه';
+            description = 'آخر هفته';
+            color = '#2c3e50';
+            break;
+        default:
+            dayName = 'نامعلوم';
+            description = 'شماره نامعتبر (1-7)';
+            color = '#95a5a6';
+    }
+    
+    const resultElement = document.getElementById('dayResult');
+    resultElement.innerHTML = \`روز: <strong>\${dayName}</strong><br><small>\${description}</small>\`;
+    resultElement.style.color = color;
+    resultElement.classList.add('pulse');
+    
+    setTimeout(() => {
+        resultElement.classList.remove('pulse');
+    }, 600);
+    
+    console.log(\`📅 روز هفته: \${dayNumber} → \${dayName}\`);
+}
+
+// عملگرهای منطقی
+function updateLogicResults() {
+    const condition1 = document.getElementById('condition1').checked;
+    const condition2 = document.getElementById('condition2').checked;
+    
+    const andResult = condition1 && condition2;
+    const orResult = condition1 || condition2;
+    const notResult = !condition1;
+    
+    document.getElementById('andResult').innerHTML = 
+        \`AND (&&): <strong>\${andResult}</strong> (\${condition1} && \${condition2})\`;
+    document.getElementById('orResult').innerHTML = 
+        \`OR (||): <strong>\${orResult}</strong> (\${condition1} || \${condition2})\`;
+    document.getElementById('notResult').innerHTML = 
+        \`NOT (!): <strong>\${notResult}</strong> (!\${condition1})\`;
+    
+    console.log(\`🔗 منطق: \${condition1} && \${condition2} = \${andResult}\`);
+    console.log(\`🔗 منطق: \${condition1} || \${condition2} = \${orResult}\`);
+    console.log(\`🔗 منطق: !\${condition1} = \${notResult}\`);
+}
+
+// تست تعاملی
+function testCondition() {
+    const condition = document.getElementById('conditionInput').value.trim();
+    
+    if (!condition) {
+        document.getElementById('testResult').textContent = 'لطفاً شرطی وارد کنید';
+        return;
+    }
+    
+    try {
+        // ایمن‌سازی ورودی (فقط عملگرهای مجاز)
+        const safeCondition = condition.replace(/[^0-9+\\-*/%()\\s<>=!&|truefals]/g, '');
+        
+        // ارزیابی شرط
+        const result = eval(safeCondition);
+        
+        const resultElement = document.getElementById('testResult');
+        resultElement.innerHTML = \`
+            <strong>شرط:</strong> \${condition}<br>
+            <strong>نتیجه:</strong> \${result}<br>
+            <strong>نوع:</strong> \${typeof result}
+        \`;
+        resultElement.classList.add('pulse');
+        
+        setTimeout(() => {
+            resultElement.classList.remove('pulse');
+        }, 600);
+        
+        console.log(\`🧪 تست شرط: \${condition} = \${result}\`);
+        
+    } catch (error) {
+        document.getElementById('testResult').innerHTML = \`
+            <strong>خطا:</strong> \${error.message}<br>
+            <small>لطفاً شرط معتبری وارد کنید</small>
+        \`;
+        console.error('خطا در تست شرط:', error);
+    }
+}
+
+// رویدادها
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('📚 صفحه عملگرها و شرط‌ها بارگذاری شد');
+    
+    // ماشین حساب
+    document.getElementById('calculateBtn').addEventListener('click', calculate);
+    document.getElementById('num1').addEventListener('input', calculate);
+    document.getElementById('num2').addEventListener('input', calculate);
+    document.getElementById('operator').addEventListener('change', calculate);
+    
+    // مقایسه‌گر
+    document.getElementById('compareBtn').addEventListener('click', compare);
+    document.getElementById('value1').addEventListener('input', compare);
+    document.getElementById('value2').addEventListener('input', compare);
+    document.getElementById('compOperator').addEventListener('change', compare);
+    
+    // نمره‌گذاری
+    document.getElementById('gradeBtn').addEventListener('click', calculateGrade);
+    document.getElementById('scoreInput').addEventListener('input', calculateGrade);
+    
+    // رده سنی
+    document.getElementById('ageBtn').addEventListener('click', checkAgeCategory);
+    document.getElementById('ageInput').addEventListener('input', checkAgeCategory);
+    
+    // روز هفته
+    document.getElementById('dayBtn').addEventListener('click', checkDayOfWeek);
+    document.getElementById('dayInput').addEventListener('input', checkDayOfWeek);
+    
+    // عملگرهای منطقی
+    document.getElementById('condition1').addEventListener('change', updateLogicResults);
+    document.getElementById('condition2').addEventListener('change', updateLogicResults);
+    
+    // تست تعاملی
+    document.getElementById('testBtn').addEventListener('click', testCondition);
+    document.getElementById('conditionInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            testCondition();
+        }
+    });
+    
+    // محاسبات اولیه
+    calculate();
+    compare();
+    calculateGrade();
+    checkAgeCategory();
+    checkDayOfWeek();
+    updateLogicResults();
+    
+    // انیمیشن ورود
+    const sections = document.querySelectorAll('section');
+    sections.forEach((section, index) => {
+        setTimeout(() => {
+            section.classList.add('fade-in');
+        }, index * 200);
+    });
+});
+
+// نمایش نکات مفید در کنسول
+console.log('%c🎯 نکات عملگرها و شرط‌ها:', 'color: #3498db; font-size: 14px; font-weight: bold;');
+console.log('• از === به جای == استفاده کنید');
+console.log('• عملگرهای منطقی short-circuit evaluation دارند');
+console.log('• switch برای مقایسه‌های متعدد مناسب است');
+console.log('• عملگر سه‌گانه برای شرط‌های ساده مفید است');
+console.log('• مراقب تبدیل نوع خودکار در مقایسه‌ها باشید');`
+                }
+            });
+            
+            // Mark lesson as completed when user interacts with editor
+            let hasInteracted = false;
+            setTimeout(() => {
+                if (editor.isInitialized) {
+                    Object.keys(editor.editors).forEach(key => {
+                        editor.editors[key].on('change', () => {
+                            if (!hasInteracted) {
+                                hasInteracted = true;
+                                if (window.PersianWebTutorial) {
+                                    window.PersianWebTutorial.markLessonCompleted('lesson13');
+                                }
+                            }
+                        });
+                    });
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
+

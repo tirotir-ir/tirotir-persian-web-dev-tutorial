@@ -1,0 +1,272 @@
+/* RTL (Right-to-Left) Specific Styles for Persian */
+
+/* RTL Text Direction */
+html[dir="rtl"] {
+    direction: rtl;
+}
+
+body {
+    direction: rtl;
+    text-align: right;
+}
+
+/* RTL Layout Adjustments */
+.rtl-container {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Navigation RTL */
+.nav-rtl {
+    direction: rtl;
+}
+
+.nav-rtl ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-rtl li {
+    text-align: right;
+}
+
+/* Sidebar RTL */
+.sidebar-rtl {
+    right: 0;
+    left: auto;
+    border-left: 1px solid var(--border-color);
+    border-right: none;
+}
+
+/* Content RTL */
+.content-rtl {
+    margin-right: var(--sidebar-width);
+    margin-left: 0;
+    padding-right: 2rem;
+    padding-left: 1rem;
+}
+
+/* Breadcrumb RTL */
+.breadcrumb-rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+.breadcrumb-rtl::before {
+    content: "←";
+    margin: 0 0.5rem;
+}
+
+/* Code Blocks - Keep LTR for code */
+.code-container {
+    direction: ltr;
+    text-align: left;
+}
+
+.code-editor {
+    direction: ltr;
+    text-align: left;
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+}
+
+/* Form Elements RTL */
+.form-rtl input,
+.form-rtl textarea,
+.form-rtl select {
+    direction: rtl;
+    text-align: right;
+}
+
+.form-rtl input[type="email"],
+.form-rtl input[type="url"],
+.form-rtl input[type="password"] {
+    direction: ltr;
+    text-align: left;
+}
+
+/* Table RTL */
+.table-rtl {
+    direction: rtl;
+}
+
+.table-rtl th,
+.table-rtl td {
+    text-align: right;
+}
+
+.table-rtl th:first-child,
+.table-rtl td:first-child {
+    border-right: none;
+    border-left: 1px solid var(--border-color);
+}
+
+/* Flex RTL */
+.flex-rtl {
+    direction: rtl;
+}
+
+.flex-rtl.justify-start {
+    justify-content: flex-end;
+}
+
+.flex-rtl.justify-end {
+    justify-content: flex-start;
+}
+
+/* Grid RTL */
+.grid-rtl {
+    direction: rtl;
+}
+
+/* Button Groups RTL */
+.btn-group-rtl {
+    direction: rtl;
+}
+
+.btn-group-rtl .btn:first-child {
+    border-top-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.btn-group-rtl .btn:last-child {
+    border-top-left-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* Dropdown RTL */
+.dropdown-rtl {
+    direction: rtl;
+}
+
+.dropdown-menu-rtl {
+    right: 0;
+    left: auto;
+    text-align: right;
+}
+
+/* Modal RTL */
+.modal-rtl {
+    direction: rtl;
+}
+
+.modal-rtl .modal-header {
+    text-align: right;
+}
+
+.modal-rtl .modal-footer {
+    justify-content: flex-start;
+}
+
+/* Tooltip RTL */
+.tooltip-rtl {
+    direction: rtl;
+}
+
+/* Progress Bar RTL */
+.progress-rtl {
+    direction: rtl;
+}
+
+.progress-bar-rtl {
+    right: 0;
+    left: auto;
+}
+
+/* Pagination RTL */
+.pagination-rtl {
+    direction: rtl;
+}
+
+.pagination-rtl .page-item:first-child .page-link {
+    border-top-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.pagination-rtl .page-item:last-child .page-link {
+    border-top-left-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* Persian Number Styling */
+.persian-numbers {
+    font-feature-settings: "ss01" on;
+}
+
+/* Persian Text Improvements */
+.persian-text {
+    font-feature-settings: "kern" on, "liga" on;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Mixed Content (Persian + English) */
+.mixed-content {
+    direction: rtl;
+    unicode-bidi: embed;
+}
+
+.mixed-content .english {
+    direction: ltr;
+    unicode-bidi: embed;
+    display: inline-block;
+}
+
+/* Code in Persian Context */
+.persian-context code {
+    direction: ltr;
+    unicode-bidi: embed;
+    display: inline-block;
+    margin: 0 0.2rem;
+}
+
+/* Responsive RTL */
+@media (max-width: 768px) {
+    .content-rtl {
+        margin-right: 0;
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+    
+    .sidebar-rtl {
+        position: fixed;
+        top: var(--header-height);
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - var(--header-height));
+        transition: right var(--transition-speed) ease;
+        z-index: 1000;
+    }
+    
+    .sidebar-rtl.open {
+        right: 0;
+    }
+}
+
+/* Print Styles RTL */
+@media print {
+    .sidebar-rtl {
+        display: none;
+    }
+    
+    .content-rtl {
+        margin-right: 0;
+        padding: 0;
+    }
+    
+    body {
+        direction: rtl;
+        font-size: 12pt;
+        line-height: 1.4;
+    }
+}
+

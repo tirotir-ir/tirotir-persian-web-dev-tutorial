@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درس ۱۵: توابع - آموزش توسعه وب</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/rtl.css">
+    <link rel="stylesheet" href="../../css/themes.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/editor.css">
+    <link rel="stylesheet" href="../../css/quiz.css">
+    
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="../../js/libs/codemirror/css/codemirror.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/monokai.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/material.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-right">
+                    <h1 class="site-title">آموزش توسعه وب</h1>
+                    <div class="breadcrumb">
+                        <a href="../../index.html">صفحه اصلی</a>
+                        <span>/</span>
+                        <a href="#">JavaScript</a>
+                        <span>/</span>
+                        <span>درس ۱۵</span>
+                    </div>
+                </div>
+                <div class="header-left">
+                    <button class="theme-toggle" id="themeToggle">🌙</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h3>فهرست دروس</h3>
+                    <div class="search-box">
+                        <input type="text" placeholder="جستجو در دروس..." id="lessonSearch">
+                    </div>
+                </div>
+                
+                <nav class="lesson-nav">
+                    <div class="lesson-category">
+                        <h4>HTML</h4>
+                        <ul>
+                            <li><a href="../html/lesson1.html">📄 مقدمات HTML ۱</a></li>
+                            <li><a href="../html/lesson2.html">📝 متن و قالب‌بندی ۲</a></li>
+                            <li><a href="../html/lesson3.html">🔗 لینک‌ها و تصاویر ۳</a></li>
+                            <li><a href="../html/lesson4.html">📊 جداول و فرم‌ها ۴</a></li>
+                            <li><a href="../html/lesson5.html">🏗️ HTML معنایی ۵</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lesson-category">
+                        <h4>CSS</h4>
+                        <ul>
+                            <li><a href="../css/lesson6.html">🎨 مقدمات CSS ۶</a></li>
+                            <li><a href="../css/lesson7.html">📦 مدل جعبه و چیدمان ۷</a></li>
+                            <li><a href="../css/lesson8.html">🔤 تایپوگرافی و رنگ‌ها ۸</a></li>
+                            <li><a href="../css/lesson9.html">🌈 رنگ‌ها و پس‌زمینه ۹</a></li>
+                            <li><a href="../css/lesson10.html">📐 Flexbox و Grid ۱۰</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lesson-category">
+                        <h4>JavaScript</h4>
+                        <ul>
+                            <li><a href="lesson11.html">⚡ مقدمات JavaScript ۱۱</a></li>
+                            <li><a href="lesson12.html">🔧 متغیرها و انواع داده ۱۲</a></li>
+                            <li><a href="lesson13.html">🔀 عملگرها و شرط‌ها ۱۳</a></li>
+                            <li><a href="lesson14.html">🔄 حلقه‌ها و تکرار ۱۴</a></li>
+                            <li><a href="lesson15.html" class="active">⚙️ توابع ۱۵</a></li>
+                            <li><a href="lesson16.html">🎯 دستکاری DOM ۱۶</a></li>
+                            <li><a href="lesson17.html">🖱️ رویدادها و تعامل ۱۷</a></li>
+                            <li><a href="lesson18.html">📦 آرایه‌ها و اشیاء ۱۸</a></li>
+                            <li><a href="lesson19.html">🚀 مفاهیم پیشرفته ۱۹</a></li>
+                            <li><a href="lesson20.html">🎨 پروژه نهایی ۲۰</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                
+                <div class="sidebar-footer">
+                    <a href="../../reference/html-tags.html">📚 مرجع تگ‌های HTML</a>
+                    <a href="../../index.html">🏠 صفحه اصلی</a>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="content">
+                <article class="lesson">
+                    <header class="lesson-header">
+                        <h1>درس ۱۵: توابع</h1>
+                        <p class="lesson-subtitle">یادگیری توابع JavaScript برای سازماندهی و استفاده مجدد کد</p>
+                        <div class="lesson-meta">
+                            <span class="lesson-number">درس ۱۵ از ۲۰</span>
+                            <div class="lesson-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%"></div>
+                                </div>
+                                <span class="progress-text">پیشرفت درس</span>
+                            </div>
+                        </div>
+                    </header>
+
+                    <div class="lesson-content">
+                        <section class="content-section">
+                            <h2>توابع چیستند؟</h2>
+                            <p>توابع (Functions) یکی از مهم‌ترین مفاهیم در JavaScript هستند. تابع بلوکی از کد است که برای انجام یک کار خاص طراحی شده و می‌تواند چندین بار فراخوانی شود. توابع به شما کمک می‌کنند کد خود را سازماندهی کرده و از تکرار جلوگیری کنید.</p>
+                            
+                            <div class="info-box">
+                                <h3>مزایای استفاده از توابع:</h3>
+                                <ul>
+                                    <li>قابلیت استفاده مجدد کد (Reusability)</li>
+                                    <li>سازماندهی بهتر کد</li>
+                                    <li>تست و دیباگ آسان‌تر</li>
+                                    <li>کاهش پیچیدگی برنامه</li>
+                                    <li>تقسیم کار به بخش‌های کوچک‌تر</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>تعریف توابع</h2>
+                            
+                            <h3>۱. Function Declaration</h3>
+                            <p>روش کلاسیک تعریف تابع:</p>
+                            <div class="code-example">
+                                <pre><code>function sayHello() {
+    console.log("سلام دنیا!");
+}
+
+// فراخوانی تابع
+sayHello();</code></pre>
+                            </div>
+
+                            <h3>۲. Function Expression</h3>
+                            <p>تعریف تابع به عنوان یک عبارت:</p>
+                            <div class="code-example">
+                                <pre><code>const greet = function() {
+    console.log("خوش آمدید!");
+};
+
+greet();</code></pre>
+                            </div>
+
+                            <h3>۳. Arrow Functions</h3>
+                            <p>روش مدرن و کوتاه‌تر تعریف تابع:</p>
+                            <div class="code-example">
+                                <pre><code>const welcome = () => {
+    console.log("به سایت ما خوش آمدید!");
+};
+
+welcome();</code></pre>
+                            </div>
+                        </section>
+
+                        <!-- Interactive Code Editor -->
+                        <section class="editor-section">
+                            <h2>تمرین عملی: انواع توابع</h2>
+                            <p>در ادامه، انواع مختلف توابع و کاربردهای آن‌ها را مشاهده کنید:</p>
+                            
+                            <div class="editor-container">
+                                <div class="editor-tabs">
+                                    <button class="tab-button active" data-tab="html">📄 HTML</button>
+                                    <button class="tab-button" data-tab="css">🎨 CSS</button>
+                                    <button class="tab-button" data-tab="js">⚡ JavaScript</button>
+                                </div>
+                                
+                                <div class="editor-controls">
+                                    <button class="btn btn-primary" id="runCode">▶️ اجرا</button>
+                                    <button class="btn btn-secondary" id="resetCode">🔄 بازنشانی</button>
+                                    <button class="btn btn-secondary" id="fullscreen">⛶ تمام صفحه</button>
+                                </div>
+
+                                <div class="editor-wrapper">
+                                    <div class="editor-panel">
+                                        <div class="editor-header">
+                                            <span>ویرایشگر کد</span>
+                                            <span class="editor-info">خط <span id="lineNumber">1</span>، ستون <span id="columnNumber">1</span></span>
+                                        </div>
+                                        
+                                        <div class="tab-content active" id="html-tab">
+                                            <textarea id="htmlEditor"><!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>توابع JavaScript</title>
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            direction: rtl;
+            text-align: right;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        .demo-section {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-right: 4px solid #4CAF50;
+        }
+        .output {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: monospace;
+            direction: ltr;
+            text-align: left;
+            min-height: 50px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .calculator {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            max-width: 300px;
+            margin: 20px 0;
+        }
+        .calc-display {
+            grid-column: span 4;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            border-radius: 5px;
+        }
+        .calc-btn {
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+        .input-group {
+            margin: 10px 0;
+        }
+        input {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚙️ توابع JavaScript</h1>
+        
+        <div class="demo-section">
+            <h2>توابع ساده</h2>
+            <button onclick="simpleFunction()">تابع ساده</button>
+            <button onclick="functionWithParams('علی', 25)">تابع با پارامتر</button>
+            <button onclick="showReturnValue()">تابع با مقدار برگشتی</button>
+            <div id="simpleOutput" class="output"></div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>ماشین حساب با توابع</h2>
+            <div class="calculator">
+                <div class="calc-display" id="calcDisplay">0</div>
+                <button class="calc-btn" onclick="clearCalc()">C</button>
+                <button class="calc-btn" onclick="appendToCalc('/')">/</button>
+                <button class="calc-btn" onclick="appendToCalc('*')">×</button>
+                <button class="calc-btn" onclick="deleteLast()">⌫</button>
+                
+                <button class="calc-btn" onclick="appendToCalc('7')">7</button>
+                <button class="calc-btn" onclick="appendToCalc('8')">8</button>
+                <button class="calc-btn" onclick="appendToCalc('9')">9</button>
+                <button class="calc-btn" onclick="appendToCalc('-')">-</button>
+                
+                <button class="calc-btn" onclick="appendToCalc('4')">4</button>
+                <button class="calc-btn" onclick="appendToCalc('5')">5</button>
+                <button class="calc-btn" onclick="appendToCalc('6')">6</button>
+                <button class="calc-btn" onclick="appendToCalc('+')">+</button>
+                
+                <button class="calc-btn" onclick="appendToCalc('1')">1</button>
+                <button class="calc-btn" onclick="appendToCalc('2')">2</button>
+                <button class="calc-btn" onclick="appendToCalc('3')">3</button>
+                <button class="calc-btn" onclick="calculate()" style="grid-row: span 2; background: #FF6B6B;">=</button>
+                
+                <button class="calc-btn" onclick="appendToCalc('0')" style="grid-column: span 2;">0</button>
+                <button class="calc-btn" onclick="appendToCalc('.')">.</button>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>تولید کننده رمز عبور</h2>
+            <div class="input-group">
+                <label>طول رمز عبور:</label>
+                <input type="number" id="passwordLength" value="8" min="4" max="50">
+                <button onclick="generatePassword()">تولید رمز</button>
+            </div>
+            <div id="passwordOutput" class="output"></div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>تبدیل واحدها</h2>
+            <div class="input-group">
+                <label>دما (سلسیوس):</label>
+                <input type="number" id="celsius" placeholder="25">
+                <button onclick="convertTemperature()">تبدیل</button>
+            </div>
+            <div class="input-group">
+                <label>وزن (کیلوگرم):</label>
+                <input type="number" id="weight" placeholder="70">
+                <button onclick="convertWeight()">تبدیل</button>
+            </div>
+            <div id="conversionOutput" class="output"></div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>Arrow Functions</h2>
+            <button onclick="arrowFunctionDemo()">نمایش Arrow Functions</button>
+            <div id="arrowOutput" class="output"></div>
+        </div>
+    </div>
+</body>
+</html></textarea>
+                                        </div>
+                                        
+                                        <div class="tab-content" id="css-tab">
+                                            <textarea id="cssEditor">/* استایل‌های اضافی برای توابع */
+.function-demo {
+    border: 2px dashed #4CAF50;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    background: rgba(76, 175, 80, 0.1);
+}
+
+.parameter-highlight {
+    background: rgba(255, 193, 7, 0.3);
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.return-value {
+    background: rgba(33, 150, 243, 0.3);
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 4px solid #2196F3;
+    margin: 10px 0;
+}
+
+.scope-demo {
+    background: rgba(156, 39, 176, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #9C27B0;
+}
+
+.animation-bounce {
+    animation: bounce 0.5s ease-in-out;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}</textarea>
+                                        </div>
+                                        
+                                        <div class="tab-content" id="js-tab">
+                                            <textarea id="jsEditor">// متغیرهای سراسری
+let calcExpression = '';
+let calcResult = 0;
+
+// توابع ساده
+function simpleFunction() {
+    const output = document.getElementById('simpleOutput');
+    output.innerHTML = 'تابع ساده اجرا شد! 🎉';
+}
+
+function functionWithParams(name, age) {
+    const output = document.getElementById('simpleOutput');
+    output.innerHTML = `سلام ${name}! شما ${age} سال دارید.`;
+}
+
+function showReturnValue() {
+    const result = calculateSquare(5);
+    const output = document.getElementById('simpleOutput');
+    output.innerHTML = `مربع عدد 5 برابر است با: ${result}`;
+}
+
+// تابع با مقدار برگشتی
+function calculateSquare(number) {
+    return number * number;
+}
+
+// توابع ماشین حساب
+function appendToCalc(value) {
+    const display = document.getElementById('calcDisplay');
+    
+    if (calcExpression === '0' && value !== '.') {
+        calcExpression = value;
+    } else {
+        calcExpression += value;
+    }
+    
+    display.textContent = calcExpression;
+}
+
+function clearCalc() {
+    calcExpression = '0';
+    document.getElementById('calcDisplay').textContent = '0';
+}
+
+function deleteLast() {
+    if (calcExpression.length > 1) {
+        calcExpression = calcExpression.slice(0, -1);
+    } else {
+        calcExpression = '0';
+    }
+    document.getElementById('calcDisplay').textContent = calcExpression;
+}
+
+function calculate() {
+    try {
+        // جایگزینی × با *
+        const expression = calcExpression.replace(/×/g, '*');
+        const result = eval(expression);
+        
+        document.getElementById('calcDisplay').textContent = result;
+        calcExpression = result.toString();
+    } catch (error) {
+        document.getElementById('calcDisplay').textContent = 'خطا';
+        calcExpression = '0';
+    }
+}
+
+// تولید کننده رمز عبور
+function generatePassword() {
+    const length = parseInt(document.getElementById('passwordLength').value);
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*';
+    
+    let password = '';
+    for (let i = 0; i < length; i++) {
+        password += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    
+    const output = document.getElementById('passwordOutput');
+    output.innerHTML = `رمز عبور تولید شده: <strong>${password}</strong><br>
+                       قدرت رمز: ${getPasswordStrength(password)}`;
+}
+
+function getPasswordStrength(password) {
+    if (password.length < 6) return '🔴 ضعیف';
+    if (password.length < 10) return '🟡 متوسط';
+    return '🟢 قوی';
+}
+
+// تبدیل واحدها
+function convertTemperature() {
+    const celsius = parseFloat(document.getElementById('celsius').value);
+    
+    if (isNaN(celsius)) {
+        document.getElementById('conversionOutput').innerHTML = 'لطفا عدد معتبر وارد کنید';
+        return;
+    }
+    
+    const fahrenheit = (celsius * 9/5) + 32;
+    const kelvin = celsius + 273.15;
+    
+    document.getElementById('conversionOutput').innerHTML = 
+        `${celsius}°C = ${fahrenheit.toFixed(1)}°F = ${kelvin.toFixed(1)}K`;
+}
+
+function convertWeight() {
+    const kg = parseFloat(document.getElementById('weight').value);
+    
+    if (isNaN(kg)) {
+        document.getElementById('conversionOutput').innerHTML = 'لطفا عدد معتبر وارد کنید';
+        return;
+    }
+    
+    const pounds = kg * 2.20462;
+    const grams = kg * 1000;
+    
+    document.getElementById('conversionOutput').innerHTML = 
+        `${kg} کیلوگرم = ${pounds.toFixed(2)} پوند = ${grams} گرم`;
+}
+
+// Arrow Functions Demo
+function arrowFunctionDemo() {
+    const output = document.getElementById('arrowOutput');
+    
+    // Arrow function ساده
+    const greet = () => 'سلام از Arrow Function!';
+    
+    // Arrow function با پارامتر
+    const multiply = (a, b) => a * b;
+    
+    // Arrow function با بدنه
+    const processArray = (arr) => {
+        return arr.map(x => x * 2).filter(x => x > 10);
+    };
+    
+    const numbers = [2, 5, 8, 12, 3];
+    const processed = processArray(numbers);
+    
+    output.innerHTML = `
+        ${greet()}<br>
+        ضرب 5 در 3: ${multiply(5, 3)}<br>
+        آرایه اصلی: [${numbers.join(', ')}]<br>
+        پردازش شده: [${processed.join(', ')}]
+    `;
+}
+
+// Higher Order Functions
+const mathOperations = {
+    add: (a, b) => a + b,
+    subtract: (a, b) => a - b,
+    multiply: (a, b) => a * b,
+    divide: (a, b) => b !== 0 ? a / b : 'تقسیم بر صفر!'
+};
+
+// Closure مثال
+function createCounter() {
+    let count = 0;
+    return function() {
+        count++;
+        return count;
+    };
+}
+
+// اجرای خودکار
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('صفحه توابع JavaScript آماده است!');
+    
+    // نمایش مثال Closure
+    const counter = createCounter();
+    console.log('شمارنده:', counter()); // 1
+    console.log('شمارنده:', counter()); // 2
+});</textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="preview-panel">
+                                        <div class="preview-header">
+                                            <span>نمایش زنده</span>
+                                            <div class="preview-controls">
+                                                <button class="btn btn-sm" id="refreshPreview">🔄</button>
+                                                <button class="btn btn-sm" id="openInNewTab">🔗</button>
+                                            </div>
+                                        </div>
+                                        <iframe id="preview" src="about:blank"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>پارامترها و آرگومان‌ها</h2>
+                            
+                            <h3>پارامترهای ساده</h3>
+                            <div class="code-example">
+                                <pre><code>function introduce(name, age, city) {
+    return `سلام، من ${name} هستم، ${age} سال دارم و در ${city} زندگی می‌کنم.`;
+}
+
+console.log(introduce("علی", 25, "تهران"));</code></pre>
+                            </div>
+
+                            <h3>مقادیر پیش‌فرض</h3>
+                            <div class="code-example">
+                                <pre><code>function greetUser(name = "کاربر", time = "روز") {
+    return `${time} بخیر ${name}!`;
+}
+
+console.log(greetUser()); // "روز بخیر کاربر!"
+console.log(greetUser("سارا", "شب")); // "شب بخیر سارا!"</code></pre>
+                            </div>
+
+                            <h3>Rest Parameters</h3>
+                            <div class="code-example">
+                                <pre><code>function sum(...numbers) {
+    return numbers.reduce((total, num) => total + num, 0);
+}
+
+console.log(sum(1, 2, 3, 4, 5)); // 15</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>مقادیر برگشتی</h2>
+                            
+                            <h3>Return ساده</h3>
+                            <div class="code-example">
+                                <pre><code>function calculateArea(width, height) {
+    return width * height;
+}
+
+const area = calculateArea(10, 5);
+console.log("مساحت:", area); // 50</code></pre>
+                            </div>
+
+                            <h3>Return چندگانه</h3>
+                            <div class="code-example">
+                                <pre><code>function getPersonInfo(name, age) {
+    return {
+        fullName: name,
+        years: age,
+        isAdult: age >= 18,
+        category: age < 13 ? "کودک" : age < 18 ? "نوجوان" : "بزرگسال"
+    };
+}
+
+const person = getPersonInfo("مریم", 22);
+console.log(person);</code></pre>
+                            </div>
+
+                            <h3>Early Return</h3>
+                            <div class="code-example">
+                                <pre><code>function validateAge(age) {
+    if (age < 0) {
+        return "سن نمی‌تواند منفی باشد";
+    }
+    
+    if (age > 150) {
+        return "سن غیرمعقول است";
+    }
+    
+    return "سن معتبر است";
+}</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>محدوده متغیرها (Scope)</h2>
+                            
+                            <h3>Global Scope</h3>
+                            <div class="code-example">
+                                <pre><code>let globalVar = "من متغیر سراسری هستم";
+
+function showGlobal() {
+    console.log(globalVar); // قابل دسترسی
+}
+
+showGlobal();</code></pre>
+                            </div>
+
+                            <h3>Function Scope</h3>
+                            <div class="code-example">
+                                <pre><code>function myFunction() {
+    let localVar = "من متغیر محلی هستم";
+    console.log(localVar); // قابل دسترسی
+}
+
+myFunction();
+// console.log(localVar); // خطا! غیرقابل دسترسی</code></pre>
+                            </div>
+
+                            <h3>Block Scope</h3>
+                            <div class="code-example">
+                                <pre><code>function testScope() {
+    if (true) {
+        let blockVar = "متغیر بلوک";
+        const blockConst = "ثابت بلوک";
+        console.log(blockVar); // قابل دسترسی
+    }
+    
+    // console.log(blockVar); // خطا! غیرقابل دسترسی
+}</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>Arrow Functions</h2>
+                            
+                            <h3>ساختار کوتاه</h3>
+                            <div class="code-example">
+                                <pre><code>// تابع معمولی
+function square(x) {
+    return x * x;
+}
+
+// Arrow function
+const square = x => x * x;
+
+// Arrow function با چند پارامتر
+const add = (a, b) => a + b;
+
+// Arrow function با بدنه
+const processData = (data) => {
+    const processed = data.map(x => x * 2);
+    return processed.filter(x => x > 10);
+};</code></pre>
+                            </div>
+
+                            <h3>تفاوت‌های مهم</h3>
+                            <div class="warning-box">
+                                <h4>⚠️ نکات مهم Arrow Functions:</h4>
+                                <ul>
+                                    <li>ندارای <code>this</code> مخصوص به خود</li>
+                                    <li>نمی‌توان به عنوان constructor استفاده کرد</li>
+                                    <li>ندارای <code>arguments</code> object</li>
+                                    <li>نمی‌توان hoisted شوند</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>مفاهیم پیشرفته</h2>
+                            
+                            <h3>Higher Order Functions</h3>
+                            <p>توابعی که توابع دیگر را به عنوان پارامتر می‌گیرند یا تابع برمی‌گردانند:</p>
+                            <div class="code-example">
+                                <pre><code>function createMultiplier(factor) {
+    return function(number) {
+        return number * factor;
+    };
+}
+
+const double = createMultiplier(2);
+const triple = createMultiplier(3);
+
+console.log(double(5)); // 10
+console.log(triple(4)); // 12</code></pre>
+                            </div>
+
+                            <h3>Callback Functions</h3>
+                            <div class="code-example">
+                                <pre><code>function processArray(array, callback) {
+    const result = [];
+    for (let item of array) {
+        result.push(callback(item));
+    }
+    return result;
+}
+
+const numbers = [1, 2, 3, 4, 5];
+const doubled = processArray(numbers, x => x * 2);
+console.log(doubled); // [2, 4, 6, 8, 10]</code></pre>
+                            </div>
+
+                            <h3>Closure</h3>
+                            <div class="code-example">
+                                <pre><code>function createCounter(initialValue = 0) {
+    let count = initialValue;
+    
+    return {
+        increment: () => ++count,
+        decrement: () => --count,
+        getValue: () => count,
+        reset: () => count = initialValue
+    };
+}
+
+const counter = createCounter(10);
+console.log(counter.increment()); // 11
+console.log(counter.getValue()); // 11</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>بهترین شیوه‌ها</h2>
+                            
+                            <div class="tip-box">
+                                <h3>💡 نکات مهم:</h3>
+                                <ul>
+                                    <li><strong>نام‌گذاری:</strong> از نام‌های توصیفی استفاده کنید</li>
+                                    <li><strong>اندازه:</strong> توابع کوچک و تک‌منظوره بنویسید</li>
+                                    <li><strong>پارامترها:</strong> تعداد پارامترها را محدود کنید</li>
+                                    <li><strong>مستندسازی:</strong> توابع پیچیده را مستند کنید</li>
+                                    <li><strong>تست:</strong> توابع را به صورت جداگانه تست کنید</li>
+                                </ul>
+                            </div>
+
+                            <h3>مثال تابع بهینه</h3>
+                            <div class="code-example">
+                                <pre><code>/**
+ * محاسبه قیمت نهایی با احتساب تخفیف و مالیات
+ * @param {number} basePrice - قیمت پایه
+ * @param {number} discountPercent - درصد تخفیف (0-100)
+ * @param {number} taxPercent - درصد مالیات (0-100)
+ * @returns {number} قیمت نهایی
+ */
+function calculateFinalPrice(basePrice, discountPercent = 0, taxPercent = 9) {
+    // اعتبارسنجی ورودی
+    if (basePrice < 0) throw new Error("قیمت نمی‌تواند منفی باشد");
+    if (discountPercent < 0 || discountPercent > 100) {
+        throw new Error("تخفیف باید بین 0 تا 100 باشد");
+    }
+    
+    // محاسبه قیمت با تخفیف
+    const discountAmount = basePrice * (discountPercent / 100);
+    const priceAfterDiscount = basePrice - discountAmount;
+    
+    // محاسبه مالیات
+    const taxAmount = priceAfterDiscount * (taxPercent / 100);
+    const finalPrice = priceAfterDiscount + taxAmount;
+    
+    return Math.round(finalPrice * 100) / 100; // گرد کردن به 2 رقم اعشار
+}</code></pre>
+                            </div>
+                        </section>
+
+                        <!-- Quiz Section -->
+                        <section class="quiz-section">
+                            <h2>آزمون درس ۱۵</h2>
+                            <div class="quiz-container" id="lesson15Quiz">
+                                <div class="quiz-question active" data-question="1">
+                                    <h3>سوال ۱: کدام روش تعریف تابع hoisting ندارد؟</h3>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q1" value="a"> Function Declaration</label>
+                                        <label><input type="radio" name="q1" value="b"> Function Expression</label>
+                                        <label><input type="radio" name="q1" value="c"> Arrow Function</label>
+                                        <label><input type="radio" name="q1" value="d"> گزینه‌های b و c</label>
+                                    </div>
+                                </div>
+
+                                <div class="quiz-question" data-question="2">
+                                    <h3>سوال ۲: خروجی این کد چیست؟</h3>
+                                    <div class="code-example">
+                                        <pre><code>function test(a = 5, b = 10) {
+    return a + b;
+}
+console.log(test(3));</code></pre>
+                                    </div>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q2" value="a"> 15</label>
+                                        <label><input type="radio" name="q2" value="b"> 13</label>
+                                        <label><input type="radio" name="q2" value="c"> 8</label>
+                                        <label><input type="radio" name="q2" value="d"> undefined</label>
+                                    </div>
+                                </div>
+
+                                <div class="quiz-question" data-question="3">
+                                    <h3>سوال ۳: کدام مورد درباره Arrow Functions درست است؟</h3>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q3" value="a"> دارای this مخصوص به خود هستند</label>
+                                        <label><input type="radio" name="q3" value="b"> می‌توان به عنوان constructor استفاده کرد</label>
+                                        <label><input type="radio" name="q3" value="c"> this را از محیط اطراف به ارث می‌برند</label>
+                                        <label><input type="radio" name="q3" value="d"> دارای arguments object هستند</label>
+                                    </div>
+                                </div>
+
+                                <div class="quiz-navigation">
+                                    <button class="btn btn-secondary" id="prevQuestion">سوال قبلی</button>
+                                    <button class="btn btn-secondary" id="nextQuestion">سوال بعدی</button>
+                                    <button class="btn btn-primary" id="submitQuiz">ارسال پاسخ‌ها</button>
+                                </div>
+
+                                <div class="quiz-result" id="quizResult"></div>
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <nav class="lesson-navigation">
+                            <a href="lesson14.html" class="nav-button prev">
+                                <span>← درس قبلی</span>
+                                <small>حلقه‌ها و تکرار</small>
+                            </a>
+                            <a href="lesson16.html" class="nav-button next">
+                                <span>درس بعدی →</span>
+                                <small>دستکاری DOM</small>
+                            </a>
+                        </nav>
+                    </div>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="../../js/libs/codemirror/js/codemirror.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/xml.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/css.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/javascript.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/htmlmixed.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/matchbrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/closebrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/active-line.min.js"></script>
+    
+    <script src="../../js/main.js"></script>
+    <script src="../../js/storage.js"></script>
+    <script src="../../js/editor.js"></script>
+    <script src="../../js/quiz.js"></script>
+
+    <script>
+        // Initialize lesson
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeLesson('lesson15');
+            
+            // Quiz answers
+            const quizAnswers = {
+                q1: 'd', // Function Expression و Arrow Function
+                q2: 'b', // 13 (3 + 10)
+                q3: 'c'  // this را از محیط اطراف به ارث می‌برند
+            };
+            
+            initializeQuiz('lesson15Quiz', quizAnswers);
+        });
+    </script>
+</body>
+</html>
+

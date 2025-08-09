@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درس ۸: تایپوگرافی - آموزش توسعه وب</title>
+    <meta name="description" content="یادگیری تایپوگرافی و کنترل فونت‌ها در CSS">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/rtl.css">
+    <link rel="stylesheet" href="../../css/themes.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/editor.css">
+    
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="../../js/libs/codemirror/css/codemirror.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/monokai.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/material.min.css">
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم">
+        <span class="theme-toggle-icon">🌙</span>
+    </button>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-brand">
+                <div class="header-brand-icon">وب</div>
+                <span>آموزش توسعه وب</span>
+            </div>
+            
+            <nav class="header-nav">
+                <div class="header-search">
+                    <input type="text" placeholder="جستجو در دروس..." id="searchInput">
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="منوی موبایل">
+                    ☰
+                </button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h2 class="sidebar-title">فهرست دروس</h2>
+                    <p class="sidebar-subtitle">۲۰ درس کامل برای یادگیری توسعه وب</p>
+                </div>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">CSS</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="lesson6.html" class="nav-link">
+                                <span class="nav-link-icon">🎨</span>
+                                <span class="nav-link-text">مقدمات CSS</span>
+                                <span class="nav-link-badge">۶</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson7.html" class="nav-link">
+                                <span class="nav-link-icon">📦</span>
+                                <span class="nav-link-text">مدل جعبه</span>
+                                <span class="nav-link-badge">۷</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson8.html" class="nav-link active">
+                                <span class="nav-link-icon">🔤</span>
+                                <span class="nav-link-text">تایپوگرافی</span>
+                                <span class="nav-link-badge">۸</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson9.html" class="nav-link">
+                                <span class="nav-link-icon">🌈</span>
+                                <span class="nav-link-text">رنگ‌ها و پس‌زمینه</span>
+                                <span class="nav-link-badge">۹</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson10.html" class="nav-link">
+                                <span class="nav-link-icon">📐</span>
+                                <span class="nav-link-text">Flexbox و Grid</span>
+                                <span class="nav-link-badge">۱۰</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">منابع</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="../../reference/html-tags.html" class="nav-link">
+                                <span class="nav-link-icon">📚</span>
+                                <span class="nav-link-text">مرجع تگ‌های HTML</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../../index.html" class="nav-link">
+                                <span class="nav-link-icon">🏠</span>
+                                <span class="nav-link-text">صفحه اصلی</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb">
+                    <span class="breadcrumb-item"><a href="../../index.html">صفحه اصلی</a></span>
+                    <span class="breadcrumb-item"><a href="#css">CSS</a></span>
+                    <span class="breadcrumb-item active">درس ۸: تایپوگرافی</span>
+                </nav>
+
+                <div class="content-header">
+                    <h1 class="content-title">درس ۸: تایپوگرافی</h1>
+                    <p class="content-subtitle">یادگیری تایپوگرافی و کنترل فونت‌ها در CSS</p>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>پیشرفت درس</span>
+                        <span>۸ از ۲۰ درس</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 40%"></div>
+                    </div>
+                </div>
+
+                <!-- Lesson Content -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تایپوگرافی در وب چیست؟</h2>
+                    </div>
+                    <p>تایپوگرافی هنر و علم چیدمان و طراحی متن است که شامل انتخاب فونت، اندازه، فاصله‌بندی و چیدمان متن می‌شود. در طراحی وب، تایپوگرافی نقش مهمی در خوانایی، زیبایی و تجربه کاربری دارد.</p>
+                    
+                    <h3>اهمیت تایپوگرافی در وب:</h3>
+                    <ul>
+                        <li><strong>خوانایی:</strong> متن باید به راحتی قابل خواندن باشد</li>
+                        <li><strong>سلسله‌مراتب:</strong> اهمیت مطالب مختلف مشخص شود</li>
+                        <li><strong>هویت برند:</strong> شخصیت و هویت سایت منتقل شود</li>
+                        <li><strong>تجربه کاربری:</strong> کاربر راحت‌تر با محتوا تعامل کند</li>
+                        <li><strong>دسترسی‌پذیری:</strong> برای همه کاربران قابل استفاده باشد</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">خانواده فونت (Font Family)</h2>
+                    </div>
+                    <p>ویژگی font-family نوع فونت مورد استفاده برای متن را مشخص می‌کند. بهتر است چندین فونت جایگزین تعریف کنید.</p>
+                    
+                    <h3>انواع فونت‌ها:</h3>
+                    <ul>
+                        <li><strong>Serif:</strong> فونت‌هایی با پایه (مثل Times New Roman)</li>
+                        <li><strong>Sans-serif:</strong> فونت‌هایی بدون پایه (مثل Arial)</li>
+                        <li><strong>Monospace:</strong> فونت‌هایی با عرض ثابت (مثل Courier)</li>
+                        <li><strong>Cursive:</strong> فونت‌های دست‌نویس</li>
+                        <li><strong>Fantasy:</strong> فونت‌های تزیینی</li>
+                    </ul>
+                    
+                    <h3>مثال‌ها:</h3>
+                    <pre><code>/* فونت‌های فارسی */
+font-family: 'Vazir', 'Tahoma', Arial, sans-serif;
+
+/* فونت‌های انگلیسی */
+font-family: 'Roboto', 'Helvetica', Arial, sans-serif;
+
+/* فونت monospace برای کد */
+font-family: 'Fira Code', 'Courier New', monospace;</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">اندازه فونت (Font Size)</h2>
+                    </div>
+                    <p>ویژگی font-size اندازه متن را کنترل می‌کند. انتخاب اندازه مناسب برای خوانایی بسیار مهم است.</p>
+                    
+                    <h3>واحدهای اندازه فونت:</h3>
+                    <ul>
+                        <li><strong>px:</strong> پیکسل - اندازه ثابت</li>
+                        <li><strong>em:</strong> نسبت به فونت عنصر والد</li>
+                        <li><strong>rem:</strong> نسبت به فونت root (html)</li>
+                        <li><strong>%:</strong> درصدی از فونت والد</li>
+                        <li><strong>vw/vh:</strong> نسبت به اندازه viewport</li>
+                    </ul>
+                    
+                    <h3>اندازه‌های پیشنهادی:</h3>
+                    <ul>
+                        <li>متن اصلی: 16px یا 1rem</li>
+                        <li>عناوین اصلی: 2-3rem</li>
+                        <li>عناوین فرعی: 1.5-2rem</li>
+                        <li>متن کوچک: 0.875rem (14px)</li>
+                    </ul>
+                    
+                    <h3>مثال:</h3>
+                    <pre><code>html { font-size: 16px; } /* پایه */
+h1 { font-size: 2.5rem; }   /* 40px */
+h2 { font-size: 2rem; }     /* 32px */
+p { font-size: 1rem; }      /* 16px */
+small { font-size: 0.875rem; } /* 14px */</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">وزن فونت (Font Weight)</h2>
+                    </div>
+                    <p>ویژگی font-weight ضخامت و وزن فونت را کنترل می‌کند.</p>
+                    
+                    <h3>مقادیر font-weight:</h3>
+                    <ul>
+                        <li><strong>normal (400):</strong> وزن معمولی</li>
+                        <li><strong>bold (700):</strong> ضخیم</li>
+                        <li><strong>lighter:</strong> نازک‌تر از والد</li>
+                        <li><strong>bolder:</strong> ضخیم‌تر از والد</li>
+                        <li><strong>100-900:</strong> مقادیر عددی</li>
+                    </ul>
+                    
+                    <h3>مثال:</h3>
+                    <pre><code>.thin { font-weight: 100; }
+.light { font-weight: 300; }
+.normal { font-weight: 400; }
+.medium { font-weight: 500; }
+.bold { font-weight: 700; }
+.black { font-weight: 900; }</code></pre>
+                </div>
+
+                <!-- Interactive Code Editor -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تمرین عملی: تایپوگرافی</h2>
+                    </div>
+                    <p>در ادامه، مثالی از تایپوگرافی مختلف را مشاهده می‌کنید. کد را ویرایش کرده و تأثیرات مختلف را ببینید:</p>
+                    
+                    <div id="codeEditor"></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">فاصله‌بندی متن</h2>
+                    </div>
+                    <p>فاصله‌بندی مناسب برای خوانایی و زیبایی متن بسیار مهم است.</p>
+                    
+                    <h3>ویژگی‌های فاصله‌بندی:</h3>
+                    <ul>
+                        <li><strong>line-height:</strong> فاصله بین خطوط</li>
+                        <li><strong>letter-spacing:</strong> فاصله بین حروف</li>
+                        <li><strong>word-spacing:</strong> فاصله بین کلمات</li>
+                        <li><strong>text-indent:</strong> تورفتگی اول پاراگراف</li>
+                    </ul>
+                    
+                    <h3>مقادیر پیشنهادی:</h3>
+                    <pre><code>/* فاصله خط مناسب */
+line-height: 1.5; /* 1.4 تا 1.6 */
+
+/* فاصله حروف */
+letter-spacing: 0.02em; /* کمی فاصله */
+letter-spacing: -0.01em; /* کاهش فاصله */
+
+/* فاصله کلمات */
+word-spacing: 0.1em;</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تراز متن و تزیینات</h2>
+                    </div>
+                    <p>CSS امکانات مختلفی برای تراز و تزیین متن ارائه می‌دهد.</p>
+                    
+                    <h3>تراز متن (text-align):</h3>
+                    <ul>
+                        <li><code>right</code> - راست‌چین (پیش‌فرض فارسی)</li>
+                        <li><code>left</code> - چپ‌چین</li>
+                        <li><code>center</code> - وسط‌چین</li>
+                        <li><code>justify</code> - دوطرفه</li>
+                    </ul>
+                    
+                    <h3>تزیینات متن (text-decoration):</h3>
+                    <ul>
+                        <li><code>none</code> - بدون تزیین</li>
+                        <li><code>underline</code> - زیرخط</li>
+                        <li><code>overline</code> - روخط</li>
+                        <li><code>line-through</code> - خط وسط</li>
+                    </ul>
+                    
+                    <h3>تبدیل متن (text-transform):</h3>
+                    <ul>
+                        <li><code>none</code> - بدون تغییر</li>
+                        <li><code>uppercase</code> - حروف بزرگ</li>
+                        <li><code>lowercase</code> - حروف کوچک</li>
+                        <li><code>capitalize</code> - حرف اول بزرگ</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">فونت‌های وب و @font-face</h2>
+                    </div>
+                    <p>برای استفاده از فونت‌های سفارشی، می‌توانید از @font-face یا سرویس‌های فونت وب استفاده کنید.</p>
+                    
+                    <h3>استفاده از @font-face:</h3>
+                    <pre><code>@font-face {
+  font-family: 'MyCustomFont';
+  src: url('font.woff2') format('woff2'),
+       url('font.woff') format('woff'),
+       url('font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.custom-text {
+  font-family: 'MyCustomFont', Arial, sans-serif;
+}</code></pre>
+                    
+                    <h3>فونت‌های فارسی محبوب:</h3>
+                    <ul>
+                        <li><strong>وزیر (Vazir):</strong> فونت مدرن و خوانا</li>
+                        <li><strong>صمیم (Samim):</strong> فونت ساده و زیبا</li>
+                        <li><strong>شبنم (Shabnam):</strong> فونت گرد و دوستانه</li>
+                        <li><strong>تاهوما (Tahoma):</strong> فونت سیستمی</li>
+                    </ul>
+                    
+                    <h3>بهینه‌سازی فونت‌ها:</h3>
+                    <ul>
+                        <li>از فرمت WOFF2 استفاده کنید</li>
+                        <li>فونت‌ها را preload کنید</li>
+                        <li>فقط وزن‌های مورد نیاز را بارگذاری کنید</li>
+                        <li>از font-display برای کنترل نمایش استفاده کنید</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تایپوگرافی واکنش‌گرا</h2>
+                    </div>
+                    <p>تایپوگرافی باید در اندازه‌های مختلف صفحه به درستی نمایش داده شود.</p>
+                    
+                    <h3>تکنیک‌های responsive typography:</h3>
+                    <ul>
+                        <li><strong>Fluid typography:</strong> استفاده از vw برای اندازه متغیر</li>
+                        <li><strong>Media queries:</strong> اندازه‌های مختلف برای breakpointها</li>
+                        <li><strong>clamp():</strong> محدود کردن اندازه در بازه مشخص</li>
+                    </ul>
+                    
+                    <h3>مثال fluid typography:</h3>
+                    <pre><code>/* اندازه متغیر بین 16px تا 24px */
+font-size: clamp(1rem, 2.5vw, 1.5rem);
+
+/* Media queries */
+@media (max-width: 768px) {
+  h1 { font-size: 1.8rem; }
+  p { font-size: 0.9rem; }
+}</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تمرین‌های عملی</h2>
+                    </div>
+                    <p>برای تسلط بیشتر بر مطالب این درس، تمرین‌های زیر را انجام دهید:</p>
+                    
+                    <h3>تمرین ۱: سیستم تایپوگرافی</h3>
+                    <p>سیستم تایپوگرافی کاملی با عناوین، متن اصلی و متن کوچک ایجاد کنید.</p>
+                    
+                    <h3>تمرین ۲: مقاله وبلاگ</h3>
+                    <p>صفحه مقاله‌ای با تایپوگرافی مناسب و خوانا طراحی کنید.</p>
+                    
+                    <h3>تمرین ۳: کارت ویزیت</h3>
+                    <p>کارت ویزیت دیجیتالی با فونت‌های مختلف ایجاد کنید.</p>
+                    
+                    <h3>تمرین ۴: منوی رستوران</h3>
+                    <p>منوی رستورانی با سلسله‌مراتب تایپوگرافی واضح طراحی کنید.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">نکات مهم و بهترین شیوه‌ها</h2>
+                    </div>
+                    <h3>بهترین شیوه‌ها:</h3>
+                    <ul>
+                        <li>حداکثر 2-3 فونت مختلف استفاده کنید</li>
+                        <li>کنتراست مناسب بین متن و پس‌زمینه ایجاد کنید</li>
+                        <li>اندازه فونت حداقل 16px برای متن اصلی انتخاب کنید</li>
+                        <li>فاصله خط 1.4 تا 1.6 برای خوانایی بهتر</li>
+                        <li>سلسله‌مراتب واضح با اندازه‌های مختلف ایجاد کنید</li>
+                    </ul>
+                    
+                    <h3>نکات دسترسی‌پذیری:</h3>
+                    <ul>
+                        <li>کنتراست رنگی حداقل 4.5:1 برای متن معمولی</li>
+                        <li>کنتراست رنگی حداقل 3:1 برای متن بزرگ</li>
+                        <li>امکان بزرگ‌نمایی تا 200% بدون از دست رفتن محتوا</li>
+                        <li>عدم استفاده از رنگ به تنهایی برای انتقال معنا</li>
+                        <li>فونت‌های خوانا برای کاربران نابینا</li>
+                    </ul>
+                    
+                    <h3>اشتباهات رایج:</h3>
+                    <ul>
+                        <li>استفاده از فونت‌های خوانا نشده</li>
+                        <li>اندازه فونت خیلی کوچک</li>
+                        <li>فاصله خط نامناسب</li>
+                        <li>کنتراست کم بین متن و پس‌زمینه</li>
+                        <li>استفاده بیش از حد از فونت‌های مختلف</li>
+                    </ul>
+                </div>
+
+                <!-- Navigation -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">ادامه یادگیری</h2>
+                    </div>
+                    <p>در درس بعدی با رنگ‌ها و پس‌زمینه در CSS آشنا خواهید شد.</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="lesson7.html" class="btn btn-secondary">درس قبلی: مدل جعبه</a>
+                        <a href="lesson9.html" class="btn btn-primary" style="margin-right: 1rem;">درس بعدی: رنگ‌ها و پس‌زمینه</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../../js/main.js"></script>
+    <script src="../../js/storage.js"></script>
+    
+    <!-- CodeMirror JavaScript -->
+    <script src="../../js/libs/codemirror/js/codemirror.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/xml.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/css.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/javascript.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/htmlmixed.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/matchbrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/closebrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/active-line.min.js"></script>
+    
+    <!-- Editor JavaScript -->
+    <script src="../../js/editor.js"></script>
+    
+    <script>
+        // Initialize the code editor when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const editor = new CodeEditor('codeEditor', {
+                initialContent: {
+                    html: `<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تایپوگرافی CSS</title>
+</head>
+<body>
+    <header class="site-header">
+        <h1 class="main-title">مجله تکنولوژی</h1>
+        <p class="tagline">آخرین اخبار دنیای فناوری</p>
+    </header>
+    
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#" class="nav-link">خانه</a></li>
+            <li><a href="#" class="nav-link">اخبار</a></li>
+            <li><a href="#" class="nav-link">مقالات</a></li>
+            <li><a href="#" class="nav-link">تماس</a></li>
+        </ul>
+    </nav>
+    
+    <main class="content">
+        <article class="blog-post">
+            <header class="post-header">
+                <h2 class="post-title">آینده هوش مصنوعی در ایران</h2>
+                <div class="post-meta">
+                    <span class="author">نویسنده: علی احمدی</span>
+                    <span class="date">تاریخ: ۱۵ آذر ۱۴۰۲</span>
+                    <span class="reading-time">زمان مطالعه: ۵ دقیقه</span>
+                </div>
+            </header>
+            
+            <div class="post-content">
+                <p class="lead">هوش مصنوعی یکی از مهم‌ترین فناوری‌های قرن بیست و یکم محسوب می‌شود که تأثیر عمیقی بر زندگی روزمره ما خواهد داشت.</p>
+                
+                <p>در سال‌های اخیر، پیشرفت‌های چشمگیری در زمینه یادگیری ماشین و شبکه‌های عصبی صورت گرفته است. این پیشرفت‌ها باعث شده تا کاربردهای جدیدی از هوش مصنوعی در حوزه‌های مختلف ظاهر شود.</p>
+                
+                <h3 class="section-title">کاربردهای هوش مصنوعی</h3>
+                
+                <p>هوش مصنوعی در حوزه‌های مختلفی کاربرد دارد:</p>
+                
+                <ul class="feature-list">
+                    <li><strong>پزشکی:</strong> تشخیص بیماری‌ها و کمک به پزشکان</li>
+                    <li><strong>حمل و نقل:</strong> خودروهای خودران و بهینه‌سازی ترافیک</li>
+                    <li><strong>آموزش:</strong> سیستم‌های آموزش هوشمند و شخصی‌سازی</li>
+                    <li><strong>تجارت:</strong> تحلیل داده‌ها و پیش‌بینی بازار</li>
+                </ul>
+                
+                <blockquote class="quote">
+                    "هوش مصنوعی نه تنها ابزاری برای حل مسائل پیچیده است، بلکه پلی است برای رسیدن به آینده‌ای بهتر."
+                    <cite>- دکتر احمد رضایی، متخصص هوش مصنوعی</cite>
+                </blockquote>
+                
+                <h3 class="section-title">چالش‌ها و فرصت‌ها</h3>
+                
+                <p>با وجود مزایای فراوان، هوش مصنوعی چالش‌هایی نیز دارد که باید به آن‌ها توجه کرد. از جمله این چالش‌ها می‌توان به مسائل اخلاقی، حریم خصوصی و امنیت اشاره کرد.</p>
+                
+                <div class="highlight-box">
+                    <h4 class="highlight-title">نکته مهم</h4>
+                    <p class="highlight-text">توسعه هوش مصنوعی باید با رعایت اصول اخلاقی و در جهت منافع بشریت صورت گیرد.</p>
+                </div>
+                
+                <h3 class="section-title">آینده هوش مصنوعی در ایران</h3>
+                
+                <p>ایران با داشتن نیروی انسانی متخصص و دانشگاه‌های معتبر، پتانسیل بالایی برای توسعه هوش مصنوعی دارد. سرمایه‌گذاری در این حوزه می‌تواند کشور را به یکی از قطب‌های مهم فناوری در منطقه تبدیل کند.</p>
+            </div>
+            
+            <footer class="post-footer">
+                <div class="tags">
+                    <span class="tag">هوش مصنوعی</span>
+                    <span class="tag">فناوری</span>
+                    <span class="tag">آینده</span>
+                    <span class="tag">ایران</span>
+                </div>
+                
+                <div class="share-buttons">
+                    <button class="share-btn">اشتراک‌گذاری</button>
+                    <button class="like-btn">پسندیدن</button>
+                    <button class="comment-btn">نظر</button>
+                </div>
+            </footer>
+        </article>
+        
+        <aside class="sidebar">
+            <div class="widget">
+                <h4 class="widget-title">مقالات مرتبط</h4>
+                <ul class="related-posts">
+                    <li><a href="#" class="related-link">مقدمه‌ای بر یادگیری ماشین</a></li>
+                    <li><a href="#" class="related-link">شبکه‌های عصبی و کاربردها</a></li>
+                    <li><a href="#" class="related-link">آینده رباتیک در ایران</a></li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+    
+    <footer class="site-footer">
+        <p class="copyright">&copy; ۱۴۰۲ مجله تکنولوژی. تمام حقوق محفوظ است.</p>
+    </footer>
+</body>
+</html>`,
+                    css: `/* تنظیمات پایه و فونت‌ها */
+@import url('https://fonts.googleapis.com/css2?family=Vazir:wght@300;400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Vazir', 'Tahoma', Arial, sans-serif;
+    direction: rtl;
+    text-align: right;
+    line-height: 1.6;
+    color: #2c3e50;
+    background-color: #f8f9fa;
+    font-size: 16px;
+}
+
+/* سیستم تایپوگرافی */
+.main-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    color: #1a202c;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.tagline {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-weight: 300;
+    color: #718096;
+    margin-bottom: 2rem;
+}
+
+.post-title {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    color: #2d3748;
+}
+
+.section-title {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    font-weight: 500;
+    margin: 2rem 0 1rem 0;
+    color: #2d3748;
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+}
+
+.widget-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #2d3748;
+}
+
+.highlight-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #d69e2e;
+}
+
+/* متن اصلی */
+p {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    color: #4a5568;
+}
+
+.lead {
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
+    font-weight: 500;
+    line-height: 1.6;
+    color: #2d3748;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 8px;
+}
+
+/* لیست‌ها */
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+.feature-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.feature-list li:last-child {
+    border-bottom: none;
+}
+
+.feature-list strong {
+    color: #3182ce;
+    font-weight: 600;
+}
+
+/* نقل قول */
+.quote {
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
+    font-style: italic;
+    line-height: 1.6;
+    margin: 2rem 0;
+    padding: 2rem;
+    background-color: #f7fafc;
+    border-right: 4px solid #3182ce;
+    border-radius: 0 8px 8px 0;
+    position: relative;
+}
+
+.quote::before {
+    content: """;
+    font-size: 4rem;
+    color: #3182ce;
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    line-height: 1;
+}
+
+.quote cite {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #718096;
+    font-style: normal;
+    font-weight: 500;
+}
+
+/* باکس برجسته */
+.highlight-box {
+    background: linear-gradient(135deg, #fef5e7 0%, #fed7aa 100%);
+    border: 1px solid #f6ad55;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+}
+
+.highlight-text {
+    margin-bottom: 0;
+    color: #744210;
+    font-weight: 500;
+}
+
+/* سربرگ سایت */
+.site-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 3rem 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* منوی ناوبری */
+.main-nav {
+    background-color: #2d3748;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: #4a5568;
+    text-decoration: none;
+}
+
+/* محتوای اصلی */
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+}
+
+.blog-post {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* متادیتای پست */
+.post-meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.875rem;
+    color: #718096;
+    flex-wrap: wrap;
+}
+
+.post-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* تگ‌ها */
+.tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background-color: #e2e8f0;
+    color: #4a5568;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* دکمه‌های اشتراک */
+.share-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.share-btn, .like-btn, .comment-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #e2e8f0;
+    background-color: white;
+    color: #4a5568;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.share-btn:hover {
+    background-color: #3182ce;
+    color: white;
+    border-color: #3182ce;
+}
+
+.like-btn:hover {
+    background-color: #e53e3e;
+    color: white;
+    border-color: #e53e3e;
+}
+
+.comment-btn:hover {
+    background-color: #38a169;
+    color: white;
+    border-color: #38a169;
+}
+
+/* نوار کناری */
+.sidebar {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    height: fit-content;
+}
+
+.widget {
+    margin-bottom: 2rem;
+}
+
+.related-posts {
+    list-style: none;
+}
+
+.related-posts li {
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.related-posts li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.related-link {
+    color: #3182ce;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+.related-link:hover {
+    color: #2c5aa0;
+    text-decoration: underline;
+}
+
+/* پاورقی */
+.site-footer {
+    background-color: #2d3748;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+.copyright {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #a0aec0;
+}
+
+/* طراحی واکنش‌گرا */
+@media (max-width: 768px) {
+    .content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+    
+    .blog-post {
+        padding: 1.5rem;
+    }
+    
+    .main-nav ul {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .nav-link {
+        display: block;
+        text-align: center;
+        padding: 1rem;
+        border-bottom: 1px solid #4a5568;
+    }
+    
+    .post-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .share-buttons {
+        justify-content: center;
+    }
+    
+    .quote {
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+    
+    .quote::before {
+        font-size: 3rem;
+        top: -5px;
+        right: 15px;
+    }
+}
+
+/* انیمیشن‌ها */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.blog-post {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.sidebar {
+    animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+/* تنظیمات چاپ */
+@media print {
+    .main-nav,
+    .sidebar,
+    .share-buttons {
+        display: none;
+    }
+    
+    .content {
+        grid-template-columns: 1fr;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+    }
+    
+    .main-title {
+        font-size: 24pt;
+    }
+    
+    .post-title {
+        font-size: 18pt;
+    }
+}`,
+                    js: `// تعامل با تایپوگرافی
+document.addEventListener('DOMContentLoaded', function() {
+    // کنترل اندازه فونت
+    function createFontSizeController() {
+        const controller = document.createElement('div');
+        controller.style.cssText = 
+            'position: fixed; ' +
+            'top: 20px; ' +
+            'left: 20px; ' +
+            'background: white; ' +
+            'padding: 15px; ' +
+            'border-radius: 8px; ' +
+            'box-shadow: 0 4px 20px rgba(0,0,0,0.1); ' +
+            'z-index: 1000; ' +
+            'display: flex; ' +
+            'flex-direction: column; ' +
+            'gap: 10px;';
+        
+        controller.innerHTML = 
+            '<label style="font-size: 12px; font-weight: bold;">اندازه فونت:</label>' +
+            '<input type="range" id="fontSizeSlider" min="12" max="24" value="16" style="width: 150px;">' +
+            '<span id="fontSizeValue" style="font-size: 12px; text-align: center;">16px</span>';
+        
+        document.body.appendChild(controller);
+        
+        const slider = document.getElementById('fontSizeSlider');
+        const valueDisplay = document.getElementById('fontSizeValue');
+        
+        slider.addEventListener('input', function() {
+            const size = this.value + 'px';
+            document.body.style.fontSize = size;
+            valueDisplay.textContent = size;
+            
+            // ذخیره در localStorage
+            localStorage.setItem('fontSize', this.value);
+        });
+        
+        // بارگذاری اندازه ذخیره شده
+        const savedSize = localStorage.getItem('fontSize');
+        if (savedSize) {
+            slider.value = savedSize;
+            document.body.style.fontSize = savedSize + 'px';
+            valueDisplay.textContent = savedSize + 'px';
+        }
+    }
+    
+    // تغییر فونت
+    function createFontFamilySelector() {
+        const fonts = [
+            { name: 'وزیر', value: "'Vazir', 'Tahoma', Arial, sans-serif" },
+            { name: 'تاهوما', value: "'Tahoma', Arial, sans-serif" },
+            { name: 'Arial', value: "Arial, sans-serif" },
+            { name: 'Times', value: "'Times New Roman', serif" },
+            { name: 'Courier', value: "'Courier New', monospace" }
+        ];
+        
+        const selector = document.createElement('select');
+        selector.style.cssText = 
+            'position: fixed; ' +
+            'top: 120px; ' +
+            'left: 20px; ' +
+            'padding: 8px; ' +
+            'border-radius: 4px; ' +
+            'border: 1px solid #ccc; ' +
+            'background: white; ' +
+            'z-index: 1000;';
+        
+        fonts.forEach(font => {
+            const option = document.createElement('option');
+            option.value = font.value;
+            option.textContent = font.name;
+            selector.appendChild(option);
+        });
+        
+        selector.addEventListener('change', function() {
+            document.body.style.fontFamily = this.value;
+            localStorage.setItem('fontFamily', this.value);
+        });
+        
+        document.body.appendChild(selector);
+        
+        // بارگذاری فونت ذخیره شده
+        const savedFont = localStorage.getItem('fontFamily');
+        if (savedFont) {
+            selector.value = savedFont;
+            document.body.style.fontFamily = savedFont;
+        }
+    }
+    
+    // تحلیل خوانایی
+    function analyzeReadability() {
+        const content = document.querySelector('.post-content');
+        if (!content) return;
+        
+        const text = content.textContent;
+        const words = text.split(/\\s+/).length;
+        const sentences = text.split(/[.!?]+/).length;
+        const paragraphs = content.querySelectorAll('p').length;
+        
+        const avgWordsPerSentence = Math.round(words / sentences);
+        const avgSentencesPerParagraph = Math.round(sentences / paragraphs);
+        
+        console.log('=== تحلیل خوانایی ===');
+        console.log('تعداد کلمات: ' + words);
+        console.log('تعداد جملات: ' + sentences);
+        console.log('تعداد پاراگراف‌ها: ' + paragraphs);
+        console.log('میانگین کلمات در جمله: ' + avgWordsPerSentence);
+        console.log('میانگین جملات در پاراگراف: ' + avgSentencesPerParagraph);
+        
+        // ارزیابی خوانایی
+        let readabilityScore = 'متوسط';
+        if (avgWordsPerSentence < 15 && avgSentencesPerParagraph < 5) {
+            readabilityScore = 'عالی';
+        } else if (avgWordsPerSentence < 20 && avgSentencesPerParagraph < 7) {
+            readabilityScore = 'خوب';
+        } else if (avgWordsPerSentence > 25 || avgSentencesPerParagraph > 10) {
+            readabilityScore = 'ضعیف';
+        }
+        
+        console.log('امتیاز خوانایی: ' + readabilityScore);
+    }
+    
+    // بررسی کنتراست رنگ
+    function checkColorContrast() {
+        const elements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6');
+        
+        elements.forEach(element => {
+            const styles = getComputedStyle(element);
+            const color = styles.color;
+            const backgroundColor = styles.backgroundColor;
+            
+            // محاسبه ساده کنتراست (برای نمایش)
+            console.log('عنصر: ' + element.tagName + 
+                       ', رنگ متن: ' + color + 
+                       ', رنگ پس‌زمینه: ' + backgroundColor);
+        });
+    }
+    
+    // انیمیشن تایپ
+    function typewriterEffect(element, text, speed = 50) {
+        element.textContent = '';
+        let i = 0;
+        
+        function type() {
+            if (i < text.length) {
+                element.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            }
+        }
+        
+        type();
+    }
+    
+    // اعمال افکت تایپ به عنوان
+    const mainTitle = document.querySelector('.main-title');
+    if (mainTitle) {
+        const originalText = mainTitle.textContent;
+        typewriterEffect(mainTitle, originalText, 100);
+    }
+    
+    // شمارش کلمات زنده
+    function createWordCounter() {
+        const content = document.querySelector('.post-content');
+        if (!content) return;
+        
+        const counter = document.createElement('div');
+        counter.style.cssText = 
+            'position: fixed; ' +
+            'bottom: 20px; ' +
+            'left: 20px; ' +
+            'background: #2d3748; ' +
+            'color: white; ' +
+            'padding: 10px 15px; ' +
+            'border-radius: 6px; ' +
+            'font-size: 12px; ' +
+            'z-index: 1000;';
+        
+        function updateCount() {
+            const text = content.textContent;
+            const words = text.split(/\\s+/).filter(word => word.length > 0).length;
+            const chars = text.length;
+            const charsNoSpaces = text.replace(/\\s/g, '').length;
+            
+            counter.innerHTML = 
+                'کلمات: ' + words + '<br>' +
+                'کاراکتر: ' + chars + '<br>' +
+                'بدون فاصله: ' + charsNoSpaces;
+        }
+        
+        updateCount();
+        document.body.appendChild(counter);
+    }
+    
+    // تنظیم فاصله خط
+    function createLineHeightController() {
+        const controller = document.createElement('div');
+        controller.style.cssText = 
+            'position: fixed; ' +
+            'top: 170px; ' +
+            'left: 20px; ' +
+            'background: white; ' +
+            'padding: 10px; ' +
+            'border-radius: 6px; ' +
+            'box-shadow: 0 2px 10px rgba(0,0,0,0.1); ' +
+            'z-index: 1000;';
+        
+        controller.innerHTML = 
+            '<label style="font-size: 12px; font-weight: bold; display: block; margin-bottom: 5px;">فاصله خط:</label>' +
+            '<input type="range" id="lineHeightSlider" min="1" max="2.5" step="0.1" value="1.6" style="width: 120px;">' +
+            '<span id="lineHeightValue" style="font-size: 11px; display: block; text-align: center; margin-top: 5px;">1.6</span>';
+        
+        document.body.appendChild(controller);
+        
+        const slider = document.getElementById('lineHeightSlider');
+        const valueDisplay = document.getElementById('lineHeightValue');
+        
+        slider.addEventListener('input', function() {
+            const lineHeight = this.value;
+            document.body.style.lineHeight = lineHeight;
+            valueDisplay.textContent = lineHeight;
+            
+            localStorage.setItem('lineHeight', lineHeight);
+        });
+        
+        // بارگذاری فاصله ذخیره شده
+        const savedLineHeight = localStorage.getItem('lineHeight');
+        if (savedLineHeight) {
+            slider.value = savedLineHeight;
+            document.body.style.lineHeight = savedLineHeight;
+            valueDisplay.textContent = savedLineHeight;
+        }
+    }
+    
+    // اجرای توابع
+    createFontSizeController();
+    createFontFamilySelector();
+    createLineHeightController();
+    createWordCounter();
+    analyzeReadability();
+    checkColorContrast();
+    
+    // تعامل با دکمه‌ها
+    const shareButtons = document.querySelectorAll('.share-btn, .like-btn, .comment-btn');
+    shareButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const action = this.textContent;
+            console.log('دکمه ' + action + ' کلیک شد');
+            
+            // انیمیشن کلیک
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 150);
+        });
+    });
+    
+    // اسکرول نرم برای لینک‌ها
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    console.log('=== کنترل‌های تایپوگرافی ===');
+    console.log('کنترل‌های اندازه فونت، نوع فونت و فاصله خط در گوشه بالا سمت چپ');
+    console.log('شمارنده کلمات در گوشه پایین سمت چپ');
+    console.log('تنظیمات در localStorage ذخیره می‌شوند');
+});`
+                }
+            });
+            
+            // Mark lesson as completed when user interacts with editor
+            let hasInteracted = false;
+            setTimeout(() => {
+                if (editor.isInitialized) {
+                    Object.keys(editor.editors).forEach(key => {
+                        editor.editors[key].on('change', () => {
+                            if (!hasInteracted) {
+                                hasInteracted = true;
+                                if (window.PersianWebTutorial) {
+                                    window.PersianWebTutorial.markLessonCompleted('lesson8');
+                                }
+                            }
+                        });
+                    });
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
+

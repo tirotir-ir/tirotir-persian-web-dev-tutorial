@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درس ۶: مقدمات CSS - آموزش توسعه وب</title>
+    <meta name="description" content="یادگیری مبانی CSS و استایل‌دهی صفحات وب">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/rtl.css">
+    <link rel="stylesheet" href="../../css/themes.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/editor.css">
+    
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="../../js/libs/codemirror/css/codemirror.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/monokai.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/material.min.css">
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم">
+        <span class="theme-toggle-icon">🌙</span>
+    </button>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-brand">
+                <div class="header-brand-icon">وب</div>
+                <span>آموزش توسعه وب</span>
+            </div>
+            
+            <nav class="header-nav">
+                <div class="header-search">
+                    <input type="text" placeholder="جستجو در دروس..." id="searchInput">
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="منوی موبایل">
+                    ☰
+                </button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h2 class="sidebar-title">فهرست دروس</h2>
+                    <p class="sidebar-subtitle">۲۰ درس کامل برای یادگیری توسعه وب</p>
+                </div>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">HTML</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="../html/lesson1.html" class="nav-link">
+                                <span class="nav-link-icon">📄</span>
+                                <span class="nav-link-text">مقدمات HTML</span>
+                                <span class="nav-link-badge">۱</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../html/lesson2.html" class="nav-link">
+                                <span class="nav-link-icon">📝</span>
+                                <span class="nav-link-text">متن و قالب‌بندی</span>
+                                <span class="nav-link-badge">۲</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../html/lesson3.html" class="nav-link">
+                                <span class="nav-link-icon">🔗</span>
+                                <span class="nav-link-text">لینک‌ها و تصاویر</span>
+                                <span class="nav-link-badge">۳</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../html/lesson4.html" class="nav-link">
+                                <span class="nav-link-icon">📊</span>
+                                <span class="nav-link-text">جداول و فرم‌ها</span>
+                                <span class="nav-link-badge">۴</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../html/lesson5.html" class="nav-link">
+                                <span class="nav-link-icon">🏗️</span>
+                                <span class="nav-link-text">HTML معنایی</span>
+                                <span class="nav-link-badge">۵</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">CSS</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="lesson6.html" class="nav-link active">
+                                <span class="nav-link-icon">🎨</span>
+                                <span class="nav-link-text">مقدمات CSS</span>
+                                <span class="nav-link-badge">۶</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson7.html" class="nav-link">
+                                <span class="nav-link-icon">📦</span>
+                                <span class="nav-link-text">مدل جعبه</span>
+                                <span class="nav-link-badge">۷</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson8.html" class="nav-link">
+                                <span class="nav-link-icon">🔤</span>
+                                <span class="nav-link-text">تایپوگرافی</span>
+                                <span class="nav-link-badge">۸</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson9.html" class="nav-link">
+                                <span class="nav-link-icon">🌈</span>
+                                <span class="nav-link-text">رنگ‌ها و پس‌زمینه</span>
+                                <span class="nav-link-badge">۹</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson10.html" class="nav-link">
+                                <span class="nav-link-icon">📐</span>
+                                <span class="nav-link-text">Flexbox و Grid</span>
+                                <span class="nav-link-badge">۱۰</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">منابع</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="../../reference/html-tags.html" class="nav-link">
+                                <span class="nav-link-icon">📚</span>
+                                <span class="nav-link-text">مرجع تگ‌های HTML</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../../index.html" class="nav-link">
+                                <span class="nav-link-icon">🏠</span>
+                                <span class="nav-link-text">صفحه اصلی</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb">
+                    <span class="breadcrumb-item"><a href="../../index.html">صفحه اصلی</a></span>
+                    <span class="breadcrumb-item"><a href="#css">CSS</a></span>
+                    <span class="breadcrumb-item active">درس ۶: مقدمات CSS</span>
+                </nav>
+
+                <div class="content-header">
+                    <h1 class="content-title">درس ۶: مقدمات CSS</h1>
+                    <p class="content-subtitle">یادگیری مبانی CSS و استایل‌دهی صفحات وب</p>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>پیشرفت درس</span>
+                        <span>۶ از ۲۰ درس</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 30%"></div>
+                    </div>
+                </div>
+
+                <!-- Lesson Content -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">CSS چیست؟</h2>
+                    </div>
+                    <p>CSS مخفف Cascading Style Sheets است که زبانی برای توصیف نحوه نمایش عناصر HTML در صفحات وب می‌باشد. CSS امکان جداسازی محتوا از ظاهر را فراهم می‌کند و به توسعه‌دهندگان اجازه می‌دهد تا ظاهر صفحات وب را کنترل کنند.</p>
+                    
+                    <h3>مزایای استفاده از CSS:</h3>
+                    <ul>
+                        <li><strong>جداسازی محتوا از ظاهر:</strong> HTML برای ساختار، CSS برای ظاهر</li>
+                        <li><strong>کنترل بهتر:</strong> کنترل دقیق‌تر بر ظاهر عناصر</li>
+                        <li><strong>سازگاری:</strong> پشتیبانی از انواع دستگاه‌ها و اندازه‌های صفحه</li>
+                        <li><strong>نگهداری آسان:</strong> تغییر ظاهر کل سایت با تغییر یک فایل</li>
+                        <li><strong>بارگذاری سریع‌تر:</strong> کاهش حجم کد HTML</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">روش‌های اضافه کردن CSS</h2>
+                    </div>
+                    <p>سه روش اصلی برای اضافه کردن CSS به صفحات HTML وجود دارد:</p>
+                    
+                    <h3>۱. CSS درون‌خطی (Inline CSS):</h3>
+                    <p>استایل مستقیماً در ویژگی style عنصر HTML نوشته می‌شود:</p>
+                    <pre><code>&lt;p style="color: red; font-size: 18px;"&gt;متن قرمز&lt;/p&gt;</code></pre>
+                    
+                    <h3>۲. CSS داخلی (Internal CSS):</h3>
+                    <p>استایل‌ها در تگ &lt;style&gt; داخل &lt;head&gt; نوشته می‌شوند:</p>
+                    <pre><code>&lt;head&gt;
+  &lt;style&gt;
+    p {
+      color: red;
+      font-size: 18px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+                    
+                    <h3>۳. CSS خارجی (External CSS):</h3>
+                    <p>استایل‌ها در فایل جداگانه نوشته و با تگ &lt;link&gt; به HTML متصل می‌شوند:</p>
+                    <pre><code>&lt;head&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">ساختار قوانین CSS</h2>
+                    </div>
+                    <p>هر قانون CSS شامل دو بخش اصلی است: انتخابگر (Selector) و بلوک اعلان (Declaration Block):</p>
+                    
+                    <h3>ساختار کلی:</h3>
+                    <pre><code>selector {
+  property: value;
+  property: value;
+}</code></pre>
+                    
+                    <h3>مثال:</h3>
+                    <pre><code>h1 {
+  color: blue;
+  font-size: 24px;
+  text-align: center;
+}</code></pre>
+                    
+                    <h3>اجزای قانون CSS:</h3>
+                    <ul>
+                        <li><strong>انتخابگر (h1):</strong> مشخص می‌کند کدام عناصر استایل‌دهی شوند</li>
+                        <li><strong>ویژگی (color):</strong> نوع استایل که اعمال می‌شود</li>
+                        <li><strong>مقدار (blue):</strong> مقدار ویژگی</li>
+                        <li><strong>اعلان:</strong> ترکیب ویژگی و مقدار</li>
+                        <li><strong>بلوک اعلان:</strong> مجموعه اعلان‌ها داخل آکولاد</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">انواع انتخابگرها</h2>
+                    </div>
+                    <p>انتخابگرها روش‌هایی برای انتخاب عناصر HTML هستند که می‌خواهیم استایل‌دهی کنیم:</p>
+                    
+                    <h3>انتخابگرهای اصلی:</h3>
+                    <ul>
+                        <li><strong>انتخابگر عنصر:</strong> <code>p { }</code> - همه عناصر p</li>
+                        <li><strong>انتخابگر کلاس:</strong> <code>.my-class { }</code> - عناصر با class="my-class"</li>
+                        <li><strong>انتخابگر شناسه:</strong> <code>#my-id { }</code> - عنصر با id="my-id"</li>
+                        <li><strong>انتخابگر جهانی:</strong> <code>* { }</code> - همه عناصر</li>
+                        <li><strong>انتخابگر ویژگی:</strong> <code>[type="text"] { }</code> - عناصر با ویژگی خاص</li>
+                    </ul>
+                    
+                    <h3>انتخابگرهای ترکیبی:</h3>
+                    <ul>
+                        <li><strong>فرزند مستقیم:</strong> <code>div > p { }</code></li>
+                        <li><strong>نسل:</strong> <code>div p { }</code></li>
+                        <li><strong>برادر مجاور:</strong> <code>h1 + p { }</code></li>
+                        <li><strong>برادر عمومی:</strong> <code>h1 ~ p { }</code></li>
+                    </ul>
+                </div>
+
+                <!-- Interactive Code Editor -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تمرین عملی: مقدمات CSS</h2>
+                    </div>
+                    <p>در ادامه، مثالی از استفاده از CSS برای استایل‌دهی صفحه HTML را مشاهده می‌کنید. کد را ویرایش کرده و تأثیرات مختلف را ببینید:</p>
+                    
+                    <div id="codeEditor"></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">اولویت‌بندی در CSS (Cascade)</h2>
+                    </div>
+                    <p>وقتی چندین قانون CSS برای یک عنصر تعریف شود، مرورگر باید تصمیم بگیرد کدام قانون اعمال شود. این فرآیند Cascade نامیده می‌شود.</p>
+                    
+                    <h3>ترتیب اولویت (از بالا به پایین):</h3>
+                    <ol>
+                        <li><strong>!important:</strong> بالاترین اولویت</li>
+                        <li><strong>Inline styles:</strong> style="..."</li>
+                        <li><strong>IDs:</strong> #my-id</li>
+                        <li><strong>Classes:</strong> .my-class</li>
+                        <li><strong>Elements:</strong> p, div, h1</li>
+                    </ol>
+                    
+                    <h3>محاسبه Specificity:</h3>
+                    <p>هر انتخابگر امتیازی دارد:</p>
+                    <ul>
+                        <li>Inline styles: 1000 امتیاز</li>
+                        <li>IDs: 100 امتیاز</li>
+                        <li>Classes, attributes, pseudo-classes: 10 امتیاز</li>
+                        <li>Elements: 1 امتیاز</li>
+                    </ul>
+                    
+                    <h3>مثال:</h3>
+                    <pre><code>/* Specificity: 1 */
+p { color: red; }
+
+/* Specificity: 10 */
+.text { color: blue; }
+
+/* Specificity: 100 */
+#title { color: green; }
+
+/* Specificity: 111 */
+#title.text p { color: purple; }</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">واحدهای اندازه‌گیری در CSS</h2>
+                    </div>
+                    <p>CSS واحدهای مختلفی برای تعریف اندازه‌ها ارائه می‌دهد:</p>
+                    
+                    <h3>واحدهای مطلق:</h3>
+                    <ul>
+                        <li><strong>px (پیکسل):</strong> واحد پایه برای صفحه نمایش</li>
+                        <li><strong>pt (پوینت):</strong> 1/72 اینچ، برای چاپ</li>
+                        <li><strong>cm, mm, in:</strong> واحدهای فیزیکی</li>
+                    </ul>
+                    
+                    <h3>واحدهای نسبی:</h3>
+                    <ul>
+                        <li><strong>em:</strong> نسبت به اندازه فونت عنصر والد</li>
+                        <li><strong>rem:</strong> نسبت به اندازه فونت root (html)</li>
+                        <li><strong>%:</strong> درصدی از عنصر والد</li>
+                        <li><strong>vw, vh:</strong> درصدی از عرض/ارتفاع viewport</li>
+                        <li><strong>vmin, vmax:</strong> کوچک‌ترین/بزرگ‌ترین بعد viewport</li>
+                    </ul>
+                    
+                    <h3>مثال‌ها:</h3>
+                    <pre><code>/* واحدهای مختلف */
+.box1 { width: 200px; }      /* 200 پیکسل */
+.box2 { width: 50%; }        /* 50% عرض والد */
+.box3 { font-size: 1.5em; }  /* 1.5 برابر فونت والد */
+.box4 { height: 100vh; }     /* تمام ارتفاع صفحه */</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">رنگ‌ها در CSS</h2>
+                    </div>
+                    <p>CSS روش‌های مختلفی برای تعریف رنگ ارائه می‌دهد:</p>
+                    
+                    <h3>روش‌های تعریف رنگ:</h3>
+                    <ul>
+                        <li><strong>نام رنگ:</strong> red, blue, green</li>
+                        <li><strong>Hex:</strong> #ff0000, #00ff00</li>
+                        <li><strong>RGB:</strong> rgb(255, 0, 0)</li>
+                        <li><strong>RGBA:</strong> rgba(255, 0, 0, 0.5)</li>
+                        <li><strong>HSL:</strong> hsl(0, 100%, 50%)</li>
+                        <li><strong>HSLA:</strong> hsla(0, 100%, 50%, 0.5)</li>
+                    </ul>
+                    
+                    <h3>مثال‌ها:</h3>
+                    <pre><code>/* روش‌های مختلف تعریف رنگ قرمز */
+.red1 { color: red; }
+.red2 { color: #ff0000; }
+.red3 { color: rgb(255, 0, 0); }
+.red4 { color: rgba(255, 0, 0, 1); }
+.red5 { color: hsl(0, 100%, 50%); }</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تمرین‌های عملی</h2>
+                    </div>
+                    <p>برای تسلط بیشتر بر مطالب این درس، تمرین‌های زیر را انجام دهید:</p>
+                    
+                    <h3>تمرین ۱: استایل‌دهی متن</h3>
+                    <p>صفحه‌ای ایجاد کنید و با CSS رنگ، اندازه و فونت متن‌ها را تغییر دهید.</p>
+                    
+                    <h3>تمرین ۲: کار با کلاس‌ها</h3>
+                    <p>کلاس‌های مختلف تعریف کنید و آن‌ها را به عناصر مختلف اعمال کنید.</p>
+                    
+                    <h3>تمرین ۳: انتخابگرهای ترکیبی</h3>
+                    <p>از انتخابگرهای ترکیبی برای استایل‌دهی عناصر خاص استفاده کنید.</p>
+                    
+                    <h3>تمرین ۴: اولویت‌بندی</h3>
+                    <p>قوانین CSS متضاد تعریف کنید و ببینید کدام اعمال می‌شود.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">نکات مهم و بهترین شیوه‌ها</h2>
+                    </div>
+                    <h3>بهترین شیوه‌ها:</h3>
+                    <ul>
+                        <li>از CSS خارجی استفاده کنید</li>
+                        <li>نام‌های کلاس معنادار انتخاب کنید</li>
+                        <li>از !important کمتر استفاده کنید</li>
+                        <li>کد CSS را سازمان‌دهی کنید</li>
+                        <li>از واحدهای نسبی استفاده کنید</li>
+                    </ul>
+                    
+                    <h3>نکات مهم:</h3>
+                    <ul>
+                        <li>CSS حساس به حروف کوچک و بزرگ نیست</li>
+                        <li>فاصله‌ها در CSS اهمیت ندارند</li>
+                        <li>نقطه‌ویرگول در انتهای هر اعلان ضروری است</li>
+                        <li>کامنت‌ها با /* */ نوشته می‌شوند</li>
+                        <li>ترتیب قوانین CSS مهم است</li>
+                    </ul>
+                    
+                    <h3>اشتباهات رایج:</h3>
+                    <ul>
+                        <li>فراموش کردن نقطه‌ویرگول</li>
+                        <li>اشتباه در نام ویژگی‌ها</li>
+                        <li>استفاده بیش از حد از !important</li>
+                        <li>عدم سازمان‌دهی کد CSS</li>
+                        <li>استفاده نادرست از انتخابگرها</li>
+                    </ul>
+                </div>
+
+                <!-- Navigation -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">ادامه یادگیری</h2>
+                    </div>
+                    <p>در درس بعدی با مدل جعبه (Box Model) در CSS آشنا خواهید شد.</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="../html/lesson5.html" class="btn btn-secondary">درس قبلی: HTML معنایی</a>
+                        <a href="lesson7.html" class="btn btn-primary" style="margin-right: 1rem;">درس بعدی: مدل جعبه</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../../js/main.js"></script>
+    <script src="../../js/storage.js"></script>
+    
+    <!-- CodeMirror JavaScript -->
+    <script src="../../js/libs/codemirror/js/codemirror.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/xml.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/css.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/javascript.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/htmlmixed.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/matchbrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/closebrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/active-line.min.js"></script>
+    
+    <!-- Editor JavaScript -->
+    <script src="../../js/editor.js"></script>
+    
+    <script>
+        // Initialize the code editor when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const editor = new CodeEditor('codeEditor', {
+                initialContent: {
+                    html: `<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>مقدمات CSS</title>
+</head>
+<body>
+    <header>
+        <h1 id="main-title">وبسایت آموزشی CSS</h1>
+        <p class="subtitle">یادگیری مبانی CSS</p>
+    </header>
+    
+    <nav>
+        <ul class="menu">
+            <li><a href="#home" class="active">خانه</a></li>
+            <li><a href="#about">درباره ما</a></li>
+            <li><a href="#contact">تماس</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <section class="intro">
+            <h2>مقدمه</h2>
+            <p class="highlight">CSS زبان استایل‌دهی صفحات وب است.</p>
+            <p>با CSS می‌توانید ظاهر عناصر HTML را کنترل کنید.</p>
+        </section>
+        
+        <section class="features">
+            <h2>ویژگی‌های CSS</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h3>کنترل رنگ</h3>
+                    <p>تغییر رنگ متن و پس‌زمینه</p>
+                </div>
+                
+                <div class="feature-item">
+                    <h3>تایپوگرافی</h3>
+                    <p>کنترل فونت، اندازه و فاصله‌ها</p>
+                </div>
+                
+                <div class="feature-item special">
+                    <h3>چیدمان</h3>
+                    <p>کنترل موقعیت و اندازه عناصر</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="examples">
+            <h2>مثال‌های مختلف</h2>
+            
+            <div class="color-examples">
+                <p class="red-text">متن قرمز</p>
+                <p class="blue-text">متن آبی</p>
+                <p class="green-text">متن سبز</p>
+            </div>
+            
+            <div class="size-examples">
+                <p class="small-text">متن کوچک</p>
+                <p class="medium-text">متن متوسط</p>
+                <p class="large-text">متن بزرگ</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; ۲۰۲۴ آموزش CSS. تمام حقوق محفوظ است.</p>
+    </footer>
+</body>
+</html>`,
+                    css: `/* استایل‌های پایه */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Tahoma', Arial, sans-serif;
+    direction: rtl;
+    text-align: right;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+/* سربرگ */
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#main-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* منوی ناوبری */
+nav {
+    background-color: #2c3e50;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.menu a:hover,
+.menu a.active {
+    background-color: #34495e;
+}
+
+/* محتوای اصلی */
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+section {
+    background-color: white;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 0.5rem;
+}
+
+h3 {
+    color: #34495e;
+    margin-bottom: 0.5rem;
+}
+
+/* بخش مقدمه */
+.highlight {
+    background-color: #fff3cd;
+    padding: 1rem;
+    border-radius: 4px;
+    border-left: 4px solid #ffc107;
+    margin: 1rem 0;
+    font-weight: bold;
+}
+
+/* بخش ویژگی‌ها */
+.feature-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.feature-item {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.feature-item.special {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    color: #2c3e50;
+}
+
+/* مثال‌های رنگ */
+.color-examples {
+    display: flex;
+    gap: 2rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+}
+
+.red-text {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.blue-text {
+    color: #3498db;
+    font-weight: bold;
+}
+
+.green-text {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+/* مثال‌های اندازه */
+.size-examples {
+    margin: 1rem 0;
+}
+
+.small-text {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+.medium-text {
+    font-size: 1rem;
+    color: #495057;
+}
+
+.large-text {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+/* پاورقی */
+footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+/* انتخابگرهای ترکیبی */
+nav ul li a {
+    /* استایل لینک‌های منو */
+}
+
+section > h2 {
+    /* فقط h2 های فرزند مستقیم section */
+}
+
+.feature-item + .feature-item {
+    /* feature-item های بعد از اولین */
+}
+
+/* انتخابگر ویژگی */
+a[href^="#"] {
+    /* لینک‌هایی که با # شروع می‌شوند */
+    position: relative;
+}
+
+/* Pseudo-classes */
+.menu a:hover {
+    background-color: #34495e;
+}
+
+.feature-item:first-child {
+    border-color: #3498db;
+}
+
+.feature-item:last-child {
+    border-color: #e74c3c;
+}
+
+/* Pseudo-elements */
+.highlight::before {
+    content: "💡 ";
+}
+
+h2::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: #3498db;
+    margin-top: 0.5rem;
+}
+
+/* طراحی واکنش‌گرا */
+@media (max-width: 768px) {
+    .menu {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .color-examples {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    #main-title {
+        font-size: 2rem;
+    }
+    
+    main {
+        padding: 0 1rem;
+    }
+    
+    section {
+        padding: 1rem;
+    }
+}`,
+                    js: `// تعامل با CSS و DOM
+document.addEventListener('DOMContentLoaded', function() {
+    // تغییر استایل با JavaScript
+    const title = document.getElementById('main-title');
+    const featureItems = document.querySelectorAll('.feature-item');
+    const menuLinks = document.querySelectorAll('.menu a');
+    
+    // انیمیشن عنوان
+    title.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.05)';
+        this.style.transition = 'transform 0.3s ease';
+    });
+    
+    title.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+    });
+    
+    // تعامل با آیتم‌های ویژگی
+    featureItems.forEach((item, index) => {
+        item.addEventListener('click', function() {
+            // حذف کلاس active از همه آیتم‌ها
+            featureItems.forEach(i => i.classList.remove('active'));
+            
+            // اضافه کردن کلاس active به آیتم کلیک شده
+            this.classList.add('active');
+            
+            // تغییر رنگ پس‌زمینه
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1'];
+            this.style.backgroundColor = colors[index % colors.length];
+            
+            console.log('آیتم ' + (index + 1) + ' کلیک شد');
+        });
+    });
+    
+    // مدیریت منوی ناوبری
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // حذف کلاس active از همه لینک‌ها
+            menuLinks.forEach(l => l.classList.remove('active'));
+            
+            // اضافه کردن کلاس active به لینک کلیک شده
+            this.classList.add('active');
+            
+            // تغییر محتوا بر اساس لینک
+            const href = this.getAttribute('href');
+            updateContent(href);
+        });
+    });
+    
+    // تابع بروزرسانی محتوا
+    function updateContent(section) {
+        const main = document.querySelector('main');
+        
+        switch(section) {
+            case '#home':
+                console.log('صفحه خانه نمایش داده شد');
+                break;
+            case '#about':
+                console.log('صفحه درباره ما نمایش داده شد');
+                break;
+            case '#contact':
+                console.log('صفحه تماس نمایش داده شد');
+                break;
+        }
+    }
+    
+    // تغییر تم رنگی
+    function changeTheme() {
+        const body = document.body;
+        const currentBg = getComputedStyle(body).backgroundColor;
+        
+        if (currentBg === 'rgb(248, 249, 250)') {
+            // تم تیره
+            body.style.backgroundColor = '#2c3e50';
+            body.style.color = '#ecf0f1';
+            
+            document.querySelectorAll('section').forEach(section => {
+                section.style.backgroundColor = '#34495e';
+                section.style.color = '#ecf0f1';
+            });
+        } else {
+            // تم روشن
+            body.style.backgroundColor = '#f8f9fa';
+            body.style.color = '#333';
+            
+            document.querySelectorAll('section').forEach(section => {
+                section.style.backgroundColor = 'white';
+                section.style.color = '#333';
+            });
+        }
+    }
+    
+    // اضافه کردن دکمه تغییر تم
+    const themeButton = document.createElement('button');
+    themeButton.textContent = '🌙/☀️';
+    themeButton.style.position = 'fixed';
+    themeButton.style.top = '20px';
+    themeButton.style.left = '20px';
+    themeButton.style.padding = '10px';
+    themeButton.style.border = 'none';
+    themeButton.style.borderRadius = '50%';
+    themeButton.style.cursor = 'pointer';
+    themeButton.style.fontSize = '20px';
+    themeButton.style.zIndex = '1000';
+    
+    themeButton.addEventListener('click', changeTheme);
+    document.body.appendChild(themeButton);
+    
+    // نمایش اطلاعات CSS
+    function showCSSInfo() {
+        const elements = document.querySelectorAll('*');
+        console.log('تعداد کل عناصر: ' + elements.length);
+        
+        // شمارش انواع انتخابگرها
+        const classes = document.querySelectorAll('[class]').length;
+        const ids = document.querySelectorAll('[id]').length;
+        
+        console.log('عناصر با کلاس: ' + classes);
+        console.log('عناصر با شناسه: ' + ids);
+        
+        // نمایش استایل‌های محاسبه شده
+        const title = document.getElementById('main-title');
+        const titleStyles = getComputedStyle(title);
+        
+        console.log('استایل‌های عنوان اصلی:');
+        console.log('رنگ: ' + titleStyles.color);
+        console.log('اندازه فونت: ' + titleStyles.fontSize);
+        console.log('وزن فونت: ' + titleStyles.fontWeight);
+    }
+    
+    // اجرای تابع نمایش اطلاعات
+    showCSSInfo();
+    
+    // اضافه کردن انیمیشن به عناصر
+    function addAnimations() {
+        const sections = document.querySelectorAll('section');
+        
+        sections.forEach((section, index) => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            
+            setTimeout(() => {
+                section.style.opacity = '1';
+                section.style.transform = 'translateY(0)';
+            }, index * 200);
+        });
+    }
+    
+    // اجرای انیمیشن‌ها
+    addAnimations();
+});`
+                }
+            });
+            
+            // Mark lesson as completed when user interacts with editor
+            let hasInteracted = false;
+            setTimeout(() => {
+                if (editor.isInitialized) {
+                    Object.keys(editor.editors).forEach(key => {
+                        editor.editors[key].on('change', () => {
+                            if (!hasInteracted) {
+                                hasInteracted = true;
+                                if (window.PersianWebTutorial) {
+                                    window.PersianWebTutorial.markLessonCompleted('lesson6');
+                                }
+                            }
+                        });
+                    });
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
+

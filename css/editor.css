@@ -1,0 +1,392 @@
+/* Code Editor Styles */
+
+.code-editor-container {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    margin: 2rem 0;
+    box-shadow: 0 4px 12px var(--shadow-light);
+    transition: all var(--transition-speed) ease;
+}
+
+.code-editor-container.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* Editor Tabs */
+.editor-tabs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    direction: rtl;
+}
+
+.tab-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: none;
+    border: none;
+    border-radius: var(--border-radius-small);
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    font-family: inherit;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    margin-left: 0.25rem;
+}
+
+.tab-button:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--text-color);
+}
+
+.tab-button.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.tab-icon {
+    font-size: 1rem;
+}
+
+.tab-text {
+    font-weight: 500;
+}
+
+/* Editor Controls */
+.editor-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.control-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-small);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    font-size: 1rem;
+}
+
+.control-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.control-button:active {
+    transform: scale(0.95);
+}
+
+/* Editor Content */
+.editor-content {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.code-editor-container.fullscreen .editor-content {
+    height: calc(100vh - 60px);
+}
+
+.editor-panes {
+    display: flex;
+    height: 100%;
+    direction: ltr;
+}
+
+.editor-pane {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid var(--border-color);
+}
+
+.preview-pane {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Editor Header */
+.editor-header,
+.preview-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background-color: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-color);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    direction: rtl;
+}
+
+.editor-title,
+.preview-title {
+    color: var(--text-color);
+}
+
+.editor-info {
+    color: var(--text-secondary);
+    font-size: var(--font-size-xs);
+}
+
+.preview-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.preview-control {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: var(--border-radius-small);
+    transition: all var(--transition-speed) ease;
+}
+
+.preview-control:hover {
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+}
+
+/* Tab Content */
+.editor-tabs-content {
+    flex: 1;
+    position: relative;
+}
+
+.tab-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* CodeMirror Customization */
+.CodeMirror {
+    height: 100% !important;
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+.CodeMirror-scroll {
+    padding: 1rem !important;
+}
+
+.CodeMirror-gutters {
+    background-color: var(--bg-secondary) !important;
+    border-right: 1px solid var(--border-color) !important;
+    border-left: none !important;
+}
+
+.CodeMirror-linenumber {
+    color: var(--text-muted) !important;
+    padding: 0 0.5rem !important;
+}
+
+.CodeMirror-cursor {
+    border-left: 2px solid var(--primary-color) !important;
+}
+
+.CodeMirror-selected {
+    background-color: var(--primary-color) !important;
+    opacity: 0.2 !important;
+}
+
+.CodeMirror-activeline-background {
+    background-color: var(--bg-tertiary) !important;
+}
+
+/* Theme-specific CodeMirror styles */
+[data-theme="light"] .CodeMirror {
+    background-color: #ffffff !important;
+    color: #333333 !important;
+}
+
+[data-theme="dark"] .CodeMirror {
+    background-color: #2d2d2d !important;
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] .CodeMirror-gutters {
+    background-color: #1a1a1a !important;
+}
+
+/* Preview Content */
+.preview-content {
+    flex: 1;
+    background-color: var(--bg-color);
+}
+
+.preview-content iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .editor-panes {
+        flex-direction: column;
+    }
+    
+    .editor-pane,
+    .preview-pane {
+        flex: none;
+        height: 50%;
+    }
+    
+    .editor-pane {
+        border-left: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .editor-content {
+        height: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+    .editor-tabs {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .tab-button {
+        margin-left: 0;
+    }
+    
+    .editor-controls {
+        order: -1;
+        width: 100%;
+        justify-content: flex-end;
+        margin-bottom: 0.5rem;
+    }
+    
+    .editor-content {
+        height: 500px;
+    }
+    
+    .CodeMirror {
+        font-size: 12px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .tab-text {
+        display: none;
+    }
+    
+    .editor-header,
+    .preview-header {
+        padding: 0.5rem;
+    }
+    
+    .editor-info {
+        display: none;
+    }
+    
+    .editor-content {
+        height: 400px;
+    }
+}
+
+/* Loading State */
+.editor-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    color: var(--text-secondary);
+    font-size: var(--font-size-lg);
+}
+
+.editor-loading::before {
+    content: "⏳";
+    margin-left: 0.5rem;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Error State */
+.editor-error {
+    background-color: var(--danger-color);
+    color: white;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+
+/* Success State */
+.editor-success {
+    background-color: var(--success-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    border-radius: var(--border-radius-small);
+    text-align: center;
+    font-size: var(--font-size-sm);
+}
+
+/* Syntax Highlighting Enhancements */
+.cm-keyword { color: var(--primary-color) !important; font-weight: bold !important; }
+.cm-string { color: var(--success-color) !important; }
+.cm-comment { color: var(--text-muted) !important; font-style: italic !important; }
+.cm-number { color: var(--warning-color) !important; }
+.cm-tag { color: var(--danger-color) !important; }
+.cm-attribute { color: var(--primary-color) !important; }
+.cm-property { color: var(--primary-color) !important; }
+.cm-variable { color: var(--text-color) !important; }
+.cm-def { color: var(--primary-color) !important; font-weight: bold !important; }
+
+/* Dark theme syntax highlighting */
+[data-theme="dark"] .cm-keyword { color: #4dabf7 !important; }
+[data-theme="dark"] .cm-string { color: #51cf66 !important; }
+[data-theme="dark"] .cm-comment { color: #868e96 !important; }
+[data-theme="dark"] .cm-number { color: #ffd43b !important; }
+[data-theme="dark"] .cm-tag { color: #ff6b6b !important; }
+[data-theme="dark"] .cm-attribute { color: #4dabf7 !important; }
+[data-theme="dark"] .cm-property { color: #4dabf7 !important; }
+[data-theme="dark"] .cm-variable { color: #ffffff !important; }
+[data-theme="dark"] .cm-def { color: #4dabf7 !important; }
+

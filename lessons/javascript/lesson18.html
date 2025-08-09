@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درس ۱۸: آرایه‌ها و اشیاء - آموزش توسعه وب</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/rtl.css">
+    <link rel="stylesheet" href="../../css/themes.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/editor.css">
+    <link rel="stylesheet" href="../../css/quiz.css">
+    
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="../../js/libs/codemirror/css/codemirror.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/monokai.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/material.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-right">
+                    <h1 class="site-title">آموزش توسعه وب</h1>
+                    <div class="breadcrumb">
+                        <a href="../../index.html">صفحه اصلی</a>
+                        <span>/</span>
+                        <a href="#">JavaScript</a>
+                        <span>/</span>
+                        <span>درس ۱۸</span>
+                    </div>
+                </div>
+                <div class="header-left">
+                    <button class="theme-toggle" id="themeToggle">🌙</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h3>فهرست دروس</h3>
+                    <div class="search-box">
+                        <input type="text" placeholder="جستجو در دروس..." id="lessonSearch">
+                    </div>
+                </div>
+                
+                <nav class="lesson-nav">
+                    <div class="lesson-category">
+                        <h4>HTML</h4>
+                        <ul>
+                            <li><a href="../html/lesson1.html">📄 مقدمات HTML ۱</a></li>
+                            <li><a href="../html/lesson2.html">📝 متن و قالب‌بندی ۲</a></li>
+                            <li><a href="../html/lesson3.html">🔗 لینک‌ها و تصاویر ۳</a></li>
+                            <li><a href="../html/lesson4.html">📊 جداول و فرم‌ها ۴</a></li>
+                            <li><a href="../html/lesson5.html">🏗️ HTML معنایی ۵</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lesson-category">
+                        <h4>CSS</h4>
+                        <ul>
+                            <li><a href="../css/lesson6.html">🎨 مقدمات CSS ۶</a></li>
+                            <li><a href="../css/lesson7.html">📦 مدل جعبه و چیدمان ۷</a></li>
+                            <li><a href="../css/lesson8.html">🔤 تایپوگرافی و رنگ‌ها ۸</a></li>
+                            <li><a href="../css/lesson9.html">🌈 رنگ‌ها و پس‌زمینه ۹</a></li>
+                            <li><a href="../css/lesson10.html">📐 Flexbox و Grid ۱۰</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lesson-category">
+                        <h4>JavaScript</h4>
+                        <ul>
+                            <li><a href="lesson11.html">⚡ مقدمات JavaScript ۱۱</a></li>
+                            <li><a href="lesson12.html">🔧 متغیرها و انواع داده ۱۲</a></li>
+                            <li><a href="lesson13.html">🔀 عملگرها و شرط‌ها ۱۳</a></li>
+                            <li><a href="lesson14.html">🔄 حلقه‌ها و تکرار ۱۴</a></li>
+                            <li><a href="lesson15.html">⚙️ توابع ۱۵</a></li>
+                            <li><a href="lesson16.html">🎯 دستکاری DOM ۱۶</a></li>
+                            <li><a href="lesson17.html">🖱️ رویدادها و تعامل ۱۷</a></li>
+                            <li><a href="lesson18.html" class="active">📦 آرایه‌ها و اشیاء ۱۸</a></li>
+                            <li><a href="lesson19.html">🚀 مفاهیم پیشرفته ۱۹</a></li>
+                            <li><a href="lesson20.html">🎨 پروژه نهایی ۲۰</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                
+                <div class="sidebar-footer">
+                    <a href="../../reference/html-tags.html">📚 مرجع تگ‌های HTML</a>
+                    <a href="../../index.html">🏠 صفحه اصلی</a>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="content">
+                <article class="lesson">
+                    <header class="lesson-header">
+                        <h1>درس ۱۸: آرایه‌ها و اشیاء</h1>
+                        <p class="lesson-subtitle">یادگیری ساختارهای داده پیشرفته در JavaScript</p>
+                        <div class="lesson-meta">
+                            <span class="lesson-number">درس ۱۸ از ۲۰</span>
+                            <div class="lesson-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 90%"></div>
+                                </div>
+                                <span class="progress-text">پیشرفت درس</span>
+                            </div>
+                        </div>
+                    </header>
+
+                    <div class="lesson-content">
+                        <section class="content-section">
+                            <h2>آرایه‌ها (Arrays)</h2>
+                            <p>آرایه‌ها ساختار داده‌ای هستند که می‌توانند چندین مقدار را در یک متغیر ذخیره کنند. هر عنصر در آرایه دارای یک شاخص (index) منحصر به فرد است که از صفر شروع می‌شود.</p>
+                            
+                            <div class="info-box">
+                                <h3>ویژگی‌های آرایه‌ها:</h3>
+                                <ul>
+                                    <li>می‌توانند انواع مختلف داده را نگهداری کنند</li>
+                                    <li>اندازه آن‌ها قابل تغییر است (Dynamic)</li>
+                                    <li>شاخص‌گذاری از صفر شروع می‌شود</li>
+                                    <li>دارای متدهای قدرتمند برای دستکاری هستند</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>ایجاد آرایه‌ها</h2>
+                            
+                            <h3>روش‌های مختلف ایجاد</h3>
+                            <div class="code-example">
+                                <pre><code>// روش Literal (توصیه می‌شود)
+const fruits = ['سیب', 'موز', 'پرتقال'];
+
+// روش Constructor
+const numbers = new Array(1, 2, 3, 4, 5);
+
+// آرایه خالی
+const emptyArray = [];
+
+// آرایه با اندازه مشخص
+const fixedSize = new Array(5); // 5 عنصر undefined
+
+// آرایه مختلط
+const mixed = ['متن', 42, true, null, {name: 'علی'}];</code></pre>
+                            </div>
+
+                            <h3>دسترسی به عناصر</h3>
+                            <div class="code-example">
+                                <pre><code>const colors = ['قرمز', 'آبی', 'سبز'];
+
+// دسترسی به عنصر
+console.log(colors[0]); // 'قرمز'
+console.log(colors[1]); // 'آبی'
+
+// تغییر عنصر
+colors[1] = 'زرد';
+console.log(colors); // ['قرمز', 'زرد', 'سبز']
+
+// طول آرایه
+console.log(colors.length); // 3
+
+// آخرین عنصر
+console.log(colors[colors.length - 1]); // 'سبز'</code></pre>
+                            </div>
+                        </section>
+
+                        <!-- Interactive Code Editor -->
+                        <section class="editor-section">
+                            <h2>تمرین عملی: آرایه‌ها و اشیاء</h2>
+                            <p>در ادامه، کار با آرایه‌ها و اشیاء را تمرین کنید:</p>
+                            
+                            <div class="editor-container">
+                                <div class="editor-tabs">
+                                    <button class="tab-button active" data-tab="html">📄 HTML</button>
+                                    <button class="tab-button" data-tab="css">🎨 CSS</button>
+                                    <button class="tab-button" data-tab="js">⚡ JavaScript</button>
+                                </div>
+                                
+                                <div class="editor-controls">
+                                    <button class="btn btn-primary" id="runCode">▶️ اجرا</button>
+                                    <button class="btn btn-secondary" id="resetCode">🔄 بازنشانی</button>
+                                    <button class="btn btn-secondary" id="fullscreen">⛶ تمام صفحه</button>
+                                </div>
+
+                                <div class="editor-wrapper">
+                                    <div class="editor-panel">
+                                        <div class="editor-header">
+                                            <span>ویرایشگر کد</span>
+                                            <span class="editor-info">خط <span id="lineNumber">1</span>، ستون <span id="columnNumber">1</span></span>
+                                        </div>
+                                        
+                                        <div class="tab-content active" id="html-tab">
+                                            <textarea id="htmlEditor"><!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آرایه‌ها و اشیاء</title>
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            direction: rtl;
+            text-align: right;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        .demo-section {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-right: 4px solid #4CAF50;
+        }
+        .data-display {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: monospace;
+            direction: ltr;
+            text-align: left;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-family: 'Vazirmatn', sans-serif;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+        input, select {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+            font-family: 'Vazirmatn', sans-serif;
+            width: 200px;
+        }
+        .student-card {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            margin: 10px;
+            border-radius: 10px;
+            border-right: 3px solid #2196F3;
+            display: inline-block;
+            width: 250px;
+            vertical-align: top;
+        }
+        .student-card h4 {
+            margin: 0 0 10px 0;
+            color: #FFD700;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .product-card {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        .controls {
+            background: rgba(0,0,0,0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .array-visualizer {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .array-item {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            position: relative;
+            min-width: 50px;
+            text-align: center;
+        }
+        .array-item::before {
+            content: attr(data-index);
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: #FFD700;
+        }
+        .search-highlight {
+            background: #FF6B6B !important;
+            animation: highlight 0.5s ease-in-out;
+        }
+        @keyframes highlight {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📦 آرایه‌ها و اشیاء JavaScript</h1>
+        
+        <div class="demo-section">
+            <h2>مدیریت آرایه میوه‌ها</h2>
+            <div class="controls">
+                <input type="text" id="fruitInput" placeholder="نام میوه">
+                <button onclick="addFruit()">اضافه کردن</button>
+                <button onclick="removeFruit()">حذف آخرین</button>
+                <button onclick="sortFruits()">مرتب‌سازی</button>
+                <button onclick="shuffleFruits()">مخلوط کردن</button>
+                <button onclick="clearFruits()">پاک کردن</button>
+            </div>
+            <div class="array-visualizer" id="fruitsDisplay"></div>
+            <div class="data-display" id="fruitsData"></div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>مدیریت اطلاعات دانشجویان</h2>
+            <div class="controls">
+                <input type="text" id="studentName" placeholder="نام دانشجو">
+                <input type="number" id="studentAge" placeholder="سن" min="15" max="50">
+                <input type="number" id="studentGrade" placeholder="نمره" min="0" max="20" step="0.1">
+                <select id="studentField">
+                    <option value="">رشته تحصیلی</option>
+                    <option value="کامپیوتر">کامپیوتر</option>
+                    <option value="ریاضی">ریاضی</option>
+                    <option value="فیزیک">فیزیک</option>
+                    <option value="شیمی">شیمی</option>
+                </select>
+                <button onclick="addStudent()">اضافه کردن دانشجو</button>
+                <button onclick="calculateAverage()">محاسبه میانگین</button>
+                <button onclick="findTopStudent()">بهترین دانشجو</button>
+                <button onclick="filterByField()">فیلتر بر اساس رشته</button>
+            </div>
+            <div id="studentsDisplay"></div>
+            <div class="data-display" id="studentsData"></div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>فروشگاه آنلاین</h2>
+            <div class="controls">
+                <input type="text" id="productName" placeholder="نام محصول">
+                <input type="number" id="productPrice" placeholder="قیمت" min="0">
+                <select id="productCategory">
+                    <option value="">دسته‌بندی</option>
+                    <option value="الکترونیک">الکترونیک</option>
+                    <option value="پوشاک">پوشاک</option>
+                    <option value="کتاب">کتاب</option>
+                    <option value="خانه">خانه</option>
+                </select>
+                <button onclick="addProduct()">اضافه کردن محصول</button>
+                <button onclick="sortByPrice()">مرتب‌سازی قیمت</button>
+                <button onclick="filterByCategory()">فیلتر دسته‌بندی</button>
+                <button onclick="searchProducts()">جستجو</button>
+            </div>
+            <input type="text" id="searchInput" placeholder="جستجو در محصولات..." oninput="liveSearch()">
+            <div class="product-grid" id="productsDisplay"></div>
+            <div class="data-display" id="productsData"></div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>عملیات پیشرفته آرایه</h2>
+            <div class="controls">
+                <button onclick="demonstrateMap()">نمایش Map</button>
+                <button onclick="demonstrateFilter()">نمایش Filter</button>
+                <button onclick="demonstrateReduce()">نمایش Reduce</button>
+                <button onclick="demonstrateFind()">نمایش Find</button>
+                <button onclick="demonstrateEvery()">نمایش Every/Some</button>
+                <button onclick="demonstrateSort()">نمایش Sort</button>
+            </div>
+            <div class="data-display" id="advancedOperations"></div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>کار با اشیاء تو در تو</h2>
+            <div class="controls">
+                <button onclick="createNestedObject()">ایجاد شیء پیچیده</button>
+                <button onclick="accessNestedData()">دسترسی به داده‌ها</button>
+                <button onclick="modifyNestedData()">تغییر داده‌ها</button>
+                <button onclick="cloneObject()">کپی کردن شیء</button>
+                <button onclick="mergeObjects()">ترکیب اشیاء</button>
+            </div>
+            <div class="data-display" id="nestedObjectsData"></div>
+        </div>
+    </div>
+</body>
+</html></textarea>
+                                        </div>
+                                        
+                                        <div class="tab-content" id="css-tab">
+                                            <textarea id="cssEditor">/* استایل‌های اضافی برای آرایه‌ها و اشیاء */
+.data-structure {
+    border: 2px solid #4CAF50;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    background: rgba(76, 175, 80, 0.1);
+}
+
+.array-element {
+    display: inline-block;
+    background: linear-gradient(45deg, #4CAF50, #45a049);
+    color: white;
+    padding: 8px 12px;
+    margin: 3px;
+    border-radius: 5px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.array-element:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.object-property {
+    background: rgba(33, 150, 243, 0.2);
+    border-right: 3px solid #2196F3;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+.property-key {
+    font-weight: bold;
+    color: #FFD700;
+}
+
+.property-value {
+    color: #E8F5E8;
+    margin-right: 10px;
+}
+
+.nested-level-1 {
+    margin-right: 20px;
+    border-right: 2px solid #FF9800;
+}
+
+.nested-level-2 {
+    margin-right: 40px;
+    border-right: 2px solid #9C27B0;
+}
+
+.method-demo {
+    background: rgba(156, 39, 176, 0.2);
+    border: 1px solid #9C27B0;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.result-highlight {
+    background: rgba(255, 193, 7, 0.3);
+    border-radius: 3px;
+    padding: 2px 5px;
+    font-weight: bold;
+}
+
+.error-message {
+    background: rgba(244, 67, 54, 0.2);
+    border: 1px solid #F44336;
+    color: #FFCDD2;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.success-message {
+    background: rgba(76, 175, 80, 0.2);
+    border: 1px solid #4CAF50;
+    color: #C8E6C9;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}</textarea>
+                                        </div>
+                                        
+                                        <div class="tab-content" id="js-tab">
+                                            <textarea id="jsEditor">// متغیرهای سراسری
+let fruits = ['سیب', 'موز', 'پرتقال', 'انگور'];
+let students = [
+    { name: 'علی احمدی', age: 20, grade: 18.5, field: 'کامپیوتر' },
+    { name: 'فاطمه رضایی', age: 19, grade: 19.2, field: 'ریاضی' },
+    { name: 'محمد کریمی', age: 21, grade: 17.8, field: 'فیزیک' }
+];
+let products = [
+    { name: 'لپ‌تاپ', price: 15000000, category: 'الکترونیک' },
+    { name: 'کتاب جاوااسکریپت', price: 250000, category: 'کتاب' },
+    { name: 'تی‌شرت', price: 180000, category: 'پوشاک' }
+];
+
+// تابع کمکی برای نمایش داده‌ها
+function displayData(elementId, data, title = '') {
+    const element = document.getElementById(elementId);
+    const timestamp = new Date().toLocaleTimeString('fa-IR');
+    const content = title ? `${title}\n` : '';
+    element.innerHTML = `[${timestamp}] ${content}${JSON.stringify(data, null, 2)}\n\n` + element.innerHTML;
+}
+
+// مدیریت آرایه میوه‌ها
+function updateFruitsDisplay() {
+    const display = document.getElementById('fruitsDisplay');
+    display.innerHTML = '';
+    
+    fruits.forEach((fruit, index) => {
+        const item = document.createElement('div');
+        item.className = 'array-item';
+        item.setAttribute('data-index', index);
+        item.textContent = fruit;
+        item.onclick = () => removeFruitAt(index);
+        display.appendChild(item);
+    });
+    
+    displayData('fruitsData', fruits, 'آرایه میوه‌ها:');
+}
+
+function addFruit() {
+    const input = document.getElementById('fruitInput');
+    const fruit = input.value.trim();
+    
+    if (fruit) {
+        fruits.push(fruit);
+        input.value = '';
+        updateFruitsDisplay();
+    } else {
+        alert('لطفا نام میوه را وارد کنید');
+    }
+}
+
+function removeFruit() {
+    if (fruits.length > 0) {
+        const removed = fruits.pop();
+        updateFruitsDisplay();
+        displayData('fruitsData', `میوه حذف شده: ${removed}`, 'عملیات:');
+    }
+}
+
+function removeFruitAt(index) {
+    const removed = fruits.splice(index, 1)[0];
+    updateFruitsDisplay();
+    displayData('fruitsData', `میوه حذف شده: ${removed} در شاخص ${index}`, 'عملیات:');
+}
+
+function sortFruits() {
+    fruits.sort();
+    updateFruitsDisplay();
+    displayData('fruitsData', 'آرایه مرتب‌سازی شد', 'عملیات:');
+}
+
+function shuffleFruits() {
+    for (let i = fruits.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [fruits[i], fruits[j]] = [fruits[j], fruits[i]];
+    }
+    updateFruitsDisplay();
+    displayData('fruitsData', 'آرایه مخلوط شد', 'عملیات:');
+}
+
+function clearFruits() {
+    fruits = [];
+    updateFruitsDisplay();
+}
+
+// مدیریت دانشجویان
+function updateStudentsDisplay() {
+    const display = document.getElementById('studentsDisplay');
+    display.innerHTML = '';
+    
+    students.forEach((student, index) => {
+        const card = document.createElement('div');
+        card.className = 'student-card';
+        card.innerHTML = `
+            <h4>${student.name}</h4>
+            <p><strong>سن:</strong> ${student.age} سال</p>
+            <p><strong>نمره:</strong> ${student.grade}</p>
+            <p><strong>رشته:</strong> ${student.field}</p>
+            <button onclick="removeStudent(${index})" style="background: #f44336;">حذف</button>
+        `;
+        display.appendChild(card);
+    });
+    
+    displayData('studentsData', students, 'لیست دانشجویان:');
+}
+
+function addStudent() {
+    const name = document.getElementById('studentName').value.trim();
+    const age = parseInt(document.getElementById('studentAge').value);
+    const grade = parseFloat(document.getElementById('studentGrade').value);
+    const field = document.getElementById('studentField').value;
+    
+    if (name && age && grade && field) {
+        const student = { name, age, grade, field };
+        students.push(student);
+        
+        // پاک کردن فرم
+        document.getElementById('studentName').value = '';
+        document.getElementById('studentAge').value = '';
+        document.getElementById('studentGrade').value = '';
+        document.getElementById('studentField').value = '';
+        
+        updateStudentsDisplay();
+    } else {
+        alert('لطفا همه فیلدها را پر کنید');
+    }
+}
+
+function removeStudent(index) {
+    const removed = students.splice(index, 1)[0];
+    updateStudentsDisplay();
+    displayData('studentsData', `دانشجو حذف شد: ${removed.name}`, 'عملیات:');
+}
+
+function calculateAverage() {
+    if (students.length === 0) {
+        alert('هیچ دانشجویی وجود ندارد');
+        return;
+    }
+    
+    const total = students.reduce((sum, student) => sum + student.grade, 0);
+    const average = (total / students.length).toFixed(2);
+    
+    displayData('studentsData', `میانگین نمرات: ${average}`, 'محاسبه:');
+}
+
+function findTopStudent() {
+    if (students.length === 0) {
+        alert('هیچ دانشجویی وجود ندارد');
+        return;
+    }
+    
+    const topStudent = students.reduce((top, student) => 
+        student.grade > top.grade ? student : top
+    );
+    
+    displayData('studentsData', topStudent, 'بهترین دانشجو:');
+}
+
+function filterByField() {
+    const field = document.getElementById('studentField').value;
+    if (!field) {
+        alert('لطفا رشته تحصیلی را انتخاب کنید');
+        return;
+    }
+    
+    const filtered = students.filter(student => student.field === field);
+    displayData('studentsData', filtered, `دانشجویان رشته ${field}:`);
+}
+
+// مدیریت محصولات
+function updateProductsDisplay() {
+    const display = document.getElementById('productsDisplay');
+    display.innerHTML = '';
+    
+    products.forEach((product, index) => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+            <h4>${product.name}</h4>
+            <p class="price">${product.price.toLocaleString('fa-IR')} تومان</p>
+            <p><strong>دسته:</strong> ${product.category}</p>
+            <button onclick="removeProduct(${index})" style="background: #f44336;">حذف</button>
+        `;
+        display.appendChild(card);
+    });
+    
+    displayData('productsData', products, 'لیست محصولات:');
+}
+
+function addProduct() {
+    const name = document.getElementById('productName').value.trim();
+    const price = parseInt(document.getElementById('productPrice').value);
+    const category = document.getElementById('productCategory').value;
+    
+    if (name && price && category) {
+        const product = { name, price, category };
+        products.push(product);
+        
+        // پاک کردن فرم
+        document.getElementById('productName').value = '';
+        document.getElementById('productPrice').value = '';
+        document.getElementById('productCategory').value = '';
+        
+        updateProductsDisplay();
+    } else {
+        alert('لطفا همه فیلدها را پر کنید');
+    }
+}
+
+function removeProduct(index) {
+    const removed = products.splice(index, 1)[0];
+    updateProductsDisplay();
+    displayData('productsData', `محصول حذف شد: ${removed.name}`, 'عملیات:');
+}
+
+function sortByPrice() {
+    products.sort((a, b) => a.price - b.price);
+    updateProductsDisplay();
+    displayData('productsData', 'محصولات بر اساس قیمت مرتب شدند', 'عملیات:');
+}
+
+function filterByCategory() {
+    const category = document.getElementById('productCategory').value;
+    if (!category) {
+        alert('لطفا دسته‌بندی را انتخاب کنید');
+        return;
+    }
+    
+    const filtered = products.filter(product => product.category === category);
+    displayData('productsData', filtered, `محصولات دسته ${category}:`);
+}
+
+function searchProducts() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    if (!searchTerm) {
+        updateProductsDisplay();
+        return;
+    }
+    
+    const results = products.filter(product => 
+        product.name.toLowerCase().includes(searchTerm) ||
+        product.category.toLowerCase().includes(searchTerm)
+    );
+    
+    displayData('productsData', results, `نتایج جستجو برای "${searchTerm}":`);
+}
+
+function liveSearch() {
+    searchProducts();
+}
+
+// عملیات پیشرفته آرایه
+function demonstrateMap() {
+    const numbers = [1, 2, 3, 4, 5];
+    const doubled = numbers.map(num => num * 2);
+    const squared = numbers.map(num => num ** 2);
+    
+    displayData('advancedOperations', {
+        original: numbers,
+        doubled: doubled,
+        squared: squared
+    }, 'نمایش Map:');
+}
+
+function demonstrateFilter() {
+    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const evens = numbers.filter(num => num % 2 === 0);
+    const greaterThan5 = numbers.filter(num => num > 5);
+    
+    displayData('advancedOperations', {
+        original: numbers,
+        evens: evens,
+        greaterThan5: greaterThan5
+    }, 'نمایش Filter:');
+}
+
+function demonstrateReduce() {
+    const numbers = [1, 2, 3, 4, 5];
+    const sum = numbers.reduce((acc, num) => acc + num, 0);
+    const product = numbers.reduce((acc, num) => acc * num, 1);
+    const max = numbers.reduce((max, num) => num > max ? num : max);
+    
+    displayData('advancedOperations', {
+        original: numbers,
+        sum: sum,
+        product: product,
+        max: max
+    }, 'نمایش Reduce:');
+}
+
+function demonstrateFind() {
+    const people = [
+        { name: 'علی', age: 25 },
+        { name: 'فاطمه', age: 30 },
+        { name: 'محمد', age: 20 }
+    ];
+    
+    const found = people.find(person => person.age > 25);
+    const foundIndex = people.findIndex(person => person.name === 'محمد');
+    
+    displayData('advancedOperations', {
+        original: people,
+        found: found,
+        foundIndex: foundIndex
+    }, 'نمایش Find:');
+}
+
+function demonstrateEvery() {
+    const numbers1 = [2, 4, 6, 8];
+    const numbers2 = [1, 2, 3, 4];
+    
+    const allEven1 = numbers1.every(num => num % 2 === 0);
+    const allEven2 = numbers2.every(num => num % 2 === 0);
+    const someEven2 = numbers2.some(num => num % 2 === 0);
+    
+    displayData('advancedOperations', {
+        numbers1: numbers1,
+        allEven1: allEven1,
+        numbers2: numbers2,
+        allEven2: allEven2,
+        someEven2: someEven2
+    }, 'نمایش Every/Some:');
+}
+
+function demonstrateSort() {
+    const fruits = ['موز', 'سیب', 'پرتقال', 'انگور'];
+    const numbers = [3, 1, 4, 1, 5, 9, 2, 6];
+    
+    const sortedFruits = [...fruits].sort();
+    const sortedNumbers = [...numbers].sort((a, b) => a - b);
+    const reverseSorted = [...numbers].sort((a, b) => b - a);
+    
+    displayData('advancedOperations', {
+        originalFruits: fruits,
+        sortedFruits: sortedFruits,
+        originalNumbers: numbers,
+        sortedNumbers: sortedNumbers,
+        reverseSorted: reverseSorted
+    }, 'نمایش Sort:');
+}
+
+// کار با اشیاء تو در تو
+function createNestedObject() {
+    const company = {
+        name: 'شرکت فناوری پیشرو',
+        founded: 2020,
+        address: {
+            city: 'تهران',
+            district: 'ولنجک',
+            postalCode: '1234567890'
+        },
+        employees: [
+            {
+                id: 1,
+                name: 'علی احمدی',
+                position: 'مدیر فنی',
+                salary: 25000000,
+                skills: ['JavaScript', 'Python', 'React'],
+                contact: {
+                    email: 'ali@company.com',
+                    phone: '09123456789'
+                }
+            },
+            {
+                id: 2,
+                name: 'فاطمه رضایی',
+                position: 'طراح UI/UX',
+                salary: 20000000,
+                skills: ['Figma', 'Adobe XD', 'CSS'],
+                contact: {
+                    email: 'fateme@company.com',
+                    phone: '09987654321'
+                }
+            }
+        ],
+        departments: {
+            IT: {
+                budget: 500000000,
+                head: 'علی احمدی',
+                projects: ['وب‌سایت شرکت', 'اپلیکیشن موبایل']
+            },
+            Design: {
+                budget: 200000000,
+                head: 'فاطمه رضایی',
+                projects: ['طراحی لوگو', 'رابط کاربری']
+            }
+        }
+    };
+    
+    displayData('nestedObjectsData', company, 'شیء پیچیده ایجاد شد:');
+    window.companyData = company; // ذخیره برای استفاده بعدی
+}
+
+function accessNestedData() {
+    if (!window.companyData) {
+        alert('ابتدا شیء پیچیده را ایجاد کنید');
+        return;
+    }
+    
+    const data = window.companyData;
+    const accessExamples = {
+        companyName: data.name,
+        city: data.address.city,
+        firstEmployeeName: data.employees[0].name,
+        firstEmployeeSkills: data.employees[0].skills,
+        ITBudget: data.departments.IT.budget,
+        allEmployeeNames: data.employees.map(emp => emp.name)
+    };
+    
+    displayData('nestedObjectsData', accessExamples, 'دسترسی به داده‌های تو در تو:');
+}
+
+function modifyNestedData() {
+    if (!window.companyData) {
+        alert('ابتدا شیء پیچیده را ایجاد کنید');
+        return;
+    }
+    
+    const data = window.companyData;
+    
+    // تغییر داده‌ها
+    data.employees[0].salary += 2000000; // افزایش حقوق
+    data.employees[0].skills.push('Node.js'); // اضافه کردن مهارت
+    data.address.district = 'نیاوران'; // تغییر آدرس
+    
+    // اضافه کردن کارمند جدید
+    data.employees.push({
+        id: 3,
+        name: 'محمد کریمی',
+        position: 'توسعه‌دهنده Backend',
+        salary: 22000000,
+        skills: ['Java', 'Spring', 'MySQL'],
+        contact: {
+            email: 'mohammad@company.com',
+            phone: '09111111111'
+        }
+    });
+    
+    displayData('nestedObjectsData', data, 'داده‌ها تغییر یافتند:');
+}
+
+function cloneObject() {
+    if (!window.companyData) {
+        alert('ابتدا شیء پیچیده را ایجاد کنید');
+        return;
+    }
+    
+    // کپی سطحی (Shallow Copy)
+    const shallowCopy = { ...window.companyData };
+    
+    // کپی عمیق (Deep Copy)
+    const deepCopy = JSON.parse(JSON.stringify(window.companyData));
+    
+    // تست تفاوت
+    shallowCopy.name = 'کپی سطحی';
+    shallowCopy.employees[0].name = 'تغییر در کپی سطحی';
+    
+    deepCopy.name = 'کپی عمیق';
+    deepCopy.employees[0].name = 'تغییر در کپی عمیق';
+    
+    displayData('nestedObjectsData', {
+        original: window.companyData.name,
+        originalEmployeeName: window.companyData.employees[0].name,
+        shallowCopyName: shallowCopy.name,
+        deepCopyName: deepCopy.name
+    }, 'مقایسه انواع کپی:');
+}
+
+function mergeObjects() {
+    const obj1 = {
+        name: 'شیء اول',
+        data: { a: 1, b: 2 },
+        array: [1, 2, 3]
+    };
+    
+    const obj2 = {
+        name: 'شیء دوم',
+        data: { b: 3, c: 4 },
+        array: [4, 5, 6],
+        newProp: 'ویژگی جدید'
+    };
+    
+    // ترکیب با Object.assign
+    const merged1 = Object.assign({}, obj1, obj2);
+    
+    // ترکیب با Spread Operator
+    const merged2 = { ...obj1, ...obj2 };
+    
+    displayData('nestedObjectsData', {
+        obj1: obj1,
+        obj2: obj2,
+        mergedWithAssign: merged1,
+        mergedWithSpread: merged2
+    }, 'ترکیب اشیاء:');
+}
+
+// اجرای اولیه
+document.addEventListener('DOMContentLoaded', function() {
+    updateFruitsDisplay();
+    updateStudentsDisplay();
+    updateProductsDisplay();
+    
+    console.log('صفحه آرایه‌ها و اشیاء آماده است!');
+});</textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="preview-panel">
+                                        <div class="preview-header">
+                                            <span>نمایش زنده</span>
+                                            <div class="preview-controls">
+                                                <button class="btn btn-sm" id="refreshPreview">🔄</button>
+                                                <button class="btn btn-sm" id="openInNewTab">🔗</button>
+                                            </div>
+                                        </div>
+                                        <iframe id="preview" src="about:blank"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>متدهای مهم آرایه</h2>
+                            
+                            <h3>متدهای اضافه/حذف</h3>
+                            <div class="code-example">
+                                <pre><code>const arr = [1, 2, 3];
+
+// اضافه کردن به انتها
+arr.push(4, 5); // [1, 2, 3, 4, 5]
+
+// حذف از انتها
+const last = arr.pop(); // 5, arr = [1, 2, 3, 4]
+
+// اضافه کردن به ابتدا
+arr.unshift(0); // [0, 1, 2, 3, 4]
+
+// حذف از ابتدا
+const first = arr.shift(); // 0, arr = [1, 2, 3, 4]
+
+// اضافه/حذف در موقعیت خاص
+arr.splice(2, 1, 'جدید'); // [1, 2, 'جدید', 4]</code></pre>
+                            </div>
+
+                            <h3>متدهای جستجو</h3>
+                            <div class="code-example">
+                                <pre><code>const fruits = ['سیب', 'موز', 'پرتقال', 'موز'];
+
+// پیدا کردن شاخص
+const index = fruits.indexOf('موز'); // 1
+const lastIndex = fruits.lastIndexOf('موز'); // 3
+
+// بررسی وجود
+const exists = fruits.includes('سیب'); // true
+
+// پیدا کردن عنصر با شرط
+const found = fruits.find(fruit => fruit.length > 3); // 'پرتقال'
+const foundIndex = fruits.findIndex(fruit => fruit.length > 3); // 2</code></pre>
+                            </div>
+
+                            <h3>متدهای تبدیل</h3>
+                            <div class="code-example">
+                                <pre><code>const numbers = [1, 2, 3, 4, 5];
+
+// تبدیل هر عنصر
+const doubled = numbers.map(num => num * 2); // [2, 4, 6, 8, 10]
+
+// فیلتر کردن
+const evens = numbers.filter(num => num % 2 === 0); // [2, 4]
+
+// کاهش به یک مقدار
+const sum = numbers.reduce((acc, num) => acc + num, 0); // 15
+
+// تبدیل به رشته
+const str = numbers.join(' - '); // "1 - 2 - 3 - 4 - 5"</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>اشیاء (Objects)</h2>
+                            <p>اشیاء ساختار داده‌ای هستند که می‌توانند ویژگی‌ها (properties) و متدها (methods) را نگهداری کنند. هر ویژگی شامل یک کلید (key) و یک مقدار (value) است.</p>
+                            
+                            <h3>ایجاد اشیاء</h3>
+                            <div class="code-example">
+                                <pre><code>// روش Literal (توصیه می‌شود)
+const person = {
+    name: 'علی احمدی',
+    age: 25,
+    city: 'تهران',
+    isStudent: true
+};
+
+// روش Constructor
+const car = new Object();
+car.brand = 'تویوتا';
+car.model = 'کمری';
+car.year = 2023;
+
+// با Constructor Function
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+    this.greet = function() {
+        return `سلام، من ${this.name} هستم`;
+    };
+}
+
+const person1 = new Person('فاطمه', 22);</code></pre>
+                            </div>
+
+                            <h3>دسترسی به ویژگی‌ها</h3>
+                            <div class="code-example">
+                                <pre><code>const user = {
+    name: 'محمد',
+    'last-name': 'کریمی',
+    age: 30
+};
+
+// Dot Notation
+console.log(user.name); // 'محمد'
+user.age = 31;
+
+// Bracket Notation
+console.log(user['last-name']); // 'کریمی'
+user['email'] = 'mohammad@example.com';
+
+// با متغیر
+const prop = 'name';
+console.log(user[prop]); // 'محمد'</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>متدهای مهم Object</h2>
+                            
+                            <h3>کار با کلیدها و مقادیر</h3>
+                            <div class="code-example">
+                                <pre><code>const student = {
+    name: 'سارا',
+    grade: 18.5,
+    field: 'کامپیوتر'
+};
+
+// دریافت کلیدها
+const keys = Object.keys(student); // ['name', 'grade', 'field']
+
+// دریافت مقادیر
+const values = Object.values(student); // ['سارا', 18.5, 'کامپیوتر']
+
+// دریافت جفت کلید-مقدار
+const entries = Object.entries(student);
+// [['name', 'سارا'], ['grade', 18.5], ['field', 'کامپیوتر']]
+
+// ایجاد شیء از entries
+const newObj = Object.fromEntries(entries);</code></pre>
+                            </div>
+
+                            <h3>کپی و ترکیب اشیاء</h3>
+                            <div class="code-example">
+                                <pre><code>const obj1 = { a: 1, b: 2 };
+const obj2 = { b: 3, c: 4 };
+
+// کپی سطحی
+const copy1 = Object.assign({}, obj1);
+const copy2 = { ...obj1 };
+
+// ترکیب اشیاء
+const merged = Object.assign({}, obj1, obj2); // { a: 1, b: 3, c: 4 }
+const merged2 = { ...obj1, ...obj2 }; // { a: 1, b: 3, c: 4 }
+
+// کپی عمیق (برای اشیاء ساده)
+const deepCopy = JSON.parse(JSON.stringify(obj1));</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>Destructuring</h2>
+                            <p>تکنیک قدرتمندی برای استخراج مقادیر از آرایه‌ها و اشیاء:</p>
+                            
+                            <h3>Array Destructuring</h3>
+                            <div class="code-example">
+                                <pre><code>const colors = ['قرمز', 'آبی', 'سبز'];
+
+// استخراج مقادیر
+const [first, second, third] = colors;
+console.log(first); // 'قرمز'
+
+// نادیده گرفتن عناصر
+const [, , third] = colors;
+
+// مقدار پیش‌فرض
+const [a, b, c, d = 'زرد'] = colors;
+
+// Rest operator
+const [head, ...tail] = colors;
+console.log(tail); // ['آبی', 'سبز']</code></pre>
+                            </div>
+
+                            <h3>Object Destructuring</h3>
+                            <div class="code-example">
+                                <pre><code>const person = {
+    name: 'علی',
+    age: 25,
+    city: 'تهران',
+    job: 'برنامه‌نویس'
+};
+
+// استخراج ویژگی‌ها
+const { name, age } = person;
+
+// تغییر نام متغیر
+const { name: fullName, age: years } = person;
+
+// مقدار پیش‌فرض
+const { name, salary = 0 } = person;
+
+// Rest operator
+const { name, ...otherInfo } = person;
+
+// Nested destructuring
+const user = {
+    info: { name: 'فاطمه', age: 22 },
+    address: { city: 'اصفهان' }
+};
+
+const { info: { name, age }, address: { city } } = user;</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>بهترین شیوه‌ها</h2>
+                            
+                            <div class="tip-box">
+                                <h3>💡 نکات مهم:</h3>
+                                <ul>
+                                    <li><strong>Immutability:</strong> از تغییر مستقیم آرایه‌ها و اشیاء اجتناب کنید</li>
+                                    <li><strong>Spread Operator:</strong> برای کپی و ترکیب استفاده کنید</li>
+                                    <li><strong>Destructuring:</strong> کد را خواناتر و کوتاه‌تر می‌کند</li>
+                                    <li><strong>Method Chaining:</strong> متدهای آرایه را زنجیره‌ای استفاده کنید</li>
+                                    <li><strong>Performance:</strong> برای آرایه‌های بزرگ از متدهای بهینه استفاده کنید</li>
+                                </ul>
+                            </div>
+
+                            <h3>مثال Method Chaining</h3>
+                            <div class="code-example">
+                                <pre><code>const students = [
+    { name: 'علی', grade: 18 },
+    { name: 'فاطمه', grade: 19 },
+    { name: 'محمد', grade: 16 },
+    { name: 'سارا', grade: 20 }
+];
+
+// زنجیره‌ای کردن متدها
+const topStudents = students
+    .filter(student => student.grade >= 18)
+    .map(student => ({ ...student, status: 'عالی' }))
+    .sort((a, b) => b.grade - a.grade);
+
+console.log(topStudents);</code></pre>
+                            </div>
+
+                            <h3>کار با JSON</h3>
+                            <div class="code-example">
+                                <pre><code>const data = {
+    users: [
+        { id: 1, name: 'علی', active: true },
+        { id: 2, name: 'فاطمه', active: false }
+    ]
+};
+
+// تبدیل به JSON
+const jsonString = JSON.stringify(data);
+
+// تبدیل از JSON
+const parsedData = JSON.parse(jsonString);
+
+// JSON با فرمت زیبا
+const prettyJson = JSON.stringify(data, null, 2);
+
+// فیلتر کردن ویژگی‌ها
+const filteredJson = JSON.stringify(data, ['users', 'name']);</code></pre>
+                            </div>
+                        </section>
+
+                        <!-- Quiz Section -->
+                        <section class="quiz-section">
+                            <h2>آزمون درس ۱۸</h2>
+                            <div class="quiz-container" id="lesson18Quiz">
+                                <div class="quiz-question active" data-question="1">
+                                    <h3>سوال ۱: کدام متد برای اضافه کردن عنصر به انتهای آرایه استفاده می‌شود؟</h3>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q1" value="a"> unshift()</label>
+                                        <label><input type="radio" name="q1" value="b"> push()</label>
+                                        <label><input type="radio" name="q1" value="c"> pop()</label>
+                                        <label><input type="radio" name="q1" value="d"> shift()</label>
+                                    </div>
+                                </div>
+
+                                <div class="quiz-question" data-question="2">
+                                    <h3>سوال ۲: کدام متد برای تبدیل همه عناصر آرایه استفاده می‌شود؟</h3>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q2" value="a"> filter()</label>
+                                        <label><input type="radio" name="q2" value="b"> map()</label>
+                                        <label><input type="radio" name="q2" value="c"> reduce()</label>
+                                        <label><input type="radio" name="q2" value="d"> find()</label>
+                                    </div>
+                                </div>
+
+                                <div class="quiz-question" data-question="3">
+                                    <h3>سوال ۳: کدام روش برای دسترسی به ویژگی شیء با نام متغیر استفاده می‌شود؟</h3>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q3" value="a"> object.property</label>
+                                        <label><input type="radio" name="q3" value="b"> object[property]</label>
+                                        <label><input type="radio" name="q3" value="c"> object->property</label>
+                                        <label><input type="radio" name="q3" value="d"> object::property</label>
+                                    </div>
+                                </div>
+
+                                <div class="quiz-navigation">
+                                    <button class="btn btn-secondary" id="prevQuestion">سوال قبلی</button>
+                                    <button class="btn btn-secondary" id="nextQuestion">سوال بعدی</button>
+                                    <button class="btn btn-primary" id="submitQuiz">ارسال پاسخ‌ها</button>
+                                </div>
+
+                                <div class="quiz-result" id="quizResult"></div>
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <nav class="lesson-navigation">
+                            <a href="lesson17.html" class="nav-button prev">
+                                <span>← درس قبلی</span>
+                                <small>رویدادها و تعامل</small>
+                            </a>
+                            <a href="lesson19.html" class="nav-button next">
+                                <span>درس بعدی →</span>
+                                <small>مفاهیم پیشرفته</small>
+                            </a>
+                        </nav>
+                    </div>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="../../js/libs/codemirror/js/codemirror.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/xml.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/css.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/javascript.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/htmlmixed.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/matchbrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/closebrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/active-line.min.js"></script>
+    
+    <script src="../../js/main.js"></script>
+    <script src="../../js/storage.js"></script>
+    <script src="../../js/editor.js"></script>
+    <script src="../../js/quiz.js"></script>
+
+    <script>
+        // Initialize lesson
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeLesson('lesson18');
+            
+            // Quiz answers
+            const quizAnswers = {
+                q1: 'b', // push()
+                q2: 'b', // map()
+                q3: 'b'  // object[property]
+            };
+            
+            initializeQuiz('lesson18Quiz', quizAnswers);
+        });
+    </script>
+</body>
+</html>
+

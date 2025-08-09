@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درس ۱۱: مقدمات JavaScript - آموزش توسعه وب</title>
+    <meta name="description" content="یادگیری مقدمات JavaScript و برنامه‌نویسی تعاملی">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/rtl.css">
+    <link rel="stylesheet" href="../../css/themes.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/editor.css">
+    
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="../../js/libs/codemirror/css/codemirror.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/monokai.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/material.min.css">
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم">
+        <span class="theme-toggle-icon">🌙</span>
+    </button>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-brand">
+                <div class="header-brand-icon">وب</div>
+                <span>آموزش توسعه وب</span>
+            </div>
+            
+            <nav class="header-nav">
+                <div class="header-search">
+                    <input type="text" placeholder="جستجو در دروس..." id="searchInput">
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="منوی موبایل">
+                    ☰
+                </button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h2 class="sidebar-title">فهرست دروس</h2>
+                    <p class="sidebar-subtitle">۲۰ درس کامل برای یادگیری توسعه وب</p>
+                </div>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">JavaScript</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="lesson11.html" class="nav-link active">
+                                <span class="nav-link-icon">⚡</span>
+                                <span class="nav-link-text">مقدمات JavaScript</span>
+                                <span class="nav-link-badge">۱۱</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson12.html" class="nav-link">
+                                <span class="nav-link-icon">📊</span>
+                                <span class="nav-link-text">متغیرها و انواع داده</span>
+                                <span class="nav-link-badge">۱۲</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson13.html" class="nav-link">
+                                <span class="nav-link-icon">🔧</span>
+                                <span class="nav-link-text">عملگرها و شرط‌ها</span>
+                                <span class="nav-link-badge">۱۳</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson14.html" class="nav-link">
+                                <span class="nav-link-icon">🔄</span>
+                                <span class="nav-link-text">حلقه‌ها و تکرار</span>
+                                <span class="nav-link-badge">۱۴</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="lesson15.html" class="nav-link">
+                                <span class="nav-link-icon">🎯</span>
+                                <span class="nav-link-text">توابع</span>
+                                <span class="nav-link-badge">۱۵</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">منابع</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="../../reference/html-tags.html" class="nav-link">
+                                <span class="nav-link-icon">📚</span>
+                                <span class="nav-link-text">مرجع تگ‌های HTML</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../../index.html" class="nav-link">
+                                <span class="nav-link-icon">🏠</span>
+                                <span class="nav-link-text">صفحه اصلی</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb">
+                    <span class="breadcrumb-item"><a href="../../index.html">صفحه اصلی</a></span>
+                    <span class="breadcrumb-item"><a href="#javascript">JavaScript</a></span>
+                    <span class="breadcrumb-item active">درس ۱۱: مقدمات JavaScript</span>
+                </nav>
+
+                <div class="content-header">
+                    <h1 class="content-title">درس ۱۱: مقدمات JavaScript</h1>
+                    <p class="content-subtitle">یادگیری مقدمات JavaScript و برنامه‌نویسی تعاملی</p>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>پیشرفت درس</span>
+                        <span>۱۱ از ۲۰ درس</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 55%"></div>
+                    </div>
+                </div>
+
+                <!-- Lesson Content -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">JavaScript چیست؟</h2>
+                    </div>
+                    <p>JavaScript یکی از محبوب‌ترین و قدرتمندترین زبان‌های برنامه‌نویسی در جهان است که در ابتدا برای ایجاد تعامل در صفحات وب طراحی شد، اما امروزه کاربردهای گسترده‌ای دارد.</p>
+                    
+                    <h3>ویژگی‌های کلیدی JavaScript:</h3>
+                    <ul>
+                        <li><strong>تفسیری (Interpreted):</strong> نیاز به کامپایل ندارد</li>
+                        <li><strong>شی‌گرا (Object-Oriented):</strong> پشتیبانی از برنامه‌نویسی شی‌گرا</li>
+                        <li><strong>تابعی (Functional):</strong> توابع شهروند درجه یک هستند</li>
+                        <li><strong>پویا (Dynamic):</strong> انواع متغیرها در زمان اجرا تعیین می‌شوند</li>
+                        <li><strong>رویدادمحور (Event-Driven):</strong> واکنش به رویدادهای کاربر</li>
+                    </ul>
+                    
+                    <h3>کاربردهای JavaScript:</h3>
+                    <ul>
+                        <li><strong>توسعه وب Frontend:</strong> تعامل با کاربر در مرورگر</li>
+                        <li><strong>توسعه وب Backend:</strong> سرور با Node.js</li>
+                        <li><strong>اپلیکیشن موبایل:</strong> React Native, Ionic</li>
+                        <li><strong>اپلیکیشن دسکتاپ:</strong> Electron</li>
+                        <li><strong>بازی‌سازی:</strong> بازی‌های مرورگری</li>
+                        <li><strong>IoT:</strong> اینترنت اشیا</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تاریخچه JavaScript</h2>
+                    </div>
+                    <p>JavaScript در سال ۱۹۹۵ توسط برندان آیک (Brendan Eich) در شرکت نت‌اسکیپ طراحی شد. علی‌رغم نام آن، هیچ ارتباط مستقیمی با زبان Java ندارد.</p>
+                    
+                    <h3>نکات مهم تاریخی:</h3>
+                    <ul>
+                        <li><strong>۱۹۹۵:</strong> ایجاد JavaScript در ۱۰ روز!</li>
+                        <li><strong>۱۹۹۷:</strong> استاندارد ECMAScript</li>
+                        <li><strong>۲۰۰۹:</strong> Node.js و ورود به سمت سرور</li>
+                        <li><strong>۲۰۱۵:</strong> ES6/ES2015 و تحول بزرگ</li>
+                        <li><strong>امروز:</strong> یکی از محبوب‌ترین زبان‌های برنامه‌نویسی</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">نحوه اجرای JavaScript</h2>
+                    </div>
+                    <p>JavaScript را می‌توان به روش‌های مختلفی در صفحات وب اجرا کرد:</p>
+                    
+                    <h3>۱. JavaScript درون‌خطی (Inline):</h3>
+                    <pre><code>&lt;button onclick="alert('سلام دنیا!')"&gt;کلیک کن&lt;/button&gt;</code></pre>
+                    
+                    <h3>۲. JavaScript داخلی (Internal):</h3>
+                    <pre><code>&lt;script&gt;
+  console.log('سلام دنیا!');
+  alert('خوش آمدید!');
+&lt;/script&gt;</code></pre>
+                    
+                    <h3>۳. JavaScript خارجی (External):</h3>
+                    <pre><code>&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+                    
+                    <h3>بهترین شیوه:</h3>
+                    <p>استفاده از فایل‌های خارجی برای کدهای بزرگ و پیچیده توصیه می‌شود زیرا:</p>
+                    <ul>
+                        <li>کد قابل استفاده مجدد است</li>
+                        <li>HTML تمیزتر می‌ماند</li>
+                        <li>کش مرورگر بهتر عمل می‌کند</li>
+                        <li>نگهداری آسان‌تر است</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">کنسول مرورگر</h2>
+                    </div>
+                    <p>کنسول مرورگر ابزار قدرتمندی برای تست و اشکال‌زدایی JavaScript است.</p>
+                    
+                    <h3>دسترسی به کنسول:</h3>
+                    <ul>
+                        <li><strong>Chrome/Edge:</strong> F12 یا Ctrl+Shift+I</li>
+                        <li><strong>Firefox:</strong> F12 یا Ctrl+Shift+K</li>
+                        <li><strong>Safari:</strong> Cmd+Option+I</li>
+                    </ul>
+                    
+                    <h3>دستورات مفید کنسول:</h3>
+                    <pre><code>console.log('پیام معمولی');
+console.warn('پیام هشدار');
+console.error('پیام خطا');
+console.info('پیام اطلاعاتی');
+console.table([{نام: 'علی', سن: 25}, {نام: 'سارا', سن: 30}]);
+console.clear(); // پاک کردن کنسول</code></pre>
+                </div>
+
+                <!-- Interactive Code Editor -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تمرین عملی: اولین برنامه JavaScript</h2>
+                    </div>
+                    <p>در ادامه، اولین برنامه JavaScript خود را بنویسید و اجرا کنید:</p>
+                    
+                    <div id="codeEditor"></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">نحو پایه JavaScript</h2>
+                    </div>
+                    <p>JavaScript دارای نحو ساده و قابل فهمی است که شباهت زیادی به زبان‌های C و Java دارد.</p>
+                    
+                    <h3>قوانین نحوی مهم:</h3>
+                    <ul>
+                        <li><strong>حساس به حروف کوچک و بزرگ:</strong> myVariable ≠ MyVariable</li>
+                        <li><strong>نقطه‌ویرگول:</strong> پایان دستورات (اختیاری اما توصیه می‌شود)</li>
+                        <li><strong>فاصله‌ها:</strong> معمولاً نادیده گرفته می‌شوند</li>
+                        <li><strong>کامنت‌ها:</strong> // برای تک خط، /* */ برای چند خط</li>
+                    </ul>
+                    
+                    <h3>مثال‌های نحو:</h3>
+                    <pre><code>// این یک کامنت تک خطی است
+
+/*
+  این یک کامنت
+  چند خطی است
+*/
+
+// تعریف متغیر
+let name = 'علی';
+const age = 25;
+
+// فراخوانی تابع
+console.log('نام: ' + name);
+console.log('سن: ' + age);</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">کلمات کلیدی JavaScript</h2>
+                    </div>
+                    <p>JavaScript دارای کلمات کلیدی رزرو شده‌ای است که نمی‌توان از آن‌ها به عنوان نام متغیر استفاده کرد.</p>
+                    
+                    <h3>کلمات کلیدی رایج:</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.5rem; margin: 1rem 0;">
+                        <code>break</code> <code>case</code> <code>catch</code> <code>class</code>
+                        <code>const</code> <code>continue</code> <code>debugger</code> <code>default</code>
+                        <code>delete</code> <code>do</code> <code>else</code> <code>export</code>
+                        <code>extends</code> <code>false</code> <code>finally</code> <code>for</code>
+                        <code>function</code> <code>if</code> <code>import</code> <code>in</code>
+                        <code>instanceof</code> <code>let</code> <code>new</code> <code>null</code>
+                        <code>return</code> <code>super</code> <code>switch</code> <code>this</code>
+                        <code>throw</code> <code>true</code> <code>try</code> <code>typeof</code>
+                        <code>undefined</code> <code>var</code> <code>void</code> <code>while</code>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">اولین برنامه: سلام دنیا!</h2>
+                    </div>
+                    <p>بیایید اولین برنامه JavaScript خود را بنویسیم:</p>
+                    
+                    <h3>روش ۱: نمایش در کنسول</h3>
+                    <pre><code>console.log('سلام دنیا!');</code></pre>
+                    
+                    <h3>روش ۲: نمایش در alert</h3>
+                    <pre><code>alert('سلام دنیا!');</code></pre>
+                    
+                    <h3>روش ۳: نوشتن در صفحه</h3>
+                    <pre><code>document.write('سلام دنیا!');</code></pre>
+                    
+                    <h3>روش ۴: تغییر محتوای عنصر</h3>
+                    <pre><code>document.getElementById('demo').innerHTML = 'سلام دنیا!';</code></pre>
+                    
+                    <h3>مثال کامل:</h3>
+                    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="fa" dir="rtl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;اولین برنامه JavaScript&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 id="demo"&gt;در انتظار...&lt;/h1&gt;
+    
+    &lt;script&gt;
+        // نمایش پیام در کنسول
+        console.log('برنامه شروع شد');
+        
+        // تغییر محتوای صفحه
+        document.getElementById('demo').innerHTML = 'سلام دنیا!';
+        
+        // نمایش پیام خوش‌آمدگویی
+        alert('خوش آمدید به دنیای JavaScript!');
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">ابزارهای توسعه</h2>
+                    </div>
+                    <p>برای نوشتن کد JavaScript ابزارهای مختلفی در دسترس است:</p>
+                    
+                    <h3>ویرایشگرهای کد:</h3>
+                    <ul>
+                        <li><strong>Visual Studio Code:</strong> رایگان و قدرتمند</li>
+                        <li><strong>WebStorm:</strong> IDE حرفه‌ای</li>
+                        <li><strong>Sublime Text:</strong> سبک و سریع</li>
+                        <li><strong>Atom:</strong> منبع باز و قابل تنظیم</li>
+                    </ul>
+                    
+                    <h3>ابزارهای آنلاین:</h3>
+                    <ul>
+                        <li><strong>CodePen:</strong> برای تست سریع</li>
+                        <li><strong>JSFiddle:</strong> اشتراک‌گذاری کد</li>
+                        <li><strong>Repl.it:</strong> محیط توسعه آنلاین</li>
+                        <li><strong>CodeSandbox:</strong> پروژه‌های پیچیده</li>
+                    </ul>
+                    
+                    <h3>افزونه‌های مفید VS Code:</h3>
+                    <ul>
+                        <li><strong>Live Server:</strong> سرور محلی</li>
+                        <li><strong>Prettier:</strong> فرمت‌دهی کد</li>
+                        <li><strong>ESLint:</strong> بررسی کیفیت کد</li>
+                        <li><strong>Bracket Pair Colorizer:</strong> رنگ‌بندی پرانتزها</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">تمرین‌های عملی</h2>
+                    </div>
+                    <p>برای تسلط بیشتر بر مطالب این درس، تمرین‌های زیر را انجام دهید:</p>
+                    
+                    <h3>تمرین ۱: پیام خوش‌آمدگویی</h3>
+                    <p>صفحه‌ای ایجاد کنید که هنگام بارگذاری پیام خوش‌آمدگویی نمایش دهد.</p>
+                    
+                    <h3>تمرین ۲: تغییر محتوا</h3>
+                    <p>دکمه‌ای ایجاد کنید که با کلیک روی آن، متن صفحه تغییر کند.</p>
+                    
+                    <h3>تمرین ۳: کنسول لاگ</h3>
+                    <p>انواع مختلف پیام‌ها را در کنسول نمایش دهید.</p>
+                    
+                    <h3>تمرین ۴: کامنت‌گذاری</h3>
+                    <p>کدی بنویسید و آن را با کامنت‌های مناسب توضیح دهید.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">نکات مهم و بهترین شیوه‌ها</h2>
+                    </div>
+                    <h3>بهترین شیوه‌ها:</h3>
+                    <ul>
+                        <li>همیشه از نقطه‌ویرگول در پایان دستورات استفاده کنید</li>
+                        <li>کد خود را با کامنت‌های مناسب توضیح دهید</li>
+                        <li>از نام‌های معنادار برای متغیرها استفاده کنید</li>
+                        <li>کد را به صورت منظم و خوانا بنویسید</li>
+                        <li>از کنسول برای اشکال‌زدایی استفاده کنید</li>
+                    </ul>
+                    
+                    <h3>نکات امنیتی:</h3>
+                    <ul>
+                        <li>هرگز اطلاعات حساس را در JavaScript کلاینت قرار ندهید</li>
+                        <li>ورودی‌های کاربر را همیشه اعتبارسنجی کنید</li>
+                        <li>از eval() و innerHTML با احتیاط استفاده کنید</li>
+                        <li>کد خود را مینیفای کنید تا خوانایی کمتر شود</li>
+                    </ul>
+                    
+                    <h3>اشتباهات رایج:</h3>
+                    <ul>
+                        <li>فراموش کردن نقطه‌ویرگول</li>
+                        <li>اشتباه در نام‌گذاری متغیرها (حساس به حروف)</li>
+                        <li>استفاده از کلمات کلیدی به عنوان نام متغیر</li>
+                        <li>عدم استفاده از کنسول برای اشکال‌زدایی</li>
+                        <li>نوشتن کد بدون کامنت</li>
+                    </ul>
+                </div>
+
+                <!-- Navigation -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">ادامه یادگیری</h2>
+                    </div>
+                    <p>در درس بعدی با متغیرها و انواع داده در JavaScript آشنا خواهید شد.</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="../css/lesson10.html" class="btn btn-secondary">درس قبلی: Flexbox و Grid</a>
+                        <a href="lesson12.html" class="btn btn-primary" style="margin-right: 1rem;">درس بعدی: متغیرها و انواع داده</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../../js/main.js"></script>
+    <script src="../../js/storage.js"></script>
+    
+    <!-- CodeMirror JavaScript -->
+    <script src="../../js/libs/codemirror/js/codemirror.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/xml.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/css.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/javascript.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/htmlmixed.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/matchbrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/closebrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/active-line.min.js"></script>
+    
+    <!-- Editor JavaScript -->
+    <script src="../../js/editor.js"></script>
+    
+    <script>
+        // Initialize the code editor when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const editor = new CodeEditor('codeEditor', {
+                initialContent: {
+                    html: `<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>اولین برنامه JavaScript</title>
+</head>
+<body>
+    <h1 id="title">خوش آمدید!</h1>
+    <p id="message">در انتظار اجرای JavaScript...</p>
+    
+    <button id="changeBtn">تغییر پیام</button>
+    <button id="alertBtn">نمایش Alert</button>
+    <button id="consoleBtn">پیام کنسول</button>
+    
+    <div id="output" style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 5px;">
+        <h3>خروجی:</h3>
+        <p id="result">هنوز چیزی اجرا نشده است.</p>
+    </div>
+    
+    <div id="info" style="margin-top: 20px; padding: 15px; background: #e3f2fd; border-radius: 5px;">
+        <h3>اطلاعات مرورگر:</h3>
+        <p id="browserInfo">در حال بارگذاری...</p>
+    </div>
+</body>
+</html>`,
+                    css: `/* استایل‌های پایه */
+body {
+    font-family: 'Tahoma', Arial, sans-serif;
+    direction: rtl;
+    text-align: right;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+#message {
+    color: white;
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+/* استایل دکمه‌ها */
+button {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    margin: 0 10px 10px 0;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+button:active {
+    transform: translateY(-1px);
+}
+
+#changeBtn {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+}
+
+#alertBtn {
+    background: linear-gradient(45deg, #f093fb, #f5576c);
+}
+
+#consoleBtn {
+    background: linear-gradient(45deg, #4facfe, #00f2fe);
+}
+
+/* استایل باکس‌های اطلاعات */
+#output, #info {
+    background: rgba(255,255,255,0.95);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+}
+
+#output h3, #info h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+#result, #browserInfo {
+    color: #34495e;
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* انیمیشن‌ها */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse {
+    animation: pulse 0.6s ease-in-out;
+}
+
+/* طراحی واکنش‌گرا */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    button {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+    }
+    
+    #output, #info {
+        padding: 15px;
+    }
+}`,
+                    js: `// اولین برنامه JavaScript
+console.log('🚀 برنامه JavaScript شروع شد!');
+
+// تابع برای نمایش تاریخ و زمان فعلی
+function getCurrentDateTime() {
+    const now = new Date();
+    const options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    };
+    return now.toLocaleDateString('fa-IR', options);
+}
+
+// تابع برای نمایش اطلاعات مرورگر
+function showBrowserInfo() {
+    const browserInfo = {
+        نام_مرورگر: navigator.userAgent.split(' ')[0],
+        زبان: navigator.language,
+        پلتفرم: navigator.platform,
+        آنلاین: navigator.onLine ? 'بله' : 'خیر',
+        عرض_صفحه: window.innerWidth + 'px',
+        ارتفاع_صفحه: window.innerHeight + 'px'
+    };
+    
+    let infoText = '';
+    for (let key in browserInfo) {
+        infoText += key.replace(/_/g, ' ') + ': ' + browserInfo[key] + '\\n';
+    }
+    
+    document.getElementById('browserInfo').innerHTML = infoText.replace(/\\n/g, '<br>');
+}
+
+// اجرای کدهای اولیه هنگام بارگذاری صفحه
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('📄 صفحه بارگذاری شد');
+    
+    // نمایش پیام خوش‌آمدگویی
+    document.getElementById('message').textContent = 'JavaScript با موفقیت بارگذاری شد! 🎉';
+    
+    // نمایش اطلاعات مرورگر
+    showBrowserInfo();
+    
+    // نمایش زمان فعلی
+    document.getElementById('result').textContent = 'زمان فعلی: ' + getCurrentDateTime();
+    
+    // به‌روزرسانی زمان هر ثانیه
+    setInterval(function() {
+        document.getElementById('result').textContent = 'زمان فعلی: ' + getCurrentDateTime();
+    }, 1000);
+});
+
+// رویداد کلیک دکمه تغییر پیام
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('changeBtn').addEventListener('click', function() {
+        console.log('🔄 دکمه تغییر پیام کلیک شد');
+        
+        const messages = [
+            'سلام دنیا! 🌍',
+            'JavaScript فوق‌العاده است! ⚡',
+            'برنامه‌نویسی لذت‌بخش است! 😊',
+            'به دنیای کد خوش آمدید! 💻',
+            'یادگیری هرگز تمام نمی‌شود! 📚'
+        ];
+        
+        const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+        const titleElement = document.getElementById('title');
+        
+        // انیمیشن تغییر
+        titleElement.classList.add('pulse');
+        titleElement.textContent = randomMessage;
+        
+        // حذف کلاس انیمیشن بعد از اتمام
+        setTimeout(() => {
+            titleElement.classList.remove('pulse');
+        }, 600);
+        
+        // نمایش پیام در کنسول
+        console.log('💬 پیام جدید: ' + randomMessage);
+    });
+});
+
+// رویداد کلیک دکمه Alert
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('alertBtn').addEventListener('click', function() {
+        console.log('🚨 دکمه Alert کلیک شد');
+        
+        const alertMessages = [
+            'این یک پیام Alert است! 📢',
+            'شما یک برنامه‌نویس هستید! 👨‍💻',
+            'JavaScript قدرتمند است! 💪',
+            'ادامه دهید، عالی پیش می‌روید! 🎯'
+        ];
+        
+        const randomAlert = alertMessages[Math.floor(Math.random() * alertMessages.length)];
+        alert(randomAlert);
+        
+        // نمایش در خروجی نیز
+        document.getElementById('result').innerHTML = 
+            'آخرین Alert: ' + randomAlert + '<br>' +
+            'زمان: ' + getCurrentDateTime();
+    });
+});
+
+// رویداد کلیک دکمه کنسول
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('consoleBtn').addEventListener('click', function() {
+        console.log('🖥️ دکمه کنسول کلیک شد');
+        
+        // انواع مختلف پیام‌های کنسول
+        console.log('📝 این یک پیام معمولی است');
+        console.warn('⚠️ این یک پیام هشدار است');
+        console.error('❌ این یک پیام خطا است (نگران نباشید، فقط تست است!)');
+        console.info('ℹ️ این یک پیام اطلاعاتی است');
+        
+        // نمایش جدول در کنسول
+        const sampleData = [
+            {نام: 'علی', سن: 25, شهر: 'تهران'},
+            {نام: 'سارا', سن: 30, شهر: 'اصفهان'},
+            {نام: 'محمد', سن: 28, شهر: 'شیراز'}
+        ];
+        console.table(sampleData);
+        
+        // نمایش پیام در صفحه
+        document.getElementById('result').innerHTML = 
+            'پیام‌های مختلف در کنسول نمایش داده شد! 🖥️<br>' +
+            'کنسول مرورگر را باز کنید تا آن‌ها را ببینید.<br>' +
+            'زمان: ' + getCurrentDateTime();
+        
+        console.log('✅ تمام پیام‌ها با موفقیت نمایش داده شدند');
+    });
+});
+
+// تابع برای نمایش پیام خوش‌آمدگویی هنگام بارگذاری
+window.addEventListener('load', function() {
+    console.log('🎊 صفحه کاملاً بارگذاری شد');
+    
+    // نمایش پیام خوش‌آمدگویی با تأخیر
+    setTimeout(function() {
+        console.log('🎉 خوش آمدید به دنیای JavaScript!');
+        
+        // اضافه کردن انیمیشن به عناصر
+        const elements = document.querySelectorAll('#output, #info');
+        elements.forEach(element => {
+            element.classList.add('fade-in');
+        });
+    }, 1000);
+});
+
+// تابع برای نمایش پیام هنگام خروج از صفحه
+window.addEventListener('beforeunload', function(event) {
+    console.log('👋 در حال خروج از صفحه...');
+    // event.returnValue = 'آیا مطمئن هستید که می‌خواهید صفحه را ترک کنید؟';
+});
+
+// تابع برای تشخیص تغییر اندازه صفحه
+window.addEventListener('resize', function() {
+    console.log('📐 اندازه صفحه تغییر کرد: ' + window.innerWidth + 'x' + window.innerHeight);
+    showBrowserInfo(); // به‌روزرسانی اطلاعات مرورگر
+});
+
+// تابع برای تشخیص کلیک در هر نقطه از صفحه
+document.addEventListener('click', function(event) {
+    console.log('🖱️ کلیک در موقعیت: (' + event.clientX + ', ' + event.clientY + ')');
+});
+
+// تابع برای تشخیص فشردن کلیدها
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        console.log('⌨️ کلید Enter فشرده شد');
+    } else if (event.key === 'Escape') {
+        console.log('⌨️ کلید Escape فشرده شد');
+    }
+});
+
+// نمایش پیام تبریک در کنسول
+console.log('%c🎉 تبریک! شما اولین برنامه JavaScript خود را اجرا کردید! 🎉', 
+    'color: #4CAF50; font-size: 16px; font-weight: bold;');
+
+console.log('%cنکات مفید:', 'color: #2196F3; font-size: 14px; font-weight: bold;');
+console.log('• از F12 برای باز کردن ابزارهای توسعه‌دهنده استفاده کنید');
+console.log('• تب Console را برای مشاهده پیام‌های JavaScript انتخاب کنید');
+console.log('• می‌توانید مستقیماً در کنسول کد JavaScript بنویسید و اجرا کنید');
+console.log('• برای پاک کردن کنسول از console.clear() استفاده کنید');`
+                }
+            });
+            
+            // Mark lesson as completed when user interacts with editor
+            let hasInteracted = false;
+            setTimeout(() => {
+                if (editor.isInitialized) {
+                    Object.keys(editor.editors).forEach(key => {
+                        editor.editors[key].on('change', () => {
+                            if (!hasInteracted) {
+                                hasInteracted = true;
+                                if (window.PersianWebTutorial) {
+                                    window.PersianWebTutorial.markLessonCompleted('lesson11');
+                                }
+                            }
+                        });
+                    });
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
+

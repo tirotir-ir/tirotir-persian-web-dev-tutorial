@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درس ۱۶: دستکاری DOM - آموزش توسعه وب</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/rtl.css">
+    <link rel="stylesheet" href="../../css/themes.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/editor.css">
+    <link rel="stylesheet" href="../../css/quiz.css">
+    
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="../../js/libs/codemirror/css/codemirror.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/monokai.min.css">
+    <link rel="stylesheet" href="../../js/libs/codemirror/theme/material.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-right">
+                    <h1 class="site-title">آموزش توسعه وب</h1>
+                    <div class="breadcrumb">
+                        <a href="../../index.html">صفحه اصلی</a>
+                        <span>/</span>
+                        <a href="#">JavaScript</a>
+                        <span>/</span>
+                        <span>درس ۱۶</span>
+                    </div>
+                </div>
+                <div class="header-left">
+                    <button class="theme-toggle" id="themeToggle">🌙</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h3>فهرست دروس</h3>
+                    <div class="search-box">
+                        <input type="text" placeholder="جستجو در دروس..." id="lessonSearch">
+                    </div>
+                </div>
+                
+                <nav class="lesson-nav">
+                    <div class="lesson-category">
+                        <h4>HTML</h4>
+                        <ul>
+                            <li><a href="../html/lesson1.html">📄 مقدمات HTML ۱</a></li>
+                            <li><a href="../html/lesson2.html">📝 متن و قالب‌بندی ۲</a></li>
+                            <li><a href="../html/lesson3.html">🔗 لینک‌ها و تصاویر ۳</a></li>
+                            <li><a href="../html/lesson4.html">📊 جداول و فرم‌ها ۴</a></li>
+                            <li><a href="../html/lesson5.html">🏗️ HTML معنایی ۵</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lesson-category">
+                        <h4>CSS</h4>
+                        <ul>
+                            <li><a href="../css/lesson6.html">🎨 مقدمات CSS ۶</a></li>
+                            <li><a href="../css/lesson7.html">📦 مدل جعبه و چیدمان ۷</a></li>
+                            <li><a href="../css/lesson8.html">🔤 تایپوگرافی و رنگ‌ها ۸</a></li>
+                            <li><a href="../css/lesson9.html">🌈 رنگ‌ها و پس‌زمینه ۹</a></li>
+                            <li><a href="../css/lesson10.html">📐 Flexbox و Grid ۱۰</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lesson-category">
+                        <h4>JavaScript</h4>
+                        <ul>
+                            <li><a href="lesson11.html">⚡ مقدمات JavaScript ۱۱</a></li>
+                            <li><a href="lesson12.html">🔧 متغیرها و انواع داده ۱۲</a></li>
+                            <li><a href="lesson13.html">🔀 عملگرها و شرط‌ها ۱۳</a></li>
+                            <li><a href="lesson14.html">🔄 حلقه‌ها و تکرار ۱۴</a></li>
+                            <li><a href="lesson15.html">⚙️ توابع ۱۵</a></li>
+                            <li><a href="lesson16.html" class="active">🎯 دستکاری DOM ۱۶</a></li>
+                            <li><a href="lesson17.html">🖱️ رویدادها و تعامل ۱۷</a></li>
+                            <li><a href="lesson18.html">📦 آرایه‌ها و اشیاء ۱۸</a></li>
+                            <li><a href="lesson19.html">🚀 مفاهیم پیشرفته ۱۹</a></li>
+                            <li><a href="lesson20.html">🎨 پروژه نهایی ۲۰</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                
+                <div class="sidebar-footer">
+                    <a href="../../reference/html-tags.html">📚 مرجع تگ‌های HTML</a>
+                    <a href="../../index.html">🏠 صفحه اصلی</a>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="content">
+                <article class="lesson">
+                    <header class="lesson-header">
+                        <h1>درس ۱۶: دستکاری DOM</h1>
+                        <p class="lesson-subtitle">یادگیری تعامل با عناصر HTML از طریق JavaScript</p>
+                        <div class="lesson-meta">
+                            <span class="lesson-number">درس ۱۶ از ۲۰</span>
+                            <div class="lesson-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 80%"></div>
+                                </div>
+                                <span class="progress-text">پیشرفت درس</span>
+                            </div>
+                        </div>
+                    </header>
+
+                    <div class="lesson-content">
+                        <section class="content-section">
+                            <h2>DOM چیست؟</h2>
+                            <p>DOM مخفف Document Object Model است و نمایش درختی از ساختار HTML صفحه وب می‌باشد. JavaScript از طریق DOM می‌تواند با عناصر HTML تعامل کرده، آن‌ها را تغییر دهد، حذف کند یا عناصر جدید اضافه کند.</p>
+                            
+                            <div class="info-box">
+                                <h3>قابلیت‌های دستکاری DOM:</h3>
+                                <ul>
+                                    <li>انتخاب و دسترسی به عناصر HTML</li>
+                                    <li>تغییر محتوا و ویژگی‌های عناصر</li>
+                                    <li>تغییر استایل‌ها و کلاس‌های CSS</li>
+                                    <li>اضافه کردن و حذف عناصر</li>
+                                    <li>پیمایش و جستجو در ساختار صفحه</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>انتخاب عناصر</h2>
+                            
+                            <h3>روش‌های مختلف انتخاب</h3>
+                            
+                            <h4>۱. انتخاب بر اساس ID</h4>
+                            <div class="code-example">
+                                <pre><code>const element = document.getElementById('myId');
+console.log(element);</code></pre>
+                            </div>
+
+                            <h4>۲. انتخاب بر اساس کلاس</h4>
+                            <div class="code-example">
+                                <pre><code>const elements = document.getElementsByClassName('myClass');
+console.log(elements); // HTMLCollection</code></pre>
+                            </div>
+
+                            <h4>۳. انتخاب بر اساس تگ</h4>
+                            <div class="code-example">
+                                <pre><code>const paragraphs = document.getElementsByTagName('p');
+console.log(paragraphs);</code></pre>
+                            </div>
+
+                            <h4>۴. انتخاب با CSS Selector</h4>
+                            <div class="code-example">
+                                <pre><code>// انتخاب اولین عنصر
+const firstElement = document.querySelector('.myClass');
+
+// انتخاب همه عناصر
+const allElements = document.querySelectorAll('.myClass');</code></pre>
+                            </div>
+                        </section>
+
+                        <!-- Interactive Code Editor -->
+                        <section class="editor-section">
+                            <h2>تمرین عملی: دستکاری DOM</h2>
+                            <p>در ادامه، انواع مختلف دستکاری DOM را تمرین کنید:</p>
+                            
+                            <div class="editor-container">
+                                <div class="editor-tabs">
+                                    <button class="tab-button active" data-tab="html">📄 HTML</button>
+                                    <button class="tab-button" data-tab="css">🎨 CSS</button>
+                                    <button class="tab-button" data-tab="js">⚡ JavaScript</button>
+                                </div>
+                                
+                                <div class="editor-controls">
+                                    <button class="btn btn-primary" id="runCode">▶️ اجرا</button>
+                                    <button class="btn btn-secondary" id="resetCode">🔄 بازنشانی</button>
+                                    <button class="btn btn-secondary" id="fullscreen">⛶ تمام صفحه</button>
+                                </div>
+
+                                <div class="editor-wrapper">
+                                    <div class="editor-panel">
+                                        <div class="editor-header">
+                                            <span>ویرایشگر کد</span>
+                                            <span class="editor-info">خط <span id="lineNumber">1</span>، ستون <span id="columnNumber">1</span></span>
+                                        </div>
+                                        
+                                        <div class="tab-content active" id="html-tab">
+                                            <textarea id="htmlEditor"><!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دستکاری DOM</title>
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            direction: rtl;
+            text-align: right;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        .demo-section {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-right: 4px solid #4CAF50;
+        }
+        .control-panel {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .highlight {
+            background: rgba(255, 255, 0, 0.3);
+            padding: 5px;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            background: #FF6B6B;
+            margin: 10px;
+            border-radius: 10px;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .list-item {
+            background: rgba(255,255,255,0.2);
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border-right: 3px solid #2196F3;
+        }
+        input, select {
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        .hidden {
+            display: none;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 دستکاری DOM با JavaScript</h1>
+        
+        <div class="demo-section">
+            <h2>تغییر محتوا و استایل</h2>
+            <div class="control-panel">
+                <button onclick="changeText()">تغییر متن</button>
+                <button onclick="changeStyle()">تغییر استایل</button>
+                <button onclick="toggleClass()">تغییر کلاس</button>
+                <button onclick="resetDemo()">بازنشانی</button>
+            </div>
+            <p id="demoText">این متن قابل تغییر است!</p>
+            <div id="demoBox" class="box"></div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>اضافه کردن و حذف عناصر</h2>
+            <div class="control-panel">
+                <input type="text" id="newItemText" placeholder="متن آیتم جدید">
+                <button onclick="addItem()">اضافه کردن</button>
+                <button onclick="removeLastItem()">حذف آخرین</button>
+                <button onclick="clearAllItems()">پاک کردن همه</button>
+            </div>
+            <div id="itemsList">
+                <div class="list-item">آیتم شماره ۱</div>
+                <div class="list-item">آیتم شماره ۲</div>
+                <div class="list-item">آیتم شماره ۳</div>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>کار با فرم‌ها</h2>
+            <div class="control-panel">
+                <input type="text" id="nameInput" placeholder="نام شما">
+                <select id="colorSelect">
+                    <option value="red">قرمز</option>
+                    <option value="blue">آبی</option>
+                    <option value="green">سبز</option>
+                    <option value="purple">بنفش</option>
+                </select>
+                <button onclick="processForm()">پردازش</button>
+                <button onclick="clearForm()">پاک کردن</button>
+            </div>
+            <div id="formResult"></div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>انیمیشن و جلوه‌های بصری</h2>
+            <div class="control-panel">
+                <button onclick="animateBoxes()">انیمیشن جعبه‌ها</button>
+                <button onclick="showHideElement()">نمایش/مخفی</button>
+                <button onclick="createRandomBoxes()">جعبه‌های تصادفی</button>
+            </div>
+            <div id="animationArea">
+                <div class="box" style="background: #FF6B6B;"></div>
+                <div class="box" style="background: #4ECDC4;"></div>
+                <div class="box" style="background: #45B7D1;"></div>
+                <div class="box" style="background: #96CEB4;"></div>
+            </div>
+            <div id="hiddenElement" class="hidden">
+                <p>این عنصر مخفی بود! 🎉</p>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>جستجو و فیلتر</h2>
+            <div class="control-panel">
+                <input type="text" id="searchInput" placeholder="جستجو در لیست..." oninput="filterItems()">
+                <button onclick="highlightText()">هایلایت متن</button>
+                <button onclick="removeHighlight()">حذف هایلایت</button>
+            </div>
+            <div id="searchableList">
+                <div class="list-item">سیب قرمز</div>
+                <div class="list-item">موز زرد</div>
+                <div class="list-item">پرتقال نارنجی</div>
+                <div class="list-item">انگور بنفش</div>
+                <div class="list-item">هلو صورتی</div>
+                <div class="list-item">کیوی سبز</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html></textarea>
+                                        </div>
+                                        
+                                        <div class="tab-content" id="css-tab">
+                                            <textarea id="cssEditor">/* استایل‌های اضافی برای DOM */
+.dom-element {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.dom-element:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.selected {
+    border: 3px solid #FFD700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.slide-in {
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.bounce {
+    animation: bounce 0.6s ease-in-out;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    25% { transform: translateY(-10px); }
+    50% { transform: translateY(0); }
+    75% { transform: translateY(-5px); }
+}
+
+.pulse {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.rotate {
+    animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}</textarea>
+                                        </div>
+                                        
+                                        <div class="tab-content" id="js-tab">
+                                            <textarea id="jsEditor">// متغیرهای سراسری
+let itemCounter = 4;
+let isHidden = true;
+
+// تغییر محتوا و استایل
+function changeText() {
+    const textElement = document.getElementById('demoText');
+    const texts = [
+        'متن جدید با JavaScript تغییر کرد! 🎉',
+        'DOM دستکاری شد! ✨',
+        'JavaScript قدرتمند است! 💪',
+        'این متن قابل تغییر است!'
+    ];
+    
+    const randomText = texts[Math.floor(Math.random() * texts.length)];
+    textElement.textContent = randomText;
+    textElement.classList.add('fade-in');
+    
+    setTimeout(() => {
+        textElement.classList.remove('fade-in');
+    }, 500);
+}
+
+function changeStyle() {
+    const box = document.getElementById('demoBox');
+    const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FECA57', '#FF9FF3'];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    
+    box.style.backgroundColor = randomColor;
+    box.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
+    box.style.borderRadius = Math.random() * 50 + 'px';
+}
+
+function toggleClass() {
+    const textElement = document.getElementById('demoText');
+    textElement.classList.toggle('highlight');
+}
+
+function resetDemo() {
+    const textElement = document.getElementById('demoText');
+    const box = document.getElementById('demoBox');
+    
+    textElement.textContent = 'این متن قابل تغییر است!';
+    textElement.classList.remove('highlight');
+    
+    box.style.backgroundColor = '#FF6B6B';
+    box.style.transform = 'rotate(0deg)';
+    box.style.borderRadius = '10px';
+}
+
+// اضافه کردن و حذف عناصر
+function addItem() {
+    const input = document.getElementById('newItemText');
+    const itemsList = document.getElementById('itemsList');
+    
+    if (input.value.trim() === '') {
+        alert('لطفا متنی وارد کنید');
+        return;
+    }
+    
+    const newItem = document.createElement('div');
+    newItem.className = 'list-item slide-in';
+    newItem.textContent = input.value;
+    
+    // اضافه کردن قابلیت حذف با کلیک
+    newItem.onclick = function() {
+        this.remove();
+    };
+    
+    itemsList.appendChild(newItem);
+    input.value = '';
+    itemCounter++;
+}
+
+function removeLastItem() {
+    const itemsList = document.getElementById('itemsList');
+    const items = itemsList.querySelectorAll('.list-item');
+    
+    if (items.length > 0) {
+        items[items.length - 1].remove();
+    }
+}
+
+function clearAllItems() {
+    const itemsList = document.getElementById('itemsList');
+    itemsList.innerHTML = '';
+}
+
+// کار با فرم‌ها
+function processForm() {
+    const nameInput = document.getElementById('nameInput');
+    const colorSelect = document.getElementById('colorSelect');
+    const result = document.getElementById('formResult');
+    
+    if (nameInput.value.trim() === '') {
+        result.innerHTML = '<p style="color: #FF6B6B;">لطفا نام خود را وارد کنید</p>';
+        return;
+    }
+    
+    const name = nameInput.value;
+    const color = colorSelect.value;
+    const colorNames = {
+        red: 'قرمز',
+        blue: 'آبی', 
+        green: 'سبز',
+        purple: 'بنفش'
+    };
+    
+    result.innerHTML = `
+        <div class="list-item fade-in" style="border-right-color: ${color};">
+            <strong>نام:</strong> ${name}<br>
+            <strong>رنگ مورد علاقه:</strong> ${colorNames[color]}
+        </div>
+    `;
+}
+
+function clearForm() {
+    document.getElementById('nameInput').value = '';
+    document.getElementById('colorSelect').selectedIndex = 0;
+    document.getElementById('formResult').innerHTML = '';
+}
+
+// انیمیشن و جلوه‌های بصری
+function animateBoxes() {
+    const boxes = document.querySelectorAll('#animationArea .box');
+    
+    boxes.forEach((box, index) => {
+        setTimeout(() => {
+            box.classList.add('bounce');
+            setTimeout(() => {
+                box.classList.remove('bounce');
+            }, 600);
+        }, index * 200);
+    });
+}
+
+function showHideElement() {
+    const element = document.getElementById('hiddenElement');
+    
+    if (isHidden) {
+        element.classList.remove('hidden');
+        element.classList.add('fade-in');
+        isHidden = false;
+    } else {
+        element.classList.add('hidden');
+        element.classList.remove('fade-in');
+        isHidden = true;
+    }
+}
+
+function createRandomBoxes() {
+    const area = document.getElementById('animationArea');
+    
+    // پاک کردن جعبه‌های قبلی
+    area.innerHTML = '';
+    
+    const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FECA57', '#FF9FF3'];
+    
+    for (let i = 0; i < 6; i++) {
+        const box = document.createElement('div');
+        box.className = 'box fade-in';
+        box.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        box.style.animationDelay = (i * 0.1) + 's';
+        
+        // اضافه کردن تعامل
+        box.onclick = function() {
+            this.classList.toggle('pulse');
+        };
+        
+        area.appendChild(box);
+    }
+}
+
+// جستجو و فیلتر
+function filterItems() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    const items = document.querySelectorAll('#searchableList .list-item');
+    
+    items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        if (text.includes(searchTerm)) {
+            item.style.display = 'block';
+            item.classList.add('fade-in');
+        } else {
+            item.style.display = 'none';
+            item.classList.remove('fade-in');
+        }
+    });
+}
+
+function highlightText() {
+    const searchTerm = document.getElementById('searchInput').value;
+    const items = document.querySelectorAll('#searchableList .list-item');
+    
+    if (searchTerm.trim() === '') {
+        alert('لطفا متنی برای هایلایت وارد کنید');
+        return;
+    }
+    
+    items.forEach(item => {
+        const text = item.textContent;
+        const highlightedText = text.replace(
+            new RegExp(searchTerm, 'gi'),
+            `<span class="highlight">${searchTerm}</span>`
+        );
+        item.innerHTML = highlightedText;
+    });
+}
+
+function removeHighlight() {
+    const items = document.querySelectorAll('#searchableList .list-item');
+    
+    items.forEach(item => {
+        item.innerHTML = item.textContent;
+    });
+}
+
+// رویدادهای اولیه
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('صفحه دستکاری DOM آماده است!');
+    
+    // اضافه کردن رویداد کلیک به جعبه‌ها
+    const boxes = document.querySelectorAll('.box');
+    boxes.forEach(box => {
+        box.addEventListener('click', function() {
+            this.classList.toggle('rotate');
+        });
+    });
+});</textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="preview-panel">
+                                        <div class="preview-header">
+                                            <span>نمایش زنده</span>
+                                            <div class="preview-controls">
+                                                <button class="btn btn-sm" id="refreshPreview">🔄</button>
+                                                <button class="btn btn-sm" id="openInNewTab">🔗</button>
+                                            </div>
+                                        </div>
+                                        <iframe id="preview" src="about:blank"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>تغییر محتوا و ویژگی‌ها</h2>
+                            
+                            <h3>تغییر محتوای متنی</h3>
+                            <div class="code-example">
+                                <pre><code>// تغییر متن
+element.textContent = "متن جدید";
+
+// تغییر HTML
+element.innerHTML = "&lt;strong&gt;متن ضخیم&lt;/strong&gt;";
+
+// دریافت محتوا
+const content = element.textContent;</code></pre>
+                            </div>
+
+                            <h3>کار با ویژگی‌ها (Attributes)</h3>
+                            <div class="code-example">
+                                <pre><code>// تنظیم ویژگی
+element.setAttribute('class', 'new-class');
+element.setAttribute('data-id', '123');
+
+// دریافت ویژگی
+const className = element.getAttribute('class');
+
+// حذف ویژگی
+element.removeAttribute('data-id');
+
+// بررسی وجود ویژگی
+if (element.hasAttribute('class')) {
+    console.log('کلاس دارد');
+}</code></pre>
+                            </div>
+
+                            <h3>کار با کلاس‌های CSS</h3>
+                            <div class="code-example">
+                                <pre><code>// اضافه کردن کلاس
+element.classList.add('new-class');
+
+// حذف کلاس
+element.classList.remove('old-class');
+
+// تغییر وضعیت کلاس
+element.classList.toggle('active');
+
+// بررسی وجود کلاس
+if (element.classList.contains('active')) {
+    console.log('کلاس active دارد');
+}</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>تغییر استایل‌ها</h2>
+                            
+                            <h3>تغییر مستقیم استایل</h3>
+                            <div class="code-example">
+                                <pre><code>// تغییر رنگ
+element.style.color = 'red';
+element.style.backgroundColor = '#f0f0f0';
+
+// تغییر اندازه
+element.style.width = '200px';
+element.style.height = '100px';
+
+// تغییر موقعیت
+element.style.position = 'absolute';
+element.style.top = '50px';
+element.style.left = '100px';
+
+// چندین استایل همزمان
+Object.assign(element.style, {
+    color: 'blue',
+    fontSize: '18px',
+    fontWeight: 'bold'
+});</code></pre>
+                            </div>
+
+                            <h3>دریافت استایل‌های محاسبه شده</h3>
+                            <div class="code-example">
+                                <pre><code>const computedStyle = window.getComputedStyle(element);
+const color = computedStyle.color;
+const fontSize = computedStyle.fontSize;
+
+console.log('رنگ فعلی:', color);
+console.log('اندازه فونت:', fontSize);</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>ایجاد و حذف عناصر</h2>
+                            
+                            <h3>ایجاد عناصر جدید</h3>
+                            <div class="code-example">
+                                <pre><code>// ایجاد عنصر جدید
+const newDiv = document.createElement('div');
+newDiv.textContent = 'عنصر جدید';
+newDiv.className = 'new-element';
+
+// ایجاد عنصر با HTML
+const container = document.createElement('div');
+container.innerHTML = `
+    &lt;h3&gt;عنوان&lt;/h3&gt;
+    &lt;p&gt;این یک پاراگراف است&lt;/p&gt;
+`;
+
+// اضافه کردن به صفحه
+document.body.appendChild(newDiv);
+
+// اضافه کردن به عنصر خاص
+const parent = document.getElementById('container');
+parent.appendChild(container);</code></pre>
+                            </div>
+
+                            <h3>روش‌های مختلف اضافه کردن</h3>
+                            <div class="code-example">
+                                <pre><code>const parent = document.getElementById('parent');
+const newElement = document.createElement('p');
+newElement.textContent = 'پاراگراف جدید';
+
+// اضافه کردن در انتها
+parent.appendChild(newElement);
+
+// اضافه کردن در ابتدا
+parent.insertBefore(newElement, parent.firstChild);
+
+// اضافه کردن قبل از عنصر خاص
+const referenceElement = document.getElementById('reference');
+parent.insertBefore(newElement, referenceElement);
+
+// اضافه کردن با insertAdjacentHTML
+parent.insertAdjacentHTML('beforeend', '&lt;p&gt;HTML جدید&lt;/p&gt;');</code></pre>
+                            </div>
+
+                            <h3>حذف عناصر</h3>
+                            <div class="code-example">
+                                <pre><code>// حذف عنصر
+element.remove();
+
+// حذف از والد
+parent.removeChild(element);
+
+// حذف همه فرزندان
+parent.innerHTML = '';
+
+// حذف با شرط
+const items = document.querySelectorAll('.item');
+items.forEach(item => {
+    if (item.textContent.includes('حذف')) {
+        item.remove();
+    }
+});</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>پیمایش DOM</h2>
+                            
+                            <h3>دسترسی به عناصر مرتبط</h3>
+                            <div class="code-example">
+                                <pre><code>const element = document.getElementById('myElement');
+
+// والد
+const parent = element.parentElement;
+const parentNode = element.parentNode;
+
+// فرزندان
+const children = element.children; // HTMLCollection
+const childNodes = element.childNodes; // NodeList (شامل text nodes)
+const firstChild = element.firstElementChild;
+const lastChild = element.lastElementChild;
+
+// خواهر و برادر
+const nextSibling = element.nextElementSibling;
+const prevSibling = element.previousElementSibling;</code></pre>
+                            </div>
+
+                            <h3>جستجو در DOM</h3>
+                            <div class="code-example">
+                                <pre><code>// جستجو در فرزندان
+const childElement = parent.querySelector('.child-class');
+const allChildren = parent.querySelectorAll('.child-class');
+
+// جستجو در والدین
+function findParentWithClass(element, className) {
+    let current = element.parentElement;
+    while (current && !current.classList.contains(className)) {
+        current = current.parentElement;
+    }
+    return current;
+}
+
+// استفاده
+const parentWithClass = findParentWithClass(element, 'container');</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>کار با فرم‌ها</h2>
+                            
+                            <h3>دسترسی به مقادیر فرم</h3>
+                            <div class="code-example">
+                                <pre><code>// دریافت مقدار input
+const nameInput = document.getElementById('name');
+const name = nameInput.value;
+
+// تنظیم مقدار
+nameInput.value = 'نام جدید';
+
+// کار با checkbox
+const checkbox = document.getElementById('agree');
+const isChecked = checkbox.checked;
+checkbox.checked = true;
+
+// کار با select
+const select = document.getElementById('country');
+const selectedValue = select.value;
+const selectedText = select.options[select.selectedIndex].text;</code></pre>
+                            </div>
+
+                            <h3>اعتبارسنجی فرم</h3>
+                            <div class="code-example">
+                                <pre><code>function validateForm() {
+    const form = document.getElementById('myForm');
+    const inputs = form.querySelectorAll('input[required]');
+    let isValid = true;
+    
+    inputs.forEach(input => {
+        if (input.value.trim() === '') {
+            input.style.borderColor = 'red';
+            isValid = false;
+        } else {
+            input.style.borderColor = '';
+        }
+    });
+    
+    return isValid;
+}
+
+// استفاده
+if (validateForm()) {
+    console.log('فرم معتبر است');
+} else {
+    console.log('لطفا فیلدهای ضروری را پر کنید');
+}</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <h2>بهترین شیوه‌ها</h2>
+                            
+                            <div class="tip-box">
+                                <h3>💡 نکات مهم:</h3>
+                                <ul>
+                                    <li><strong>کارایی:</strong> از querySelector به جای getElementById استفاده کنید</li>
+                                    <li><strong>کش کردن:</strong> عناصر پرکاربرد را در متغیر ذخیره کنید</li>
+                                    <li><strong>ایمنی:</strong> همیشه وجود عنصر را بررسی کنید</li>
+                                    <li><strong>تمیزی:</strong> از innerHTML برای محتوای HTML استفاده کنید</li>
+                                    <li><strong>دسترسی:</strong> ویژگی‌های accessibility را رعایت کنید</li>
+                                </ul>
+                            </div>
+
+                            <h3>مثال بهینه</h3>
+                            <div class="code-example">
+                                <pre><code>// کش کردن عناصر
+const elements = {
+    container: document.getElementById('container'),
+    button: document.querySelector('.submit-btn'),
+    inputs: document.querySelectorAll('input')
+};
+
+// تابع امن برای دستکاری DOM
+function safeUpdateElement(selector, content) {
+    const element = document.querySelector(selector);
+    if (element) {
+        element.textContent = content;
+        return true;
+    }
+    console.warn(`عنصر با selector "${selector}" پیدا نشد`);
+    return false;
+}
+
+// استفاده
+safeUpdateElement('#status', 'بروزرسانی شد');
+
+// تابع برای ایجاد عنصر با ویژگی‌ها
+function createElement(tag, attributes = {}, content = '') {
+    const element = document.createElement(tag);
+    
+    Object.entries(attributes).forEach(([key, value]) => {
+        if (key === 'className') {
+            element.className = value;
+        } else {
+            element.setAttribute(key, value);
+        }
+    });
+    
+    if (content) {
+        element.textContent = content;
+    }
+    
+    return element;
+}
+
+// استفاده
+const newButton = createElement('button', {
+    className: 'btn btn-primary',
+    'data-action': 'submit',
+    id: 'submitBtn'
+}, 'ارسال');</code></pre>
+                            </div>
+                        </section>
+
+                        <!-- Quiz Section -->
+                        <section class="quiz-section">
+                            <h2>آزمون درس ۱۶</h2>
+                            <div class="quiz-container" id="lesson16Quiz">
+                                <div class="quiz-question active" data-question="1">
+                                    <h3>سوال ۱: کدام متد برای انتخاب همه عناصر با کلاس خاص استفاده می‌شود؟</h3>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q1" value="a"> getElementById</label>
+                                        <label><input type="radio" name="q1" value="b"> getElementsByClassName</label>
+                                        <label><input type="radio" name="q1" value="c"> querySelector</label>
+                                        <label><input type="radio" name="q1" value="d"> querySelectorAll</label>
+                                    </div>
+                                </div>
+
+                                <div class="quiz-question" data-question="2">
+                                    <h3>سوال ۲: تفاوت textContent و innerHTML چیست؟</h3>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q2" value="a"> هیچ تفاوتی ندارند</label>
+                                        <label><input type="radio" name="q2" value="b"> innerHTML فقط متن و textContent HTML را پردازش می‌کند</label>
+                                        <label><input type="radio" name="q2" value="c"> textContent فقط متن و innerHTML HTML را پردازش می‌کند</label>
+                                        <label><input type="radio" name="q2" value="d"> هر دو فقط متن را پردازش می‌کنند</label>
+                                    </div>
+                                </div>
+
+                                <div class="quiz-question" data-question="3">
+                                    <h3>سوال ۳: کدام متد برای حذف عنصر از DOM استفاده می‌شود؟</h3>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q3" value="a"> delete</label>
+                                        <label><input type="radio" name="q3" value="b"> remove</label>
+                                        <label><input type="radio" name="q3" value="c"> destroy</label>
+                                        <label><input type="radio" name="q3" value="d"> clear</label>
+                                    </div>
+                                </div>
+
+                                <div class="quiz-navigation">
+                                    <button class="btn btn-secondary" id="prevQuestion">سوال قبلی</button>
+                                    <button class="btn btn-secondary" id="nextQuestion">سوال بعدی</button>
+                                    <button class="btn btn-primary" id="submitQuiz">ارسال پاسخ‌ها</button>
+                                </div>
+
+                                <div class="quiz-result" id="quizResult"></div>
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <nav class="lesson-navigation">
+                            <a href="lesson15.html" class="nav-button prev">
+                                <span>← درس قبلی</span>
+                                <small>توابع</small>
+                            </a>
+                            <a href="lesson17.html" class="nav-button next">
+                                <span>درس بعدی →</span>
+                                <small>رویدادها و تعامل</small>
+                            </a>
+                        </nav>
+                    </div>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="../../js/libs/codemirror/js/codemirror.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/xml.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/css.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/javascript.min.js"></script>
+    <script src="../../js/libs/codemirror/mode/htmlmixed.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/matchbrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/closebrackets.min.js"></script>
+    <script src="../../js/libs/codemirror/addon/active-line.min.js"></script>
+    
+    <script src="../../js/main.js"></script>
+    <script src="../../js/storage.js"></script>
+    <script src="../../js/editor.js"></script>
+    <script src="../../js/quiz.js"></script>
+
+    <script>
+        // Initialize lesson
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeLesson('lesson16');
+            
+            // Quiz answers
+            const quizAnswers = {
+                q1: 'd', // querySelectorAll
+                q2: 'c', // textContent فقط متن و innerHTML HTML را پردازش می‌کند
+                q3: 'b'  // remove
+            };
+            
+            initializeQuiz('lesson16Quiz', quizAnswers);
+        });
+    </script>
+</body>
+</html>
+

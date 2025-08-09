@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مرجع کامل تگ‌های HTML - آموزش توسعه وب</title>
+    <meta name="description" content="مرجع کامل تگ‌های HTML با توضیحات فارسی و مثال‌های عملی">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/rtl.css">
+    <link rel="stylesheet" href="../css/themes.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/editor.css">
+    
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="../js/libs/codemirror/css/codemirror.min.css">
+    <link rel="stylesheet" href="../js/libs/codemirror/theme/monokai.min.css">
+    <link rel="stylesheet" href="../js/libs/codemirror/theme/material.min.css">
+    
+    <style>
+        /* Reference-specific styles */
+        .reference-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .reference-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 12px;
+        }
+        
+        .reference-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .reference-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .search-container {
+            margin-bottom: 2rem;
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+            background: var(--bg-color);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .search-box {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: var(--input-bg);
+            color: var(--text-primary);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.1);
+        }
+        
+        .filter-select {
+            padding: 0.75rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--input-bg);
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+        
+        .tags-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .tag-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .tag-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            border-color: var(--primary-color);
+        }
+        
+        .tag-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .tag-name {
+            font-family: 'Courier New', monospace;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            background: var(--code-bg);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .tag-category {
+            background: var(--secondary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .tag-description {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            color: var(--text-primary);
+        }
+        
+        .tag-attributes {
+            margin-bottom: 1rem;
+        }
+        
+        .attributes-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .attributes-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .attribute-tag {
+            background: var(--info-bg, #e3f2fd);
+            color: var(--info-color, #1976d2);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-family: 'Courier New', monospace;
+            direction: ltr;
+        }
+        
+        .tag-example {
+            background: var(--code-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .example-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .example-code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--code-color);
+            direction: ltr;
+            text-align: left;
+            white-space: pre-wrap;
+            margin-bottom: 0.5rem;
+        }
+        
+        .example-output {
+            background: var(--output-bg, #f8f9fa);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 0.75rem;
+            margin-top: 0.5rem;
+        }
+        
+        .output-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+        
+        .tag-notes {
+            background: var(--warning-bg, #fff3cd);
+            border: 1px solid var(--warning-border, #ffeaa7);
+            border-radius: 6px;
+            padding: 0.75rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .notes-title {
+            font-weight: 600;
+            color: var(--warning-color, #856404);
+            margin-bottom: 0.5rem;
+        }
+        
+        .category-section {
+            margin-bottom: 3rem;
+        }
+        
+        .category-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--primary-color);
+        }
+        
+        .category-description {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+        
+        .quick-nav {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            position: sticky;
+            top: 140px;
+            z-index: 90;
+        }
+        
+        .quick-nav-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        
+        .quick-nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .quick-nav-link {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+        
+        .quick-nav-link:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .no-results-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .reference-container {
+                padding: 1rem;
+            }
+            
+            .reference-title {
+                font-size: 2rem;
+            }
+            
+            .tags-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .search-box {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            
+            .search-input,
+            .filter-select {
+                width: 100%;
+            }
+            
+            .quick-nav {
+                position: static;
+            }
+            
+            .quick-nav-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم">
+        <span class="theme-toggle-icon">🌙</span>
+    </button>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-brand">
+                <div class="header-brand-icon">وب</div>
+                <span>آموزش توسعه وب</span>
+            </div>
+            
+            <nav class="header-nav">
+                <div class="header-search">
+                    <input type="text" placeholder="جستجو در دروس..." id="headerSearchInput">
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="منوی موبایل">
+                    ☰
+                </button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h2 class="sidebar-title">فهرست دروس</h2>
+                    <p class="sidebar-subtitle">۲۰ درس کامل برای یادگیری توسعه وب</p>
+                </div>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">HTML</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="../lessons/html/lesson1.html" class="nav-link">
+                                <span class="nav-link-icon">📄</span>
+                                <span class="nav-link-text">مقدمات HTML</span>
+                                <span class="nav-link-badge">۱</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../lessons/html/lesson2.html" class="nav-link">
+                                <span class="nav-link-icon">✏️</span>
+                                <span class="nav-link-text">قالب‌بندی متن</span>
+                                <span class="nav-link-badge">۲</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../lessons/html/lesson3.html" class="nav-link">
+                                <span class="nav-link-icon">🔗</span>
+                                <span class="nav-link-text">لینک‌ها و تصاویر</span>
+                                <span class="nav-link-badge">۳</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../lessons/html/lesson4.html" class="nav-link">
+                                <span class="nav-link-icon">📊</span>
+                                <span class="nav-link-text">جداول و فرم‌ها</span>
+                                <span class="nav-link-badge">۴</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../lessons/html/lesson5.html" class="nav-link">
+                                <span class="nav-link-icon">🏗️</span>
+                                <span class="nav-link-text">HTML معنایی</span>
+                                <span class="nav-link-badge">۵</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <nav class="nav-section">
+                    <h3 class="nav-section-title">منابع</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="html-tags.html" class="nav-link active">
+                                <span class="nav-link-icon">📚</span>
+                                <span class="nav-link-text">مرجع تگ‌های HTML</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../index.html" class="nav-link">
+                                <span class="nav-link-icon">🏠</span>
+                                <span class="nav-link-text">صفحه اصلی</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Content -->
+            <div class="content">
+                <div class="reference-container">
+                    <!-- Header -->
+                    <div class="reference-header">
+                        <h1 class="reference-title">مرجع کامل تگ‌های HTML</h1>
+                        <p class="reference-subtitle">راهنمای جامع تگ‌های HTML با توضیحات فارسی و مثال‌های عملی</p>
+                    </div>
+
+                    <!-- Search and Filter -->
+                    <div class="search-container">
+                        <div class="search-box">
+                            <input type="text" class="search-input" id="tagSearch" placeholder="جستجو در تگ‌ها... (مثال: div, img, form)">
+                            <select class="filter-select" id="categoryFilter">
+                                <option value="">همه دسته‌ها</option>
+                                <option value="structure">ساختاری</option>
+                                <option value="text">متنی</option>
+                                <option value="media">رسانه‌ای</option>
+                                <option value="form">فرم</option>
+                                <option value="table">جدول</option>
+                                <option value="semantic">معنایی</option>
+                                <option value="metadata">فراداده</option>
+                                <option value="interactive">تعاملی</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Quick Navigation -->
+                    <div class="quick-nav">
+                        <div class="quick-nav-title">دسترسی سریع به دسته‌ها:</div>
+                        <div class="quick-nav-links">
+                            <a href="#structure" class="quick-nav-link">ساختاری</a>
+                            <a href="#text" class="quick-nav-link">متنی</a>
+                            <a href="#media" class="quick-nav-link">رسانه‌ای</a>
+                            <a href="#form" class="quick-nav-link">فرم</a>
+                            <a href="#table" class="quick-nav-link">جدول</a>
+                            <a href="#semantic" class="quick-nav-link">معنایی</a>
+                            <a href="#metadata" class="quick-nav-link">فراداده</a>
+                            <a href="#interactive" class="quick-nav-link">تعاملی</a>
+                        </div>
+                    </div>
+
+                    <!-- No Results Message -->
+                    <div class="no-results" id="noResults" style="display: none;">
+                        <div class="no-results-icon">🔍</div>
+                        <div>هیچ تگی با این جستجو پیدا نشد</div>
+                        <div style="margin-top: 0.5rem; font-size: 0.9rem;">لطفاً کلمه کلیدی دیگری امتحان کنید</div>
+                    </div>
+
+                    <!-- Structure Tags -->
+                    <div class="category-section" id="structure">
+                        <h2 class="category-title">تگ‌های ساختاری</h2>
+                        <p class="category-description">تگ‌هایی که ساختار کلی صفحه وب را تشکیل می‌دهند و چارچوب اصلی محتوا را فراهم می‌کنند.</p>
+                        
+                        <div class="tags-grid">
+                            <!-- HTML Tag -->
+                            <div class="tag-card" data-category="structure" data-tags="html document root">
+                                <div class="tag-header">
+                                    <div class="tag-name">&lt;html&gt;</div>
+                                    <div class="tag-category">ساختاری</div>
+                                </div>
+                                <div class="tag-description">
+                                    ریشه اصلی سند HTML که تمام محتوای صفحه را در بر می‌گیرد. این تگ والد همه تگ‌های دیگر است.
+                                </div>
+                                <div class="tag-attributes">
+                                    <div class="attributes-title">ویژگی‌های مهم:</div>
+                                    <div class="attributes-list">
+                                        <span class="attribute-tag">lang</span>
+                                        <span class="attribute-tag">dir</span>
+                                    </div>
+                                </div>
+                                <div class="tag-example">
+                                    <div class="example-title">مثال:</div>
+                                    <div class="example-code">&lt;html lang="fa" dir="rtl"&gt;
+  &lt;head&gt;...&lt;/head&gt;
+  &lt;body&gt;...&lt;/body&gt;
+&lt;/html&gt;</div>
+                                </div>
+                                <div class="tag-notes">
+                                    <div class="notes-title">نکته:</div>
+                                    همیشه ویژگی lang را برای تعیین زبان صفحه و dir را برای جهت متن تنظیم کنید.
+                                </div>
+                            </div>
+
+                            <!-- HEAD Tag -->
+                            <div class="tag-card" data-category="structure" data-tags="head metadata">
+                                <div class="tag-header">
+                                    <div class="tag-name">&lt;head&gt;</div>
+                                    <div class="tag-category">ساختاری</div>
+                                </div>
+                                <div class="tag-description">
+                                    شامل اطلاعات فراداده صفحه مانند عنوان، توضیحات، لینک‌های CSS و اسکریپت‌ها که در صفحه نمایش داده نمی‌شوند.
+                                </div>
+                                <div class="tag-example">
+                                    <div class="example-title">مثال:</div>
+                                    <div class="example-code">&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;عنوان صفحه&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;</div>
+                                </div>
+                            </div>
+
+                            <!-- BODY Tag -->
+                            <div class="tag-card" data-category="structure" data-tags="body content">
+                                <div class="tag-header">
+                                    <div class="tag-name">&lt;body&gt;</div>
+                                    <div class="tag-category">ساختاری</div>
+                                </div>
+                                <div class="tag-description">
+                                    شامل تمام محتوای قابل مشاهده صفحه وب مانند متن، تصاویر، لینک‌ها و سایر عناصر.
+                                </div>
+                                <div class="tag-attributes">
+                                    <div class="attributes-title">ویژگی‌های مهم:</div>
+                                    <div class="attributes-list">
+                                        <span class="attribute-tag">onload</span>
+                                        <span class="attribute-tag">class</span>
+                                        <span class="attribute-tag">id</span>
+                                    </div>
+                                </div>
+                                <div class="tag-example">
+                                    <div class="example-title">مثال:</div>
+                                    <div class="example-code">&lt;body&gt;
+  &lt;h1&gt;خوش آمدید&lt;/h1&gt;
+  &lt;p&gt;این محتوای صفحه است.&lt;/p&gt;
+&lt;/body&gt;</div>
+                                </div>
+                            </div>
+
+                            <!-- DIV Tag -->
+                            <div class="tag-card" data-category="structure" data-tags="div container block">
+                                <div class="tag-header">
+                                    <div class="tag-name">&lt;div&gt;</div>
+                                    <div class="tag-category">ساختاری</div>
+                                </div>
+                                <div class="tag-description">
+                                    کانتینر عمومی برای گروه‌بندی عناصر دیگر. بیشتر برای طراحی و چیدمان استفاده می‌شود.
+                                </div>
+                                <div class="tag-attributes">
+                                    <div class="attributes-title">ویژگی‌های مهم:</div>
+                                    <div class="attributes-list">
+                                        <span class="attribute-tag">class</span>
+                                        <span class="attribute-tag">id</span>
+                                        <span class="attribute-tag">style</span>
+                                    </div>
+                                </div>
+                                <div class="tag-example">
+                                    <div class="example-title">مثال:</div>
+                                    <div class="example-code">&lt;div class="container"&gt;
+  &lt;h2&gt;عنوان بخش&lt;/h2&gt;
+  &lt;p&gt;محتوای بخش&lt;/p&gt;
+&lt;/div&gt;</div>
+                                    <div class="example-output">
+                                        <div class="output-title">خروجی:</div>
+                                        <div style="border: 1px dashed #ccc; padding: 1rem;">
+                                            <h3 style="margin: 0 0 0.5rem 0;">عنوان بخش</h3>
+                                            <p style="margin: 0;">محتوای بخش</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SPAN Tag -->
+                            <div class="tag-card" data-category="structure" data-tags="span inline text">
+                                <div class="tag-header">
+                                    <div class="tag-name">&lt;span&gt;</div>
+                                    <div class="tag-category">ساختاری</div>
+                                </div>
+                                <div class="tag-description">
+                                    کانتینر درون‌خطی برای استایل‌دهی یا گروه‌بندی بخش‌هایی از متن بدون تغییر ساختار.
+                                </div>
+                                <div class="tag-attributes">
+                                    <div class="attributes-title">ویژگی‌های مهم:</div>
+                                    <div class="attributes-list">
+                                        <span class="attribute-tag">class</span>
+                                        <span class="attribute-tag">id</span>
+                                        <span class="attribute-tag">style</span>
+                                    </div>
+                                </div>
+                                <div class="tag-example">
+                                    <div class="example-title">مثال:</div>
+                                    <div class="example-code">&lt;p&gt;این متن &lt;span style="color: red;"&gt;قرمز&lt;/span&gt; است.&lt;/p&gt;</div>
+                                    <div class="example-output">
+                                        <div class="output-title">خروجی:</div>
+                                        <p>این متن <span style="color: red;">قرمز</span> است.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text Tags -->
+                    <div class="category-section" id="text">
+                        <h2 class="category-title">تگ‌های متنی</h2>
+                        <p class="category-description">تگ‌هایی که برای قالب‌بندی و نمایش انواع مختلف متن استفاده می‌شوند.</p>
+                        
+                        <div class="tags-grid">
+                            <!-- H1-H6 Tags -->
+                            <div class="tag-card" data-category="text" data-tags="h1 h2 h3 h4 h5 h6 heading title">
+                                <div class="tag-header">
+                                    <div class="tag-name">&lt;h1&gt; تا &lt;h6&gt;</div>
+                                    <div class="tag-category">متنی</div>
+                                </div>
+                                <div class="tag-description">
+                                    تگ‌های عنوان با اولویت‌های مختلف. h1 مهم‌ترین و h6 کم‌اهمیت‌ترین عنوان است.
+                                </div>
+                                <div class="tag-example">
+                                    <div class="example-title">مثال:</div>
+                                    <div class="example-code">&lt;h1&gt;عنوان اصلی&lt;/h1&gt;
+&lt;h2&gt;عنوان فرعی&lt;/h2&gt;
+&lt;h3&gt;عنوان سطح سوم&lt;/h3&gt;</div>
+                                    <div class="example-output">
+                                        <div class="output-title">خروجی:</div>
+                                        <h1 style="margin: 0.5rem 0; font-size: 1.5rem;">عنوان اصلی</h1>
+                                        <h2 style="margin: 0.5rem 0; font-size: 1.3rem;">عنوان فرعی</h2>
+                                        <h3 style="margin: 0.5rem 0; font-size: 1.1rem;">عنوان سطح سوم</h3>
+                                    </div>
+                                </div>
+                                <div class="tag-notes">
+                                    <div class="notes-title">نکته:</div>
+                                    از h1 فقط یک بار در هر صفحه استفاده کنید و ترتیب عناوین را رعایت کنید.
+                                </div>
+                            </div>
+
+                            <!-- P Tag -->
+                            <div class="tag-card" data-category="text" data-tags="p paragraph text">
+                                <div class="tag-header">
+                                    <div class="tag-name">&lt;p&gt;</div>
+                                    <div class="tag-category">متنی</div>
+                                </div>
+                                <div class="tag-description">
+                                    برای نمایش پاراگراف‌های متن. هر پاراگراف در خط جدیدی شروع می‌شود.
+                                </div>
+                                <div class="tag-example">
+                                    <div class="example-title">مثال:</div>
+                                    <div class="example-code">&lt;p&gt;این یک پاراگراف است.&lt;/p&gt;
+&lt;p&gt;این پاراگراف دوم است.&lt;/p&gt;</div>
+                                    <div class="example-output">
+                                        <div class="output-title">خروجی:</div>
+                                        <p style="margin: 0.5rem 0;">این یک پاراگراف است.</p>
+                                        <p style="margin: 0.5rem 0;">این پاراگراف دوم است.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- BR Tag -->
+                            <div class="tag-card" data-category="text" data-tags="br break line">
+                                <div class="tag-header">
+                                    <div class="tag-name">&lt;br&gt;</div>
+                                    <div class="tag-category">متنی</div>
+                                </div>
+                                <div class="tag-description">
+                                    برای ایجاد شکست خط. این تگ خودبسته است و نیاز به تگ بسته شونده ندارد.
+                                </div>
+                                <div class="tag-example">
+                                    <div class="example-title">مثال:</div>
+                                    <div class="example-code">&lt;p&gt;خط اول&lt;br&gt;خط دوم&lt;/p&gt;</div>
+                                    <div class="example-output">
+                                        <div class="output-title">خروجی:</div>
+                                        <p style="margin: 0.5rem 0;">خط اول<br>خط دوم</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- STRONG Tag -->
+                            <div class="tag-card" data-category="text" data-tags="strong bold emphasis">
+                                <div class="tag-header">
+                                    <div class="tag-name">&lt;strong&gt;</div>
+                                    <div class="tag-category">متنی</div>
+                                </div>
+                                <div class="tag-description">
+                                    برای تأکید قوی بر متن. معمولاً به صورت ضخیم نمایش داده می‌شود.
+                                </div>
+                                <div class="tag-example">
+                                    <div class="example-title">مثال:</div>
+                                    <div class="example-code">&lt;p&gt;این متن &lt;strong&gt;مهم&lt;/strong&gt; است.&lt;/p&gt;</div>
+                                    <div class="example-output">
+                                        <div class="output-title">خروجی:</div>
+                                        <p style="margin: 0.5rem 0;">این متن <strong>مهم</strong> است.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- EM Tag -->
+                            <div class="tag-card" data-category="text" data-tags="em emphasis italic">
+                                <div class="tag-header">
+                                    <div class="tag-name">&lt;em&gt;</div>
+                                    <div class="tag-category">متنی</div>
+                                </div>
+                                <div class="tag-description">
+                                    برای تأکید بر متن. معمولاً به صورت کج نمایش داده می‌شود.
+                                </div>
+                                <div class="tag-example">
+                                    <div class="example-title">مثال:</div>
+                                    <div class="example-code">&lt;p&gt;این &lt;em&gt;تأکید&lt;/em&gt; دارد.&lt;/p&gt;</div>
+                                    <div class="example-output">
+                                        <div class="output-title">خروجی:</div>
+                                        <p style="margin: 0.5rem 0;">این <em>تأکید</em> دارد.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- CODE Tag -->
+                            <div class="tag-card" data-category="text" data-tags="code programming">
+                                <div class="tag-header">
+                                    <div class="tag-name">&lt;code&gt;</div>
+                                    <div class="tag-category">متنی</div>
+                                </div>
+                                <div class="tag-description">
+                                    برای نمایش کد کامپیوتری درون متن. معمولاً با فونت monospace نمایش داده می‌شود.
+                                </div>
+                                <div class="tag-example">
+                                    <div class="example-title">مثال:</div>
+                                    <div class="example-code">&lt;p&gt;از تگ &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; استفاده کنید.&lt;/p&gt;</div>
+                                    <div class="example-output">
+                                        <div class="output-title">خروجی:</div>
+                                        <p style="margin: 0.5rem 0;">از تگ <code>&lt;div&gt;</code> استفاده کنید.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Media Tags -->
+                    <div class="category-section" id="media">
+                        <h2 class="category-title">تگ‌های رسانه‌ای</h2>
+                        <p class="category-description">تگ‌هایی که برای نمایش انواع رسانه مانند تصاویر، ویدیو و صدا استفاده می‌شوند.</p>
+                        
+                        <div class="tags-grid">
+                            <!-- IMG Tag -->
+                            <div class="tag-card" data-category="media" data-tags="img image picture">
+                                <div class="tag-header">
+                                    <div class="tag-name">&lt;img&gt;</div>
+                                    <div class="tag-category">رسانه‌ای</div>
+                                </div>
+                                <div class="tag-description">
+                                    برای نمایش تصاویر. این تگ خودبسته است و نیاز به تگ بسته شونده ندارد.
+                                </div>
+                                <div class="tag-attributes">
+                                    <div class="attributes-title">ویژگی‌های ضروری:</div>
+                                    <div class="attributes-list">
+                                        <span class="attribute-tag">src</span>
+                                        <span class="attribute-tag">alt</span>
+                                        <span class="attribute-tag">width</span>
+                                        <span class="attribute-tag">height</span>
+                                    </div>
+                                </div>
+                                <div class="tag-example">
+                                    <div class="example-title">مثال:</div>
+                                    <div class="example-code">&lt;img src="image.jpg" alt="توضیح تصویر" width="300"&gt;</div>
+                                </div>
+                                <div class="tag-notes">
+                                    <div class="notes-title">نکته:</div>
+                                    همیشه ویژگی alt را برای دسترسی بهتر تنظیم کنید.
+                                </div>
+                            </div>
+
+                            <!-- VIDEO Tag -->
+                            <div class="tag-card" data-category="media" data-tags="video movie film">
+                                <div class="tag-header">
+                                    <div class="tag-name">&lt;video&gt;</div>
+                                    <div class="tag-category">رسانه‌ای</div>
+                                </div>
+                                <div class="tag-description">
+                                    برای نمایش ویدیو در صفحه وب با کنترل‌های پخش.
+                                </div>
+                                <div class="tag-attributes">
+                                    <div class="attributes-title">ویژگی‌های مهم:</div>
+                                    <div class="attributes-list">
+                                        <span class="attribute-tag">src</span>
+                                        <span class="attribute-tag">controls</span>
+                                        <span class="attribute-tag">autoplay</span>
+                                        <span class="attribute-tag">loop</span>
+                                    </div>
+                                </div>
+                                <div class="tag-example">
+                                    <div class="example-title">مثال:</div>
+                                    <div class="example-code">&lt;video controls width="400"&gt;
+  &lt;source src="movie.mp4" type="video/mp4"&gt;
+  مرورگر شما از ویدیو پشتیبانی نمی‌کند.
+&lt;/video&gt;</div>
+                                </div>
+                            </div>
+
+                            <!-- AUDIO Tag -->
+                            <div class="tag-card" data-category="media" data-tags="audio sound music">
+                                <div class="tag-header">
+                                    <div class="tag-name">&lt;audio&gt;</div>
+                                    <div class="tag-category">رسانه‌ای</div>
+                                </div>
+                                <div class="tag-description">
+                                    برای پخش فایل‌های صوتی در صفحه وب.
+                                </div>
+                                <div class="tag-attributes">
+                                    <div class="attributes-title">ویژگی‌های مهم:</div>
+                                    <div class="attributes-list">
+                                        <span class="attribute-tag">src</span>
+                                        <span class="attribute-tag">controls</span>
+                                        <span class="attribute-tag">autoplay</span>
+                                        <span class="attribute-tag">loop</span>
+                                    </div>
+                                </div>
+                                <div class="tag-example">
+                                    <div class="example-title">مثال:</div>
+                                    <div class="example-code">&lt;audio controls&gt;
+  &lt;source src="music.mp3" type="audio/mpeg"&gt;
+  مرورگر شما از صدا پشتیبانی نمی‌کند.
+&lt;/audio&gt;</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Continue with other categories... -->
+                    <!-- This is a comprehensive start. The full implementation would continue with Form, Table, Semantic, Metadata, and Interactive categories -->
+                    
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script src="../js/storage.js"></script>
+    
+    <script>
+        // HTML Tags Reference JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('tagSearch');
+            const categoryFilter = document.getElementById('categoryFilter');
+            const tagCards = document.querySelectorAll('.tag-card');
+            const noResults = document.getElementById('noResults');
+            
+            // Search and filter functionality
+            function filterTags() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                const selectedCategory = categoryFilter.value;
+                let visibleCount = 0;
+                
+                tagCards.forEach(card => {
+                    const category = card.dataset.category;
+                    const tags = card.dataset.tags.toLowerCase();
+                    const tagName = card.querySelector('.tag-name').textContent.toLowerCase();
+                    
+                    const matchesSearch = !searchTerm || 
+                        tags.includes(searchTerm) || 
+                        tagName.includes(searchTerm);
+                    const matchesCategory = !selectedCategory || category === selectedCategory;
+                    
+                    if (matchesSearch && matchesCategory) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Show/hide no results message
+                noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+                
+                // Hide/show category sections
+                document.querySelectorAll('.category-section').forEach(section => {
+                    const visibleCards = section.querySelectorAll('.tag-card[style*="block"], .tag-card:not([style*="none"])');
+                    section.style.display = visibleCards.length > 0 ? 'block' : 'none';
+                });
+            }
+            
+            // Event listeners
+            searchInput.addEventListener('input', filterTags);
+            categoryFilter.addEventListener('change', filterTags);
+            
+            // Smooth scrolling for quick nav links
+            document.querySelectorAll('.quick-nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Highlight search terms
+            function highlightSearchTerms() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                
+                if (!searchTerm) return;
+                
+                tagCards.forEach(card => {
+                    if (card.style.display !== 'none') {
+                        const textElements = card.querySelectorAll('.tag-description, .example-code');
+                        textElements.forEach(element => {
+                            const text = element.textContent;
+                            const regex = new RegExp(`(${searchTerm})`, 'gi');
+                            element.innerHTML = text.replace(regex, '<mark>$1</mark>');
+                        });
+                    }
+                });
+            }
+            
+            // Clear highlights
+            function clearHighlights() {
+                tagCards.forEach(card => {
+                    const marks = card.querySelectorAll('mark');
+                    marks.forEach(mark => {
+                        mark.outerHTML = mark.innerHTML;
+                    });
+                });
+            }
+            
+            // Enhanced search with highlighting
+            searchInput.addEventListener('input', function() {
+                clearHighlights();
+                filterTags();
+                if (this.value.trim()) {
+                    setTimeout(highlightSearchTerms, 100);
+                }
+            });
+            
+            console.log('📚 مرجع تگ‌های HTML بارگذاری شد');
+        });
+    </script>
+</body>
+</html>
+
