@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مرجع JavaScript - آموزش توسعه وب</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/rtl.css">
+    <link rel="stylesheet" href="../css/themes.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    
+    <style>
+        .reference-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .reference-header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #f39c12 0%, #e74c3c 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+        }
+        
+        .search-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .search-box {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #ecf0f1;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #f39c12;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            background: #ecf0f1;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Vazirmatn', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active {
+            background: #f39c12;
+            color: white;
+        }
+        
+        .filter-btn:hover {
+            background: #bdc3c7;
+        }
+        
+        .filter-btn.active:hover {
+            background: #e67e22;
+        }
+        
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .method-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-right: 4px solid #f39c12;
+        }
+        
+        .method-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .method-name {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-family: 'Courier New', monospace;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .method-description {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .method-syntax {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            direction: ltr;
+            text-align: left;
+            border-right: 3px solid #e74c3c;
+        }
+        
+        .method-parameters {
+            margin: 15px 0;
+        }
+        
+        .parameter-item {
+            background: #ecf0f1;
+            padding: 8px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            margin: 3px;
+            font-size: 0.9em;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .method-example {
+            background: #e8f5e8;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            border-right: 3px solid #27ae60;
+        }
+        
+        .example-title {
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 10px;
+        }
+        
+        .example-code {
+            font-family: 'Courier New', monospace;
+            direction: ltr;
+            text-align: left;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px 0;
+        }
+        
+        .method-category {
+            background: #f39c12;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        .return-value {
+            margin-top: 15px;
+            padding: 10px;
+            background: #fff3cd;
+            border-radius: 8px;
+            border-right: 3px solid #ffc107;
+        }
+        
+        .return-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 5px;
+        }
+        
+        .return-type {
+            font-family: 'Courier New', monospace;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            color: #856404;
+            display: inline-block;
+        }
+        
+        .stats-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .stat-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #f39c12;
+        }
+        
+        .stat-label {
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 50px;
+            color: #7f8c8d;
+            font-size: 1.2em;
+        }
+        
+        .interactive-demo {
+            background: #e3f2fd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            border-right: 3px solid #2196f3;
+        }
+        
+        .demo-title {
+            font-weight: bold;
+            color: #1976d2;
+            margin-bottom: 10px;
+        }
+        
+        .demo-button {
+            background: #2196f3;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Vazirmatn', sans-serif;
+            margin: 5px;
+        }
+        
+        .demo-output {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-family: 'Courier New', monospace;
+            direction: ltr;
+            text-align: left;
+            min-height: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .methods-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-box {
+                flex-direction: column;
+            }
+            
+            .filter-buttons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-right">
+                    <h1 class="site-title">آموزش توسعه وب</h1>
+                    <div class="breadcrumb">
+                        <a href="../index.html">صفحه اصلی</a>
+                        <span>/</span>
+                        <a href="#">مراجع</a>
+                        <span>/</span>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+                <div class="header-left">
+                    <button class="theme-toggle" id="themeToggle">🌙</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="reference-container">
+            <div class="reference-header">
+                <h1>⚡ مرجع کامل JavaScript</h1>
+                <p>راهنمای جامع توابع، متدها و اشیاء JavaScript با مثال‌ها و نمونه‌های تعاملی</p>
+            </div>
+
+            <div class="stats-section">
+                <h2>آمار مرجع</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalMethods">100+</div>
+                        <div class="stat-label">متد و تابع</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15</div>
+                        <div class="stat-label">دسته‌بندی</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">200+</div>
+                        <div class="stat-label">مثال کاربردی</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">نمونه تعاملی</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-section">
+                <h2>جستجو و فیلتر</h2>
+                <div class="search-box">
+                    <input type="text" class="search-input" id="searchInput" placeholder="نام تابع، توضیحات یا مثال را جستجو کنید...">
+                </div>
+                
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="all">همه</button>
+                    <button class="filter-btn" data-category="array">آرایه</button>
+                    <button class="filter-btn" data-category="string">رشته</button>
+                    <button class="filter-btn" data-category="object">شیء</button>
+                    <button class="filter-btn" data-category="number">عدد</button>
+                    <button class="filter-btn" data-category="date">تاریخ</button>
+                    <button class="filter-btn" data-category="math">ریاضی</button>
+                    <button class="filter-btn" data-category="dom">DOM</button>
+                    <button class="filter-btn" data-category="event">رویداد</button>
+                    <button class="filter-btn" data-category="async">ناهمزمان</button>
+                    <button class="filter-btn" data-category="storage">ذخیره‌سازی</button>
+                    <button class="filter-btn" data-category="json">JSON</button>
+                    <button class="filter-btn" data-category="regex">Regex</button>
+                    <button class="filter-btn" data-category="console">Console</button>
+                    <button class="filter-btn" data-category="window">Window</button>
+                </div>
+            </div>
+
+            <div class="methods-grid" id="methodsGrid">
+                <!-- Methods will be loaded here by JavaScript -->
+            </div>
+
+            <div class="no-results" id="noResults" style="display: none;">
+                <h3>نتیجه‌ای یافت نشد</h3>
+                <p>لطفا کلمات کلیدی دیگری امتحان کنید یا فیلترها را تغییر دهید.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="../js/main.js"></script>
+    
+    <script>
+        // داده‌های متدها و توابع JavaScript
+        const jsMethods = [
+            // Array Methods
+            {
+                name: 'push()',
+                category: 'array',
+                description: 'یک یا چند عنصر به انتهای آرایه اضافه می‌کند',
+                syntax: 'array.push(element1, element2, ...)',
+                parameters: ['element1', 'element2', '...'],
+                returnValue: 'number (طول جدید آرایه)',
+                example: {
+                    title: 'اضافه کردن عنصر به آرایه',
+                    code: 'const fruits = ["سیب", "موز"];\nfruits.push("پرتقال");\nconsole.log(fruits); // ["سیب", "موز", "پرتقال"]'
+                },
+                demo: {
+                    title: 'تست push()',
+                    code: 'testArrayPush'
+                }
+            },
+            {
+                name: 'pop()',
+                category: 'array',
+                description: 'آخرین عنصر آرایه را حذف کرده و برمی‌گرداند',
+                syntax: 'array.pop()',
+                parameters: [],
+                returnValue: 'any (عنصر حذف شده)',
+                example: {
+                    title: 'حذف آخرین عنصر',
+                    code: 'const fruits = ["سیب", "موز", "پرتقال"];\nconst lastFruit = fruits.pop();\nconsole.log(lastFruit); // "پرتقال"\nconsole.log(fruits); // ["سیب", "موز"]'
+                },
+                demo: {
+                    title: 'تست pop()',
+                    code: 'testArrayPop'
+                }
+            },
+            {
+                name: 'map()',
+                category: 'array',
+                description: 'آرایه جدیدی با اعمال تابع روی هر عنصر ایجاد می‌کند',
+                syntax: 'array.map(callback(element, index, array))',
+                parameters: ['callback', 'element', 'index', 'array'],
+                returnValue: 'Array (آرایه جدید)',
+                example: {
+                    title: 'تبدیل اعداد به مربع آن‌ها',
+                    code: 'const numbers = [1, 2, 3, 4];\nconst squares = numbers.map(num => num * num);\nconsole.log(squares); // [1, 4, 9, 16]'
+                },
+                demo: {
+                    title: 'تست map()',
+                    code: 'testArrayMap'
+                }
+            },
+            {
+                name: 'filter()',
+                category: 'array',
+                description: 'آرایه جدیدی با عناصری که شرط را برآورده می‌کنند ایجاد می‌کند',
+                syntax: 'array.filter(callback(element, index, array))',
+                parameters: ['callback', 'element', 'index', 'array'],
+                returnValue: 'Array (آرایه فیلتر شده)',
+                example: {
+                    title: 'فیلتر اعداد زوج',
+                    code: 'const numbers = [1, 2, 3, 4, 5, 6];\nconst evenNumbers = numbers.filter(num => num % 2 === 0);\nconsole.log(evenNumbers); // [2, 4, 6]'
+                },
+                demo: {
+                    title: 'تست filter()',
+                    code: 'testArrayFilter'
+                }
+            },
+            {
+                name: 'reduce()',
+                category: 'array',
+                description: 'آرایه را به یک مقدار واحد تبدیل می‌کند',
+                syntax: 'array.reduce(callback(accumulator, element, index, array), initialValue)',
+                parameters: ['callback', 'accumulator', 'element', 'initialValue'],
+                returnValue: 'any (مقدار نهایی)',
+                example: {
+                    title: 'محاسبه مجموع اعداد',
+                    code: 'const numbers = [1, 2, 3, 4, 5];\nconst sum = numbers.reduce((acc, num) => acc + num, 0);\nconsole.log(sum); // 15'
+                },
+                demo: {
+                    title: 'تست reduce()',
+                    code: 'testArrayReduce'
+                }
+            },
+
+            // String Methods
+            {
+                name: 'charAt()',
+                category: 'string',
+                description: 'کاراکتر در موقعیت مشخص شده را برمی‌گرداند',
+                syntax: 'string.charAt(index)',
+                parameters: ['index'],
+                returnValue: 'string (کاراکتر)',
+                example: {
+                    title: 'دریافت کاراکتر در موقعیت مشخص',
+                    code: 'const text = "سلام دنیا";\nconsole.log(text.charAt(0)); // "س"\nconsole.log(text.charAt(5)); // "د"'
+                },
+                demo: {
+                    title: 'تست charAt()',
+                    code: 'testStringCharAt'
+                }
+            },
+            {
+                name: 'substring()',
+                category: 'string',
+                description: 'بخشی از رشته را بین دو موقعیت برمی‌گرداند',
+                syntax: 'string.substring(start, end)',
+                parameters: ['start', 'end'],
+                returnValue: 'string (زیررشته)',
+                example: {
+                    title: 'استخراج بخشی از رشته',
+                    code: 'const text = "JavaScript";\nconsole.log(text.substring(0, 4)); // "Java"\nconsole.log(text.substring(4)); // "Script"'
+                },
+                demo: {
+                    title: 'تست substring()',
+                    code: 'testStringSubstring'
+                }
+            },
+            {
+                name: 'split()',
+                category: 'string',
+                description: 'رشته را به آرایه تبدیل می‌کند',
+                syntax: 'string.split(separator, limit)',
+                parameters: ['separator', 'limit'],
+                returnValue: 'Array (آرایه از رشته‌ها)',
+                example: {
+                    title: 'تقسیم رشته به آرایه',
+                    code: 'const text = "سیب,موز,پرتقال";\nconst fruits = text.split(",");\nconsole.log(fruits); // ["سیب", "موز", "پرتقال"]'
+                },
+                demo: {
+                    title: 'تست split()',
+                    code: 'testStringSplit'
+                }
+            },
+            {
+                name: 'replace()',
+                category: 'string',
+                description: 'بخشی از رشته را با مقدار جدید جایگزین می‌کند',
+                syntax: 'string.replace(searchValue, replaceValue)',
+                parameters: ['searchValue', 'replaceValue'],
+                returnValue: 'string (رشته جدید)',
+                example: {
+                    title: 'جایگزینی متن',
+                    code: 'const text = "سلام دنیا";\nconst newText = text.replace("دنیا", "جهان");\nconsole.log(newText); // "سلام جهان"'
+                },
+                demo: {
+                    title: 'تست replace()',
+                    code: 'testStringReplace'
+                }
+            },
+
+            // Object Methods
+            {
+                name: 'Object.keys()',
+                category: 'object',
+                description: 'آرایه‌ای از کلیدهای شیء را برمی‌گرداند',
+                syntax: 'Object.keys(object)',
+                parameters: ['object'],
+                returnValue: 'Array (آرایه کلیدها)',
+                example: {
+                    title: 'دریافت کلیدهای شیء',
+                    code: 'const person = { name: "علی", age: 25, city: "تهران" };\nconst keys = Object.keys(person);\nconsole.log(keys); // ["name", "age", "city"]'
+                },
+                demo: {
+                    title: 'تست Object.keys()',
+                    code: 'testObjectKeys'
+                }
+            },
+            {
+                name: 'Object.values()',
+                category: 'object',
+                description: 'آرایه‌ای از مقادیر شیء را برمی‌گرداند',
+                syntax: 'Object.values(object)',
+                parameters: ['object'],
+                returnValue: 'Array (آرایه مقادیر)',
+                example: {
+                    title: 'دریافت مقادیر شیء',
+                    code: 'const person = { name: "علی", age: 25, city: "تهران" };\nconst values = Object.values(person);\nconsole.log(values); // ["علی", 25, "تهران"]'
+                },
+                demo: {
+                    title: 'تست Object.values()',
+                    code: 'testObjectValues'
+                }
+            },
+            {
+                name: 'Object.assign()',
+                category: 'object',
+                description: 'ویژگی‌های یک یا چند شیء را به شیء مقصد کپی می‌کند',
+                syntax: 'Object.assign(target, source1, source2, ...)',
+                parameters: ['target', 'source1', 'source2'],
+                returnValue: 'Object (شیء مقصد)',
+                example: {
+                    title: 'ترکیب اشیاء',
+                    code: 'const obj1 = { a: 1, b: 2 };\nconst obj2 = { c: 3, d: 4 };\nconst merged = Object.assign({}, obj1, obj2);\nconsole.log(merged); // { a: 1, b: 2, c: 3, d: 4 }'
+                },
+                demo: {
+                    title: 'تست Object.assign()',
+                    code: 'testObjectAssign'
+                }
+            },
+
+            // Math Methods
+            {
+                name: 'Math.random()',
+                category: 'math',
+                description: 'عدد تصادفی بین 0 و 1 تولید می‌کند',
+                syntax: 'Math.random()',
+                parameters: [],
+                returnValue: 'number (عدد تصادفی)',
+                example: {
+                    title: 'تولید عدد تصادفی',
+                    code: 'const randomNum = Math.random();\nconsole.log(randomNum); // مثلا 0.7834592\n\n// عدد تصادفی بین 1 تا 10\nconst randomInt = Math.floor(Math.random() * 10) + 1;'
+                },
+                demo: {
+                    title: 'تست Math.random()',
+                    code: 'testMathRandom'
+                }
+            },
+            {
+                name: 'Math.floor()',
+                category: 'math',
+                description: 'بزرگترین عدد صحیح کوچک‌تر یا مساوی عدد داده شده',
+                syntax: 'Math.floor(number)',
+                parameters: ['number'],
+                returnValue: 'number (عدد صحیح)',
+                example: {
+                    title: 'گرد کردن به پایین',
+                    code: 'console.log(Math.floor(4.7)); // 4\nconsole.log(Math.floor(-4.7)); // -5\nconsole.log(Math.floor(4.3)); // 4'
+                },
+                demo: {
+                    title: 'تست Math.floor()',
+                    code: 'testMathFloor'
+                }
+            },
+            {
+                name: 'Math.ceil()',
+                category: 'math',
+                description: 'کوچکترین عدد صحیح بزرگ‌تر یا مساوی عدد داده شده',
+                syntax: 'Math.ceil(number)',
+                parameters: ['number'],
+                returnValue: 'number (عدد صحیح)',
+                example: {
+                    title: 'گرد کردن به بالا',
+                    code: 'console.log(Math.ceil(4.1)); // 5\nconsole.log(Math.ceil(-4.1)); // -4\nconsole.log(Math.ceil(4.0)); // 4'
+                },
+                demo: {
+                    title: 'تست Math.ceil()',
+                    code: 'testMathCeil'
+                }
+            },
+
+            // DOM Methods
+            {
+                name: 'getElementById()',
+                category: 'dom',
+                description: 'عنصر با ID مشخص شده را برمی‌گرداند',
+                syntax: 'document.getElementById(id)',
+                parameters: ['id'],
+                returnValue: 'Element (عنصر DOM)',
+                example: {
+                    title: 'انتخاب عنصر با ID',
+                    code: 'const element = document.getElementById("myButton");\nelement.style.color = "red";\nelement.textContent = "کلیک کنید";'
+                },
+                demo: {
+                    title: 'تست getElementById()',
+                    code: 'testGetElementById'
+                }
+            },
+            {
+                name: 'querySelector()',
+                category: 'dom',
+                description: 'اولین عنصری که با selector مطابقت دارد را برمی‌گرداند',
+                syntax: 'document.querySelector(selector)',
+                parameters: ['selector'],
+                returnValue: 'Element (عنصر DOM)',
+                example: {
+                    title: 'انتخاب عنصر با CSS selector',
+                    code: 'const button = document.querySelector(".btn-primary");\nconst firstParagraph = document.querySelector("p");\nconst input = document.querySelector("input[type=\'text\']");'
+                },
+                demo: {
+                    title: 'تست querySelector()',
+                    code: 'testQuerySelector'
+                }
+            },
+            {
+                name: 'addEventListener()',
+                category: 'event',
+                description: 'event listener به عنصر اضافه می‌کند',
+                syntax: 'element.addEventListener(event, function, options)',
+                parameters: ['event', 'function', 'options'],
+                returnValue: 'undefined',
+                example: {
+                    title: 'اضافه کردن event listener',
+                    code: 'const button = document.getElementById("myButton");\nbutton.addEventListener("click", function() {\n  alert("دکمه کلیک شد!");\n});'
+                },
+                demo: {
+                    title: 'تست addEventListener()',
+                    code: 'testAddEventListener'
+                }
+            },
+
+            // Date Methods
+            {
+                name: 'new Date()',
+                category: 'date',
+                description: 'شیء تاریخ جدید ایجاد می‌کند',
+                syntax: 'new Date(year, month, day, hour, minute, second)',
+                parameters: ['year', 'month', 'day', 'hour', 'minute', 'second'],
+                returnValue: 'Date (شیء تاریخ)',
+                example: {
+                    title: 'ایجاد تاریخ',
+                    code: 'const now = new Date();\nconst specificDate = new Date(2024, 0, 1); // 1 ژانویه 2024\nconsole.log(now.toLocaleDateString("fa-IR"));'
+                },
+                demo: {
+                    title: 'تست Date()',
+                    code: 'testDate'
+                }
+            },
+            {
+                name: 'getTime()',
+                category: 'date',
+                description: 'زمان را به میلی‌ثانیه از 1970 برمی‌گرداند',
+                syntax: 'date.getTime()',
+                parameters: [],
+                returnValue: 'number (میلی‌ثانیه)',
+                example: {
+                    title: 'دریافت timestamp',
+                    code: 'const date = new Date();\nconst timestamp = date.getTime();\nconsole.log(timestamp); // مثلا 1640995200000'
+                },
+                demo: {
+                    title: 'تست getTime()',
+                    code: 'testGetTime'
+                }
+            },
+
+            // JSON Methods
+            {
+                name: 'JSON.stringify()',
+                category: 'json',
+                description: 'شیء JavaScript را به رشته JSON تبدیل می‌کند',
+                syntax: 'JSON.stringify(value, replacer, space)',
+                parameters: ['value', 'replacer', 'space'],
+                returnValue: 'string (رشته JSON)',
+                example: {
+                    title: 'تبدیل شیء به JSON',
+                    code: 'const person = { name: "علی", age: 25 };\nconst jsonString = JSON.stringify(person);\nconsole.log(jsonString); // \'{"name":"علی","age":25}\''
+                },
+                demo: {
+                    title: 'تست JSON.stringify()',
+                    code: 'testJSONStringify'
+                }
+            },
+            {
+                name: 'JSON.parse()',
+                category: 'json',
+                description: 'رشته JSON را به شیء JavaScript تبدیل می‌کند',
+                syntax: 'JSON.parse(text, reviver)',
+                parameters: ['text', 'reviver'],
+                returnValue: 'any (شیء JavaScript)',
+                example: {
+                    title: 'تبدیل JSON به شیء',
+                    code: 'const jsonString = \'{"name":"علی","age":25}\';\nconst person = JSON.parse(jsonString);\nconsole.log(person.name); // "علی"'
+                },
+                demo: {
+                    title: 'تست JSON.parse()',
+                    code: 'testJSONParse'
+                }
+            },
+
+            // Storage Methods
+            {
+                name: 'localStorage.setItem()',
+                category: 'storage',
+                description: 'داده را در localStorage ذخیره می‌کند',
+                syntax: 'localStorage.setItem(key, value)',
+                parameters: ['key', 'value'],
+                returnValue: 'undefined',
+                example: {
+                    title: 'ذخیره داده در localStorage',
+                    code: 'localStorage.setItem("username", "علی");\nlocalStorage.setItem("settings", JSON.stringify({theme: "dark"}));'
+                },
+                demo: {
+                    title: 'تست localStorage.setItem()',
+                    code: 'testLocalStorageSet'
+                }
+            },
+            {
+                name: 'localStorage.getItem()',
+                category: 'storage',
+                description: 'داده را از localStorage دریافت می‌کند',
+                syntax: 'localStorage.getItem(key)',
+                parameters: ['key'],
+                returnValue: 'string (مقدار ذخیره شده)',
+                example: {
+                    title: 'دریافت داده از localStorage',
+                    code: 'const username = localStorage.getItem("username");\nconst settings = JSON.parse(localStorage.getItem("settings"));'
+                },
+                demo: {
+                    title: 'تست localStorage.getItem()',
+                    code: 'testLocalStorageGet'
+                }
+            },
+
+            // Console Methods
+            {
+                name: 'console.log()',
+                category: 'console',
+                description: 'پیام را در console نمایش می‌دهد',
+                syntax: 'console.log(message1, message2, ...)',
+                parameters: ['message1', 'message2'],
+                returnValue: 'undefined',
+                example: {
+                    title: 'نمایش پیام در console',
+                    code: 'console.log("سلام دنیا");\nconsole.log("نام:", "علی", "سن:", 25);\nconsole.log({name: "علی", age: 25});'
+                },
+                demo: {
+                    title: 'تست console.log()',
+                    code: 'testConsoleLog'
+                }
+            },
+
+            // Async Methods
+            {
+                name: 'setTimeout()',
+                category: 'async',
+                description: 'تابع را پس از مدت زمان مشخص اجرا می‌کند',
+                syntax: 'setTimeout(function, delay, ...args)',
+                parameters: ['function', 'delay', 'args'],
+                returnValue: 'number (ID تایمر)',
+                example: {
+                    title: 'اجرای تاخیری تابع',
+                    code: 'setTimeout(() => {\n  console.log("این پیام پس از 2 ثانیه نمایش داده می‌شود");\n}, 2000);'
+                },
+                demo: {
+                    title: 'تست setTimeout()',
+                    code: 'testSetTimeout'
+                }
+            }
+        ];
+
+        // متغیرهای سراسری
+        let filteredMethods = [...jsMethods];
+        let currentCategory = 'all';
+
+        // مقداردهی اولیه
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMethods();
+            setupEventListeners();
+            updateStats();
+        });
+
+        // رندر کردن متدها
+        function renderMethods() {
+            const grid = document.getElementById('methodsGrid');
+            const noResults = document.getElementById('noResults');
+
+            if (filteredMethods.length === 0) {
+                grid.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            }
+
+            grid.style.display = 'grid';
+            noResults.style.display = 'none';
+
+            grid.innerHTML = filteredMethods.map(method => `
+                <div class="method-card" data-category="${method.category}">
+                    <div class="method-category">${getCategoryName(method.category)}</div>
+                    <div class="method-name">${method.name}</div>
+                    <div class="method-description">${method.description}</div>
+                    
+                    <div class="method-syntax">${method.syntax}</div>
+                    
+                    ${method.parameters.length > 0 ? `
+                    <div class="method-parameters">
+                        <strong>پارامترها:</strong><br>
+                        ${method.parameters.map(param => `<span class="parameter-item">${param}</span>`).join('')}
+                    </div>
+                    ` : ''}
+                    
+                    <div class="return-value">
+                        <div class="return-title">مقدار برگشتی:</div>
+                        <span class="return-type">${method.returnValue}</span>
+                    </div>
+                    
+                    <div class="method-example">
+                        <div class="example-title">${method.example.title}</div>
+                        <div class="example-code">${method.example.code}</div>
+                    </div>
+                    
+                    ${method.demo ? `
+                    <div class="interactive-demo">
+                        <div class="demo-title">${method.demo.title}</div>
+                        <button class="demo-button" onclick="${method.demo.code}()">اجرای نمونه</button>
+                        <div class="demo-output" id="${method.demo.code}Output"></div>
+                    </div>
+                    ` : ''}
+                </div>
+            `).join('');
+        }
+
+        // تنظیم event listener ها
+        function setupEventListeners() {
+            // جستجو
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', handleSearch);
+
+            // فیلترها
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', handleFilter);
+            });
+        }
+
+        // مدیریت جستجو
+        function handleSearch(event) {
+            const searchTerm = event.target.value.toLowerCase().trim();
+            
+            filteredMethods = jsMethods.filter(method => {
+                const matchesSearch = 
+                    method.name.toLowerCase().includes(searchTerm) ||
+                    method.description.toLowerCase().includes(searchTerm) ||
+                    method.parameters.some(param => param.toLowerCase().includes(searchTerm)) ||
+                    method.example.title.toLowerCase().includes(searchTerm) ||
+                    method.example.code.toLowerCase().includes(searchTerm);
+                
+                const matchesCategory = currentCategory === 'all' || method.category === currentCategory;
+                
+                return matchesSearch && matchesCategory;
+            });
+
+            renderMethods();
+        }
+
+        // مدیریت فیلتر
+        function handleFilter(event) {
+            // به‌روزرسانی دکمه فعال
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            currentCategory = event.target.dataset.category;
+            
+            // اعمال فیلتر
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            
+            filteredMethods = jsMethods.filter(method => {
+                const matchesSearch = !searchTerm || 
+                    method.name.toLowerCase().includes(searchTerm) ||
+                    method.description.toLowerCase().includes(searchTerm) ||
+                    method.parameters.some(param => param.toLowerCase().includes(searchTerm));
+                
+                const matchesCategory = currentCategory === 'all' || method.category === currentCategory;
+                
+                return matchesSearch && matchesCategory;
+            });
+
+            renderMethods();
+        }
+
+        // دریافت نام فارسی دسته‌بندی
+        function getCategoryName(category) {
+            const categoryNames = {
+                'array': 'آرایه',
+                'string': 'رشته',
+                'object': 'شیء',
+                'number': 'عدد',
+                'date': 'تاریخ',
+                'math': 'ریاضی',
+                'dom': 'DOM',
+                'event': 'رویداد',
+                'async': 'ناهمزمان',
+                'storage': 'ذخیره‌سازی',
+                'json': 'JSON',
+                'regex': 'Regex',
+                'console': 'Console',
+                'window': 'Window'
+            };
+            return categoryNames[category] || category;
+        }
+
+        // به‌روزرسانی آمار
+        function updateStats() {
+            document.getElementById('totalMethods').textContent = jsMethods.length;
+        }
+
+        // توابع نمونه تعاملی
+        function testArrayPush() {
+            const fruits = ["سیب", "موز"];
+            const newLength = fruits.push("پرتقال", "انگور");
+            document.getElementById('testArrayPushOutput').textContent = 
+                `آرایه: [${fruits.join(', ')}]\nطول جدید: ${newLength}`;
+        }
+
+        function testArrayPop() {
+            const fruits = ["سیب", "موز", "پرتقال"];
+            const removed = fruits.pop();
+            document.getElementById('testArrayPopOutput').textContent = 
+                `عنصر حذف شده: ${removed}\nآرایه باقی‌مانده: [${fruits.join(', ')}]`;
+        }
+
+        function testArrayMap() {
+            const numbers = [1, 2, 3, 4, 5];
+            const squares = numbers.map(num => num * num);
+            document.getElementById('testArrayMapOutput').textContent = 
+                `اعداد اصلی: [${numbers.join(', ')}]\nمربع اعداد: [${squares.join(', ')}]`;
+        }
+
+        function testArrayFilter() {
+            const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            const evenNumbers = numbers.filter(num => num % 2 === 0);
+            document.getElementById('testArrayFilterOutput').textContent = 
+                `اعداد اصلی: [${numbers.join(', ')}]\nاعداد زوج: [${evenNumbers.join(', ')}]`;
+        }
+
+        function testArrayReduce() {
+            const numbers = [1, 2, 3, 4, 5];
+            const sum = numbers.reduce((acc, num) => acc + num, 0);
+            const product = numbers.reduce((acc, num) => acc * num, 1);
+            document.getElementById('testArrayReduceOutput').textContent = 
+                `اعداد: [${numbers.join(', ')}]\nمجموع: ${sum}\nضرب: ${product}`;
+        }
+
+        function testStringCharAt() {
+            const text = "سلام دنیا";
+            const char0 = text.charAt(0);
+            const char5 = text.charAt(5);
+            document.getElementById('testStringCharAtOutput').textContent = 
+                `متن: "${text}"\nکاراکتر 0: "${char0}"\nکاراکتر 5: "${char5}"`;
+        }
+
+        function testStringSubstring() {
+            const text = "JavaScript";
+            const part1 = text.substring(0, 4);
+            const part2 = text.substring(4);
+            document.getElementById('testStringSubstringOutput').textContent = 
+                `متن اصلی: "${text}"\nقسمت اول: "${part1}"\nقسمت دوم: "${part2}"`;
+        }
+
+        function testStringSplit() {
+            const text = "سیب,موز,پرتقال,انگور";
+            const fruits = text.split(",");
+            document.getElementById('testStringSplitOutput').textContent = 
+                `متن اصلی: "${text}"\nآرایه: [${fruits.map(f => `"${f}"`).join(', ')}]`;
+        }
+
+        function testStringReplace() {
+            const text = "سلام دنیا";
+            const newText = text.replace("دنیا", "جهان");
+            document.getElementById('testStringReplaceOutput').textContent = 
+                `متن اصلی: "${text}"\nمتن جدید: "${newText}"`;
+        }
+
+        function testObjectKeys() {
+            const person = { name: "علی", age: 25, city: "تهران" };
+            const keys = Object.keys(person);
+            document.getElementById('testObjectKeysOutput').textContent = 
+                `شیء: ${JSON.stringify(person)}\nکلیدها: [${keys.map(k => `"${k}"`).join(', ')}]`;
+        }
+
+        function testObjectValues() {
+            const person = { name: "علی", age: 25, city: "تهران" };
+            const values = Object.values(person);
+            document.getElementById('testObjectValuesOutput').textContent = 
+                `شیء: ${JSON.stringify(person)}\nمقادیر: [${values.map(v => `"${v}"`).join(', ')}]`;
+        }
+
+        function testObjectAssign() {
+            const obj1 = { a: 1, b: 2 };
+            const obj2 = { c: 3, d: 4 };
+            const merged = Object.assign({}, obj1, obj2);
+            document.getElementById('testObjectAssignOutput').textContent = 
+                `شیء 1: ${JSON.stringify(obj1)}\nشیء 2: ${JSON.stringify(obj2)}\nترکیب شده: ${JSON.stringify(merged)}`;
+        }
+
+        function testMathRandom() {
+            const random1 = Math.random();
+            const random2 = Math.floor(Math.random() * 10) + 1;
+            const random3 = Math.floor(Math.random() * 100) + 1;
+            document.getElementById('testMathRandomOutput').textContent = 
+                `عدد تصادفی (0-1): ${random1.toFixed(4)}\nعدد تصادفی (1-10): ${random2}\nعدد تصادفی (1-100): ${random3}`;
+        }
+
+        function testMathFloor() {
+            const numbers = [4.7, -4.7, 4.3, -4.3];
+            const results = numbers.map(num => `${num} → ${Math.floor(num)}`);
+            document.getElementById('testMathFloorOutput').textContent = results.join('\n');
+        }
+
+        function testMathCeil() {
+            const numbers = [4.1, -4.1, 4.9, -4.9];
+            const results = numbers.map(num => `${num} → ${Math.ceil(num)}`);
+            document.getElementById('testMathCeilOutput').textContent = results.join('\n');
+        }
+
+        function testDate() {
+            const now = new Date();
+            const specificDate = new Date(2024, 0, 1);
+            document.getElementById('testDateOutput').textContent = 
+                `تاریخ فعلی: ${now.toLocaleDateString('fa-IR')}\nتاریخ مشخص: ${specificDate.toLocaleDateString('fa-IR')}`;
+        }
+
+        function testGetTime() {
+            const date = new Date();
+            const timestamp = date.getTime();
+            document.getElementById('testGetTimeOutput').textContent = 
+                `تاریخ: ${date.toLocaleDateString('fa-IR')}\nTimestamp: ${timestamp}`;
+        }
+
+        function testJSONStringify() {
+            const person = { name: "علی", age: 25, hobbies: ["خواندن", "ورزش"] };
+            const jsonString = JSON.stringify(person);
+            document.getElementById('testJSONStringifyOutput').textContent = 
+                `شیء: ${JSON.stringify(person)}\nJSON: ${jsonString}`;
+        }
+
+        function testJSONParse() {
+            const jsonString = '{"name":"علی","age":25,"city":"تهران"}';
+            const person = JSON.parse(jsonString);
+            document.getElementById('testJSONParseOutput').textContent = 
+                `JSON: ${jsonString}\nشیء: name="${person.name}", age=${person.age}, city="${person.city}"`;
+        }
+
+        function testLocalStorageSet() {
+            const key = 'testData';
+            const value = 'سلام از localStorage!';
+            localStorage.setItem(key, value);
+            document.getElementById('testLocalStorageSetOutput').textContent = 
+                `کلید: "${key}"\nمقدار: "${value}"\nذخیره شد در localStorage`;
+        }
+
+        function testLocalStorageGet() {
+            const key = 'testData';
+            const value = localStorage.getItem(key) || 'داده‌ای یافت نشد';
+            document.getElementById('testLocalStorageGetOutput').textContent = 
+                `کلید: "${key}"\nمقدار دریافت شده: "${value}"`;
+        }
+
+        function testConsoleLog() {
+            console.log('این پیام در console نمایش داده می‌شود');
+            console.log('نام:', 'علی', 'سن:', 25);
+            document.getElementById('testConsoleLogOutput').textContent = 
+                'پیام‌ها در console مرورگر نمایش داده شدند.\nF12 را فشار دهید تا console را ببینید.';
+        }
+
+        function testSetTimeout() {
+            document.getElementById('testSetTimeoutOutput').textContent = 'در حال انتظار...';
+            setTimeout(() => {
+                document.getElementById('testSetTimeoutOutput').textContent = 
+                    'این پیام پس از 2 ثانیه نمایش داده شد!';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
+
